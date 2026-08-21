@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Profile</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Customer Portal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🏠 Dashboard
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🚗 My Vehicles
+          </a>
+
+          <a
+            href="../appointments/appointments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            📅 Appointments
+          </a>
+
+          <a
+            href="../service-history/service-history.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🔧 Service History
+          </a>
+
+          <a
+            href="../payments/payments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            💳 Payments
+          </a>
+
+          <a
+            href="../invoices/invoices.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🧾 Invoices
+          </a>
+
+          <!-- Active -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
+          >
+            👤 Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            J
+          </div>
+
+          <div>
+            <p class="font-semibold">John Smith</p>
+
+            <p class="text-xs text-slate-400">Customer</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 p-6 lg:p-8">
+        <!-- Header -->
+
+        <header class="mb-8">
+          <h1 class="text-3xl font-bold">Profile</h1>
+
+          <p class="text-slate-500 mt-1">
+            Manage your personal information and account settings
+          </p>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- PROFILE HEADER -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 mb-6">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-5">
+            <!-- Avatar -->
+
+            <div class="relative">
+              <div
+                class="w-24 h-24 rounded-full bg-indigo-600 text-white flex items-center justify-center text-3xl font-bold"
+              >
+                JS
+              </div>
+
+              <button
+                class="absolute bottom-0 right-0 w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center border-4 border-white"
+              >
+                ✎
+              </button>
+            </div>
+
+            <!-- User information -->
+
+            <div>
+              <h2 class="text-2xl font-bold">John Smith</h2>
+
+              <p class="text-slate-500 mt-1">john.smith@example.com</p>
+
+              <span
+                class="inline-block mt-3 bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-semibold"
+              >
+                Customer
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- PERSONAL INFORMATION -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 mb-6">
+          <div class="mb-6">
+            <h2 class="text-xl font-bold">Personal Information</h2>
+
+            <p class="text-sm text-slate-500 mt-1">
+              Update your personal information
+            </p>
+          </div>
+
+          <form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- First Name -->
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">
+                  First Name
+                </label>
+
+                <input
+                  type="text"
+                  value="John"
+                  class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- Last Name -->
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">
+                  Last Name
+                </label>
+
+                <input
+                  type="text"
+                  value="Smith"
+                  class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- Email -->
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">
+                  Email Address
+                </label>
+
+                <input
+                  type="email"
+                  value="john.smith@example.com"
+                  class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- Phone -->
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">
+                  Phone Number
+                </label>
+
+                <input
+                  type="tel"
+                  value="+1 555 123 4567"
+                  class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- Address -->
+
+              <div class="md:col-span-2">
+                <label class="block text-sm font-semibold mb-2">
+                  Address
+                </label>
+
+                <input
+                  type="text"
+                  value="123 Main Street, New York"
+                  class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+
+            <!-- Save -->
+
+            <div class="flex justify-end mt-6">
+              <button
+                type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-semibold transition"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- SECURITY -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 mb-6">
+          <div class="mb-6">
+            <h2 class="text-xl font-bold">Security</h2>
+
+            <p class="text-sm text-slate-500 mt-1">
+              Manage your account password
+            </p>
+          </div>
+
+          <form>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- Current Password -->
+
+              <div class="md:col-span-2">
+                <label class="block text-sm font-semibold mb-2">
+                  Current Password
+                </label>
+
+                <input
+                  type="password"
+                  placeholder="Enter current password"
+                  class="w-full md:max-w-xl border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- New Password -->
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">
+                  New Password
+                </label>
+
+                <input
+                  type="password"
+                  placeholder="Enter new password"
+                  class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- Confirm -->
+
+              <div>
+                <label class="block text-sm font-semibold mb-2">
+                  Confirm Password
+                </label>
+
+                <input
+                  type="password"
+                  placeholder="Confirm new password"
+                  class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <button
+                type="submit"
+                class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-semibold"
+              >
+                Update Password
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- NOTIFICATIONS -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 mb-6">
+          <div class="mb-6">
+            <h2 class="text-xl font-bold">Notifications</h2>
+
+            <p class="text-sm text-slate-500 mt-1">
+              Choose how AutoCare should contact you
+            </p>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Appointment -->
+
+            <div class="flex items-center justify-between gap-5">
+              <div>
+                <h3 class="font-semibold">Appointment Reminders</h3>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  Receive reminders before your appointments
+                </p>
+              </div>
+
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="peer sr-only" />
+
+                <div
+                  class="w-11 h-6 bg-slate-300 rounded-full peer peer-checked:bg-indigo-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+                ></div>
+              </label>
+            </div>
+
+            <!-- Service Updates -->
+
+            <div class="flex items-center justify-between gap-5">
+              <div>
+                <h3 class="font-semibold">Service Updates</h3>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  Get updates about your vehicle service
+                </p>
+              </div>
+
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="peer sr-only" />
+
+                <div
+                  class="w-11 h-6 bg-slate-300 rounded-full peer peer-checked:bg-indigo-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+                ></div>
+              </label>
+            </div>
+
+            <!-- Payment Notifications -->
+
+            <div class="flex items-center justify-between gap-5">
+              <div>
+                <h3 class="font-semibold">Payment Notifications</h3>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  Receive payment and invoice notifications
+                </p>
+              </div>
+
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" checked class="peer sr-only" />
+
+                <div
+                  class="w-11 h-6 bg-slate-300 rounded-full peer peer-checked:bg-indigo-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+                ></div>
+              </label>
+            </div>
+
+            <!-- Promotions -->
+
+            <div class="flex items-center justify-between gap-5">
+              <div>
+                <h3 class="font-semibold">Offers & Promotions</h3>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  Receive special offers from AutoCare
+                </p>
+              </div>
+
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="peer sr-only" />
+
+                <div
+                  class="w-11 h-6 bg-slate-300 rounded-full peer peer-checked:bg-indigo-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:after:translate-x-full"
+                ></div>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- DANGER ZONE -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-red-200 p-6">
+          <div>
+            <h2 class="text-xl font-bold text-red-600">Danger Zone</h2>
+
+            <p class="text-sm text-slate-500 mt-1">
+              Permanently delete your AutoCare account
+            </p>
+          </div>
+
+          <div
+            class="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+          >
+            <p class="text-sm text-slate-500 max-w-xl">
+              Deleting your account will remove your personal information and
+              account access. This action cannot be undone.
+            </p>
+
+            <button
+              class="shrink-0 border border-red-300 text-red-600 hover:bg-red-50 px-5 py-3 rounded-xl font-semibold transition"
+            >
+              Delete Account
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

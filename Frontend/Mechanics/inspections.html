@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Vehicle Inspection</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Mechanic Workspace</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🏠</span>
+            Dashboard
+          </a>
+
+          <a
+            href="../jobs/jobs.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🔧</span>
+            My Jobs
+
+            <span class="ml-auto px-2 py-0.5 rounded-full bg-red-500 text-xs">
+              5
+            </span>
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🚗</span>
+            Assigned Vehicles
+          </a>
+
+          <!-- ACTIVE -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600 font-medium"
+          >
+            <span>🔍</span>
+            Inspections
+          </a>
+
+          <a
+            href="../parts/parts.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>⚙️</span>
+            Parts
+          </a>
+
+          <a
+            href="../history/history.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>📋</span>
+            Work History
+          </a>
+
+          <a
+            href="../profile/profile.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>👤</span>
+            Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            DM
+          </div>
+
+          <div>
+            <p class="font-semibold">Daniel Morgan</p>
+
+            <p class="text-xs text-slate-400">Mechanic</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 min-w-0 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-5 mb-6"
+        >
+          <div>
+            <div class="flex items-center gap-2 text-sm text-slate-500 mb-2">
+              <a href="../vehicles/vehicles.html" class="hover:text-indigo-600">
+                Vehicles
+              </a>
+
+              <span>/</span>
+
+              <span> Inspection </span>
+            </div>
+
+            <h1 class="text-3xl font-bold">Vehicle Inspection</h1>
+
+            <p class="text-slate-500 mt-1">
+              Complete the inspection and record your findings.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <button
+              class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-sm font-semibold"
+            >
+              Save Draft
+            </button>
+
+            <button
+              class="px-4 py-2.5 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700"
+            >
+              Complete Inspection
+            </button>
+          </div>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- VEHICLE SUMMARY -->
+        <!-- ================================================= -->
+
+        <section class="bg-white border border-slate-200 rounded-2xl p-5 mb-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-5"
+          >
+            <!-- Vehicle -->
+
+            <div class="flex items-center gap-4">
+              <div
+                class="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center text-3xl"
+              >
+                🚙
+              </div>
+
+              <div>
+                <div class="flex items-center gap-3">
+                  <h2 class="text-xl font-bold">BMW X5</h2>
+
+                  <span
+                    class="px-2.5 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold"
+                  >
+                    In Repair
+                  </span>
+                </div>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  ABC-4821 · 2021 · 48,230 mi
+                </p>
+              </div>
+            </div>
+
+            <!-- Customer -->
+
+            <div class="flex items-center gap-3">
+              <div
+                class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm"
+              >
+                MB
+              </div>
+
+              <div>
+                <p class="text-sm font-semibold">Michael Brown</p>
+
+                <p class="text-xs text-slate-400">Customer</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- INSPECTION PROGRESS -->
+        <!-- ================================================= -->
+
+        <section class="bg-white border border-slate-200 rounded-2xl p-5 mb-6">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <p class="text-sm font-semibold">Inspection Progress</p>
+
+              <p class="text-xs text-slate-500 mt-1">
+                12 of 20 items inspected
+              </p>
+            </div>
+
+            <span class="text-sm font-bold text-indigo-600"> 60% </span>
+          </div>
+
+          <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="h-full w-[60%] bg-indigo-600 rounded-full"></div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- INSPECTION LAYOUT -->
+        <!-- ================================================= -->
+
+        <div class="grid grid-cols-1 xl:grid-cols-[280px_1fr] gap-6">
+          <!-- ================================================= -->
+          <!-- INSPECTION MENU -->
+          <!-- ================================================= -->
+
+          <aside
+            class="bg-white border border-slate-200 rounded-2xl p-4 h-fit xl:sticky xl:top-6"
+          >
+            <p
+              class="px-3 mb-3 text-xs uppercase tracking-wide text-slate-400 font-semibold"
+            >
+              Inspection Areas
+            </p>
+
+            <nav class="space-y-1">
+              <a
+                href="#engine"
+                class="flex items-center justify-between px-3 py-3 rounded-xl bg-indigo-50 text-indigo-700 font-semibold"
+              >
+                <span> Engine </span>
+
+                <span class="text-xs bg-indigo-100 px-2 py-1 rounded-full">
+                  4/4
+                </span>
+              </a>
+
+              <a
+                href="#brakes"
+                class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-slate-50 text-sm"
+              >
+                <span> Brakes </span>
+
+                <span class="text-xs text-green-600 font-semibold"> 3/3 </span>
+              </a>
+
+              <a
+                href="#tires"
+                class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-slate-50 text-sm"
+              >
+                <span> Tires & Wheels </span>
+
+                <span class="text-xs text-orange-600 font-semibold"> 2/4 </span>
+              </a>
+
+              <a
+                href="#suspension"
+                class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-slate-50 text-sm"
+              >
+                <span> Suspension </span>
+
+                <span class="text-xs text-slate-400"> 0/3 </span>
+              </a>
+
+              <a
+                href="#fluids"
+                class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-slate-50 text-sm"
+              >
+                <span> Fluids </span>
+
+                <span class="text-xs text-slate-400"> 0/2 </span>
+              </a>
+
+              <a
+                href="#electrical"
+                class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-slate-50 text-sm"
+              >
+                <span> Electrical </span>
+
+                <span class="text-xs text-slate-400"> 0/2 </span>
+              </a>
+
+              <a
+                href="#exterior"
+                class="flex items-center justify-between px-3 py-3 rounded-xl hover:bg-slate-50 text-sm"
+              >
+                <span> Exterior </span>
+
+                <span class="text-xs text-slate-400"> 0/2 </span>
+              </a>
+            </nav>
+          </aside>
+
+          <!-- ================================================= -->
+          <!-- INSPECTION CONTENT -->
+          <!-- ================================================= -->
+
+          <div class="space-y-6">
+            <!-- ================================================= -->
+            <!-- ENGINE -->
+            <!-- ================================================= -->
+
+            <section
+              id="engine"
+              class="bg-white border border-slate-200 rounded-2xl overflow-hidden"
+            >
+              <div
+                class="px-6 py-5 border-b border-slate-100 flex items-center justify-between"
+              >
+                <div>
+                  <h2 class="text-lg font-bold">Engine</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">
+                    Check engine performance and components.
+                  </p>
+                </div>
+
+                <span
+                  class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                >
+                  Completed
+                </span>
+              </div>
+
+              <div class="divide-y divide-slate-100">
+                <!-- ITEM -->
+
+                <div
+                  class="p-6 flex flex-col lg:flex-row lg:items-center gap-4"
+                >
+                  <div class="flex-1">
+                    <p class="font-semibold">Engine oil level</p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                      Check oil level and condition
+                    </p>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-green-100 text-green-700 text-sm font-semibold"
+                    >
+                      ✓ Good
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ⚠ Attention
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ✕ Critical
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ITEM -->
+
+                <div
+                  class="p-6 flex flex-col lg:flex-row lg:items-center gap-4"
+                >
+                  <div class="flex-1">
+                    <p class="font-semibold">Engine noise</p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                      Listen for abnormal engine sounds
+                    </p>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-green-100 text-green-700 text-sm font-semibold"
+                    >
+                      ✓ Good
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ⚠ Attention
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ✕ Critical
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ITEM -->
+
+                <div
+                  class="p-6 flex flex-col lg:flex-row lg:items-center gap-4"
+                >
+                  <div class="flex-1">
+                    <p class="font-semibold">Belts & hoses</p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                      Check wear, cracks and tension
+                    </p>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-green-100 text-green-700 text-sm font-semibold"
+                    >
+                      ✓ Good
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ⚠ Attention
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ✕ Critical
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ITEM -->
+
+                <div
+                  class="p-6 flex flex-col lg:flex-row lg:items-center gap-4"
+                >
+                  <div class="flex-1">
+                    <p class="font-semibold">Coolant system</p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                      Check coolant level and leaks
+                    </p>
+                  </div>
+
+                  <div class="flex flex-wrap gap-2">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-green-100 text-green-700 text-sm font-semibold"
+                    >
+                      ✓ Good
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ⚠ Attention
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ✕ Critical
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ================================================= -->
+            <!-- BRAKES -->
+            <!-- ================================================= -->
+
+            <section
+              id="brakes"
+              class="bg-white border border-slate-200 rounded-2xl overflow-hidden"
+            >
+              <div
+                class="px-6 py-5 border-b border-slate-100 flex items-center justify-between"
+              >
+                <div>
+                  <h2 class="text-lg font-bold">Brakes</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">
+                    Inspect the braking system.
+                  </p>
+                </div>
+
+                <span
+                  class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                >
+                  3 / 3
+                </span>
+              </div>
+
+              <div class="divide-y divide-slate-100">
+                <div
+                  class="p-6 flex flex-col lg:flex-row lg:items-center gap-4"
+                >
+                  <div class="flex-1">
+                    <p class="font-semibold">Brake pads</p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                      Front and rear pad thickness
+                    </p>
+                  </div>
+
+                  <div class="flex gap-2">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-green-100 text-green-700 text-sm font-semibold"
+                    >
+                      ✓ Good
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ⚠ Attention
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ✕ Critical
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  class="p-6 flex flex-col lg:flex-row lg:items-center gap-4"
+                >
+                  <div class="flex-1">
+                    <p class="font-semibold">Brake discs</p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                      Check disc wear and damage
+                    </p>
+                  </div>
+
+                  <div class="flex gap-2">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-green-100 text-green-700 text-sm font-semibold"
+                    >
+                      ✓ Good
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ⚠ Attention
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ✕ Critical
+                    </button>
+                  </div>
+                </div>
+
+                <div
+                  class="p-6 flex flex-col lg:flex-row lg:items-center gap-4"
+                >
+                  <div class="flex-1">
+                    <p class="font-semibold">Brake fluid</p>
+
+                    <p class="text-xs text-slate-400 mt-1">
+                      Check level and condition
+                    </p>
+                  </div>
+
+                  <div class="flex gap-2">
+                    <button
+                      class="px-4 py-2 rounded-lg bg-green-100 text-green-700 text-sm font-semibold"
+                    >
+                      ✓ Good
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ⚠ Attention
+                    </button>
+
+                    <button
+                      class="px-4 py-2 rounded-lg border border-slate-200 text-slate-500 text-sm"
+                    >
+                      ✕ Critical
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ================================================= -->
+            <!-- TIRES -->
+            <!-- ================================================= -->
+
+            <section
+              id="tires"
+              class="bg-white border border-slate-200 rounded-2xl overflow-hidden"
+            >
+              <div class="px-6 py-5 border-b border-slate-100">
+                <h2 class="text-lg font-bold">Tires & Wheels</h2>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  Check tire condition and wheel components.
+                </p>
+              </div>
+
+              <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Tire -->
+
+                <div class="border border-slate-200 rounded-xl p-4">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="font-semibold">Front Left</p>
+
+                      <p class="text-xs text-slate-400 mt-1">
+                        Tread depth: 6 mm
+                      </p>
+                    </div>
+
+                    <span
+                      class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Good
+                    </span>
+                  </div>
+
+                  <div class="mt-4 h-2 rounded-full bg-slate-100">
+                    <div class="h-full w-[75%] bg-green-500 rounded-full"></div>
+                  </div>
+                </div>
+
+                <!-- Tire -->
+
+                <div class="border border-slate-200 rounded-xl p-4">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="font-semibold">Front Right</p>
+
+                      <p class="text-xs text-slate-400 mt-1">
+                        Tread depth: 5 mm
+                      </p>
+                    </div>
+
+                    <span
+                      class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Good
+                    </span>
+                  </div>
+
+                  <div class="mt-4 h-2 rounded-full bg-slate-100">
+                    <div class="h-full w-[65%] bg-green-500 rounded-full"></div>
+                  </div>
+                </div>
+
+                <!-- Tire -->
+
+                <div class="border border-slate-200 rounded-xl p-4">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="font-semibold">Rear Left</p>
+
+                      <p class="text-xs text-slate-400 mt-1">
+                        Tread depth: 3 mm
+                      </p>
+                    </div>
+
+                    <span
+                      class="px-2.5 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold"
+                    >
+                      Attention
+                    </span>
+                  </div>
+
+                  <div class="mt-4 h-2 rounded-full bg-slate-100">
+                    <div
+                      class="h-full w-[40%] bg-orange-500 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Tire -->
+
+                <div class="border border-slate-200 rounded-xl p-4">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <p class="font-semibold">Rear Right</p>
+
+                      <p class="text-xs text-slate-400 mt-1">
+                        Tread depth: 2 mm
+                      </p>
+                    </div>
+
+                    <span
+                      class="px-2.5 py-1 rounded-full bg-red-100 text-red-700 text-xs font-semibold"
+                    >
+                      Critical
+                    </span>
+                  </div>
+
+                  <div class="mt-4 h-2 rounded-full bg-slate-100">
+                    <div class="h-full w-[25%] bg-red-500 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- ================================================= -->
+            <!-- NOTES -->
+            <!-- ================================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <h2 class="text-lg font-bold">Mechanic Notes</h2>
+
+              <p class="text-sm text-slate-500 mt-1 mb-4">
+                Add additional findings or recommendations.
+              </p>
+
+              <textarea
+                rows="5"
+                placeholder="Write inspection notes..."
+                class="w-full resize-none rounded-xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+              ></textarea>
+            </section>
+
+            <!-- ================================================= -->
+            <!-- RECOMMENDATIONS -->
+            <!-- ================================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <div class="flex items-center justify-between mb-5">
+                <div>
+                  <h2 class="text-lg font-bold">Recommended Repairs</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">
+                    Add repairs based on inspection results.
+                  </p>
+                </div>
+
+                <button
+                  class="px-4 py-2 rounded-xl bg-indigo-50 text-indigo-700 text-sm font-semibold"
+                >
+                  + Add Repair
+                </button>
+              </div>
+
+              <div class="space-y-3">
+                <div
+                  class="flex items-center justify-between gap-4 p-4 rounded-xl bg-red-50 border border-red-100"
+                >
+                  <div>
+                    <p class="font-semibold text-red-800">
+                      Replace rear right tire
+                    </p>
+
+                    <p class="text-xs text-red-600 mt-1">
+                      Critical · Tread depth below safe limit
+                    </p>
+                  </div>
+
+                  <span class="text-sm font-bold text-red-700"> Required </span>
+                </div>
+
+                <div
+                  class="flex items-center justify-between gap-4 p-4 rounded-xl bg-orange-50 border border-orange-100"
+                >
+                  <div>
+                    <p class="font-semibold text-orange-800">
+                      Inspect rear left tire
+                    </p>
+
+                    <p class="text-xs text-orange-600 mt-1">
+                      Attention · Low tread depth
+                    </p>
+                  </div>
+
+                  <span class="text-sm font-bold text-orange-700">
+                    Recommended
+                  </span>
+                </div>
+              </div>
+            </section>
+
+            <!-- ================================================= -->
+            <!-- FINAL DIAGNOSIS -->
+            <!-- ================================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <h2 class="text-lg font-bold">Final Diagnosis</h2>
+
+              <p class="text-sm text-slate-500 mt-1 mb-5">
+                Summarize the overall condition of the vehicle.
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <button
+                  class="px-4 py-4 rounded-xl border-2 border-green-500 bg-green-50 text-green-700 font-semibold"
+                >
+                  ✓ Safe
+                </button>
+
+                <button
+                  class="px-4 py-4 rounded-xl border border-slate-200 text-slate-600 font-semibold"
+                >
+                  ⚠ Needs Repair
+                </button>
+
+                <button
+                  class="px-4 py-4 rounded-xl border border-slate-200 text-slate-600 font-semibold"
+                >
+                  ✕ Unsafe
+                </button>
+              </div>
+
+              <div class="mt-5 flex flex-col sm:flex-row sm:justify-end gap-3">
+                <button
+                  class="px-5 py-3 rounded-xl border border-slate-200 font-semibold text-sm"
+                >
+                  Save Draft
+                </button>
+
+                <button
+                  class="px-5 py-3 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700"
+                >
+                  Complete Inspection
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

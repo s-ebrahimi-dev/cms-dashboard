@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Mechanic Profile</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- LOGO -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Mechanic Workspace</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAVIGATION -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🏠</span>
+            Dashboard
+          </a>
+
+          <a
+            href="../jobs/jobs.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🔧</span>
+            My Jobs
+
+            <span class="ml-auto px-2 py-0.5 rounded-full bg-red-500 text-xs">
+              5
+            </span>
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🚗</span>
+            Assigned Vehicles
+          </a>
+
+          <a
+            href="../inspections/inspections.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🔍</span>
+            Inspections
+          </a>
+
+          <a
+            href="../parts/parts.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>⚙️</span>
+            Parts
+
+            <span
+              class="ml-auto px-2 py-0.5 rounded-full bg-orange-500 text-xs"
+            >
+              3
+            </span>
+          </a>
+
+          <a
+            href="../history/history.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>📋</span>
+            Work History
+          </a>
+
+          <!-- ACTIVE -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600 font-medium"
+          >
+            <span>👤</span>
+            Profile
+          </a>
+        </nav>
+
+        <!-- USER -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            DM
+          </div>
+
+          <div>
+            <p class="font-semibold">Daniel Morgan</p>
+
+            <p class="text-xs text-slate-400">Mechanic</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 min-w-0 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header class="mb-8">
+          <h1 class="text-3xl font-bold">My Profile</h1>
+
+          <p class="text-slate-500 mt-1">
+            Manage your personal information and workspace preferences.
+          </p>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- PROFILE HEADER CARD -->
+        <!-- ================================================= -->
+
+        <section class="bg-white border border-slate-200 rounded-2xl p-6 mb-6">
+          <div class="flex flex-col md:flex-row md:items-center gap-6">
+            <!-- AVATAR -->
+
+            <div
+              class="w-24 h-24 shrink-0 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-3xl font-bold"
+            >
+              DM
+            </div>
+
+            <!-- INFORMATION -->
+
+            <div class="flex-1">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                <h2 class="text-2xl font-bold">Daniel Morgan</h2>
+
+                <span
+                  class="w-fit px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                >
+                  Active
+                </span>
+              </div>
+
+              <p class="text-slate-500 mt-1">Senior Automotive Mechanic</p>
+
+              <div
+                class="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-sm text-slate-500"
+              >
+                <span> ✉ daniel@autocare.com </span>
+
+                <span> ☎ +1 555 238 9012 </span>
+
+                <span> 🛠 4 years experience </span>
+              </div>
+            </div>
+
+            <!-- EDIT BUTTON -->
+
+            <button
+              class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700"
+            >
+              Edit Profile
+            </button>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- CONTENT -->
+        <!-- ================================================= -->
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <!-- ================================================= -->
+          <!-- PERSONAL INFORMATION -->
+          <!-- ================================================= -->
+
+          <section
+            class="xl:col-span-2 bg-white border border-slate-200 rounded-2xl p-6"
+          >
+            <div class="mb-6">
+              <h2 class="text-lg font-bold">Personal Information</h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                Your basic account information.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- FIRST NAME -->
+
+              <div>
+                <label class="block text-sm font-medium mb-2">
+                  First Name
+                </label>
+
+                <input
+                  type="text"
+                  value="Daniel"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- LAST NAME -->
+
+              <div>
+                <label class="block text-sm font-medium mb-2">
+                  Last Name
+                </label>
+
+                <input
+                  type="text"
+                  value="Morgan"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- EMAIL -->
+
+              <div>
+                <label class="block text-sm font-medium mb-2">
+                  Email Address
+                </label>
+
+                <input
+                  type="email"
+                  value="daniel@autocare.com"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- PHONE -->
+
+              <div>
+                <label class="block text-sm font-medium mb-2">
+                  Phone Number
+                </label>
+
+                <input
+                  type="tel"
+                  value="+1 555 238 9012"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <!-- USERNAME -->
+
+              <div>
+                <label class="block text-sm font-medium mb-2"> Username </label>
+
+                <input
+                  type="text"
+                  value="daniel_morgan"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 bg-slate-50 outline-none"
+                  readonly
+                />
+              </div>
+
+              <!-- ROLE -->
+
+              <div>
+                <label class="block text-sm font-medium mb-2"> Role </label>
+
+                <input
+                  type="text"
+                  value="Mechanic"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 bg-slate-50 outline-none"
+                  readonly
+                />
+              </div>
+
+              <!-- SPECIALIZATION -->
+
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium mb-2">
+                  Specialization
+                </label>
+
+                <select
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+                  <option>General Automotive Repair</option>
+
+                  <option>Engine & Transmission</option>
+
+                  <option>Brake & Suspension</option>
+
+                  <option>Electrical Systems</option>
+
+                  <option>Tire & Wheel Service</option>
+                </select>
+              </div>
+
+              <!-- BIO -->
+
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium mb-2"> About Me </label>
+
+                <textarea
+                  rows="4"
+                  class="w-full rounded-xl border border-slate-200 px-4 py-3 resize-none outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+Experienced automotive mechanic specializing in diagnostics, brake systems, engine repair and general vehicle maintenance.</textarea
+                >
+              </div>
+            </div>
+
+            <!-- SAVE -->
+
+            <div class="flex justify-end mt-6 pt-6 border-t border-slate-100">
+              <button
+                class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-semibold text-sm"
+              >
+                Save Changes
+              </button>
+            </div>
+          </section>
+
+          <!-- ================================================= -->
+          <!-- RIGHT COLUMN -->
+          <!-- ================================================= -->
+
+          <div class="space-y-6">
+            <!-- ================================================= -->
+            <!-- WORK SUMMARY -->
+            <!-- ================================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <h2 class="text-lg font-bold">Work Summary</h2>
+
+              <div class="mt-5 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-500"> Completed Jobs </span>
+
+                  <span class="font-bold"> 86 </span>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-500"> This Month </span>
+
+                  <span class="font-bold"> 18 </span>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-500"> Labor Hours </span>
+
+                  <span class="font-bold"> 312 </span>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-500"> Customer Rating </span>
+
+                  <span class="font-bold text-yellow-500"> ★ 4.9 </span>
+                </div>
+              </div>
+            </section>
+
+            <!-- ================================================= -->
+            <!-- SPECIALTIES -->
+            <!-- ================================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <h2 class="text-lg font-bold">Skills & Specialties</h2>
+
+              <div class="flex flex-wrap gap-2 mt-5">
+                <span
+                  class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-700 text-xs font-semibold"
+                >
+                  Engine Repair
+                </span>
+
+                <span
+                  class="px-3 py-2 rounded-lg bg-green-50 text-green-700 text-xs font-semibold"
+                >
+                  Brake Systems
+                </span>
+
+                <span
+                  class="px-3 py-2 rounded-lg bg-orange-50 text-orange-700 text-xs font-semibold"
+                >
+                  Diagnostics
+                </span>
+
+                <span
+                  class="px-3 py-2 rounded-lg bg-blue-50 text-blue-700 text-xs font-semibold"
+                >
+                  Electrical
+                </span>
+
+                <span
+                  class="px-3 py-2 rounded-lg bg-purple-50 text-purple-700 text-xs font-semibold"
+                >
+                  Suspension
+                </span>
+              </div>
+            </section>
+
+            <!-- ================================================= -->
+            <!-- SECURITY -->
+            <!-- ================================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <h2 class="text-lg font-bold">Security</h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                Manage your account security.
+              </p>
+
+              <button
+                class="w-full mt-5 px-4 py-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+              >
+                Change Password
+              </button>
+
+              <button
+                class="w-full mt-3 px-4 py-3 rounded-xl border border-red-200 text-sm font-semibold text-red-600 hover:bg-red-50"
+              >
+                Sign Out
+              </button>
+            </section>
+          </div>
+        </div>
+
+        <!-- ================================================= -->
+        <!-- FOOTER -->
+        <!-- ================================================= -->
+
+        <footer class="text-center text-xs text-slate-400 py-8">
+          AutoCare © 2026 · Mechanic Workspace
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Customers</title>
+
+    <link rel="stylesheet" href="../assets/styles/app.css" />
+  </head>
+
+  <body class="bg-slate-50 text-slate-900">
+    <div class="flex min-height-screen">
+      <!-- Sidebar -->
+
+      <aside
+        class="hidden lg:flex w-64 min-h-screen bg-slate-950 text-white flex-col p-5"
+      >
+        <div>
+          <h1 class="text-2xl font-bold">AutoCare</h1>
+
+          <p class="text-xs text-slate-400 mt-1">Car Service Management</p>
+        </div>
+
+        <nav class="mt-10 space-y-2">
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Dashboard
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg bg-indigo-600" href="#">
+            Customers
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Vehicles
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Appointments
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Services
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Payments
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Employees
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Settings
+          </a>
+        </nav>
+
+        <div class="mt-auto flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-slate-600"></div>
+
+          <div>
+            <p class="font-semibold">Saeed Ebrahimi</p>
+
+            <p class="text-xs text-slate-400">Administrator</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+
+      <main class="flex-1 p-6 lg:p-8">
+        <!-- Header -->
+
+        <header class="flex flex-col lg:flex-row justify-between gap-5 mb-8">
+          <h1 class="text-3xl font-bold">Customers</h1>
+
+          <div class="flex gap-3">
+            <input
+              type="search"
+              placeholder="Search customers..."
+              class="bg-white border border-slate-200 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+
+            <button
+              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg font-medium"
+            >
+              + Add Customer
+            </button>
+          </div>
+        </header>
+
+        <!-- Customers Table -->
+
+        <section
+          class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 overflow-x-auto"
+        >
+          <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 text-slate-600">
+              <tr>
+                <th class="p-4">#</th>
+
+                <th class="p-4">Customer</th>
+
+                <th class="p-4">Phone</th>
+
+                <th class="p-4">Email</th>
+
+                <th class="p-4">Vehicles</th>
+
+                <th class="p-4">Joined</th>
+
+                <th class="p-4">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr class="border-b border-slate-100 hover:bg-slate-50">
+                <td class="p-4">1</td>
+
+                <td class="p-4 font-semibold">John Smith</td>
+
+                <td class="p-4">+1 555-1234</td>
+
+                <td class="p-4">john@gmail.com</td>
+
+                <td class="p-4">2</td>
+
+                <td class="p-4">Aug 12, 2026</td>
+
+                <td class="p-4">
+                  <button class="text-blue-600 mr-3">👁</button>
+
+                  <button class="text-green-600 mr-3">✎</button>
+
+                  <button class="text-red-600">🗑</button>
+                </td>
+              </tr>
+
+              <tr class="border-b border-slate-100 hover:bg-slate-50">
+                <td class="p-4">2</td>
+
+                <td class="p-4 font-semibold">Alice Johnson</td>
+
+                <td class="p-4">+1 555-5678</td>
+
+                <td class="p-4">alice@gmail.com</td>
+
+                <td class="p-4">1</td>
+
+                <td class="p-4">Aug 15, 2026</td>
+
+                <td class="p-4">
+                  <button class="text-blue-600 mr-3">👁</button>
+
+                  <button class="text-green-600 mr-3">✎</button>
+
+                  <button class="text-red-600">🗑</button>
+                </td>
+              </tr>
+
+              <tr class="border-b border-slate-100 hover:bg-slate-50">
+                <td class="p-4">3</td>
+
+                <td class="p-4 font-semibold">Robert Brown</td>
+
+                <td class="p-4">+1 555-7890</td>
+
+                <td class="p-4">robert@gmail.com</td>
+
+                <td class="p-4">3</td>
+
+                <td class="p-4">Aug 18, 2026</td>
+
+                <td class="p-4">
+                  <button class="text-blue-600 mr-3">👁</button>
+
+                  <button class="text-green-600 mr-3">✎</button>
+
+                  <button class="text-red-600">🗑</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Pagination -->
+
+          <div class="flex gap-2 mt-6">
+            <button class="w-10 h-10 rounded-lg bg-indigo-600 text-white">
+              1
+            </button>
+
+            <button
+              class="w-10 h-10 rounded-lg bg-slate-100 hover:bg-slate-200"
+            >
+              2
+            </button>
+
+            <button
+              class="w-10 h-10 rounded-lg bg-slate-100 hover:bg-slate-200"
+            >
+              3
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

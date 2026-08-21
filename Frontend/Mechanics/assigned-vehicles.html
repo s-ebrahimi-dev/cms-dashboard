@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Assigned Vehicles</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- LOGO -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Mechanic Workspace</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAVIGATION -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            <span>🏠</span>
+            Dashboard
+          </a>
+
+          <a
+            href="../jobs/jobs.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            <span>🔧</span>
+            My Jobs
+
+            <span class="ml-auto px-2 py-0.5 rounded-full bg-red-500 text-xs">
+              5
+            </span>
+          </a>
+
+          <!-- ACTIVE -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600 font-medium"
+          >
+            <span>🚗</span>
+            Assigned Vehicles
+          </a>
+
+          <a
+            href="../inspections/inspections.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            <span>🔍</span>
+            Inspections
+          </a>
+
+          <a
+            href="../parts/parts.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            <span>⚙️</span>
+            Parts
+          </a>
+
+          <a
+            href="../history/history.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            <span>📋</span>
+            Work History
+          </a>
+
+          <a
+            href="../profile/profile.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            <span>👤</span>
+            Profile
+          </a>
+        </nav>
+
+        <!-- USER -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            DM
+          </div>
+
+          <div>
+            <p class="font-semibold">Daniel Morgan</p>
+
+            <p class="text-xs text-slate-400">Mechanic</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 min-w-0 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-5 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">Assigned Vehicles</h1>
+
+            <p class="text-slate-500 mt-1">
+              Vehicles currently assigned to your workshop jobs.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button
+              class="px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-semibold hover:bg-slate-50"
+            >
+              🔄 Refresh
+            </button>
+          </div>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- STAT CARDS -->
+        <!-- ================================================= -->
+
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <!-- TOTAL -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Assigned Vehicles</p>
+
+                <p class="text-3xl font-bold mt-2">8</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"
+              >
+                🚗
+              </div>
+            </div>
+          </div>
+
+          <!-- IN REPAIR -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">In Repair</p>
+
+                <p class="text-3xl font-bold text-orange-600 mt-2">3</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl"
+              >
+                🔧
+              </div>
+            </div>
+          </div>
+
+          <!-- WAITING -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Waiting</p>
+
+                <p class="text-3xl font-bold text-blue-600 mt-2">2</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl"
+              >
+                ⏳
+              </div>
+            </div>
+          </div>
+
+          <!-- READY -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Ready</p>
+
+                <p class="text-3xl font-bold text-green-600 mt-2">3</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl"
+              >
+                ✓
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- FILTERS -->
+        <!-- ================================================= -->
+
+        <section class="bg-white border border-slate-200 rounded-2xl p-4 mb-6">
+          <div class="flex flex-col lg:flex-row gap-3">
+            <!-- Search -->
+
+            <div class="relative flex-1">
+              <span
+                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+              >
+                🔎
+              </span>
+
+              <input
+                type="text"
+                placeholder="Search vehicle, plate or customer..."
+                class="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <!-- Status -->
+
+            <select
+              class="px-4 py-3 rounded-xl border border-slate-200 bg-white outline-none min-w-44"
+            >
+              <option>All Statuses</option>
+
+              <option>Waiting</option>
+
+              <option>In Repair</option>
+
+              <option>Quality Check</option>
+
+              <option>Ready</option>
+            </select>
+
+            <!-- Vehicle Type -->
+
+            <select
+              class="px-4 py-3 rounded-xl border border-slate-200 bg-white outline-none min-w-44"
+            >
+              <option>All Vehicles</option>
+
+              <option>SUV</option>
+
+              <option>Sedan</option>
+
+              <option>Pickup</option>
+
+              <option>Coupe</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- VEHICLES -->
+        <!-- ================================================= -->
+
+        <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+          <!-- ================================================= -->
+          <!-- VEHICLE CARD 1 -->
+          <!-- ================================================= -->
+
+          <article
+            class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-md transition"
+          >
+            <!-- Vehicle Image Area -->
+
+            <div
+              class="h-40 bg-slate-100 flex items-center justify-center text-6xl relative"
+            >
+              🚙
+
+              <span
+                class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold"
+              >
+                In Repair
+              </span>
+            </div>
+
+            <!-- Content -->
+
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h2 class="text-lg font-bold">BMW X5</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">2021 · SUV</p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-xs font-medium"
+                >
+                  ABC-4821
+                </span>
+              </div>
+
+              <!-- Customer -->
+
+              <div class="mt-5 flex items-center gap-3">
+                <div
+                  class="w-9 h-9 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-sm font-bold"
+                >
+                  MB
+                </div>
+
+                <div>
+                  <p class="text-sm font-medium">Michael Brown</p>
+
+                  <p class="text-xs text-slate-400">Vehicle owner</p>
+                </div>
+              </div>
+
+              <!-- Job -->
+
+              <div class="mt-5 p-4 rounded-xl bg-slate-50">
+                <p class="text-xs text-slate-400">Current Job</p>
+
+                <p class="text-sm font-semibold mt-1">Brake system repair</p>
+
+                <p class="text-xs text-slate-500 mt-2">Job #JOB-2048</p>
+              </div>
+
+              <!-- Vehicle Info -->
+
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div>
+                  <p class="text-xs text-slate-400">Mileage</p>
+
+                  <p class="text-sm font-semibold mt-1">48,230 mi</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Bay</p>
+
+                  <p class="text-sm font-semibold mt-1">Bay 02</p>
+                </div>
+              </div>
+
+              <!-- Action -->
+
+              <button
+                class="w-full mt-5 px-4 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+              >
+                View Vehicle
+              </button>
+            </div>
+          </article>
+
+          <!-- ================================================= -->
+          <!-- VEHICLE CARD 2 -->
+          <!-- ================================================= -->
+
+          <article
+            class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-md transition"
+          >
+            <div
+              class="h-40 bg-slate-100 flex items-center justify-center text-6xl relative"
+            >
+              🚗
+
+              <span
+                class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold"
+              >
+                Waiting
+              </span>
+            </div>
+
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h2 class="text-lg font-bold">Toyota Camry</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">2020 · Sedan</p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-xs font-medium"
+                >
+                  XYZ-9218
+                </span>
+              </div>
+
+              <div class="mt-5 flex items-center gap-3">
+                <div
+                  class="w-9 h-9 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-sm font-bold"
+                >
+                  SW
+                </div>
+
+                <div>
+                  <p class="text-sm font-medium">Sarah Wilson</p>
+
+                  <p class="text-xs text-slate-400">Vehicle owner</p>
+                </div>
+              </div>
+
+              <div class="mt-5 p-4 rounded-xl bg-slate-50">
+                <p class="text-xs text-slate-400">Current Job</p>
+
+                <p class="text-sm font-semibold mt-1">Engine diagnosis</p>
+
+                <p class="text-xs text-slate-500 mt-2">Job #JOB-2049</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div>
+                  <p class="text-xs text-slate-400">Mileage</p>
+
+                  <p class="text-sm font-semibold mt-1">72,840 mi</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Bay</p>
+
+                  <p class="text-sm font-semibold mt-1">Bay 04</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 px-4 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+              >
+                View Vehicle
+              </button>
+            </div>
+          </article>
+
+          <!-- ================================================= -->
+          <!-- VEHICLE CARD 3 -->
+          <!-- ================================================= -->
+
+          <article
+            class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-md transition"
+          >
+            <div
+              class="h-40 bg-slate-100 flex items-center justify-center text-6xl relative"
+            >
+              🚘
+
+              <span
+                class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-purple-100 text-purple-700 text-xs font-semibold"
+              >
+                Inspection
+              </span>
+            </div>
+
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h2 class="text-lg font-bold">Honda Civic</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">2022 · Sedan</p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-xs font-medium"
+                >
+                  HND-5532
+                </span>
+              </div>
+
+              <div class="mt-5 flex items-center gap-3">
+                <div
+                  class="w-9 h-9 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-sm font-bold"
+                >
+                  RD
+                </div>
+
+                <div>
+                  <p class="text-sm font-medium">Robert Davis</p>
+
+                  <p class="text-xs text-slate-400">Vehicle owner</p>
+                </div>
+              </div>
+
+              <div class="mt-5 p-4 rounded-xl bg-slate-50">
+                <p class="text-xs text-slate-400">Current Job</p>
+
+                <p class="text-sm font-semibold mt-1">Brake replacement</p>
+
+                <p class="text-xs text-slate-500 mt-2">Job #JOB-2050</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div>
+                  <p class="text-xs text-slate-400">Mileage</p>
+
+                  <p class="text-sm font-semibold mt-1">31,520 mi</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Bay</p>
+
+                  <p class="text-sm font-semibold mt-1">Bay 05</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 px-4 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+              >
+                View Vehicle
+              </button>
+            </div>
+          </article>
+
+          <!-- ================================================= -->
+          <!-- VEHICLE CARD 4 -->
+          <!-- ================================================= -->
+
+          <article
+            class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-md transition"
+          >
+            <div
+              class="h-40 bg-slate-100 flex items-center justify-center text-6xl relative"
+            >
+              🚙
+
+              <span
+                class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+              >
+                Ready
+              </span>
+            </div>
+
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h2 class="text-lg font-bold">Ford Focus</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">2019 · Hatchback</p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-xs font-medium"
+                >
+                  FOR-7349
+                </span>
+              </div>
+
+              <div class="mt-5 flex items-center gap-3">
+                <div
+                  class="w-9 h-9 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold"
+                >
+                  JA
+                </div>
+
+                <div>
+                  <p class="text-sm font-medium">James Anderson</p>
+
+                  <p class="text-xs text-slate-400">Vehicle owner</p>
+                </div>
+              </div>
+
+              <div class="mt-5 p-4 rounded-xl bg-slate-50">
+                <p class="text-xs text-slate-400">Last Job</p>
+
+                <p class="text-sm font-semibold mt-1">Suspension inspection</p>
+
+                <p class="text-xs text-slate-500 mt-2">Job #JOB-2051</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div>
+                  <p class="text-xs text-slate-400">Mileage</p>
+
+                  <p class="text-sm font-semibold mt-1">61,290 mi</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Bay</p>
+
+                  <p class="text-sm font-semibold mt-1">Bay 01</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 px-4 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold transition"
+              >
+                View Vehicle
+              </button>
+            </div>
+          </article>
+
+          <!-- ================================================= -->
+          <!-- VEHICLE CARD 5 -->
+          <!-- ================================================= -->
+
+          <article
+            class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-md transition"
+          >
+            <div
+              class="h-40 bg-slate-100 flex items-center justify-center text-6xl relative"
+            >
+              🚕
+
+              <span
+                class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold"
+              >
+                In Repair
+              </span>
+            </div>
+
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h2 class="text-lg font-bold">Hyundai Elantra</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">2021 · Sedan</p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-xs font-medium"
+                >
+                  HYN-4412
+                </span>
+              </div>
+
+              <div class="mt-5 flex items-center gap-3">
+                <div
+                  class="w-9 h-9 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-sm font-bold"
+                >
+                  ET
+                </div>
+
+                <div>
+                  <p class="text-sm font-medium">Emma Taylor</p>
+
+                  <p class="text-xs text-slate-400">Vehicle owner</p>
+                </div>
+              </div>
+
+              <div class="mt-5 p-4 rounded-xl bg-slate-50">
+                <p class="text-xs text-slate-400">Current Job</p>
+
+                <p class="text-sm font-semibold mt-1">Oil leak repair</p>
+
+                <p class="text-xs text-slate-500 mt-2">Job #JOB-2044</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div>
+                  <p class="text-xs text-slate-400">Mileage</p>
+
+                  <p class="text-sm font-semibold mt-1">54,120 mi</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Bay</p>
+
+                  <p class="text-sm font-semibold mt-1">Bay 03</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 px-4 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+              >
+                View Vehicle
+              </button>
+            </div>
+          </article>
+
+          <!-- ================================================= -->
+          <!-- VEHICLE CARD 6 -->
+          <!-- ================================================= -->
+
+          <article
+            class="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-md transition"
+          >
+            <div
+              class="h-40 bg-slate-100 flex items-center justify-center text-6xl relative"
+            >
+              🚘
+
+              <span
+                class="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold"
+              >
+                Waiting
+              </span>
+            </div>
+
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <h2 class="text-lg font-bold">Kia Sportage</h2>
+
+                  <p class="text-sm text-slate-500 mt-1">2023 · SUV</p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-slate-100 text-xs font-medium"
+                >
+                  KIA-8247
+                </span>
+              </div>
+
+              <div class="mt-5 flex items-center gap-3">
+                <div
+                  class="w-9 h-9 rounded-full bg-cyan-100 text-cyan-600 flex items-center justify-center text-sm font-bold"
+                >
+                  OL
+                </div>
+
+                <div>
+                  <p class="text-sm font-medium">Olivia Lewis</p>
+
+                  <p class="text-xs text-slate-400">Vehicle owner</p>
+                </div>
+              </div>
+
+              <div class="mt-5 p-4 rounded-xl bg-slate-50">
+                <p class="text-xs text-slate-400">Current Job</p>
+
+                <p class="text-sm font-semibold mt-1">Steering inspection</p>
+
+                <p class="text-xs text-slate-500 mt-2">Job #JOB-2056</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div>
+                  <p class="text-xs text-slate-400">Mileage</p>
+
+                  <p class="text-sm font-semibold mt-1">18,740 mi</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Bay</p>
+
+                  <p class="text-sm font-semibold mt-1">Bay 06</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 px-4 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+              >
+                View Vehicle
+              </button>
+            </div>
+          </article>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- PAGINATION -->
+        <!-- ================================================= -->
+
+        <div
+          class="mt-6 bg-white border border-slate-200 rounded-2xl px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <p class="text-sm text-slate-500">Showing 6 of 8 assigned vehicles</p>
+
+          <div class="flex items-center gap-2">
+            <button
+              class="w-9 h-9 rounded-lg border border-slate-200 text-slate-400"
+            >
+              ←
+            </button>
+
+            <button
+              class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-semibold"
+            >
+              1
+            </button>
+
+            <button
+              class="w-9 h-9 rounded-lg border border-slate-200 hover:bg-slate-50"
+            >
+              2
+            </button>
+
+            <button
+              class="w-9 h-9 rounded-lg border border-slate-200 hover:bg-slate-50"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

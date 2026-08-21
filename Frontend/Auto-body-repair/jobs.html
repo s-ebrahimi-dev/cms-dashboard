@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Auto Body Jobs</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden w-72 min-h-screen flex-col bg-slate-950 p-6 text-white lg:flex"
+      >
+        <!-- LOGO -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-600 text-xl font-bold"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="text-xl font-bold">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Auto Body Workspace</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAVIGATION -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800"
+          >
+            <span>🏠</span>
+            Dashboard
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 rounded-xl bg-amber-600 px-4 py-3 font-medium"
+          >
+            <span>🔧</span>
+            My Jobs
+
+            <span class="ml-auto rounded-full bg-red-500 px-2 py-0.5 text-xs">
+              3
+            </span>
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800"
+          >
+            <span>🚗</span>
+            Assigned Vehicles
+          </a>
+
+          <a
+            href="../inspection/inspection.html"
+            class="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800"
+          >
+            <span>🔍</span>
+            Damage Inspection
+          </a>
+
+          <a
+            href="../repair/repair.html"
+            class="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800"
+          >
+            <span>🛠️</span>
+            Repair Progress
+          </a>
+
+          <a
+            href="../parts/parts.html"
+            class="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800"
+          >
+            <span>⚙️</span>
+            Parts & Materials
+          </a>
+
+          <a
+            href="../history/history.html"
+            class="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800"
+          >
+            <span>📋</span>
+            Work History
+          </a>
+
+          <a
+            href="../profile/profile.html"
+            class="flex items-center gap-3 rounded-xl px-4 py-3 transition hover:bg-slate-800"
+          >
+            <span>👤</span>
+            Profile
+          </a>
+        </nav>
+
+        <!-- USER -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="flex h-11 w-11 items-center justify-center rounded-full bg-amber-600 font-bold"
+          >
+            RM
+          </div>
+
+          <div>
+            <p class="font-semibold">Robert Miller</p>
+
+            <p class="text-xs text-slate-400">Auto Body Technician</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="min-w-0 flex-1 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">My Jobs</h1>
+
+            <p class="mt-1 text-slate-500">
+              Manage body repair jobs and document every repair stage.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            class="w-fit rounded-xl bg-amber-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-amber-700"
+          >
+            + Add Repair Job
+          </button>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- CURRENT JOB -->
+        <!-- ================================================= -->
+
+        <section
+          class="overflow-hidden rounded-2xl border border-slate-200 bg-white"
+        >
+          <!-- JOB HEADER -->
+
+          <div
+            class="flex flex-col gap-4 border-b border-slate-100 p-6 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <div class="mb-2 flex flex-wrap items-center gap-3">
+                <span
+                  class="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-700"
+                >
+                  CURRENT JOB
+                </span>
+
+                <span
+                  class="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700"
+                >
+                  BODY REPAIR
+                </span>
+              </div>
+
+              <h2 class="text-xl font-bold">Job #BODY-1037</h2>
+
+              <p class="mt-1 text-sm text-slate-500">
+                Front-left collision repair · Started yesterday
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-50"
+            >
+              ⋮ Job Options
+            </button>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- VEHICLE -->
+          <!-- ================================================= -->
+
+          <div class="p-6">
+            <div class="grid grid-cols-1 gap-6 xl:grid-cols-3">
+              <!-- VEHICLE IMAGE -->
+
+              <div>
+                <div class="relative overflow-hidden rounded-2xl bg-slate-100">
+                  <img
+                    src="../../assets/images/mercedes-c-class.jpg"
+                    alt="Mercedes C-Class"
+                    class="aspect-[4/3] w-full object-cover"
+                  />
+
+                  <div
+                    class="absolute left-4 top-4 rounded-full bg-red-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm"
+                  >
+                    ⚠ Repair in Progress
+                  </div>
+
+                  <button
+                    type="button"
+                    class="absolute bottom-4 right-4 rounded-xl bg-black/70 px-3 py-2 text-xs font-semibold text-white backdrop-blur"
+                  >
+                    📷 Vehicle Photo
+                  </button>
+                </div>
+
+                <div class="mt-4">
+                  <h3 class="text-xl font-bold">Mercedes-Benz C-Class</h3>
+
+                  <p class="mt-1 text-sm text-slate-500">
+                    2021 · Automatic · Silver
+                  </p>
+
+                  <div class="mt-4 grid grid-cols-2 gap-3">
+                    <div class="rounded-xl bg-slate-50 p-4">
+                      <p class="text-xs text-slate-400">License Plate</p>
+
+                      <p class="mt-1 font-bold">MC-4721</p>
+                    </div>
+
+                    <div class="rounded-xl bg-slate-50 p-4">
+                      <p class="text-xs text-slate-400">Mileage</p>
+
+                      <p class="mt-1 font-bold">54,280 km</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- JOB INFORMATION -->
+
+              <div class="xl:col-span-2">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <!-- CUSTOMER -->
+
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <p class="text-xs text-slate-400">Customer</p>
+
+                    <p class="mt-2 font-semibold">Daniel Anderson</p>
+
+                    <p class="mt-1 text-xs text-slate-500">+1 555 821 4390</p>
+                  </div>
+
+                  <!-- REPAIR -->
+
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <p class="text-xs text-slate-400">Repair Type</p>
+
+                    <p class="mt-2 font-semibold">Collision Repair</p>
+
+                    <p class="mt-1 text-xs text-slate-500">
+                      Front-left body damage
+                    </p>
+                  </div>
+
+                  <!-- ESTIMATE -->
+
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <p class="text-xs text-slate-400">Estimated Cost</p>
+
+                    <p class="mt-2 font-semibold">$2,850</p>
+
+                    <p class="mt-1 text-xs text-slate-500">
+                      Approved by customer
+                    </p>
+                  </div>
+
+                  <!-- DELIVERY -->
+
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <p class="text-xs text-slate-400">Expected Completion</p>
+
+                    <p class="mt-2 font-semibold">Aug 17, 2026</p>
+
+                    <p class="mt-1 text-xs text-orange-600">2 days remaining</p>
+                  </div>
+                </div>
+
+                <!-- REPAIR PROGRESS -->
+
+                <div class="mt-6 rounded-xl bg-slate-50 p-5">
+                  <div class="mb-3 flex items-center justify-between">
+                    <span class="text-sm font-semibold"> Repair Progress </span>
+
+                    <span class="text-sm font-bold text-amber-600"> 58% </span>
+                  </div>
+
+                  <div class="h-2 overflow-hidden rounded-full bg-slate-200">
+                    <div class="h-full w-[58%] rounded-full bg-amber-600"></div>
+                  </div>
+
+                  <div class="mt-5 grid grid-cols-5 gap-1 text-center">
+                    <div>
+                      <div
+                        class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-xs text-green-700"
+                      >
+                        ✓
+                      </div>
+
+                      <p class="mt-2 text-[10px] text-slate-500">Inspection</p>
+                    </div>
+
+                    <div>
+                      <div
+                        class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-green-100 text-xs text-green-700"
+                      >
+                        ✓
+                      </div>
+
+                      <p class="mt-2 text-[10px] text-slate-500">Disassembly</p>
+                    </div>
+
+                    <div>
+                      <div
+                        class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-xs text-white"
+                      >
+                        3
+                      </div>
+
+                      <p class="mt-2 text-[10px] font-semibold text-amber-600">
+                        Body Work
+                      </p>
+                    </div>
+
+                    <div>
+                      <div
+                        class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 text-xs text-slate-500"
+                      >
+                        4
+                      </div>
+
+                      <p class="mt-2 text-[10px] text-slate-400">Painting</p>
+                    </div>
+
+                    <div>
+                      <div
+                        class="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 text-xs text-slate-500"
+                      >
+                        5
+                      </div>
+
+                      <p class="mt-2 text-[10px] text-slate-400">Final Check</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- DAMAGE INSPECTION -->
+            <!-- ================================================= -->
+
+            <div class="mt-8 border-t border-slate-100 pt-7">
+              <div class="mb-5">
+                <h3 class="text-base font-bold">Damage Inspection</h3>
+
+                <p class="mt-1 text-xs text-slate-500">
+                  Record the damaged areas identified during inspection.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="rounded-xl border border-red-200 bg-red-50 p-4">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-bold text-red-700">Front Bumper</p>
+
+                    <span>🔴</span>
+                  </div>
+
+                  <p class="mt-2 text-xs text-red-600">Heavy damage</p>
+                </div>
+
+                <div
+                  class="rounded-xl border border-orange-200 bg-orange-50 p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-bold text-orange-700">Left Fender</p>
+
+                    <span>🟠</span>
+                  </div>
+
+                  <p class="mt-2 text-xs text-orange-600">Moderate damage</p>
+                </div>
+
+                <div
+                  class="rounded-xl border border-yellow-200 bg-yellow-50 p-4"
+                >
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-bold text-yellow-700">Headlight</p>
+
+                    <span>🟡</span>
+                  </div>
+
+                  <p class="mt-2 text-xs text-yellow-700">Replace required</p>
+                </div>
+
+                <div class="rounded-xl border border-slate-200 p-4">
+                  <div class="flex items-center justify-between">
+                    <p class="text-sm font-bold">Hood</p>
+
+                    <span>⚪</span>
+                  </div>
+
+                  <p class="mt-2 text-xs text-slate-500">Minor scratches</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- REPAIR CHECKLIST -->
+            <!-- ================================================= -->
+
+            <div class="mt-8 border-t border-slate-100 pt-7">
+              <div class="mb-5">
+                <h3 class="text-base font-bold">Repair Checklist</h3>
+
+                <p class="mt-1 text-xs text-slate-500">
+                  Track each stage of the repair process.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                <!-- COMPLETE -->
+
+                <label
+                  class="flex cursor-pointer items-center gap-4 rounded-xl bg-green-50 p-4"
+                >
+                  <input type="checkbox" checked class="h-5 w-5" />
+
+                  <div>
+                    <p class="text-sm font-semibold">Initial inspection</p>
+
+                    <p class="mt-1 text-xs text-green-700">Completed</p>
+                  </div>
+                </label>
+
+                <label
+                  class="flex cursor-pointer items-center gap-4 rounded-xl bg-green-50 p-4"
+                >
+                  <input type="checkbox" checked class="h-5 w-5" />
+
+                  <div>
+                    <p class="text-sm font-semibold">Remove damaged parts</p>
+
+                    <p class="mt-1 text-xs text-green-700">Completed</p>
+                  </div>
+                </label>
+
+                <label
+                  class="flex cursor-pointer items-center gap-4 rounded-xl border border-amber-200 bg-amber-50 p-4"
+                >
+                  <input type="checkbox" class="h-5 w-5" />
+
+                  <div>
+                    <p class="text-sm font-semibold">Repair / reshape body</p>
+
+                    <p class="mt-1 text-xs font-medium text-amber-700">
+                      In progress
+                    </p>
+                  </div>
+                </label>
+
+                <label
+                  class="flex cursor-pointer items-center gap-4 rounded-xl border border-slate-200 p-4"
+                >
+                  <input type="checkbox" class="h-5 w-5" />
+
+                  <div>
+                    <p class="text-sm font-semibold">Surface preparation</p>
+
+                    <p class="mt-1 text-xs text-slate-400">Not started</p>
+                  </div>
+                </label>
+
+                <label
+                  class="flex cursor-pointer items-center gap-4 rounded-xl border border-slate-200 p-4"
+                >
+                  <input type="checkbox" class="h-5 w-5" />
+
+                  <div>
+                    <p class="text-sm font-semibold">Paint & color matching</p>
+
+                    <p class="mt-1 text-xs text-slate-400">Not started</p>
+                  </div>
+                </label>
+
+                <label
+                  class="flex cursor-pointer items-center gap-4 rounded-xl border border-slate-200 p-4"
+                >
+                  <input type="checkbox" class="h-5 w-5" />
+
+                  <div>
+                    <p class="text-sm font-semibold">
+                      Final quality inspection
+                    </p>
+
+                    <p class="mt-1 text-xs text-slate-400">Not started</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- REPAIR PHOTOS -->
+            <!-- ================================================= -->
+
+            <div class="mt-8 border-t border-slate-100 pt-7">
+              <div class="mb-5">
+                <h3 class="text-base font-bold">Repair Photos</h3>
+
+                <p class="mt-1 text-xs text-slate-500">
+                  Document the complete repair process.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-5">
+                <!-- DAMAGE -->
+
+                <div>
+                  <div class="mb-3 flex items-center justify-between">
+                    <h4 class="text-sm font-semibold">Damage</h4>
+
+                    <span class="text-xs text-red-500"> 3 </span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2">
+                    <img
+                      src="../../assets/images/body-damage-1.jpg"
+                      alt="Body damage"
+                      class="aspect-square w-full rounded-xl object-cover"
+                    />
+
+                    <label
+                      class="flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-red-200 bg-red-50 text-center"
+                    >
+                      <span class="text-xl"> + </span>
+
+                      <span class="mt-1 text-[11px] font-semibold"> Add </span>
+
+                      <input
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        class="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <!-- BEFORE -->
+
+                <div>
+                  <div class="mb-3 flex items-center justify-between">
+                    <h4 class="text-sm font-semibold">Before Repair</h4>
+
+                    <span class="text-xs text-slate-400"> 2 </span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2">
+                    <img
+                      src="../../assets/images/body-before.jpg"
+                      alt="Before repair"
+                      class="aspect-square w-full rounded-xl object-cover"
+                    />
+
+                    <label
+                      class="flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 text-center"
+                    >
+                      <span class="text-xl"> + </span>
+
+                      <span class="mt-1 text-[11px] font-semibold"> Add </span>
+
+                      <input
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        class="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <!-- REPAIR -->
+
+                <div>
+                  <div class="mb-3 flex items-center justify-between">
+                    <h4 class="text-sm font-semibold">Repair Progress</h4>
+
+                    <span class="text-xs text-amber-600"> 4 </span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2">
+                    <img
+                      src="../../assets/images/body-repair.jpg"
+                      alt="Repair progress"
+                      class="aspect-square w-full rounded-xl object-cover"
+                    />
+
+                    <label
+                      class="flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-amber-200 bg-amber-50 text-center"
+                    >
+                      <span class="text-xl"> + </span>
+
+                      <span class="mt-1 text-[11px] font-semibold"> Add </span>
+
+                      <input
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        class="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                <!-- PAINT -->
+
+                <div>
+                  <div class="mb-3 flex items-center justify-between">
+                    <h4 class="text-sm font-semibold">Painting</h4>
+
+                    <span class="text-xs text-slate-400"> 0 </span>
+                  </div>
+
+                  <label
+                    class="flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 text-center hover:border-amber-400"
+                  >
+                    <span class="text-2xl"> 📷 </span>
+
+                    <span class="mt-2 text-xs font-semibold text-slate-500">
+                      Add Paint Photos
+                    </span>
+
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      class="hidden"
+                    />
+                  </label>
+                </div>
+
+                <!-- AFTER -->
+
+                <div>
+                  <div class="mb-3 flex items-center justify-between">
+                    <h4 class="text-sm font-semibold">After Repair</h4>
+
+                    <span class="text-xs text-slate-400"> 0 </span>
+                  </div>
+
+                  <label
+                    class="flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-green-200 bg-green-50 text-center hover:border-green-400"
+                  >
+                    <span class="text-2xl"> 📷 </span>
+
+                    <span class="mt-2 text-xs font-semibold text-green-700">
+                      Add Final Photos
+                    </span>
+
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      class="hidden"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- PARTS & MATERIALS -->
+            <!-- ================================================= -->
+
+            <div class="mt-8 border-t border-slate-100 pt-7">
+              <div class="mb-4 flex items-center justify-between">
+                <div>
+                  <h3 class="text-base font-bold">Parts & Materials</h3>
+
+                  <p class="mt-1 text-xs text-slate-500">
+                    Parts required for this repair.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold hover:bg-slate-50"
+                >
+                  + Add Part
+                </button>
+              </div>
+
+              <div class="overflow-x-auto rounded-xl border border-slate-200">
+                <table class="w-full min-w-[650px] text-left text-sm">
+                  <thead class="bg-slate-50">
+                    <tr>
+                      <th class="px-4 py-3 font-semibold">Part</th>
+
+                      <th class="px-4 py-3 font-semibold">Qty</th>
+
+                      <th class="px-4 py-3 font-semibold">Status</th>
+
+                      <th class="px-4 py-3 font-semibold">Cost</th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="divide-y divide-slate-100">
+                    <tr>
+                      <td class="px-4 py-4 font-medium">Front Bumper</td>
+
+                      <td class="px-4 py-4">1</td>
+
+                      <td class="px-4 py-4">
+                        <span
+                          class="rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-700"
+                        >
+                          Received
+                        </span>
+                      </td>
+
+                      <td class="px-4 py-4">$420</td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-4 py-4 font-medium">Left Headlight</td>
+
+                      <td class="px-4 py-4">1</td>
+
+                      <td class="px-4 py-4">
+                        <span
+                          class="rounded-full bg-orange-50 px-2.5 py-1 text-xs font-semibold text-orange-700"
+                        >
+                          Ordered
+                        </span>
+                      </td>
+
+                      <td class="px-4 py-4">$380</td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-4 py-4 font-medium">Paint Material</td>
+
+                      <td class="px-4 py-4">1</td>
+
+                      <td class="px-4 py-4">
+                        <span
+                          class="rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-700"
+                        >
+                          Available
+                        </span>
+                      </td>
+
+                      <td class="px-4 py-4">$210</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- NOTES -->
+            <!-- ================================================= -->
+
+            <div class="mt-8 border-t border-slate-100 pt-7">
+              <label for="repair-notes" class="mb-2 block text-sm font-bold">
+                Repair Notes
+              </label>
+
+              <textarea
+                id="repair-notes"
+                rows="4"
+                placeholder="Describe damage, repair work, parts, paint matching or other important information..."
+                class="w-full resize-none rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-amber-500 focus:ring-2 focus:ring-amber-100"
+              ></textarea>
+            </div>
+
+            <!-- ================================================= -->
+            <!-- ACTIONS -->
+            <!-- ================================================= -->
+
+            <div
+              class="mt-7 flex flex-col-reverse gap-3 border-t border-slate-100 pt-6 sm:flex-row sm:justify-end"
+            >
+              <button
+                type="button"
+                class="rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+              >
+                Save Progress
+              </button>
+
+              <button
+                type="button"
+                class="rounded-xl bg-amber-600 px-5 py-3 text-sm font-semibold text-white hover:bg-amber-700"
+              >
+                ✓ Complete Repair Stage
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- UPCOMING REPAIR JOBS -->
+        <!-- ================================================= -->
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white">
+          <div
+            class="flex items-center justify-between border-b border-slate-100 p-6"
+          >
+            <div>
+              <h2 class="text-lg font-bold">Upcoming Repair Jobs</h2>
+
+              <p class="mt-1 text-sm text-slate-500">
+                Vehicles waiting for body repair.
+              </p>
+            </div>
+
+            <span
+              class="rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-700"
+            >
+              3 jobs
+            </span>
+          </div>
+
+          <div class="divide-y divide-slate-100">
+            <!-- JOB -->
+
+            <div
+              class="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-slate-100"
+                >
+                  <img
+                    src="../../assets/images/audi-a4.jpg"
+                    alt="Audi A4"
+                    class="h-full w-full object-cover"
+                  />
+                </div>
+
+                <div>
+                  <p class="font-semibold">Audi A4</p>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    AU-8214 · Sarah Wilson
+                  </p>
+
+                  <p class="mt-1 text-xs font-medium text-red-600">
+                    Rear bumper damage
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div class="text-right">
+                  <p class="text-sm font-semibold">Tomorrow</p>
+
+                  <p class="mt-1 text-xs text-slate-400">09:00 AM</p>
+                </div>
+
+                <button
+                  type="button"
+                  class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold"
+                >
+                  View
+                </button>
+              </div>
+            </div>
+
+            <!-- JOB -->
+
+            <div
+              class="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-slate-100"
+                >
+                  <img
+                    src="../../assets/images/lexus-rx.jpg"
+                    alt="Lexus RX"
+                    class="h-full w-full object-cover"
+                  />
+                </div>
+
+                <div>
+                  <p class="font-semibold">Lexus RX</p>
+
+                  <p class="mt-1 text-xs text-slate-400">
+                    LX-4219 · Mark Taylor
+                  </p>
+
+                  <p class="mt-1 text-xs font-medium text-orange-600">
+                    Door & fender repair
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div class="text-right">
+                  <p class="text-sm font-semibold">Tomorrow</p>
+
+                  <p class="mt-1 text-xs text-slate-400">01:30 PM</p>
+                </div>
+
+                <button
+                  type="button"
+                  class="rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold"
+                >
+                  View
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+
+        <footer class="py-8 text-center text-xs text-slate-400">
+          AutoCare © 2026 · Auto Body Workspace
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

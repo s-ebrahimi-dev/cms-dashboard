@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - My Appointments</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Customer Portal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🏠 Dashboard
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🚗 My Vehicles
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
+          >
+            📅 Appointments
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🔧 Service History
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            💳 Payments
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🧾 Invoices
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👤 Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            J
+          </div>
+
+          <div>
+            <p class="font-semibold">John Smith</p>
+
+            <p class="text-xs text-slate-400">Customer</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 p-6 lg:p-8">
+        <!-- Header -->
+
+        <header
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">My Appointments</h1>
+
+            <p class="text-slate-500 mt-1">
+              Schedule and manage your service appointments
+            </p>
+          </div>
+
+          <button
+            class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl font-semibold transition"
+          >
+            + Book Appointment
+          </button>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- SUMMARY CARDS -->
+        <!-- ================================================= -->
+
+        <section class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+          <!-- Upcoming -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Upcoming</p>
+
+                <h2 class="text-3xl font-bold mt-2">1</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl"
+              >
+                📅
+              </div>
+            </div>
+          </div>
+
+          <!-- Completed -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Completed</p>
+
+                <h2 class="text-3xl font-bold mt-2">12</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl"
+              >
+                ✓
+              </div>
+            </div>
+          </div>
+
+          <!-- Cancelled -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Cancelled</p>
+
+                <h2 class="text-3xl font-bold mt-2">1</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-xl"
+              >
+                ×
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- UPCOMING APPOINTMENT -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-6 mb-8">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"
+          >
+            <div>
+              <p class="text-sm text-indigo-600 font-semibold">
+                NEXT APPOINTMENT
+              </p>
+
+              <h2 class="text-2xl font-bold mt-1">Oil Change</h2>
+            </div>
+
+            <span
+              class="self-start bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold"
+            >
+              Confirmed
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <!-- Date -->
+
+            <div class="flex gap-4 items-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center"
+              >
+                📅
+              </div>
+
+              <div>
+                <p class="text-sm text-slate-500">Date</p>
+
+                <p class="font-semibold">August 20, 2026</p>
+              </div>
+            </div>
+
+            <!-- Time -->
+
+            <div class="flex gap-4 items-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center"
+              >
+                🕐
+              </div>
+
+              <div>
+                <p class="text-sm text-slate-500">Time</p>
+
+                <p class="font-semibold">10:30 AM</p>
+              </div>
+            </div>
+
+            <!-- Vehicle -->
+
+            <div class="flex gap-4 items-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center"
+              >
+                🚗
+              </div>
+
+              <div>
+                <p class="text-sm text-slate-500">Vehicle</p>
+
+                <p class="font-semibold">BMW X5</p>
+              </div>
+            </div>
+
+            <!-- Service -->
+
+            <div class="flex gap-4 items-center">
+              <div
+                class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center"
+              >
+                🔧
+              </div>
+
+              <div>
+                <p class="text-sm text-slate-500">Duration</p>
+
+                <p class="font-semibold">45 Minutes</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appointment Actions -->
+
+          <div
+            class="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t border-slate-100"
+          >
+            <button
+              class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold"
+            >
+              View Details
+            </button>
+
+            <button
+              class="px-5 py-3 rounded-xl border border-slate-200 hover:bg-slate-50 font-semibold"
+            >
+              Reschedule
+            </button>
+
+            <button
+              class="px-5 py-3 rounded-xl border border-red-200 text-red-600 hover:bg-red-50 font-semibold"
+            >
+              Cancel Appointment
+            </button>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- APPOINTMENT HISTORY -->
+        <!-- ================================================= -->
+
+        <section
+          class="bg-white rounded-2xl border border-slate-200 p-6 overflow-hidden"
+        >
+          <div
+            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"
+          >
+            <div>
+              <h2 class="text-xl font-bold">Appointment History</h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                Your previous service appointments
+              </p>
+            </div>
+
+            <select
+              class="border border-slate-200 rounded-xl px-4 py-2.5 text-sm bg-white outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              <option>All Appointments</option>
+
+              <option>Completed</option>
+
+              <option>Cancelled</option>
+            </select>
+          </div>
+
+          <!-- History -->
+
+          <div class="space-y-4">
+            <!-- Appointment -->
+
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-lg"
+                >
+                  ✓
+                </div>
+
+                <div>
+                  <h3 class="font-semibold">Brake Repair</h3>
+
+                  <p class="text-sm text-slate-500">BMW X5 • July 10, 2026</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-6">
+                <span class="text-sm font-semibold text-slate-700"> $280 </span>
+
+                <span
+                  class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Completed
+                </span>
+              </div>
+            </div>
+
+            <!-- Appointment -->
+
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-lg"
+                >
+                  ✓
+                </div>
+
+                <div>
+                  <h3 class="font-semibold">Oil Change</h3>
+
+                  <p class="text-sm text-slate-500">BMW X5 • June 15, 2026</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-6">
+                <span class="text-sm font-semibold text-slate-700"> $85 </span>
+
+                <span
+                  class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Completed
+                </span>
+              </div>
+            </div>
+
+            <!-- Appointment -->
+
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100"
+            >
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center text-lg"
+                >
+                  ×
+                </div>
+
+                <div>
+                  <h3 class="font-semibold">Tire Rotation</h3>
+
+                  <p class="text-sm text-slate-500">
+                    Toyota Camry • May 8, 2026
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-6">
+                <span class="text-sm font-semibold text-slate-700"> $60 </span>
+
+                <span
+                  class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Cancelled
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

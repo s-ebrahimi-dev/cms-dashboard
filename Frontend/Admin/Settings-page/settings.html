@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Settings</title>
+
+    <link rel="stylesheet" href="../assets/styles/app.css" />
+  </head>
+
+  <body class="bg-slate-50 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+
+      <aside
+        class="hidden lg:flex w-64 min-h-screen bg-slate-950 text-white flex-col p-5"
+      >
+        <div>
+          <h1 class="text-2xl font-bold">AutoCare</h1>
+
+          <p class="text-xs text-slate-400 mt-1">Car Service Management</p>
+        </div>
+
+        <nav class="mt-10 space-y-2">
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Dashboard
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Customers
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Vehicles
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Appointments
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Services
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Payments
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg hover:bg-slate-800" href="#">
+            Employees
+          </a>
+
+          <a class="block px-4 py-3 rounded-lg bg-indigo-600" href="#">
+            Settings
+          </a>
+        </nav>
+
+        <div class="mt-auto flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-slate-600"></div>
+
+          <div>
+            <p class="font-semibold">Saeed Ebrahimi</p>
+
+            <p class="text-xs text-slate-400">Administrator</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+
+      <main class="flex-1 p-6 lg:p-8">
+        <header class="mb-8">
+          <h1 class="text-3xl font-bold">Settings</h1>
+
+          <p class="text-slate-500 mt-2">
+            Manage your AutoCare system settings
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <!-- Profile -->
+
+          <section
+            class="xl:col-span-2 bg-white rounded-xl border border-slate-200 shadow-sm p-6"
+          >
+            <h2 class="text-xl font-bold mb-6">Profile Information</h2>
+
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm mb-2 text-slate-600">
+                  First Name
+                </label>
+
+                <input
+                  value="Saeed"
+                  class="w-full rounded-lg border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm mb-2 text-slate-600">
+                  Last Name
+                </label>
+
+                <input
+                  value="Ebrahimi"
+                  class="w-full rounded-lg border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm mb-2 text-slate-600"> Email </label>
+
+                <input
+                  value="admin@autocare.com"
+                  class="w-full rounded-lg border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm mb-2 text-slate-600"> Phone </label>
+
+                <input
+                  value="+98 912 0000000"
+                  class="w-full rounded-lg border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+            </div>
+
+            <button
+              class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium"
+            >
+              Save Changes
+            </button>
+          </section>
+
+          <!-- System Settings -->
+
+          <section
+            class="bg-white rounded-xl border border-slate-200 shadow-sm p-6"
+          >
+            <h2 class="text-xl font-bold mb-6">System</h2>
+
+            <div class="space-y-5">
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="font-medium">Email Notifications</p>
+
+                  <p class="text-sm text-slate-500">
+                    Receive appointment alerts
+                  </p>
+                </div>
+
+                <input
+                  type="checkbox"
+                  checked
+                  class="w-5 h-5 accent-indigo-600"
+                />
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="font-medium">SMS Notifications</p>
+
+                  <p class="text-sm text-slate-500">Send customer reminders</p>
+                </div>
+
+                <input type="checkbox" class="w-5 h-5 accent-indigo-600" />
+              </div>
+
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="font-medium">Dark Mode</p>
+
+                  <p class="text-sm text-slate-500">Enable dark theme</p>
+                </div>
+
+                <input type="checkbox" class="w-5 h-5 accent-indigo-600" />
+              </div>
+            </div>
+          </section>
+
+          <!-- Business Information -->
+
+          <section
+            class="xl:col-span-2 bg-white rounded-xl border border-slate-200 shadow-sm p-6"
+          >
+            <h2 class="text-xl font-bold mb-6">Business Information</h2>
+
+            <div class="grid md:grid-cols-2 gap-5">
+              <input
+                placeholder="Business Name"
+                class="border border-slate-200 rounded-lg px-4 py-3"
+              />
+
+              <input
+                placeholder="Website"
+                class="border border-slate-200 rounded-lg px-4 py-3"
+              />
+
+              <input
+                placeholder="Address"
+                class="border border-slate-200 rounded-lg px-4 py-3"
+              />
+
+              <input
+                placeholder="Working Hours"
+                class="border border-slate-200 rounded-lg px-4 py-3"
+              />
+            </div>
+          </section>
+
+          <!-- Security -->
+
+          <section
+            class="bg-white rounded-xl border border-slate-200 shadow-sm p-6"
+          >
+            <h2 class="text-xl font-bold mb-6">Security</h2>
+
+            <div class="space-y-4">
+              <button
+                class="w-full text-left border border-slate-200 rounded-lg p-4 hover:bg-slate-50"
+              >
+                Change Password
+              </button>
+
+              <button
+                class="w-full text-left border border-slate-200 rounded-lg p-4 hover:bg-slate-50"
+              >
+                Two Factor Authentication
+              </button>
+
+              <button
+                class="w-full text-left border border-red-200 text-red-600 rounded-lg p-4 hover:bg-red-50"
+              >
+                Logout All Devices
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

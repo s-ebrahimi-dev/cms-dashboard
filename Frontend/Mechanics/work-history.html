@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Work History</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- LOGO -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Mechanic Workspace</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAVIGATION -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🏠</span>
+            Dashboard
+          </a>
+
+          <a
+            href="../jobs/jobs.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🔧</span>
+            My Jobs
+
+            <span class="ml-auto px-2 py-0.5 rounded-full bg-red-500 text-xs">
+              5
+            </span>
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🚗</span>
+            Assigned Vehicles
+          </a>
+
+          <a
+            href="../inspections/inspections.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>🔍</span>
+            Inspections
+          </a>
+
+          <a
+            href="../parts/parts.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>⚙️</span>
+            Parts
+
+            <span
+              class="ml-auto px-2 py-0.5 rounded-full bg-orange-500 text-xs"
+            >
+              3
+            </span>
+          </a>
+
+          <!-- ACTIVE -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600 font-medium"
+          >
+            <span>📋</span>
+            Work History
+          </a>
+
+          <a
+            href="../profile/profile.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
+          >
+            <span>👤</span>
+            Profile
+          </a>
+        </nav>
+
+        <!-- USER -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            DM
+          </div>
+
+          <div>
+            <p class="font-semibold">Daniel Morgan</p>
+
+            <p class="text-xs text-slate-400">Mechanic</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 min-w-0 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-5 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">Work History</h1>
+
+            <p class="text-slate-500 mt-1">
+              Review your completed repairs and service history.
+            </p>
+          </div>
+
+          <button
+            class="px-4 py-2.5 rounded-xl bg-white border border-slate-200 text-sm font-semibold"
+          >
+            📄 Export History
+          </button>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- STATISTICS -->
+        <!-- ================================================= -->
+
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6"
+        >
+          <!-- Completed -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div
+              class="w-11 h-11 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-xl"
+            >
+              ✓
+            </div>
+
+            <p class="text-3xl font-bold mt-4">86</p>
+
+            <p class="text-sm text-slate-500 mt-1">Jobs completed</p>
+          </div>
+
+          <!-- Hours -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div
+              class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl"
+            >
+              ⏱
+            </div>
+
+            <p class="text-3xl font-bold mt-4">312</p>
+
+            <p class="text-sm text-slate-500 mt-1">Labor hours</p>
+          </div>
+
+          <!-- Vehicles -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div
+              class="w-11 h-11 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl"
+            >
+              🚗
+            </div>
+
+            <p class="text-3xl font-bold mt-4">61</p>
+
+            <p class="text-sm text-slate-500 mt-1">Vehicles serviced</p>
+          </div>
+
+          <!-- Rating -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div
+              class="w-11 h-11 rounded-xl bg-yellow-50 text-yellow-600 flex items-center justify-center text-xl"
+            >
+              ★
+            </div>
+
+            <p class="text-3xl font-bold mt-4">4.9</p>
+
+            <p class="text-sm text-slate-500 mt-1">Customer rating</p>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- FILTERS -->
+        <!-- ================================================= -->
+
+        <section class="bg-white border border-slate-200 rounded-2xl p-4 mb-6">
+          <div class="flex flex-col lg:flex-row gap-3">
+            <!-- Search -->
+
+            <div class="relative flex-1">
+              <span
+                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+              >
+                🔍
+              </span>
+
+              <input
+                type="text"
+                placeholder="Search jobs, vehicles or customers..."
+                class="w-full rounded-xl border border-slate-200 pl-11 pr-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <!-- Service -->
+
+            <select
+              class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none"
+            >
+              <option>All Services</option>
+
+              <option>Oil Change</option>
+
+              <option>Brake Service</option>
+
+              <option>Engine Repair</option>
+
+              <option>Tire Service</option>
+
+              <option>Electrical</option>
+            </select>
+
+            <!-- Date -->
+
+            <select
+              class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none"
+            >
+              <option>All Time</option>
+
+              <option>This Week</option>
+
+              <option>This Month</option>
+
+              <option>Last 3 Months</option>
+
+              <option>This Year</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- RECENT COMPLETED JOBS -->
+        <!-- ================================================= -->
+
+        <section
+          class="bg-white border border-slate-200 rounded-2xl overflow-hidden"
+        >
+          <!-- HEADER -->
+
+          <div
+            class="px-6 py-5 border-b border-slate-100 flex items-center justify-between"
+          >
+            <div>
+              <h2 class="text-lg font-bold">Completed Jobs</h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                Your recently completed work.
+              </p>
+            </div>
+
+            <span class="hidden sm:block text-sm text-slate-400">
+              86 total jobs
+            </span>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- DESKTOP TABLE -->
+          <!-- ================================================= -->
+
+          <div class="hidden lg:block overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-slate-50 text-slate-500">
+                <tr>
+                  <th class="text-left px-6 py-4 font-semibold">Job</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Vehicle</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Service</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Duration</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Completed</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Result</th>
+
+                  <th class="text-right px-6 py-4 font-semibold">Action</th>
+                </tr>
+              </thead>
+
+              <tbody class="divide-y divide-slate-100">
+                <!-- ROW 1 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-semibold">#JOB-1048</p>
+
+                    <p class="text-xs text-slate-400 mt-1">Michael Brown</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">BMW X5</p>
+
+                    <p class="text-xs text-slate-400">ABC-4821</p>
+                  </td>
+
+                  <td class="px-6 py-5">Brake Service</td>
+
+                  <td class="px-6 py-5">2h 15m</td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Aug 14, 2026</p>
+
+                    <p class="text-xs text-slate-400">11:42 AM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg border border-slate-200 text-slate-600 text-xs font-semibold hover:bg-slate-50"
+                    >
+                      Details
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- ROW 2 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-semibold">#JOB-1042</p>
+
+                    <p class="text-xs text-slate-400 mt-1">Sarah Wilson</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Toyota Camry</p>
+
+                    <p class="text-xs text-slate-400">TX-9218</p>
+                  </td>
+
+                  <td class="px-6 py-5">Oil Change</td>
+
+                  <td class="px-6 py-5">45 min</td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Aug 13, 2026</p>
+
+                    <p class="text-xs text-slate-400">03:18 PM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg border border-slate-200 text-slate-600 text-xs font-semibold"
+                    >
+                      Details
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- ROW 3 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-semibold">#JOB-1038</p>
+
+                    <p class="text-xs text-slate-400 mt-1">James Anderson</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Ford F-150</p>
+
+                    <p class="text-xs text-slate-400">FD-7310</p>
+                  </td>
+
+                  <td class="px-6 py-5">Battery Replacement</td>
+
+                  <td class="px-6 py-5">1h 20m</td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Aug 12, 2026</p>
+
+                    <p class="text-xs text-slate-400">01:06 PM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg border border-slate-200 text-slate-600 text-xs font-semibold"
+                    >
+                      Details
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- ROW 4 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-semibold">#JOB-1032</p>
+
+                    <p class="text-xs text-slate-400 mt-1">Emily Davis</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Honda Accord</p>
+
+                    <p class="text-xs text-slate-400">HA-5512</p>
+                  </td>
+
+                  <td class="px-6 py-5">Brake Pad Replacement</td>
+
+                  <td class="px-6 py-5">2h 40m</td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Aug 11, 2026</p>
+
+                    <p class="text-xs text-slate-400">04:32 PM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg border border-slate-200 text-slate-600 text-xs font-semibold"
+                    >
+                      Details
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- ROW 5 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-semibold">#JOB-1026</p>
+
+                    <p class="text-xs text-slate-400 mt-1">Robert Taylor</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">BMW X3</p>
+
+                    <p class="text-xs text-slate-400">BX-3102</p>
+                  </td>
+
+                  <td class="px-6 py-5">Electrical Repair</td>
+
+                  <td class="px-6 py-5">3h 10m</td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Aug 09, 2026</p>
+
+                    <p class="text-xs text-slate-400">02:27 PM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg border border-slate-200 text-slate-600 text-xs font-semibold"
+                    >
+                      Details
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- MOBILE CARDS -->
+          <!-- ================================================= -->
+
+          <div class="lg:hidden divide-y divide-slate-100">
+            <!-- CARD 1 -->
+
+            <article class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="font-bold">#JOB-1048</p>
+
+                  <p class="text-xs text-slate-400 mt-1">
+                    Aug 14, 2026 · 11:42 AM
+                  </p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                >
+                  Completed
+                </span>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-slate-400">Vehicle</p>
+
+                  <p class="text-sm font-semibold mt-1">BMW X5</p>
+
+                  <p class="text-xs text-slate-400">ABC-4821</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Service</p>
+
+                  <p class="text-sm font-semibold mt-1">Brake Service</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Customer</p>
+
+                  <p class="text-sm font-semibold mt-1">Michael Brown</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Duration</p>
+
+                  <p class="text-sm font-semibold mt-1">2h 15m</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold"
+              >
+                View Job Details
+              </button>
+            </article>
+
+            <!-- CARD 2 -->
+
+            <article class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="font-bold">#JOB-1042</p>
+
+                  <p class="text-xs text-slate-400 mt-1">
+                    Aug 13, 2026 · 03:18 PM
+                  </p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                >
+                  Completed
+                </span>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-slate-400">Vehicle</p>
+
+                  <p class="text-sm font-semibold mt-1">Toyota Camry</p>
+
+                  <p class="text-xs text-slate-400">TX-9218</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Service</p>
+
+                  <p class="text-sm font-semibold mt-1">Oil Change</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Customer</p>
+
+                  <p class="text-sm font-semibold mt-1">Sarah Wilson</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Duration</p>
+
+                  <p class="text-sm font-semibold mt-1">45 min</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold"
+              >
+                View Job Details
+              </button>
+            </article>
+
+            <!-- CARD 3 -->
+
+            <article class="p-5">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="font-bold">#JOB-1038</p>
+
+                  <p class="text-xs text-slate-400 mt-1">
+                    Aug 12, 2026 · 01:06 PM
+                  </p>
+                </div>
+
+                <span
+                  class="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                >
+                  Completed
+                </span>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-slate-400">Vehicle</p>
+
+                  <p class="text-sm font-semibold mt-1">Ford F-150</p>
+
+                  <p class="text-xs text-slate-400">FD-7310</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Service</p>
+
+                  <p class="text-sm font-semibold mt-1">Battery Replacement</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Customer</p>
+
+                  <p class="text-sm font-semibold mt-1">James Anderson</p>
+                </div>
+
+                <div>
+                  <p class="text-xs text-slate-400">Duration</p>
+
+                  <p class="text-sm font-semibold mt-1">1h 20m</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold"
+              >
+                View Job Details
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- PERFORMANCE SUMMARY -->
+        <!-- ================================================= -->
+
+        <section class="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6">
+          <!-- SERVICE BREAKDOWN -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-6">
+            <div class="mb-5">
+              <h2 class="text-lg font-bold">Service Breakdown</h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                Jobs completed by service type.
+              </p>
+            </div>
+
+            <div class="space-y-5">
+              <!-- Oil -->
+
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span> Oil Change </span>
+
+                  <span class="font-semibold"> 28 </span>
+                </div>
+
+                <div class="h-2 bg-slate-100 rounded-full">
+                  <div class="h-full w-[70%] bg-indigo-500 rounded-full"></div>
+                </div>
+              </div>
+
+              <!-- Brake -->
+
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span> Brake Service </span>
+
+                  <span class="font-semibold"> 21 </span>
+                </div>
+
+                <div class="h-2 bg-slate-100 rounded-full">
+                  <div class="h-full w-[55%] bg-orange-500 rounded-full"></div>
+                </div>
+              </div>
+
+              <!-- Engine -->
+
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span> Engine Repair </span>
+
+                  <span class="font-semibold"> 17 </span>
+                </div>
+
+                <div class="h-2 bg-slate-100 rounded-full">
+                  <div class="h-full w-[44%] bg-purple-500 rounded-full"></div>
+                </div>
+              </div>
+
+              <!-- Tires -->
+
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span> Tire Service </span>
+
+                  <span class="font-semibold"> 12 </span>
+                </div>
+
+                <div class="h-2 bg-slate-100 rounded-full">
+                  <div class="h-full w-[32%] bg-green-500 rounded-full"></div>
+                </div>
+              </div>
+
+              <!-- Electrical -->
+
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span> Electrical </span>
+
+                  <span class="font-semibold"> 8 </span>
+                </div>
+
+                <div class="h-2 bg-slate-100 rounded-full">
+                  <div class="h-full w-[22%] bg-blue-500 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RECENT ACTIVITY -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-6">
+            <div class="mb-5">
+              <h2 class="text-lg font-bold">Recent Activity</h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                Your latest workshop activity.
+              </p>
+            </div>
+
+            <div class="space-y-5">
+              <!-- Activity -->
+
+              <div class="flex gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-full bg-green-100 text-green-600 flex items-center justify-center"
+                >
+                  ✓
+                </div>
+
+                <div>
+                  <p class="text-sm font-semibold">Completed brake service</p>
+
+                  <p class="text-xs text-slate-400 mt-1">BMW X5 · JOB-1048</p>
+
+                  <p class="text-xs text-slate-400 mt-1">2 hours ago</p>
+                </div>
+              </div>
+
+              <!-- Activity -->
+
+              <div class="flex gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                >
+                  ⚙️
+                </div>
+
+                <div>
+                  <p class="text-sm font-semibold">Installed brake pads</p>
+
+                  <p class="text-xs text-slate-400 mt-1">
+                    Honda Accord · JOB-1032
+                  </p>
+
+                  <p class="text-xs text-slate-400 mt-1">Yesterday</p>
+                </div>
+              </div>
+
+              <!-- Activity -->
+
+              <div class="flex gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center"
+                >
+                  🔍
+                </div>
+
+                <div>
+                  <p class="text-sm font-semibold">
+                    Completed vehicle inspection
+                  </p>
+
+                  <p class="text-xs text-slate-400 mt-1">
+                    Ford F-150 · FD-7310
+                  </p>
+
+                  <p class="text-xs text-slate-400 mt-1">2 days ago</p>
+                </div>
+              </div>
+
+              <!-- Activity -->
+
+              <div class="flex gap-4">
+                <div
+                  class="w-10 h-10 shrink-0 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center"
+                >
+                  ⚙️
+                </div>
+
+                <div>
+                  <p class="text-sm font-semibold">Requested a battery</p>
+
+                  <p class="text-xs text-slate-400 mt-1">
+                    Ford F-150 · REQ-1048
+                  </p>
+
+                  <p class="text-xs text-slate-400 mt-1">2 days ago</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- PAGINATION -->
+        <!-- ================================================= -->
+
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-6"
+        >
+          <p class="text-sm text-slate-500">Showing 1–5 of 86 completed jobs</p>
+
+          <div class="flex items-center gap-2">
+            <button
+              class="w-9 h-9 rounded-lg border border-slate-200 bg-white text-slate-400"
+            >
+              ‹
+            </button>
+
+            <button
+              class="w-9 h-9 rounded-lg bg-indigo-600 text-white text-sm font-semibold"
+            >
+              1
+            </button>
+
+            <button
+              class="w-9 h-9 rounded-lg border border-slate-200 bg-white text-sm"
+            >
+              2
+            </button>
+
+            <button
+              class="w-9 h-9 rounded-lg border border-slate-200 bg-white text-sm"
+            >
+              3
+            </button>
+
+            <span class="px-1 text-slate-400"> ... </span>
+
+            <button
+              class="w-9 h-9 rounded-lg border border-slate-200 bg-white text-slate-400"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
