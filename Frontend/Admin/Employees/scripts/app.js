@@ -2,8 +2,6 @@ const menusmBtn = document.querySelector("#menu-btn");
 const sidebar = document.querySelector("#sidebar");
 const overlay = document.querySelector("#overlay");
 const asideLgBtn = document.querySelector(".aside-lg-btn")
-const asideLgLeftBtn = document.querySelector(".aside-lg-left-btn")
-const menuList = document.querySelector(".menu-list")
 
 menusmBtn.addEventListener("click", (event) => {
     console.log(event.target);
@@ -25,17 +23,7 @@ asideLgBtn.addEventListener("click", (event) => {
   event.preventDefault()
   console.log("clicked");
   
-  sidebar.classList.add("aside--open")
-  asideLgBtn.classList.add("hidden")
-  menuList.classList.remove("overflow-hidden")
-  asideLgLeftBtn.classList.remove("opacity-0")
-  asideLgLeftBtn.classList.add("opacity-100")
+  sidebar.classList.toggle("aside--open")
+  asideLgBtn.classList.toggle("hidden")
 
-})
-asideLgLeftBtn.addEventListener("click", () => {
-
-  sidebar.classList.remove("aside--open")
-  asideLgBtn.classList.remove("hidden")
-  asideLgLeftBtn.classList.add("opacity-0")
-  asideLgLeftBtn.classList.remove("opacity-100")
 })

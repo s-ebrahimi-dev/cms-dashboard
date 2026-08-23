@@ -1,3 +1,86 @@
 @import "tailwindcss";
 
 @source "../**/*.html";
+
+@layer components {
+  .layout {
+    @apply grid min-h-screen transition-all duration-500 
+         grid-cols-[85px_1fr];
+  }
+
+  .layout:has(.aside.aside--open) {
+    @apply grid-cols-[280px_1fr];
+  }
+
+  .aside {
+    @apply sticky top-0 h-screen
+               bg-[#111827] text-white
+               flex flex-col
+               px-5 py-6
+               transition-all duration-500;
+  }
+
+  .menu-item {
+    @apply flex items-center justify-start
+               gap-3 px-4 py-3 rounded-xl
+               hover:bg-slate-800
+               transition-all duration-300;
+  }
+
+  .aside.aside--open .menu-item {
+    @apply justify-start;
+  }
+
+
+
+  .menu-icon {
+    @apply shrink-0 text-xl;
+  }
+
+  .menu-text {
+    @apply  max-w-0 opacity-0 overflow-hidden
+               whitespace-nowrap
+               transition-all duration-500;
+  }
+
+  .aside.aside--open .menu-text {
+    @apply  max-w-45 opacity-100;
+  }
+
+
+
+  .logo-text {
+    @apply max-w-0 opacity-0
+               overflow-hidden
+               whitespace-nowrap
+               transition-all duration-300;
+  }
+
+  .aside.aside--open .logo {
+    @apply justify-start;
+  }
+  .logo-mark{
+    @apply transition-all duration-500
+  }
+
+  .aside.aside--open .logo-mark{
+    transform: translateX(80px)
+  }
+
+  .aside.aside--open .logo-text {
+    @apply max-w-45 opacity-100;
+  }
+  .upgrade{
+  @apply  max-w-0 opacity-0 overflow-hidden
+               whitespace-nowrap bg-indigo-600 rounded-2xl p-5
+               transition-all duration-500
+  }
+   .aside.aside--open .upgrade{
+    @apply max-w-45 opacity-100
+  }
+
+
+  .main {
+    @apply p-6 lg:p-8 min-w-0 transition-all duration-500;
+  }
+}

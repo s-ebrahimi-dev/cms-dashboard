@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Invoices</title>
+
+    <link rel="stylesheet" href="../../assets/styles/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Customer Portal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🏠 Dashboard
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🚗 My Vehicles
+          </a>
+
+          <a
+            href="../appointments/appointments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            📅 Appointments
+          </a>
+
+          <a
+            href="../service-history/service-history.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🔧 Service History
+          </a>
+
+          <a
+            href="../payments/payments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            💳 Payments
+          </a>
+
+          <!-- Active -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
+          >
+            🧾 Invoices
+          </a>
+
+          <a
+            href="../profile/profile.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👤 Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            J
+          </div>
+
+          <div>
+            <p class="font-semibold">John Smith</p>
+
+            <p class="text-xs text-slate-400">Customer</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 p-6 lg:p-8">
+        <!-- Header -->
+
+        <header
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">Invoices</h1>
+
+            <p class="text-slate-500 mt-1">
+              View and manage your service invoices
+            </p>
+          </div>
+
+          <button
+            class="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl font-semibold transition"
+          >
+            ⬇ Download All
+          </button>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- SUMMARY -->
+        <!-- ================================================= -->
+
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8"
+        >
+          <!-- Total Invoices -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Total Invoices</p>
+
+                <h2 class="text-3xl font-bold mt-2">12</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"
+              >
+                🧾
+              </div>
+            </div>
+          </div>
+
+          <!-- Paid -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Paid</p>
+
+                <h2 class="text-3xl font-bold mt-2">10</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl"
+              >
+                ✓
+              </div>
+            </div>
+          </div>
+
+          <!-- Unpaid -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Unpaid</p>
+
+                <h2 class="text-3xl font-bold mt-2">2</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl"
+              >
+                !
+              </div>
+            </div>
+          </div>
+
+          <!-- Total Amount -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Total Amount</p>
+
+                <h2 class="text-3xl font-bold mt-2">$2,770</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl"
+              >
+                $
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- FILTERS -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-5 mb-6">
+          <div
+            class="flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between"
+          >
+            <!-- Search -->
+
+            <div class="relative w-full lg:max-w-sm">
+              <input
+                type="text"
+                placeholder="Search invoice..."
+                class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <!-- Filters -->
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <select
+                class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+              >
+                <option>All Status</option>
+
+                <option>Paid</option>
+
+                <option>Pending</option>
+
+                <option>Overdue</option>
+              </select>
+
+              <select
+                class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+              >
+                <option>All Vehicles</option>
+
+                <option>BMW X5</option>
+
+                <option>Toyota Camry</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- INVOICE LIST -->
+        <!-- ================================================= -->
+
+        <section
+          class="bg-white rounded-2xl border border-slate-200 overflow-hidden"
+        >
+          <!-- Heading -->
+
+          <div class="p-6 border-b border-slate-100">
+            <h2 class="text-xl font-bold">Invoice History</h2>
+
+            <p class="text-sm text-slate-500 mt-1">
+              Your service invoices and billing documents
+            </p>
+          </div>
+
+          <!-- Desktop Table -->
+
+          <div class="hidden lg:block overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-slate-50 text-slate-500">
+                <tr>
+                  <th class="text-left px-6 py-4 font-semibold">Invoice</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Service</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Vehicle</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Date</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Amount</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Status</th>
+
+                  <th class="text-right px-6 py-4 font-semibold">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Invoice 1 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                      >
+                        🧾
+                      </div>
+
+                      <div>
+                        <p class="font-semibold text-indigo-600">INV-1048</p>
+
+                        <p class="text-xs text-slate-500">#SRV-1048</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Brake Repair</td>
+
+                  <td class="px-6 py-5 text-slate-600">BMW X5</td>
+
+                  <td class="px-6 py-5 text-slate-600">Jul 10, 2026</td>
+
+                  <td class="px-6 py-5 font-semibold">$280.00</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Paid
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <div class="flex justify-end gap-3">
+                      <button class="text-indigo-600 font-semibold">
+                        View
+                      </button>
+
+                      <button class="text-slate-500 font-semibold">
+                        Download
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Invoice 2 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                      >
+                        🧾
+                      </div>
+
+                      <div>
+                        <p class="font-semibold text-indigo-600">INV-1031</p>
+
+                        <p class="text-xs text-slate-500">#SRV-1031</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Oil Change</td>
+
+                  <td class="px-6 py-5 text-slate-600">BMW X5</td>
+
+                  <td class="px-6 py-5 text-slate-600">Jun 15, 2026</td>
+
+                  <td class="px-6 py-5 font-semibold">$85.00</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Paid
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <div class="flex justify-end gap-3">
+                      <button class="text-indigo-600 font-semibold">
+                        View
+                      </button>
+
+                      <button class="text-slate-500 font-semibold">
+                        Download
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Invoice 3 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                      >
+                        🧾
+                      </div>
+
+                      <div>
+                        <p class="font-semibold text-indigo-600">INV-1014</p>
+
+                        <p class="text-xs text-slate-500">#SRV-1014</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Full Inspection</td>
+
+                  <td class="px-6 py-5 text-slate-600">Toyota Camry</td>
+
+                  <td class="px-6 py-5 text-slate-600">May 20, 2026</td>
+
+                  <td class="px-6 py-5 font-semibold">$120.00</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Paid
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <div class="flex justify-end gap-3">
+                      <button class="text-indigo-600 font-semibold">
+                        View
+                      </button>
+
+                      <button class="text-slate-500 font-semibold">
+                        Download
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Invoice 4 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center"
+                      >
+                        !
+                      </div>
+
+                      <div>
+                        <p class="font-semibold text-orange-600">INV-0998</p>
+
+                        <p class="text-xs text-slate-500">#SRV-0998</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Tire Replacement</td>
+
+                  <td class="px-6 py-5 text-slate-600">Toyota Camry</td>
+
+                  <td class="px-6 py-5 text-slate-600">Apr 18, 2026</td>
+
+                  <td class="px-6 py-5 font-semibold">$320.00</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Pending
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs font-semibold"
+                    >
+                      Pay Now
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- MOBILE INVOICE CARDS -->
+          <!-- ================================================= -->
+
+          <div class="lg:hidden p-4 space-y-4">
+            <!-- Invoice Card -->
+
+            <article class="border border-slate-200 rounded-xl p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                  >
+                    🧾
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold text-indigo-600">INV-1048</h3>
+
+                    <p class="text-xs text-slate-500">Brake Repair</p>
+                  </div>
+                </div>
+
+                <span
+                  class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Paid
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mt-5 text-sm">
+                <div>
+                  <p class="text-slate-400">Vehicle</p>
+
+                  <p class="font-medium">BMW X5</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Amount</p>
+
+                  <p class="font-medium">$280.00</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Date</p>
+
+                  <p class="font-medium">Jul 10, 2026</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Service</p>
+
+                  <p class="font-medium">Brake Repair</p>
+                </div>
+              </div>
+
+              <div class="flex gap-3 mt-5">
+                <button
+                  class="flex-1 py-2.5 rounded-xl border border-slate-200 text-indigo-600 font-semibold"
+                >
+                  View
+                </button>
+
+                <button
+                  class="flex-1 py-2.5 rounded-xl bg-slate-900 text-white font-semibold"
+                >
+                  Download
+                </button>
+              </div>
+            </article>
+
+            <!-- Pending Invoice -->
+
+            <article class="border border-orange-200 rounded-xl p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center"
+                  >
+                    !
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold text-orange-600">INV-0998</h3>
+
+                    <p class="text-xs text-slate-500">Tire Replacement</p>
+                  </div>
+                </div>
+
+                <span
+                  class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Pending
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mt-5 text-sm">
+                <div>
+                  <p class="text-slate-400">Vehicle</p>
+
+                  <p class="font-medium">Toyota Camry</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Amount</p>
+
+                  <p class="font-medium">$320.00</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Date</p>
+
+                  <p class="font-medium">Apr 18, 2026</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Service</p>
+
+                  <p class="font-medium">Tire Replacement</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold"
+              >
+                Pay $320.00
+              </button>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
