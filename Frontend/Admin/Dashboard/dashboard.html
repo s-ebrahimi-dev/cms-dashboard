@@ -31,7 +31,7 @@
     <div class="layout">
       <!-- ================= SIDEBAR ================= -->
 
-      <aside id="sidebar" class="aside">
+      <aside id="sidebar" class="aside z-50">
         <!-- Logo -->
 
         <div
@@ -55,25 +55,19 @@
 
         <nav class="space-y-2 relative">
           <!-- Aside-Right-Button -->
-          <a
+          <button
             href="#"
-            class="aside-lg-btn flex absolute left-15 visible opacity-100 top-0 bottom-0 my-auto items-center justify-center w-6 h-10 bg-[#111827] rounded-lg transition-all duration-1500"
+            class="aside-lg-btn flex absolute -right-8 top-0 bottom-0 my-auto items-center justify-center w-6 h-10 bg-[#111827] rounded-lg cursor-pointer transition-all duration-500"
           >
-            <svg class="w-6 h-6 text-white">
+            <svg class="open-icon w-6 h-6 text-white">
               <use href="#arrow-right"></use>
             </svg>
-          </a>
-
-          <ul class="menu-list relative overflow-hidden ">
-            <!-- Aside-left-Button -->
-            <button
-              href="#"
-              class="aside-lg-left-btn absolute opacity-0 invisible visib -right-5 top-0 bottom-0 my-auto flex items-center justify-center w-6 h-10 bg-white rounded-l-lg cursor-pointer transition-all duration-1500"
-            >
-              <svg class="w-6 h-6 text-[#111827] rotate-180">
+            <svg class="close-icon w-6 h-6 text-white hidden  rotate-180">
                 <use href="#arrow-right"></use>
               </svg>
-            </button>
+          </button>
+
+          <ul class="menu-list ">
             <!--List-Items  -->
             <li>
               <a class="menu-item flex items-center justify-start" href="#">
@@ -459,24 +453,14 @@
         </div>
       </aside>
 
-      <div
-        id="overlay"
-        class="hidden fixed inset-0 bg-black/50 z-40 lg:hidden"
-      ></div>
+      
       <!-- ================= MAIN ================= -->
 
-      <main class="main">
+      <main class="main relative">
         <!-- Header -->
 
-        <header class="flex relative items-center justify-between mb-8">
-          <!-- Mobile Menu Button -->
+        <header class="flex items-center justify-between mb-8">
 
-          <button
-            id="menu-btn"
-            class="lg:hidden w-11 h-11 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-xl"
-          >
-            ☰
-          </button>
           <div>
             <h2 class="text-3xl font-bold">Dashboard</h2>
 
@@ -823,9 +807,14 @@
             </div>
           </div>
         </section>
+
+        <div
+        id="overlay"
+        class="hidden absolute inset-0 bg-black/40 z-40"
+      ></div>
       </main>
     </div>
 
-    <script src="./scripts/app.js"></script>
+    <script type="module" src="./scripts/app.js"></script>
   </body>
 </html>

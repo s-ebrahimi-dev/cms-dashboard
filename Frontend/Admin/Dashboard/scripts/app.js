@@ -1,41 +1,35 @@
-const menusmBtn = document.querySelector("#menu-btn");
 const sidebar = document.querySelector("#sidebar");
 const overlay = document.querySelector("#overlay");
 const asideLgBtn = document.querySelector(".aside-lg-btn")
-const asideLgLeftBtn = document.querySelector(".aside-lg-left-btn")
 const menuList = document.querySelector(".menu-list")
+const openSvgIcon = document.querySelector(".open-icon")
+const closeSvgIcon = document.querySelector(".close-icon")
 
-menusmBtn.addEventListener("click", (event) => {
-    console.log(event.target);
-    
-    console.log("clicked");
-    
-  sidebar.classList.toggle("-translate-x-full");
-
-  overlay.classList.toggle("hidden");
-});
 
 overlay.addEventListener("click", () => {
-  sidebar.classList.add("-translate-x-full");
-
+  sidebar.classList.remove("aside--open");
   overlay.classList.add("hidden");
+   openSvgIcon.classList.remove("hidden")
+  closeSvgIcon.classList.add("hidden")
 });
 
 asideLgBtn.addEventListener("click", (event) => {
-  event.preventDefault()
+    event.preventDefault()
+  if (!overlay.classList.contains("hidden")) {
+    overlay.classList.add("hidden")
+  } else {
+    overlay.classList.remove("hidden")
+  }
   console.log("clicked");
   
-  sidebar.classList.add("aside--open")
-  asideLgBtn.classList.add("hidden")
-  menuList.classList.remove("overflow-hidden")
-  asideLgLeftBtn.classList.remove("opacity-0")
-  asideLgLeftBtn.classList.add("opacity-100")
+  sidebar.classList.toggle("aside--open")
+  openSvgIcon.classList.add("hidden")
+  closeSvgIcon.classList.remove("hidden")
 
-})
-asideLgLeftBtn.addEventListener("click", () => {
+  if (!sidebar.classList.contains("aside--open")) {
+    openSvgIcon.classList.remove("hidden")
+  closeSvgIcon.classList.add("hidden")
+  }
 
-  sidebar.classList.remove("aside--open")
-  asideLgBtn.classList.remove("hidden")
-  asideLgLeftBtn.classList.add("opacity-0")
-  asideLgLeftBtn.classList.remove("opacity-100")
+
 })

@@ -11,7 +11,7 @@
 
   <body class="bg-slate-50 text-slate-900">
 
-    <svg class="hidden">
+   <svg class="hidden">
       <symbol
         id="arrow-right"
         xmlns="http://www.w3.org/2000/svg"
@@ -23,16 +23,14 @@
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
-          d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+          d="m8.25 4.5 7.5 7.5-7.5 7.5"
         />
       </symbol>
     </svg>
     <div class="layout">
       <!-- Sidebar -->
 
-      <aside id="sidebar" class="aside">
-
-
+     <aside id="sidebar" class="aside z-50">
         <!-- Logo -->
 
         <div
@@ -52,23 +50,26 @@
           </div>
         </div>
 
-         
-
         <!-- Menu -->
 
         <nav class="space-y-2 relative">
-                   <!-- Aside-Button -->
-          <a
+          <!-- Aside-Right-Button -->
+          <button
             href="#"
-            class="aside-lg-btn flex absolute left-14 top-0 items-center justify-center w-6 h-10 bg-[#111827] rounded-lg"
+            class="aside-lg-btn flex absolute -right-8 top-0 bottom-0 my-auto items-center justify-center w-6 h-10 bg-[#111827] rounded-lg cursor-pointer transition-all duration-500"
           >
-            <svg class="w-6 h-6 text-white">
+            <svg class="open-icon w-6 h-6 text-white">
               <use href="#arrow-right"></use>
             </svg>
-          </a>
-          <ul class="menu-list">
+            <svg class="close-icon w-6 h-6 text-white hidden  rotate-180">
+                <use href="#arrow-right"></use>
+              </svg>
+          </button>
+
+          <ul class="menu-list ">
+            <!--List-Items  -->
             <li>
-              <a class="menu-item" href="/Frontend/Admin/Dashboard/dashboard.html">
+              <a href="/Frontend/Admin/Dashboard/dashboard.html" class="menu-item flex items-center justify-start" >
                 <span class="menu-icon w-5 h-5 text-white">
                   <svg
                     class="icon-20"
@@ -94,7 +95,10 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="/Frontend/Admin/Customers/customer.html">
+              <a
+                class="menu-item"
+                href="/Frontend/Admin/Customers/customer.html"
+              >
                 <span class="menu-icon w-5 h-5 text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +145,10 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="#">
+              <a
+                class="menu-item"
+                href="/Frontend/Admin/Vehicles/vehicles.html"
+              >
                 <span class="menu-icon w-6 h-6 text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -222,7 +229,10 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="#">
+              <a
+                class="menu-item"
+                href="/Frontend/Admin/Appointment/appointment.html"
+              >
                 <span class="menu-icon w-5 -h-5">
                   <svg
                     class="icon-20"
@@ -256,7 +266,10 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="#">
+              <a
+                class="menu-item"
+                href="/Frontend/Admin/Services-page/services.html"
+              >
                 <span class="menu-icon text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +291,10 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="#">
+              <a
+                class="menu-item"
+                href="/Frontend/Admin/Employees/employees.html"
+              >
                 <span class="menu-icon">
                   <svg
                     width="20"
@@ -321,7 +337,10 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="#">
+              <a
+                class="menu-item"
+                href="/Frontend/Admin/invoices/invoices.html"
+              >
                 <span class="menu-icon w-6 h-5 text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +361,7 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="#">
+              <a class="menu-item" href="/Frontend/Admin/Payment/payment.html">
                 <span class="menu-icon w-5 h-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -363,7 +382,7 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="#">
+              <a class="menu-item" href="/Frontend/Admin/Users/users.html">
                 <span class="menu-icon w-5 h-5 text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -384,7 +403,10 @@
               </a>
             </li>
             <li>
-              <a class="menu-item" href="#">
+              <a
+                class="menu-item"
+                href="/Frontend/Admin/Settings-page/settings.html"
+              >
                 <span class="menu-icon w-5 h-5">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -422,33 +444,22 @@
           </p>
 
           <a
-    href="#"
-    class="inline-block cursor-pointer bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold text-sm"
->
-    Upgrade
-</a>
+            href="#"
+            class="inline-block cursor-pointer bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold text-sm"
+          >
+            Upgrade
+          </a>
         </div>
       </aside>
 
-      <!-- Overlay -->
-       <div
-        id="overlay"
-        class="hidden fixed inset-0 bg-black/50 z-40 lg:hidden"
-      ></div>
+
       <!-- Main Content -->
 
-      <main class="flex-1 p-6 lg:p-8">
+      <main class="main relative">
 
         <!-- Header -->
         <header class="flex relative items-center justify-between mb-8">
-          <!-- Mobile Menu Button -->
 
-          <button
-            id="menu-btn"
-            class="lg:hidden w-11 h-11 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-xl"
-          >
-            ☰
-          </button>
           <div>
             <h2 class="text-3xl font-bold">Dashboard</h2>
 
@@ -617,10 +628,15 @@
             </button>
           </div>
         </section>
+              <!-- Overlay -->
+       <div
+        id="overlay"
+        class="hidden fixed inset-0 bg-black/50 z-40 lg:hidden"
+      ></div>
       </main>
     </div>
 
-    <script src="./scripts/app.js"></script>
+    <script type="module" src="./scripts/app.js"></script>
 
   </body>
 </html>
