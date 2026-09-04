@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare | Register</title>
+
+    <link href="/styles/app.css" rel="stylesheet" />
+  </head>
+
+  <body class="min-h-screen">
+    <!-- BACKGROUND -->
+    <main
+      class="relative min-h-screen bg-cover bg-center"
+      style="
+        background-image: url(./public/images/blurred-car-repair-shop-interior-mechanics-working-cars-table-foreground-busy-auto-scene-modern-service-pro-maintenance-349399980.webp);
+      "
+    >
+      <!-- DARK OVERLAY -->
+      <div class="absolute inset-0 bg-black/65"></div>
+
+      <!-- CENTER CARD -->
+      <div
+        class="relative z-10 flex min-h-screen items-center justify-center px-4"
+      >
+        <div
+          class="h-[95vh] w-120 max-w-full overflow-y-auto rounded-2xl bg-white/55 px-10 py-8 shadow-2xl"
+        >
+          <!-- HEADER -->
+          <div class="mb-7 text-center">
+            <div
+              class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+                stroke="white"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 6.75h7.5M6 10.5h12M7.5 14.25h9M5.25 19.5h13.5a1.5 1.5 0 0 0 1.5-1.5V6A1.5 1.5 0 0 0 18.75 4.5H5.25A1.5 1.5 0 0 0 3.75 6v12a1.5 1.5 0 0 0 1.5 1.5Z"
+                />
+              </svg>
+            </div>
+
+            <h1 class="text-2xl font-bold text-slate-900">Create an account</h1>
+
+            <p class="mt-1.5 text-sm text-slate-500">
+              Register to manage your auto services
+            </p>
+          </div>
+
+          <!-- FORM -->
+          <form class="space-y-4">
+            <!-- FIRST + LAST NAME -->
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label
+                  for="firstname"
+                  class="mb-1.5 block text-sm font-medium text-slate-700"
+                >
+                  First name
+                </label>
+
+                <input
+                  id="firstname"
+                  name="firstname"
+                  type="text"
+                  placeholder="John"
+                  class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-3.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="lastname"
+                  class="mb-1.5 block text-sm font-medium text-slate-700"
+                >
+                  Last name
+                </label>
+
+                <input
+                  id="lastname"
+                  name="lastname"
+                  type="text"
+                  placeholder="Doe"
+                  class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-3.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                />
+              </div>
+            </div>
+
+            <!-- USERNAME -->
+            <div>
+              <label
+                for="username"
+                class="mb-1.5 block text-sm font-medium text-slate-700"
+              >
+                Username
+              </label>
+
+              <input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="john_doe"
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-3.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+              />
+            </div>
+
+            <!-- EMAIL -->
+            <div>
+              <label
+                for="email"
+                class="mb-1.5 block text-sm font-medium text-slate-700"
+              >
+                Email address
+              </label>
+
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="john@example.com"
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-3.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+              />
+            </div>
+
+            <!-- PHONE -->
+             <div>
+              <label
+                for="phone"
+                class="mb-1.5 block text-sm font-medium text-slate-700"
+              >
+                Phone number
+              </label>
+
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="123-456-7890"
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-3.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+              />
+            </div>
+            <!-- PASSWORD -->
+            <div>
+              <label
+                for="password"
+                class="mb-1.5 block text-sm font-medium text-slate-700"
+              >
+                Password
+              </label>
+
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="••••••••"
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-3.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+              />
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+            <div>
+              <label
+                for="confirmPassword"
+                class="mb-1.5 block text-sm font-medium text-slate-700"
+              >
+                Confirm password
+              </label>
+
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                placeholder="••••••••"
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-3.5 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+              />
+            </div>
+
+            <!-- TERMS -->
+            <div class="flex items-start gap-2.5 pt-1">
+              <input
+                id="terms"
+                type="checkbox"
+                class="mt-0.5 h-4 w-4 rounded border-slate-300 text-orange-500 focus:ring-orange-500"
+              />
+
+              <label for="terms" class="text-xs leading-5 text-slate-500">
+                I agree to the
+                <a href="#" class="font-medium text-indigo-600"> Terms </a>
+                and
+                <a href="#" class="font-medium text-indigo-600">
+                  Privacy Policy
+                </a>
+              </label>
+            </div>
+
+            <!-- BUTTON -->
+            <button
+            id="registerButton"
+              type="submit"
+              class="h-11 w-full rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99]"
+            >
+              Create account
+            </button>
+          </form>
+
+          <!-- LOGIN -->
+          <div class="mt-6 text-center">
+            <p class="text-sm text-slate-500">
+              Already have an account?
+
+              <a
+                href="./index.html"
+                class="ml-1 font-semibold text-indigo-600 transition hover:text-blue-500"
+              >
+                Sign in
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+       <div id="result-modal-container"></div>
+    </main>
+
+
+    <script src="/scripts/register.js" type="module"></script>
+  </body>
+</html>

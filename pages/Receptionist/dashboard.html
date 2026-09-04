@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Receptionist Dashboard</title>
+
+    <link rel="stylesheet" href="../assets/styles/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Receptionist Portal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <!-- Active -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
+          >
+            🏠 Dashboard
+          </a>
+
+          <a
+            href="../appointments/appointments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            📅 Appointments
+
+            <span class="ml-auto text-xs bg-red-500 px-2 py-0.5 rounded-full">
+              3
+            </span>
+          </a>
+
+          <a
+            href="../customers/customers.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👥 Customers
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🚗 Vehicles
+          </a>
+
+          <a
+            href="../services/services.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🔧 Services
+          </a>
+
+          <a
+            href="../payments/payments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            💳 Payments
+          </a>
+
+          <a
+            href="../invoices/invoices.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🧾 Invoices
+          </a>
+
+          <a
+            href="../profile/profile.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👤 Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            EM
+          </div>
+
+          <div>
+            <p class="font-semibold">Emily Miller</p>
+
+            <p class="text-xs text-slate-400">Receptionist</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 min-w-0 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-8"
+        >
+          <div>
+            <p class="text-sm text-slate-500 mb-1">Monday, August 17, 2026</p>
+
+            <h1 class="text-3xl font-bold">Good morning, Emily 👋</h1>
+
+            <p class="text-slate-500 mt-1">
+              Here's what's happening at the front desk today.
+            </p>
+          </div>
+
+          <div class="flex gap-3">
+            <button
+              class="flex items-center gap-2 px-5 py-3 rounded-xl border border-slate-200 bg-white font-semibold hover:bg-slate-50"
+            >
+              🔔
+
+              <span class="w-2 h-2 rounded-full bg-red-500"></span>
+            </button>
+
+            <button
+              class="flex items-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold"
+            >
+              + New Appointment
+            </button>
+          </div>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- STAT CARDS -->
+        <!-- ================================================= -->
+
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8"
+        >
+          <!-- Appointments -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Today's Appointments</p>
+
+                <h2 class="text-3xl font-bold mt-2">14</h2>
+
+                <p class="text-xs text-green-600 mt-2">↑ 3 from yesterday</p>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"
+              >
+                📅
+              </div>
+            </div>
+          </div>
+
+          <!-- Check-in -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Waiting for Check-in</p>
+
+                <h2 class="text-3xl font-bold mt-2">3</h2>
+
+                <p class="text-xs text-orange-600 mt-2">Requires attention</p>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl"
+              >
+                ⏱
+              </div>
+            </div>
+          </div>
+
+          <!-- Vehicles -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Vehicles In Service</p>
+
+                <h2 class="text-3xl font-bold mt-2">7</h2>
+
+                <p class="text-xs text-slate-500 mt-2">Currently at shop</p>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl"
+              >
+                🚗
+              </div>
+            </div>
+          </div>
+
+          <!-- Revenue -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-6">
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Today's Revenue</p>
+
+                <h2 class="text-3xl font-bold mt-2">$1,840</h2>
+
+                <p class="text-xs text-green-600 mt-2">↑ 12.5%</p>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl"
+              >
+                $
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- QUICK ACTIONS -->
+        <!-- ================================================= -->
+
+        <section class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+          <button
+            class="bg-indigo-600 text-white rounded-2xl p-5 text-left hover:bg-indigo-700 transition"
+          >
+            <div class="text-2xl mb-3">+</div>
+
+            <p class="font-semibold">New Appointment</p>
+
+            <p class="text-xs text-indigo-200 mt-1">Book a service</p>
+          </button>
+
+          <button
+            class="bg-white border border-slate-200 rounded-2xl p-5 text-left hover:bg-slate-50 transition"
+          >
+            <div class="text-2xl mb-3">👤</div>
+
+            <p class="font-semibold">Add Customer</p>
+
+            <p class="text-xs text-slate-500 mt-1">Register customer</p>
+          </button>
+
+          <button
+            class="bg-white border border-slate-200 rounded-2xl p-5 text-left hover:bg-slate-50 transition"
+          >
+            <div class="text-2xl mb-3">🚗</div>
+
+            <p class="font-semibold">Add Vehicle</p>
+
+            <p class="text-xs text-slate-500 mt-1">Register vehicle</p>
+          </button>
+
+          <button
+            class="bg-white border border-slate-200 rounded-2xl p-5 text-left hover:bg-slate-50 transition"
+          >
+            <div class="text-2xl mb-3">💳</div>
+
+            <p class="font-semibold">Take Payment</p>
+
+            <p class="text-xs text-slate-500 mt-1">Process payment</p>
+          </button>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- APPOINTMENTS + SIDE PANEL -->
+        <!-- ================================================= -->
+
+        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <!-- Today's appointments -->
+
+          <div
+            class="xl:col-span-2 bg-white border border-slate-200 rounded-2xl overflow-hidden"
+          >
+            <div
+              class="p-6 border-b border-slate-100 flex items-center justify-between"
+            >
+              <div>
+                <h2 class="text-xl font-bold">Today's Appointments</h2>
+
+                <p class="text-sm text-slate-500 mt-1">Front desk schedule</p>
+              </div>
+
+              <a
+                href="../appointments/appointments.html"
+                class="text-indigo-600 text-sm font-semibold"
+              >
+                View All
+              </a>
+            </div>
+
+            <!-- Appointment rows -->
+
+            <div class="divide-y divide-slate-100">
+              <!-- Appointment -->
+
+              <div class="p-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="w-20 shrink-0 text-center">
+                  <p class="font-bold text-lg">09:00</p>
+
+                  <p class="text-xs text-slate-400">AM</p>
+                </div>
+
+                <div class="w-px h-12 bg-slate-200 hidden md:block"></div>
+
+                <div class="flex-1 flex items-center gap-3">
+                  <div
+                    class="w-11 h-11 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold"
+                  >
+                    JS
+                  </div>
+
+                  <div>
+                    <p class="font-semibold">John Smith</p>
+
+                    <p class="text-sm text-slate-500">BMW X5 · Oil Change</p>
+                  </div>
+                </div>
+
+                <span
+                  class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                >
+                  Confirmed
+                </span>
+
+                <button class="text-slate-400 hover:text-slate-700 px-2">
+                  ⋮
+                </button>
+              </div>
+
+              <!-- Appointment -->
+
+              <div class="p-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="w-20 shrink-0 text-center">
+                  <p class="font-bold text-lg">10:30</p>
+
+                  <p class="text-xs text-slate-400">AM</p>
+                </div>
+
+                <div class="w-px h-12 bg-slate-200 hidden md:block"></div>
+
+                <div class="flex-1 flex items-center gap-3">
+                  <div
+                    class="w-11 h-11 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-semibold"
+                  >
+                    AM
+                  </div>
+
+                  <div>
+                    <p class="font-semibold">Alex Morgan</p>
+
+                    <p class="text-sm text-slate-500">
+                      Toyota Camry · Brake Inspection
+                    </p>
+                  </div>
+                </div>
+
+                <span
+                  class="px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold"
+                >
+                  Waiting
+                </span>
+
+                <button class="text-slate-400 hover:text-slate-700 px-2">
+                  ⋮
+                </button>
+              </div>
+
+              <!-- Appointment -->
+
+              <div class="p-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="w-20 shrink-0 text-center">
+                  <p class="font-bold text-lg">11:30</p>
+
+                  <p class="text-xs text-slate-400">AM</p>
+                </div>
+
+                <div class="w-px h-12 bg-slate-200 hidden md:block"></div>
+
+                <div class="flex-1 flex items-center gap-3">
+                  <div
+                    class="w-11 h-11 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-semibold"
+                  >
+                    DW
+                  </div>
+
+                  <div>
+                    <p class="font-semibold">David Wilson</p>
+
+                    <p class="text-sm text-slate-500">
+                      Honda Civic · Full Service
+                    </p>
+                  </div>
+                </div>
+
+                <span
+                  class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold"
+                >
+                  Upcoming
+                </span>
+
+                <button class="text-slate-400 hover:text-slate-700 px-2">
+                  ⋮
+                </button>
+              </div>
+
+              <!-- Appointment -->
+
+              <div class="p-5 flex flex-col md:flex-row md:items-center gap-4">
+                <div class="w-20 shrink-0 text-center">
+                  <p class="font-bold text-lg">01:00</p>
+
+                  <p class="text-xs text-slate-400">PM</p>
+                </div>
+
+                <div class="w-px h-12 bg-slate-200 hidden md:block"></div>
+
+                <div class="flex-1 flex items-center gap-3">
+                  <div
+                    class="w-11 h-11 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center font-semibold"
+                  >
+                    SJ
+                  </div>
+
+                  <div>
+                    <p class="font-semibold">Sarah Johnson</p>
+
+                    <p class="text-sm text-slate-500">
+                      Ford Focus · Tire Replacement
+                    </p>
+                  </div>
+                </div>
+
+                <span
+                  class="px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                >
+                  Confirmed
+                </span>
+
+                <button class="text-slate-400 hover:text-slate-700 px-2">
+                  ⋮
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- RIGHT PANEL -->
+          <!-- ================================================= -->
+
+          <div class="space-y-6">
+            <!-- Check-in queue -->
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6">
+              <div class="flex items-center justify-between mb-5">
+                <div>
+                  <h2 class="font-bold text-lg">Check-in Queue</h2>
+
+                  <p class="text-xs text-slate-500 mt-1">Customers waiting</p>
+                </div>
+
+                <span
+                  class="bg-orange-100 text-orange-700 px-2.5 py-1 rounded-full text-xs font-bold"
+                >
+                  3
+                </span>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-semibold"
+                  >
+                    AM
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="font-semibold text-sm">Alex Morgan</p>
+
+                    <p class="text-xs text-slate-500">Toyota Camry</p>
+                  </div>
+
+                  <button class="text-xs font-semibold text-indigo-600">
+                    Check-in
+                  </button>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-semibold"
+                  >
+                    MR
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="font-semibold text-sm">Michael Ross</p>
+
+                    <p class="text-xs text-slate-500">BMW 3 Series</p>
+                  </div>
+
+                  <button class="text-xs font-semibold text-indigo-600">
+                    Check-in
+                  </button>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-semibold"
+                  >
+                    KL
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="font-semibold text-sm">Kevin Lee</p>
+
+                    <p class="text-xs text-slate-500">Audi A4</p>
+                  </div>
+
+                  <button class="text-xs font-semibold text-indigo-600">
+                    Check-in
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicles ready -->
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6">
+              <div class="flex items-center justify-between mb-5">
+                <div>
+                  <h2 class="font-bold text-lg">Ready for Pickup</h2>
+
+                  <p class="text-xs text-slate-500 mt-1">Customers to notify</p>
+                </div>
+
+                <span
+                  class="bg-green-100 text-green-700 px-2.5 py-1 rounded-full text-xs font-bold"
+                >
+                  2
+                </span>
+              </div>
+
+              <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center"
+                  >
+                    🚗
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="font-semibold text-sm">BMW X5</p>
+
+                    <p class="text-xs text-slate-500">John Smith</p>
+                  </div>
+
+                  <button class="text-xs font-semibold text-indigo-600">
+                    Notify
+                  </button>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center"
+                  >
+                    🚗
+                  </div>
+
+                  <div class="flex-1">
+                    <p class="font-semibold text-sm">Honda Civic</p>
+
+                    <p class="text-xs text-slate-500">David Wilson</p>
+                  </div>
+
+                  <button class="text-xs font-semibold text-indigo-600">
+                    Notify
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

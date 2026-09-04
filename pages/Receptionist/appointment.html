@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Appointments</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Receptionist Portal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🏠 Dashboard
+          </a>
+
+          <!-- Active -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
+          >
+            📅 Appointments
+
+            <span class="ml-auto text-xs bg-white/20 px-2 py-0.5 rounded-full">
+              3
+            </span>
+          </a>
+
+          <a
+            href="../customers/customers.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👥 Customers
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🚗 Vehicles
+          </a>
+
+          <a
+            href="../services/services.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🔧 Services
+          </a>
+
+          <a
+            href="../payments/payments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            💳 Payments
+          </a>
+
+          <a
+            href="../invoices/invoices.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🧾 Invoices
+          </a>
+
+          <a
+            href="../profile/profile.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👤 Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            EM
+          </div>
+
+          <div>
+            <p class="font-semibold">Emily Miller</p>
+
+            <p class="text-xs text-slate-400">Receptionist</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 min-w-0 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">Appointments</h1>
+
+            <p class="text-slate-500 mt-1">
+              Manage customer appointments and service schedules.
+            </p>
+          </div>
+
+          <button
+            class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+          >
+            <span class="text-lg"> + </span>
+
+            New Appointment
+          </button>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- TOP STATS -->
+        <!-- ================================================= -->
+
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6"
+        >
+          <!-- Today's -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Today's Appointments</p>
+
+                <p class="text-3xl font-bold mt-2">14</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+              >
+                📅
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirmed -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Confirmed</p>
+
+                <p class="text-3xl font-bold mt-2">8</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-green-100 text-green-600 flex items-center justify-center"
+              >
+                ✓
+              </div>
+            </div>
+          </div>
+
+          <!-- Waiting -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Waiting</p>
+
+                <p class="text-3xl font-bold mt-2">3</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center"
+              >
+                ⏱
+              </div>
+            </div>
+          </div>
+
+          <!-- Completed -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Completed</p>
+
+                <p class="text-3xl font-bold mt-2">3</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center"
+              >
+                ✓
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- FILTER BAR -->
+        <!-- ================================================= -->
+
+        <section class="bg-white border border-slate-200 rounded-2xl p-5 mb-6">
+          <div class="flex flex-col xl:flex-row xl:items-center gap-4">
+            <!-- Search -->
+
+            <div class="relative flex-1">
+              <span
+                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+              >
+                🔍
+              </span>
+
+              <input
+                type="search"
+                placeholder="Search customer, vehicle or appointment..."
+                class="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <!-- Date -->
+
+            <input
+              type="date"
+              value="2026-08-17"
+              class="border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+
+            <!-- Status -->
+
+            <select
+              class="border border-slate-200 rounded-xl px-4 py-3 outline-none bg-white"
+            >
+              <option>All Statuses</option>
+
+              <option>Confirmed</option>
+
+              <option>Waiting</option>
+
+              <option>In Service</option>
+
+              <option>Completed</option>
+
+              <option>Cancelled</option>
+            </select>
+
+            <!-- Service -->
+
+            <select
+              class="border border-slate-200 rounded-xl px-4 py-3 outline-none bg-white"
+            >
+              <option>All Services</option>
+
+              <option>Oil Change</option>
+
+              <option>Brake Inspection</option>
+
+              <option>Full Service</option>
+
+              <option>Tire Replacement</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- APPOINTMENT TABLE -->
+        <!-- ================================================= -->
+
+        <section
+          class="bg-white border border-slate-200 rounded-2xl overflow-hidden"
+        >
+          <!-- Table Header -->
+
+          <div
+            class="px-6 py-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+          >
+            <div>
+              <h2 class="text-xl font-bold">Appointment Schedule</h2>
+
+              <p class="text-sm text-slate-500 mt-1">Monday, August 17, 2026</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button
+                class="px-3 py-2 rounded-lg bg-slate-100 text-sm font-semibold"
+              >
+                List
+              </button>
+
+              <button class="px-3 py-2 rounded-lg text-slate-500 text-sm">
+                Calendar
+              </button>
+            </div>
+          </div>
+
+          <!-- Table -->
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm min-w-[900px]">
+              <thead class="bg-slate-50 text-slate-500">
+                <tr>
+                  <th class="text-left px-6 py-4 font-semibold">Time</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Customer</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Vehicle</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Service</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Status</th>
+
+                  <th class="text-right px-6 py-4 font-semibold">Action</th>
+                </tr>
+              </thead>
+
+              <tbody class="divide-y divide-slate-100">
+                <!-- ROW 1 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5 font-semibold">09:00 AM</td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold"
+                      >
+                        JS
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">John Smith</p>
+
+                        <p class="text-xs text-slate-400">#CUS-1024</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">BMW X5</p>
+
+                    <p class="text-xs text-slate-400">2022 · Black</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Oil Change</p>
+
+                    <p class="text-xs text-slate-400">~ 45 min</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Confirmed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 font-semibold text-xs"
+                    >
+                      Check-in
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- ROW 2 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5 font-semibold">10:30 AM</td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-semibold"
+                      >
+                        AM
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">Alex Morgan</p>
+
+                        <p class="text-xs text-slate-400">#CUS-1041</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Toyota Camry</p>
+
+                    <p class="text-xs text-slate-400">2021 · White</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Brake Inspection</p>
+
+                    <p class="text-xs text-slate-400">~ 60 min</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold"
+                    >
+                      Waiting
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 font-semibold text-xs"
+                    >
+                      Check-in
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- ROW 3 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5 font-semibold">11:30 AM</td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-semibold"
+                      >
+                        DW
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">David Wilson</p>
+
+                        <p class="text-xs text-slate-400">#CUS-1088</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Honda Civic</p>
+
+                    <p class="text-xs text-slate-400">2023 · Silver</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Full Service</p>
+
+                    <p class="text-xs text-slate-400">~ 120 min</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold"
+                    >
+                      Upcoming
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-slate-500 hover:text-slate-900 font-semibold"
+                    >
+                      ⋮
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- ROW 4 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5 font-semibold">01:00 PM</td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center font-semibold"
+                      >
+                        SJ
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">Sarah Johnson</p>
+
+                        <p class="text-xs text-slate-400">#CUS-1092</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Ford Focus</p>
+
+                    <p class="text-xs text-slate-400">2020 · Blue</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Tire Replacement</p>
+
+                    <p class="text-xs text-slate-400">~ 90 min</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Confirmed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 font-semibold text-xs"
+                    >
+                      Check-in
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- ROW 5 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5 font-semibold">02:30 PM</td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-semibold"
+                      >
+                        MR
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">Michael Ross</p>
+
+                        <p class="text-xs text-slate-400">#CUS-1110</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">BMW 3 Series</p>
+
+                    <p class="text-xs text-slate-400">2022 · Gray</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p class="font-medium">Engine Diagnostics</p>
+
+                    <p class="text-xs text-slate-400">~ 90 min</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold"
+                    >
+                      In Service
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-slate-500 hover:text-slate-900 font-semibold"
+                    >
+                      ⋮
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+
+          <div
+            class="px-6 py-4 border-t border-slate-100 flex items-center justify-between"
+          >
+            <p class="text-sm text-slate-500">Showing 1–5 of 14 appointments</p>
+
+            <div class="flex items-center gap-2">
+              <button
+                class="w-9 h-9 rounded-lg border border-slate-200 text-slate-400"
+              >
+                ←
+              </button>
+
+              <button
+                class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-semibold"
+              >
+                1
+              </button>
+
+              <button class="w-9 h-9 rounded-lg border border-slate-200">
+                2
+              </button>
+
+              <button class="w-9 h-9 rounded-lg border border-slate-200">
+                3
+              </button>
+
+              <button class="w-9 h-9 rounded-lg border border-slate-200">
+                →
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

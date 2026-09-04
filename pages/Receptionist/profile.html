@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Profile</title>
+
+    <link rel="stylesheet" href="../../assets/css/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Receptionist Portal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🏠 Dashboard
+          </a>
+
+          <a
+            href="../appointments/appointments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            📅 Appointments
+
+            <span class="ml-auto text-xs bg-red-500 px-2 py-0.5 rounded-full">
+              3
+            </span>
+          </a>
+
+          <a
+            href="../customers/customers.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👥 Customers
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🚗 Vehicles
+          </a>
+
+          <a
+            href="../services/services.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🔧 Services
+          </a>
+
+          <a
+            href="../payments/payments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            💳 Payments
+          </a>
+
+          <a
+            href="../invoices/invoices.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🧾 Invoices
+          </a>
+
+          <!-- Active -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
+          >
+            👤 Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            EM
+          </div>
+
+          <div>
+            <p class="font-semibold">Emily Miller</p>
+
+            <p class="text-xs text-slate-400">Receptionist</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 min-w-0 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header class="mb-8">
+          <h1 class="text-3xl font-bold">My Profile</h1>
+
+          <p class="text-slate-500 mt-1">
+            Manage your personal information and account security.
+          </p>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- PROFILE HERO -->
+        <!-- ================================================= -->
+
+        <section class="bg-white border border-slate-200 rounded-2xl p-6 mb-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+          >
+            <!-- User -->
+
+            <div class="flex items-center gap-5">
+              <div class="relative">
+                <div
+                  class="w-24 h-24 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-3xl font-bold"
+                >
+                  EM
+                </div>
+
+                <button
+                  class="absolute -bottom-2 -right-2 w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center text-sm"
+                >
+                  📷
+                </button>
+              </div>
+
+              <div>
+                <h2 class="text-2xl font-bold">Emily Miller</h2>
+
+                <p class="text-slate-500 mt-1">Receptionist</p>
+
+                <div class="flex flex-wrap items-center gap-2 mt-3">
+                  <span
+                    class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                  >
+                    ● Active
+                  </span>
+
+                  <span
+                    class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-semibold"
+                  >
+                    Front Desk
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Last Login -->
+
+            <div class="md:text-right">
+              <p class="text-xs text-slate-400">Last login</p>
+
+              <p class="font-semibold mt-1">Today, 08:42 AM</p>
+
+              <p class="text-xs text-slate-400 mt-1">Windows · Chrome</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- CONTENT GRID -->
+        <!-- ================================================= -->
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <!-- ================================================= -->
+          <!-- LEFT / MAIN -->
+          <!-- ================================================= -->
+
+          <div class="xl:col-span-2 space-y-6">
+            <!-- ============================================= -->
+            <!-- PERSONAL INFORMATION -->
+            <!-- ============================================= -->
+
+            <section
+              class="bg-white border border-slate-200 rounded-2xl overflow-hidden"
+            >
+              <div class="px-6 py-5 border-b border-slate-100">
+                <h2 class="text-lg font-bold">Personal Information</h2>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  Update your basic profile information.
+                </p>
+              </div>
+
+              <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- First Name -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    First Name
+                  </label>
+
+                  <input
+                    type="text"
+                    value="Emily"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                <!-- Last Name -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    Last Name
+                  </label>
+
+                  <input
+                    type="text"
+                    value="Miller"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                <!-- Username -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    Username
+                  </label>
+
+                  <input
+                    type="text"
+                    value="emily.miller"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 outline-none"
+                    readonly
+                  />
+                </div>
+
+                <!-- Email -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    Email Address
+                  </label>
+
+                  <input
+                    type="email"
+                    value="emily@autocare.com"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                <!-- Phone -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    Phone Number
+                  </label>
+
+                  <input
+                    type="tel"
+                    value="+1 555 284 7192"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                <!-- Department -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    Department
+                  </label>
+
+                  <select
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option>Front Desk</option>
+
+                    <option>Customer Service</option>
+
+                    <option>Billing</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Save -->
+
+              <div
+                class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end"
+              >
+                <button
+                  class="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+                >
+                  Save Changes
+                </button>
+              </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- SECURITY -->
+            <!-- ============================================= -->
+
+            <section
+              class="bg-white border border-slate-200 rounded-2xl overflow-hidden"
+            >
+              <div class="px-6 py-5 border-b border-slate-100">
+                <h2 class="text-lg font-bold">Password & Security</h2>
+
+                <p class="text-sm text-slate-500 mt-1">
+                  Keep your account secure.
+                </p>
+              </div>
+
+              <div class="p-6 space-y-5">
+                <!-- Current -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    Current Password
+                  </label>
+
+                  <input
+                    type="password"
+                    placeholder="Enter current password"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                <!-- New -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    New Password
+                  </label>
+
+                  <input
+                    type="password"
+                    placeholder="Enter new password"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+
+                <!-- Confirm -->
+
+                <div>
+                  <label class="block text-sm font-medium mb-2">
+                    Confirm New Password
+                  </label>
+
+                  <input
+                    type="password"
+                    placeholder="Confirm new password"
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex justify-end"
+              >
+                <button
+                  class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold transition"
+                >
+                  Update Password
+                </button>
+              </div>
+            </section>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- RIGHT SIDEBAR -->
+          <!-- ================================================= -->
+
+          <aside class="space-y-6">
+            <!-- ============================================= -->
+            <!-- ROLE -->
+            <!-- ============================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <div class="flex items-center gap-3 mb-5">
+                <div
+                  class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                >
+                  🛡️
+                </div>
+
+                <div>
+                  <h3 class="font-bold">Account Role</h3>
+
+                  <p class="text-xs text-slate-400">Access level</p>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-slate-50">
+                <p class="text-sm text-slate-500">Role</p>
+
+                <p class="font-bold mt-1">Receptionist</p>
+
+                <p class="text-xs text-slate-400 mt-2">Front desk operations</p>
+              </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- WORK SUMMARY -->
+            <!-- ============================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <h3 class="font-bold mb-5">My Activity</h3>
+
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-500">
+                    Appointments handled
+                  </span>
+
+                  <span class="font-bold"> 184 </span>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-500"> Invoices created </span>
+
+                  <span class="font-bold"> 96 </span>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-500">
+                    Payments processed
+                  </span>
+
+                  <span class="font-bold"> 142 </span>
+                </div>
+
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-slate-500">
+                    Customers assisted
+                  </span>
+
+                  <span class="font-bold"> 218 </span>
+                </div>
+              </div>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- NOTIFICATIONS -->
+            <!-- ============================================= -->
+
+            <section class="bg-white border border-slate-200 rounded-2xl p-6">
+              <div class="flex items-center justify-between mb-5">
+                <div>
+                  <h3 class="font-bold">Notifications</h3>
+
+                  <p class="text-xs text-slate-400 mt-1">Account preferences</p>
+                </div>
+
+                <span
+                  class="w-9 h-9 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                >
+                  🔔
+                </span>
+              </div>
+
+              <!-- Email -->
+
+              <label
+                class="flex items-center justify-between gap-4 py-3 cursor-pointer"
+              >
+                <div>
+                  <p class="text-sm font-medium">Email notifications</p>
+
+                  <p class="text-xs text-slate-400">
+                    Important account updates
+                  </p>
+                </div>
+
+                <input
+                  type="checkbox"
+                  checked
+                  class="w-5 h-5 accent-indigo-600"
+                />
+              </label>
+
+              <!-- Appointment -->
+
+              <label
+                class="flex items-center justify-between gap-4 py-3 cursor-pointer"
+              >
+                <div>
+                  <p class="text-sm font-medium">Appointment alerts</p>
+
+                  <p class="text-xs text-slate-400">
+                    New and changed appointments
+                  </p>
+                </div>
+
+                <input
+                  type="checkbox"
+                  checked
+                  class="w-5 h-5 accent-indigo-600"
+                />
+              </label>
+
+              <!-- Payment -->
+
+              <label
+                class="flex items-center justify-between gap-4 py-3 cursor-pointer"
+              >
+                <div>
+                  <p class="text-sm font-medium">Payment alerts</p>
+
+                  <p class="text-xs text-slate-400">Payment confirmations</p>
+                </div>
+
+                <input type="checkbox" class="w-5 h-5 accent-indigo-600" />
+              </label>
+            </section>
+
+            <!-- ============================================= -->
+            <!-- LOGOUT -->
+            <!-- ============================================= -->
+
+            <button
+              class="w-full px-5 py-3 rounded-xl border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 font-semibold transition"
+            >
+              🚪 Sign Out
+            </button>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

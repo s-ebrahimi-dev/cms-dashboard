@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Payments</title>
+
+    <link rel="stylesheet" href="../assets/styles/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Receptionist Portal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🏠 Dashboard
+          </a>
+
+          <a
+            href="../appointments/appointments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            📅 Appointments
+
+            <span class="ml-auto text-xs bg-red-500 px-2 py-0.5 rounded-full">
+              3
+            </span>
+          </a>
+
+          <a
+            href="../customers/customers.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👥 Customers
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🚗 Vehicles
+          </a>
+
+          <a
+            href="../services/services.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🔧 Services
+          </a>
+
+          <!-- Active -->
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
+          >
+            💳 Payments
+          </a>
+
+          <a
+            href="../invoices/invoices.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🧾 Invoices
+          </a>
+
+          <a
+            href="../profile/profile.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👤 Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            EM
+          </div>
+
+          <div>
+            <p class="font-semibold">Emily Miller</p>
+
+            <p class="text-xs text-slate-400">Receptionist</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 min-w-0 p-6 lg:p-8">
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <header
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">Payments</h1>
+
+            <p class="text-slate-500 mt-1">
+              Manage customer payments and transactions.
+            </p>
+          </div>
+
+          <button
+            class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
+          >
+            <span class="text-lg"> + </span>
+
+            Record Payment
+          </button>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- STAT CARDS -->
+        <!-- ================================================= -->
+
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6"
+        >
+          <!-- Today's Revenue -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Today's Payments</p>
+
+                <p class="text-3xl font-bold mt-2">$3,840</p>
+
+                <p class="text-xs text-green-600 mt-2">
+                  ↑ 14.2% from yesterday
+                </p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl"
+              >
+                $
+              </div>
+            </div>
+          </div>
+
+          <!-- Monthly Revenue -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">This Month</p>
+
+                <p class="text-3xl font-bold mt-2">$48,620</p>
+
+                <p class="text-xs text-green-600 mt-2">
+                  ↑ 8.6% from last month
+                </p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"
+              >
+                📈
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Pending Payments</p>
+
+                <p class="text-3xl font-bold mt-2">$7,240</p>
+
+                <p class="text-xs text-orange-600 mt-2">23 unpaid invoices</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl"
+              >
+                !
+              </div>
+            </div>
+          </div>
+
+          <!-- Transactions -->
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Transactions</p>
+
+                <p class="text-3xl font-bold mt-2">186</p>
+
+                <p class="text-xs text-slate-500 mt-2">This month</p>
+              </div>
+
+              <div
+                class="w-11 h-11 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl"
+              >
+                #
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- SEARCH / FILTER -->
+        <!-- ================================================= -->
+
+        <section class="bg-white border border-slate-200 rounded-2xl p-5 mb-6">
+          <div class="flex flex-col xl:flex-row xl:items-center gap-4">
+            <!-- Search -->
+
+            <div class="relative flex-1">
+              <span
+                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+              >
+                🔍
+              </span>
+
+              <input
+                type="search"
+                placeholder="Search customer, invoice or transaction ID..."
+                class="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <!-- Payment Status -->
+
+            <select
+              class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+            >
+              <option>All Payments</option>
+
+              <option>Completed</option>
+
+              <option>Pending</option>
+
+              <option>Refunded</option>
+            </select>
+
+            <!-- Payment Method -->
+
+            <select
+              class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+            >
+              <option>All Methods</option>
+
+              <option>Cash</option>
+
+              <option>Card</option>
+
+              <option>Bank Transfer</option>
+            </select>
+
+            <!-- Date -->
+
+            <select
+              class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+            >
+              <option>All Dates</option>
+
+              <option>Today</option>
+
+              <option>This Week</option>
+
+              <option>This Month</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- PAYMENTS TABLE -->
+        <!-- ================================================= -->
+
+        <section
+          class="bg-white border border-slate-200 rounded-2xl overflow-hidden"
+        >
+          <!-- Header -->
+
+          <div
+            class="px-6 py-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+          >
+            <div>
+              <h2 class="text-xl font-bold">Recent Transactions</h2>
+
+              <p class="text-sm text-slate-500 mt-1">
+                Latest customer payment activity
+              </p>
+            </div>
+
+            <button class="text-sm text-slate-500 hover:text-slate-900">
+              Export
+            </button>
+          </div>
+
+          <!-- Table -->
+
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[1050px] text-sm">
+              <thead class="bg-slate-50">
+                <tr>
+                  <th class="text-left px-6 py-4 text-slate-500 font-semibold">
+                    Transaction
+                  </th>
+
+                  <th class="text-left px-6 py-4 text-slate-500 font-semibold">
+                    Customer
+                  </th>
+
+                  <th class="text-left px-6 py-4 text-slate-500 font-semibold">
+                    Invoice
+                  </th>
+
+                  <th class="text-left px-6 py-4 text-slate-500 font-semibold">
+                    Method
+                  </th>
+
+                  <th class="text-left px-6 py-4 text-slate-500 font-semibold">
+                    Date
+                  </th>
+
+                  <th class="text-left px-6 py-4 text-slate-500 font-semibold">
+                    Amount
+                  </th>
+
+                  <th class="text-left px-6 py-4 text-slate-500 font-semibold">
+                    Status
+                  </th>
+
+                  <th class="text-right px-6 py-4 text-slate-500 font-semibold">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="divide-y divide-slate-100">
+                <!-- Payment 1 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-mono font-semibold">#TXN-82941</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold"
+                      >
+                        JS
+                      </div>
+
+                      <div>
+                        <p class="font-medium">John Smith</p>
+
+                        <p class="text-xs text-slate-400">BMW X5</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
+                    >
+                      INV-2048
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="flex items-center gap-2"> 💳 Card </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p>Aug 17, 2026</p>
+
+                    <p class="text-xs text-slate-400">09:42 AM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="font-semibold"> $420.00 </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 text-xs font-semibold"
+                    >
+                      Receipt
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Payment 2 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-mono font-semibold">#TXN-82940</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-semibold"
+                      >
+                        AM
+                      </div>
+
+                      <div>
+                        <p class="font-medium">Alex Morgan</p>
+
+                        <p class="text-xs text-slate-400">Toyota Camry</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
+                    >
+                      INV-2047
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="flex items-center gap-2"> 💵 Cash </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p>Aug 17, 2026</p>
+
+                    <p class="text-xs text-slate-400">09:18 AM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="font-semibold"> $180.00 </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 text-xs font-semibold"
+                    >
+                      Receipt
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Payment 3 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-mono font-semibold">#TXN-82939</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-semibold"
+                      >
+                        DW
+                      </div>
+
+                      <div>
+                        <p class="font-medium">David Wilson</p>
+
+                        <p class="text-xs text-slate-400">Honda Civic</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
+                    >
+                      INV-2046
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="flex items-center gap-2">
+                      🏦 Bank Transfer
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p>Aug 16, 2026</p>
+
+                    <p class="text-xs text-slate-400">04:32 PM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="font-semibold"> $650.00 </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold"
+                    >
+                      Pending
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg bg-orange-50 text-orange-600 text-xs font-semibold"
+                    >
+                      Verify
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Payment 4 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-mono font-semibold">#TXN-82938</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center font-semibold"
+                      >
+                        SJ
+                      </div>
+
+                      <div>
+                        <p class="font-medium">Sarah Johnson</p>
+
+                        <p class="text-xs text-slate-400">Ford Focus</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
+                    >
+                      INV-2045
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="flex items-center gap-2"> 💳 Card </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p>Aug 16, 2026</p>
+
+                    <p class="text-xs text-slate-400">02:14 PM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="font-semibold"> $275.00 </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 text-xs font-semibold"
+                    >
+                      Receipt
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Payment 5 -->
+
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <p class="font-mono font-semibold">#TXN-82937</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center font-semibold"
+                      >
+                        MR
+                      </div>
+
+                      <div>
+                        <p class="font-medium">Michael Ross</p>
+
+                        <p class="text-xs text-slate-400">BMW 3 Series</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
+                    >
+                      INV-2044
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="flex items-center gap-2"> 💵 Cash </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <p>Aug 15, 2026</p>
+
+                    <p class="text-xs text-slate-400">11:27 AM</p>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span class="font-semibold"> $320.00 </span>
+                  </td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="inline-flex px-3 py-1.5 rounded-full bg-red-100 text-red-700 text-xs font-semibold"
+                    >
+                      Refunded
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="px-3 py-2 rounded-lg bg-slate-100 text-slate-600 text-xs font-semibold"
+                    >
+                      Details
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- PAGINATION -->
+          <!-- ================================================= -->
+
+          <div
+            class="px-6 py-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+          >
+            <p class="text-sm text-slate-500">
+              Showing 1–5 of 186 transactions
+            </p>
+
+            <div class="flex items-center gap-2">
+              <button
+                class="w-9 h-9 rounded-lg border border-slate-200 text-slate-400"
+              >
+                ←
+              </button>
+
+              <button
+                class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-semibold"
+              >
+                1
+              </button>
+
+              <button class="w-9 h-9 rounded-lg border border-slate-200">
+                2
+              </button>
+
+              <button class="w-9 h-9 rounded-lg border border-slate-200">
+                3
+              </button>
+
+              <button class="w-9 h-9 rounded-lg border border-slate-200">
+                ...
+              </button>
+
+              <button class="w-9 h-9 rounded-lg border border-slate-200">
+                →
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

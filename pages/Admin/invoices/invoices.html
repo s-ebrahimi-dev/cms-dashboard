@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Invoices</title>
+
+    <link rel="stylesheet" href="/styles/app.css" />
+    <link rel="icon" href="/Frontend/assets/images/icon.jpg" />
+  </head>
+
+  <body class="relative bg-slate-100 text-slate-900">
+    <svg class="hidden">
+      <symbol
+        id="arrow-right"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        />
+      </symbol>
+      <symbol
+        id="arrow-left"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 19.5 8.25 12l7.5-7.5"
+        />
+      </symbol>
+    </svg>
+    <div class="layout">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <section id="sidebar-container" class="sidebar-container z-50">
+        <!-- Data Loaded By Js -->
+      </section>
+
+      <!-- Mobile sidebar -->
+      <aside id="mobile-aside" class="mobile-aside z-50">
+        <!-- Logo -->
+
+        <div
+          class="logo items-center justify-center gap-3 transition-all duration-500;"
+        >
+          <div class="logo-mark">
+            <img
+              class="w-12 h-8"
+              src="/images/icon.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="logo-text">
+            <h1 class="text-xl font-bold">AutoCare Pro</h1>
+            <p class="text-xs text-slate-400">CMS Dashboard</p>
+          </div>
+        </div>
+
+        <!-- Menu -->
+
+        <nav class="space-y-2 relative">
+          <!-- Aside-Right-Button -->
+          <button
+            href="#"
+            class="aside-mobile-btn flex absolute -right-10 top-0 bottom-0 my-auto items-center justify-center w-6 h-10 bg-[#111827] rounded-lg cursor-pointer transition-all duration-500"
+          >
+            <svg class="mobile-open-icon w-6 h-6 text-white">
+              <use href="#arrow-right"></use>
+            </svg>
+            <svg class="mobile-close-icon w-6 h-6 text-white hidden rotate-180">
+              <use href="#arrow-right"></use>
+            </svg>
+          </button>
+
+          <ul class="menu-list">
+            <!--List-Items  -->
+            <li class="list-item">
+              <a
+                class="menu-item flex items-center justify-start"
+                href="../Dashboard/dashboard.html"
+              >
+                <span class="menu-icon w-5 h-5 text-white">
+                  <svg
+                    class="icon-20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M16.0756 2H19.4616C20.8639 2 22.0001 3.14585 22.0001 4.55996V7.97452C22.0001 9.38864 20.8639 10.5345 19.4616 10.5345H16.0756C14.6734 10.5345 13.5371 9.38864 13.5371 7.97452V4.55996C13.5371 3.14585 14.6734 2 16.0756 2Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M4.53852 2H7.92449C9.32676 2 10.463 3.14585 10.463 4.55996V7.97452C10.463 9.38864 9.32676 10.5345 7.92449 10.5345H4.53852C3.13626 10.5345 2 9.38864 2 7.97452V4.55996C2 3.14585 3.13626 2 4.53852 2ZM4.53852 13.4655H7.92449C9.32676 13.4655 10.463 14.6114 10.463 16.0255V19.44C10.463 20.8532 9.32676 22 7.92449 22H4.53852C3.13626 22 2 20.8532 2 19.44V16.0255C2 14.6114 3.13626 13.4655 4.53852 13.4655ZM19.4615 13.4655H16.0755C14.6732 13.4655 13.537 14.6114 13.537 16.0255V19.44C13.537 20.8532 14.6732 22 16.0755 22H19.4615C20.8637 22 22 20.8532 22 19.44V16.0255C22 14.6114 20.8637 13.4655 19.4615 13.4655Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text"> Dashboard</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Customers/customer.html">
+                <span class="menu-icon w-5 h-5 text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    version="1.1"
+                    viewBox="0 0 256 256"
+                    xml:space="preserve"
+                  >
+                    <g
+                      style="
+                        stroke: none;
+                        stroke-width: 0;
+                        stroke-dasharray: none;
+                        stroke-linecap: butt;
+                        stroke-linejoin: miter;
+                        stroke-miterlimit: 10;
+                        fill: none;
+                        fill-rule: nonzero;
+                        opacity: 1;
+                      "
+                      transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+                    >
+                      <path
+                        d="M 45 0 C 20.147 0 0 20.147 0 45 c 0 24.853 20.147 45 45 45 s 45 -20.147 45 -45 C 90 20.147 69.853 0 45 0 z M 45 22.007 c 8.899 0 16.14 7.241 16.14 16.14 c 0 8.9 -7.241 16.14 -16.14 16.14 c -8.9 0 -16.14 -7.24 -16.14 -16.14 C 28.86 29.248 36.1 22.007 45 22.007 z M 45 83.843 c -11.135 0 -21.123 -4.885 -27.957 -12.623 c 3.177 -5.75 8.144 -10.476 14.05 -13.341 c 2.009 -0.974 4.354 -0.958 6.435 0.041 c 2.343 1.126 4.857 1.696 7.473 1.696 c 2.615 0 5.13 -0.571 7.473 -1.696 c 2.083 -1 4.428 -1.015 6.435 -0.041 c 5.906 2.864 10.872 7.591 14.049 13.341 C 66.123 78.957 56.135 83.843 45 83.843 z"
+                        style="
+                          stroke: none;
+                          stroke-width: 1;
+                          stroke-dasharray: none;
+                          stroke-linecap: butt;
+                          stroke-linejoin: miter;
+                          stroke-miterlimit: 10;
+                          fill-rule: nonzero;
+                          opacity: 1;
+                        "
+                        transform=" matrix(1 0 0 1 0 0) "
+                        stroke-linecap="round"
+                        fill="currentColor"
+                      />
+                    </g>
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Customers</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Vehicles/vehicles.html">
+                <span class="menu-icon w-6 h-6 text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    version="1.1"
+                    viewBox="0 0 256 256"
+                    xml:space="preserve"
+                  >
+                    <g
+                      style="
+                        stroke: none;
+                        stroke-width: 0;
+                        stroke-dasharray: none;
+                        stroke-linecap: butt;
+                        stroke-linejoin: miter;
+                        stroke-miterlimit: 10;
+                        fill: none;
+                        fill-rule: nonzero;
+                        opacity: 1;
+                      "
+                      transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+                    >
+                      <circle
+                        cx="70.735"
+                        cy="56.775"
+                        r="1.955"
+                        style="
+                          stroke: none;
+                          stroke-width: 1;
+                          stroke-dasharray: none;
+                          stroke-linecap: butt;
+                          stroke-linejoin: miter;
+                          stroke-miterlimit: 10;
+                          fill: rgb(0, 0, 0);
+                          fill-rule: nonzero;
+                          opacity: 1;
+                        "
+                        transform="  matrix(1 0 0 1 0 0) "
+                      />
+                      <circle
+                        cx="19.765"
+                        cy="56.775"
+                        r="1.955"
+                        style="
+                          stroke: none;
+                          stroke-width: 1;
+                          stroke-dasharray: none;
+                          stroke-linecap: butt;
+                          stroke-linejoin: miter;
+                          stroke-miterlimit: 10;
+                          fill: rgb(0, 0, 0);
+                          fill-rule: nonzero;
+                          opacity: 1;
+                        "
+                        transform="  matrix(1 0 0 1 0 0) "
+                      />
+                      <path
+                        d="M 75.479 36.045 l -7.987 -1.22 l -2.35 -2.574 c -5.599 -6.132 -13.571 -9.649 -21.874 -9.649 h -6.245 c -1.357 0 -2.696 0.107 -4.016 0.296 c -0.022 0.004 -0.044 0.006 -0.066 0.01 c -7.799 1.133 -14.802 5.468 -19.285 12.106 C 5.706 37.913 0 45.358 0 52.952 c 0 3.254 2.647 5.9 5.9 5.9 h 3.451 c 0.969 4.866 5.269 8.545 10.416 8.545 s 9.447 -3.679 10.416 -8.545 h 30.139 c 0.969 4.866 5.27 8.545 10.416 8.545 s 9.446 -3.679 10.415 -8.545 H 84.1 c 3.254 0 5.9 -2.646 5.9 -5.9 C 90 44.441 83.894 37.331 75.479 36.045 z M 43.269 26.602 c 7.065 0 13.848 2.949 18.676 8.094 H 39.464 l -3.267 -8.068 c 0.275 -0.009 0.55 -0.026 0.826 -0.026 H 43.269 z M 32.08 27.118 l 3.068 7.578 H 18.972 C 22.429 30.813 27.018 28.169 32.08 27.118 z M 19.767 63.397 c -3.652 0 -6.623 -2.971 -6.623 -6.622 c 0 -3.652 2.971 -6.623 6.623 -6.623 s 6.623 2.971 6.623 6.623 C 26.39 60.427 23.419 63.397 19.767 63.397 z M 70.738 63.397 c -3.652 0 -6.623 -2.971 -6.623 -6.622 c 0 -3.652 2.971 -6.623 6.623 -6.623 c 3.651 0 6.622 2.971 6.622 6.623 C 77.36 60.427 74.39 63.397 70.738 63.397 z"
+                        style="
+                          stroke: none;
+                          stroke-width: 1;
+                          stroke-dasharray: none;
+                          stroke-linecap: butt;
+                          stroke-linejoin: miter;
+                          stroke-miterlimit: 10;
+                          fill-rule: nonzero;
+                          opacity: 1;
+                        "
+                        transform=" matrix(1 0 0 1 0 0) "
+                        stroke-linecap="round"
+                        fill="currentColor"
+                      />
+                    </g>
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Vehicles</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Appointment/appointment.html">
+                <span class="menu-icon w-5 -h-5">
+                  <svg
+                    class="icon-20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M3 16.87V9.25699H21V16.931C21 20.07 19.0241 22 15.8628 22H8.12733C4.99561 22 3 20.03 3 16.87ZM7.95938 14.41C7.50494 14.431 7.12953 14.07 7.10977 13.611C7.10977 13.151 7.46542 12.771 7.91987 12.75C8.36443 12.75 8.72997 13.101 8.73985 13.55C8.7596 14.011 8.40395 14.391 7.95938 14.41ZM12.0198 14.41C11.5653 14.431 11.1899 14.07 11.1701 13.611C11.1701 13.151 11.5258 12.771 11.9802 12.75C12.4248 12.75 12.7903 13.101 12.8002 13.55C12.82 14.011 12.4643 14.391 12.0198 14.41ZM16.0505 18.09C15.596 18.08 15.2305 17.7 15.2305 17.24C15.2206 16.78 15.5862 16.401 16.0406 16.391H16.0505C16.5148 16.391 16.8902 16.771 16.8902 17.24C16.8902 17.71 16.5148 18.09 16.0505 18.09ZM11.1701 17.24C11.1899 17.7 11.5653 18.061 12.0198 18.04C12.4643 18.021 12.82 17.641 12.8002 17.181C12.7903 16.731 12.4248 16.38 11.9802 16.38C11.5258 16.401 11.1701 16.78 11.1701 17.24ZM7.09989 17.24C7.11965 17.7 7.49506 18.061 7.94951 18.04C8.39407 18.021 8.74973 17.641 8.72997 17.181C8.72009 16.731 8.35456 16.38 7.90999 16.38C7.45554 16.401 7.09989 16.78 7.09989 17.24ZM15.2404 13.601C15.2404 13.141 15.596 12.771 16.0505 12.761C16.4951 12.761 16.8507 13.12 16.8705 13.561C16.8804 14.021 16.5247 14.401 16.0801 14.41C15.6257 14.42 15.2503 14.07 15.2404 13.611V13.601Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      opacity="0.4"
+                      d="M3.00336 9.2569C3.0162 8.6699 3.0656 7.5049 3.15846 7.1299C3.63267 5.0209 5.24298 3.6809 7.54485 3.4899H16.4559C18.738 3.6909 20.3681 5.0399 20.8423 7.1299C20.9342 7.4949 20.9836 8.6689 20.9964 9.2569H3.00336Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      d="M8.30486 6.59C8.73955 6.59 9.06556 6.261 9.06556 5.82V2.771C9.06556 2.33 8.73955 2 8.30486 2C7.87017 2 7.54416 2.33 7.54416 2.771V5.82C7.54416 6.261 7.87017 6.59 8.30486 6.59Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      d="M15.6949 6.59C16.1197 6.59 16.4556 6.261 16.4556 5.82V2.771C16.4556 2.33 16.1197 2 15.6949 2C15.2603 2 14.9342 2.33 14.9342 2.771V5.82C14.9342 6.261 15.2603 6.59 15.6949 6.59Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Appointments</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Services-page/services.html">
+                <span class="menu-icon text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437 1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008Z"
+                    />
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Services</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Employees/employees.html">
+                <span class="menu-icon">
+                  <svg
+                    width="20"
+                    class="icon-20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.9488 14.54C8.49884 14.54 5.58789 15.1038 5.58789 17.2795C5.58789 19.4562 8.51765 20.0001 11.9488 20.0001C15.3988 20.0001 18.3098 19.4364 18.3098 17.2606C18.3098 15.084 15.38 14.54 11.9488 14.54Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      opacity="0.4"
+                      d="M11.949 12.467C14.2851 12.467 16.1583 10.5831 16.1583 8.23351C16.1583 5.88306 14.2851 4 11.949 4C9.61293 4 7.73975 5.88306 7.73975 8.23351C7.73975 10.5831 9.61293 12.467 11.949 12.467Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      opacity="0.4"
+                      d="M21.0881 9.21923C21.6925 6.84176 19.9205 4.70654 17.664 4.70654C17.4187 4.70654 17.1841 4.73356 16.9549 4.77949C16.9244 4.78669 16.8904 4.802 16.8725 4.82902C16.8519 4.86324 16.8671 4.90917 16.8895 4.93889C17.5673 5.89528 17.9568 7.0597 17.9568 8.30967C17.9568 9.50741 17.5996 10.6241 16.9728 11.5508C16.9083 11.6462 16.9656 11.775 17.0793 11.7948C17.2369 11.8227 17.3981 11.8371 17.5629 11.8416C19.2059 11.8849 20.6807 10.8213 21.0881 9.21923Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      d="M22.8094 14.817C22.5086 14.1722 21.7824 13.73 20.6783 13.513C20.1572 13.3851 18.747 13.205 17.4352 13.2293C17.4155 13.232 17.4048 13.2455 17.403 13.2545C17.4003 13.2671 17.4057 13.2887 17.4316 13.3022C18.0378 13.6039 20.3811 14.916 20.0865 17.6834C20.074 17.8032 20.1698 17.9068 20.2888 17.8888C20.8655 17.8059 22.3492 17.4853 22.8094 16.4866C23.0637 15.9589 23.0637 15.3456 22.8094 14.817Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      opacity="0.4"
+                      d="M7.04459 4.77973C6.81626 4.7329 6.58077 4.70679 6.33543 4.70679C4.07901 4.70679 2.30701 6.84201 2.9123 9.21947C3.31882 10.8216 4.79355 11.8851 6.43661 11.8419C6.60136 11.8374 6.76343 11.8221 6.92013 11.7951C7.03384 11.7753 7.09115 11.6465 7.02668 11.551C6.3999 10.6234 6.04263 9.50765 6.04263 8.30991C6.04263 7.05904 6.43303 5.89462 7.11085 4.93913C7.13234 4.90941 7.14845 4.86348 7.12696 4.82926C7.10906 4.80135 7.07593 4.78694 7.04459 4.77973Z"
+                      fill="currentColor"
+                    ></path>
+                    <path
+                      d="M3.32156 13.5127C2.21752 13.7297 1.49225 14.1719 1.19139 14.8167C0.936203 15.3453 0.936203 15.9586 1.19139 16.4872C1.65163 17.4851 3.13531 17.8066 3.71195 17.8885C3.83104 17.9065 3.92595 17.8038 3.91342 17.6832C3.61883 14.9167 5.9621 13.6046 6.56918 13.3029C6.59425 13.2885 6.59962 13.2677 6.59694 13.2542C6.59515 13.2452 6.5853 13.2317 6.5656 13.2299C5.25294 13.2047 3.84358 13.3848 3.32156 13.5127Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Employees</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Invoices/invoices.html">
+                <span class="menu-icon w-6 h-5 text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z"
+                    />
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Invoices</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Payment/payment.html">
+                <span class="menu-icon w-5 h-5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"
+                    />
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Payments</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Users/users.html">
+                <span class="menu-icon w-5 h-5 text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"
+                    />
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Reports</span>
+              </a>
+            </li>
+            <li class="list-item">
+              <a class="menu-item" href="../Settings-page/settings.html">
+                <span class="menu-icon w-5 h-5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"
+                    />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                    />
+                  </svg>
+                </span>
+
+                <span class="mobile-menu-text">Settings</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Upgrade Card -->
+
+        <div class="upgrade mt-20">
+          <h3 class="font-bold mb-2">Upgrade Pro</h3>
+
+          <p class="upgrade-text text-sm text-indigo-100 mb-4 w-40 text-wrap">
+            Unlock advanced reports and analytics
+          </p>
+
+          <a
+            href="#"
+            class="inline-block cursor-pointer bg-white text-indigo-600 px-4 py-2 rounded-lg font-semibold text-sm"
+          >
+            Upgrade
+          </a>
+        </div>
+      </aside>
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="main">
+        <!-- Header -->
+
+        <header
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">Invoices</h1>
+
+            <p class="text-slate-500 mt-1">
+              View and manage your service invoices
+            </p>
+          </div>
+
+          <button
+            class="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl font-semibold transition"
+          >
+            ⬇ Download All
+          </button>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- SUMMARY -->
+        <!-- ================================================= -->
+
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8"
+        >
+          <!-- Total Invoices -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Total Invoices</p>
+
+                <h2 class="text-3xl font-bold mt-2">12</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"
+              >
+                🧾
+              </div>
+            </div>
+          </div>
+
+          <!-- Paid -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Paid</p>
+
+                <h2 class="text-3xl font-bold mt-2">10</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl"
+              >
+                ✓
+              </div>
+            </div>
+          </div>
+
+          <!-- Unpaid -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Unpaid</p>
+
+                <h2 class="text-3xl font-bold mt-2">2</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl"
+              >
+                !
+              </div>
+            </div>
+          </div>
+
+          <!-- Total Amount -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Total Amount</p>
+
+                <h2 class="text-3xl font-bold mt-2">$2,770</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl"
+              >
+                $
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- FILTERS -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-5 mb-6">
+          <div
+            class="flex flex-col lg:flex-row gap-4 lg:items-center lg:justify-between"
+          >
+            <!-- Search -->
+
+            <div class="relative w-full lg:max-w-sm">
+              <input
+                type="text"
+                placeholder="Search invoice..."
+                class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <!-- Filters -->
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <select
+                class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+              >
+                <option>All Status</option>
+
+                <option>Paid</option>
+
+                <option>Pending</option>
+
+                <option>Overdue</option>
+              </select>
+
+              <select
+                class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+              >
+                <option>All Vehicles</option>
+
+                <option>BMW X5</option>
+
+                <option>Toyota Camry</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- INVOICE LIST -->
+        <!-- ================================================= -->
+
+        <section
+          class="bg-white rounded-2xl border border-slate-200 overflow-hidden"
+        >
+          <!-- Heading -->
+
+          <div class="p-6 border-b border-slate-100">
+            <h2 class="text-xl font-bold">Invoice History</h2>
+
+            <p class="text-sm text-slate-500 mt-1">
+              Your service invoices and billing documents
+            </p>
+          </div>
+
+          <!-- Desktop Table -->
+
+          <div class="hidden lg:block overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-slate-50 text-slate-500">
+                <tr>
+                  <th class="text-left px-6 py-4 font-semibold">Invoice</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Service</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Vehicle</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Date</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Amount</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Status</th>
+
+                  <th class="text-right px-6 py-4 font-semibold">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Invoice 1 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                      >
+                        🧾
+                      </div>
+
+                      <div>
+                        <p class="font-semibold text-indigo-600">INV-1048</p>
+
+                        <p class="text-xs text-slate-500">#SRV-1048</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Brake Repair</td>
+
+                  <td class="px-6 py-5 text-slate-600">BMW X5</td>
+
+                  <td class="px-6 py-5 text-slate-600">Jul 10, 2026</td>
+
+                  <td class="px-6 py-5 font-semibold">$280.00</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Paid
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <div class="flex justify-end gap-3">
+                      <button class="text-indigo-600 font-semibold">
+                        View
+                      </button>
+
+                      <button class="text-slate-500 font-semibold">
+                        Download
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Invoice 2 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                      >
+                        🧾
+                      </div>
+
+                      <div>
+                        <p class="font-semibold text-indigo-600">INV-1031</p>
+
+                        <p class="text-xs text-slate-500">#SRV-1031</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Oil Change</td>
+
+                  <td class="px-6 py-5 text-slate-600">BMW X5</td>
+
+                  <td class="px-6 py-5 text-slate-600">Jun 15, 2026</td>
+
+                  <td class="px-6 py-5 font-semibold">$85.00</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Paid
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <div class="flex justify-end gap-3">
+                      <button class="text-indigo-600 font-semibold">
+                        View
+                      </button>
+
+                      <button class="text-slate-500 font-semibold">
+                        Download
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Invoice 3 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                      >
+                        🧾
+                      </div>
+
+                      <div>
+                        <p class="font-semibold text-indigo-600">INV-1014</p>
+
+                        <p class="text-xs text-slate-500">#SRV-1014</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Full Inspection</td>
+
+                  <td class="px-6 py-5 text-slate-600">Toyota Camry</td>
+
+                  <td class="px-6 py-5 text-slate-600">May 20, 2026</td>
+
+                  <td class="px-6 py-5 font-semibold">$120.00</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Paid
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <div class="flex justify-end gap-3">
+                      <button class="text-indigo-600 font-semibold">
+                        View
+                      </button>
+
+                      <button class="text-slate-500 font-semibold">
+                        Download
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Invoice 4 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center"
+                      >
+                        !
+                      </div>
+
+                      <div>
+                        <p class="font-semibold text-orange-600">INV-0998</p>
+
+                        <p class="text-xs text-slate-500">#SRV-0998</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Tire Replacement</td>
+
+                  <td class="px-6 py-5 text-slate-600">Toyota Camry</td>
+
+                  <td class="px-6 py-5 text-slate-600">Apr 18, 2026</td>
+
+                  <td class="px-6 py-5 font-semibold">$320.00</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Pending
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs font-semibold"
+                    >
+                      Pay Now
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- MOBILE INVOICE CARDS -->
+          <!-- ================================================= -->
+
+          <div class="lg:hidden p-4 space-y-4">
+            <!-- Invoice Card -->
+
+            <article class="border border-slate-200 rounded-xl p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center"
+                  >
+                    🧾
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold text-indigo-600">INV-1048</h3>
+
+                    <p class="text-xs text-slate-500">Brake Repair</p>
+                  </div>
+                </div>
+
+                <span
+                  class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Paid
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mt-5 text-sm">
+                <div>
+                  <p class="text-slate-400">Vehicle</p>
+
+                  <p class="font-medium">BMW X5</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Amount</p>
+
+                  <p class="font-medium">$280.00</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Date</p>
+
+                  <p class="font-medium">Jul 10, 2026</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Service</p>
+
+                  <p class="font-medium">Brake Repair</p>
+                </div>
+              </div>
+
+              <div class="flex gap-3 mt-5">
+                <button
+                  class="flex-1 py-2.5 rounded-xl border border-slate-200 text-indigo-600 font-semibold"
+                >
+                  View
+                </button>
+
+                <button
+                  class="flex-1 py-2.5 rounded-xl bg-slate-900 text-white font-semibold"
+                >
+                  Download
+                </button>
+              </div>
+            </article>
+
+            <!-- Pending Invoice -->
+
+            <article class="border border-orange-200 rounded-xl p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center"
+                  >
+                    !
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold text-orange-600">INV-0998</h3>
+
+                    <p class="text-xs text-slate-500">Tire Replacement</p>
+                  </div>
+                </div>
+
+                <span
+                  class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Pending
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mt-5 text-sm">
+                <div>
+                  <p class="text-slate-400">Vehicle</p>
+
+                  <p class="font-medium">Toyota Camry</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Amount</p>
+
+                  <p class="font-medium">$320.00</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Date</p>
+
+                  <p class="font-medium">Apr 18, 2026</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Service</p>
+
+                  <p class="font-medium">Tire Replacement</p>
+                </div>
+              </div>
+
+              <button
+                class="w-full mt-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold"
+              >
+                Pay $320.00
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <div
+          id="overlay"
+          class="overlay hidden absolute inset-0 bg-black/40 z-40"
+        ></div>
+      </main>
+    </div>
+
+    <script
+      type="module"
+      src="../../../scripts/pages/admin/invoices.js"
+    ></script>
+  </body>
+</html>

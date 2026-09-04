@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AutoCare - Service History</title>
+
+    <link rel="stylesheet" href="../assets/styles/app.css" />
+  </head>
+
+  <body class="bg-slate-100 text-slate-900">
+    <div class="flex min-h-screen">
+      <!-- ================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ================================================= -->
+
+      <aside
+        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+      >
+        <!-- Logo -->
+
+        <div class="mb-10">
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
+            >
+              A
+            </div>
+
+            <div>
+              <h1 class="font-bold text-xl">AutoCare</h1>
+
+              <p class="text-xs text-slate-400">Customer Portal</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+
+        <nav class="space-y-2">
+          <a
+            href="../dashboard/dashboard.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🏠 Dashboard
+          </a>
+
+          <a
+            href="../vehicles/vehicles.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🚗 My Vehicles
+          </a>
+
+          <a
+            href="../appointments/appointments.html"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            📅 Appointments
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
+          >
+            🔧 Service History
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            💳 Payments
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            🧾 Invoices
+          </a>
+
+          <a
+            href="#"
+            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
+          >
+            👤 Profile
+          </a>
+        </nav>
+
+        <!-- User -->
+
+        <div class="mt-auto flex items-center gap-3">
+          <div
+            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
+          >
+            J
+          </div>
+
+          <div>
+            <p class="font-semibold">John Smith</p>
+
+            <p class="text-xs text-slate-400">Customer</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ================================================= -->
+      <!-- MAIN -->
+      <!-- ================================================= -->
+
+      <main class="flex-1 p-6 lg:p-8">
+        <!-- Header -->
+
+        <header
+          class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
+        >
+          <div>
+            <h1 class="text-3xl font-bold">Service History</h1>
+
+            <p class="text-slate-500 mt-1">
+              View the complete service history of your vehicles
+            </p>
+          </div>
+
+          <button
+            class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl font-semibold transition"
+          >
+            + Book Service
+          </button>
+        </header>
+
+        <!-- ================================================= -->
+        <!-- SUMMARY -->
+        <!-- ================================================= -->
+
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8"
+        >
+          <!-- Total Services -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Total Services</p>
+
+                <h2 class="text-3xl font-bold mt-2">12</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"
+              >
+                🔧
+              </div>
+            </div>
+          </div>
+
+          <!-- Completed -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Completed</p>
+
+                <h2 class="text-3xl font-bold mt-2">11</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl"
+              >
+                ✓
+              </div>
+            </div>
+          </div>
+
+          <!-- Total Spent -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Total Spent</p>
+
+                <h2 class="text-3xl font-bold mt-2">$2,450</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl"
+              >
+                $
+              </div>
+            </div>
+          </div>
+
+          <!-- Last Service -->
+
+          <div class="bg-white rounded-2xl border border-slate-200 p-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm text-slate-500">Last Service</p>
+
+                <h2 class="text-lg font-bold mt-3">July 10, 2026</h2>
+              </div>
+
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl"
+              >
+                📅
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- FILTERS -->
+        <!-- ================================================= -->
+
+        <section class="bg-white rounded-2xl border border-slate-200 p-5 mb-6">
+          <div
+            class="flex flex-col md:flex-row gap-4 md:items-center md:justify-between"
+          >
+            <div class="relative w-full md:max-w-sm">
+              <input
+                type="text"
+                placeholder="Search services..."
+                class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+              <select
+                class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+              >
+                <option>All Vehicles</option>
+
+                <option>BMW X5</option>
+
+                <option>Toyota Camry</option>
+              </select>
+
+              <select
+                class="border border-slate-200 rounded-xl px-4 py-3 bg-white outline-none"
+              >
+                <option>All Services</option>
+
+                <option>Maintenance</option>
+
+                <option>Repair</option>
+
+                <option>Inspection</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- SERVICE HISTORY -->
+        <!-- ================================================= -->
+
+        <section
+          class="bg-white rounded-2xl border border-slate-200 overflow-hidden"
+        >
+          <div class="p-6 border-b border-slate-100">
+            <h2 class="text-xl font-bold">Service Records</h2>
+
+            <p class="text-sm text-slate-500 mt-1">
+              Your previous maintenance and repair services
+            </p>
+          </div>
+
+          <!-- Desktop Table -->
+
+          <div class="hidden lg:block overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead class="bg-slate-50 text-slate-500">
+                <tr>
+                  <th class="text-left px-6 py-4 font-semibold">Service</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Vehicle</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Date</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Mechanic</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Cost</th>
+
+                  <th class="text-left px-6 py-4 font-semibold">Status</th>
+
+                  <th class="text-right px-6 py-4 font-semibold">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- Record 1 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center"
+                      >
+                        🔧
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">Brake Repair</p>
+
+                        <p class="text-xs text-slate-500">Brake system</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">BMW X5</td>
+
+                  <td class="px-6 py-5 text-slate-600">Jul 10, 2026</td>
+
+                  <td class="px-6 py-5">David Wilson</td>
+
+                  <td class="px-6 py-5 font-semibold">$280</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-indigo-600 hover:text-indigo-800 font-semibold"
+                    >
+                      View
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Record 2 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center"
+                      >
+                        🛢️
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">Oil Change</p>
+
+                        <p class="text-xs text-slate-500">Engine maintenance</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">BMW X5</td>
+
+                  <td class="px-6 py-5 text-slate-600">Jun 15, 2026</td>
+
+                  <td class="px-6 py-5">David Wilson</td>
+
+                  <td class="px-6 py-5 font-semibold">$85</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-indigo-600 hover:text-indigo-800 font-semibold"
+                    >
+                      View
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Record 3 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center"
+                      >
+                        🔍
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">Full Inspection</p>
+
+                        <p class="text-xs text-slate-500">Vehicle inspection</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Toyota Camry</td>
+
+                  <td class="px-6 py-5 text-slate-600">May 20, 2026</td>
+
+                  <td class="px-6 py-5">Michael Brown</td>
+
+                  <td class="px-6 py-5 font-semibold">$120</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-indigo-600 hover:text-indigo-800 font-semibold"
+                    >
+                      View
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Record 4 -->
+
+                <tr class="border-t border-slate-100 hover:bg-slate-50">
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <div
+                        class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center"
+                      >
+                        🛞
+                      </div>
+
+                      <div>
+                        <p class="font-semibold">Tire Rotation</p>
+
+                        <p class="text-xs text-slate-500">Tire maintenance</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="px-6 py-5 font-medium">Toyota Camry</td>
+
+                  <td class="px-6 py-5 text-slate-600">Apr 12, 2026</td>
+
+                  <td class="px-6 py-5">David Wilson</td>
+
+                  <td class="px-6 py-5 font-semibold">$60</td>
+
+                  <td class="px-6 py-5">
+                    <span
+                      class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                    >
+                      Completed
+                    </span>
+                  </td>
+
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-indigo-600 hover:text-indigo-800 font-semibold"
+                    >
+                      View
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Mobile Cards -->
+
+          <div class="lg:hidden p-4 space-y-4">
+            <!-- Mobile Record -->
+
+            <article class="border border-slate-200 rounded-xl p-4">
+              <div class="flex justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center"
+                  >
+                    🔧
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold">Brake Repair</h3>
+
+                    <p class="text-xs text-slate-500">BMW X5</p>
+                  </div>
+                </div>
+
+                <span
+                  class="h-fit bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Completed
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mt-5 text-sm">
+                <div>
+                  <p class="text-slate-400">Date</p>
+
+                  <p class="font-medium">Jul 10, 2026</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Cost</p>
+
+                  <p class="font-medium">$280</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Mechanic</p>
+
+                  <p class="font-medium">David Wilson</p>
+                </div>
+
+                <div class="text-right">
+                  <button class="text-indigo-600 font-semibold">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Mobile Record -->
+
+            <article class="border border-slate-200 rounded-xl p-4">
+              <div class="flex justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 rounded-xl bg-cyan-100 text-cyan-600 flex items-center justify-center"
+                  >
+                    🛢️
+                  </div>
+
+                  <div>
+                    <h3 class="font-semibold">Oil Change</h3>
+
+                    <p class="text-xs text-slate-500">BMW X5</p>
+                  </div>
+                </div>
+
+                <span
+                  class="h-fit bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold"
+                >
+                  Completed
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4 mt-5 text-sm">
+                <div>
+                  <p class="text-slate-400">Date</p>
+
+                  <p class="font-medium">Jun 15, 2026</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Cost</p>
+
+                  <p class="font-medium">$85</p>
+                </div>
+
+                <div>
+                  <p class="text-slate-400">Mechanic</p>
+
+                  <p class="font-medium">David Wilson</p>
+                </div>
+
+                <div class="text-right">
+                  <button class="text-indigo-600 font-semibold">
+                    View Details
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

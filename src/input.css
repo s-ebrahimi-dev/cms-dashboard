@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@source "../**/*.html";
+
+@layer components {
+  .layout {
+    @apply relative block
+         sm:grid sm:items-start
+         h-screen transition-all duration-500
+         sm:grid-cols-[85px_1fr];
+  }
+
+  .layout:has(.aside.aside--open) {
+    @apply sm:grid-cols-[280px_1fr];
+  }
+  .mobile-aside.aside--open {
+    @apply left-0;
+  }
+  .sidebar-container {
+    @apply fixed sm:sticky top-0 bottom-0 h-screen;
+  }
+  .aside {
+    @apply top-0 bottom-0 h-screen
+               bg-slate-950 text-slate-400
+              hidden sm:flex flex-col
+               px-5 py-6
+               transition-all duration-500;
+  }
+  .mobile-aside {
+    @apply fixed flex flex-col top-0 bottom-0 -left-51 sm:hidden bg-slate-950 text-slate-400 px-5 py-6 transition-all duration-500;
+  }
+
+  .menu-item {
+    @apply flex items-center justify-start
+               gap-3 px-4 py-3 rounded-r-xl
+               hover:bg-white
+               hover:text-zinc-700
+               transition-all duration-300;
+  }
+  .menu-item:hover .menu-icon {
+    @apply text-zinc-700;
+  }
+  .menu-icon {
+    @apply text-white transition-all duration-300;
+  }
+
+  .aside.aside--open .menu-item {
+    @apply justify-start;
+  }
+
+  .menu-icon {
+    @apply shrink-0 text-xl;
+  }
+
+  .menu-text {
+    @apply max-w-0 opacity-0 overflow-hidden
+               whitespace-nowrap
+               transition-all duration-500;
+  }
+
+  .aside.aside--open .menu-text {
+    @apply max-w-45 opacity-100;
+  }
+
+  .logo-text {
+    @apply max-w-0 opacity-0
+               overflow-hidden
+               whitespace-nowrap
+               transition-all duration-300;
+  }
+
+  .aside.aside--open .logo {
+    @apply justify-start;
+  }
+  .logo-mark {
+    @apply transition-all duration-700;
+  }
+
+  .aside.aside--open .logo-mark {
+    transform: translateX(80px);
+  }
+  .mobile-aside.aside--open .logo-mark {
+    transform: translateX(50px);
+  }
+
+  .aside.aside--open .logo-text {
+    @apply max-w-45 opacity-100;
+  }
+  .mobile-aside.aside--open .logo-text {
+    @apply max-w-45 opacity-100;
+  }
+  .upgrade {
+    @apply max-w-0 opacity-0 overflow-hidden
+               whitespace-nowrap bg-indigo-600 rounded-2xl p-5
+               transition-all duration-500;
+  }
+  .aside.aside--open .upgrade {
+    @apply max-w-45 opacity-100;
+  }
+
+  .main {
+    @apply p-6 lg:p-8 min-w-0 transition-all duration-500;
+  }
+  .list-item {
+    position: relative;
+  }
+  .overlay {
+    @apply top-0 bottom-0;
+  }
+
+  .list-item::before {
+    position: absolute;
+    content: "";
+    width: 4px;
+    height: 0;
+    background-color: orangered;
+    top: 0;
+    left: 0;
+    transition: height 500ms ease;
+  }
+
+  .list-item:hover::before {
+    height: 100%;
+  }
+}
