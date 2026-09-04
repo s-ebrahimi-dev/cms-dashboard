@@ -6,7 +6,7 @@
   .layout {
     @apply relative block
          sm:grid sm:items-start
-         h-screen transition-all duration-500
+         h-full transition-all duration-500
          sm:grid-cols-[85px_1fr];
   }
 
