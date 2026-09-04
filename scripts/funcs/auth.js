@@ -53,10 +53,12 @@ const register = async () => {
 
   } catch(error) {
 
-    return {
-      success: false,
-      message: "Server connection failed."
-    };
+    console.log("REGISTER ERROR:", error);
+
+  return {
+    success: false,
+    message: error.message
+  };
 
   }
   
