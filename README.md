@@ -17,7 +17,7 @@ AutoCare CMS is designed to help car service businesses manage customers, vehicl
 
 ## 🚀 Live Demo
 
-[View AutoCare CMS](https://resplendent-gumption-6a631d.netlify.app/)
+[View AutoCare CMS](https://cms-frontend-yhr-cms-frontend.runflare.cloud/)
 
 ![Status](https://img.shields.io/badge/status-work--in--progress-yellow)
 
