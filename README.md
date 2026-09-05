@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <img src="./public/images/icon.jpg" alt="AutoCare Logo" width="150" />
+  <img src="./public/images/icon.jpg" alt="AutoCare-Logo" width="150" />
 </p>
 
 <p align="center">
