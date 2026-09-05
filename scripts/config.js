@@ -1,2 +1,2 @@
 export const base_URL =
-  "https://cms-dashboard-tw1-cms-dashboard.runflare.cloud/api";
+  "https://cms-dashboard-nsf-cms-dashboard.runflare.cloud/api";
