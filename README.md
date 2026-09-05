@@ -1,14 +1,19 @@
-# Autocare CMS Dashboard &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](/Frontend/public/images/icon.jpg)
+<h1 align="center">
+  AutoCare CMS Dashboard 🚗
+</h1>
+
+<p align="center">
+  <img src="./public/images/icon.jpg" alt="AutoCare Logo" width="150" />
+</p>
+
+<p align="center">
+  A modern car service management dashboard frontend built with HTML, Tailwind CSS, and JavaScript.
+</p>
+
+
+AutoCare CMS is designed to help car service businesses manage customers, vehicles, appointments, services, employees, and daily operations through a responsive dashboard interface.
 
 ---
-## 🛠️tools will be used in this project:
-
-![](  https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
-![](  https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![](  https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white)
-![](  https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
 ## 🚀 Live Demo
 
@@ -16,31 +21,195 @@
 
 ![Status](https://img.shields.io/badge/status-work--in--progress-yellow)
 
-A car service management dashboard built with HTML, Tailwind CSS, JavaScript, Node.js, Express, and MongoDB.
-___
-## Project Status
+---
 
-The project is not finished yet. New features and improvements are being added regularly.
+## 🛠️ Tech Stack
 
-### Completed
-- Project's structure
-- Html and Css layouts
-- Sidebar
+### Frontend
+<p align="left">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+</p>
 
+### Tools
+<p align="left">
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+</p>
+---
+## 🏢 Dashboard Modules
 
-### In Progress
-- Customer's Dashboard
-- Edit users
+- 👨‍💼 Admin Dashboard
+- 👥 Customer Management
+- 🔧 Mechanics Workspace
+- 🚗 Auto Body Repair Management
+- 🧽 Car Wash Management
+- 🛞 Tire & Oil Change Services
+- 📋 Receptionist Panel
+## ✨ Features
+
+- Responsive CMS dashboard layout
+- Persian RTL interface support
+- Multi-role dashboard structure:
+  - Admin
+  - Customer
+  - Mechanics
+  - Receptionist
+  - Car wash staff
+  - Auto body repair staff
+  - Tire and oil change staff
+- Modular JavaScript architecture
+- Reusable components system
+- Dynamic component loading
+- Authentication pages
+- API integration with backend
+- Search and filtering functionality
 - Form validation
-- Search and filtering
+- Tailwind CSS based styling system
+---
 
-### Planned
-- Users login and Authentication
-- Node.js backend
-- MongoDB databse
+## 📂 Project Structure
 
+```text
+frontend/
+│
+├── pages/
+│   ├── Admin/
+│   ├── Auto-body-repair/
+│   ├── Car-wash/
+│   ├── Customer/
+│   ├── Mechanics/
+│   ├── Receptionist/
+│   └── Tire-and-oil-change/
+│
+├── public/
+│   ├── Components/
+│   ├── fonts/
+│   └── images/
+│
+├── scripts/
+│   ├── components/
+│   ├── funcs/
+│   ├── models/
+│   ├── pages/
+│   ├── config.js
+│   ├── index.js
+│   └── register.js
+│
+├── shared/
+│
+├── src/
+│   └── input.css
+│
+├── styles/
+│   └── app.css
+│
+├── index.html
+├── package.json
+└── vite.config.js
+```
 
-## Dashboard's main page
-![Dashboard](/public/images/screenshots/dashboard.png)
-___
+---
 
+## 📌 Project Status
+
+The project is actively under development.
+
+### ✅ Completed
+
+- Project architecture
+- Dashboard layout
+- Responsive design
+- Sidebar component
+- Component loading system
+- Authentication UI
+- API integration
+- Frontend deployment
+
+### 🚧 In Progress
+
+- Customer dashboard
+- Data tables
+- Advanced search and filtering
+- More CMS modules
+
+### 🔮 Future Improvements
+
+- Dark/light theme
+- Dashboard analytics charts
+- More animations
+- Advanced role-based permissions
+
+---
+
+## 🖥️ Dashboard Preview
+
+![Dashboard Screenshot](./public/images/screenshots/dashboard.png)
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone YOUR_FRONTEND_REPOSITORY_URL
+```
+
+Go to the project folder:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+---
+
+## 🔗 Backend
+
+This frontend communicates with a separate backend API.
+
+Backend technologies:
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT Authentication
+
+---
+
+## 👨‍💻 Author
+
+**Saeed Ebrahimi**
+
+Frontend Developer passionate about JavaScript and modern web technologies.
+
+Currently learning:
+
+- React
+- Next.js
+- TypeScript
+
+---
+
+⭐ If you find this project interesting, feel free to explore the repository and follow the development journey.
