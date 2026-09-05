@@ -41,6 +41,6 @@ The project is not finished yet. New features and improvements are being added r
 
 
 ## Dashboard's main page
-![Dashboard](/Frontend/public/images/screenshots/dashboard.png)
+![Dashboard](/public/images/screenshots/dashboard.png)
 ___
 
