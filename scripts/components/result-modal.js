@@ -29,18 +29,18 @@ export function showResultModal(type, msg, redirect = null) {
   <img 
     src="/images/Gifs/success.gif" 
     alt="success"
-    class="w-10 h-15 mx-auto"
+    class="w-10 h-10 mx-auto"
   >
 `;
   }
 
   if (type === "error") {
     title.textContent = "Registration failed";
-    title.style.color = "yellow"
+    title.style.color = "red"
     icon.innerHTML = `  <img 
     src="/images/Gifs/error.gif" 
     alt="error"
-    class="w-10 h-15 mx-auto"
+    class="w-10 h-10 mx-auto"
   >`;
   }
 }
