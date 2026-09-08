@@ -14,21 +14,21 @@
     <main
       class="relative min-h-screen bg-cover bg-center"
       style="
-        background-image: url(./public/images/cover.png);
+        background-image: url(/images/cover.png);
       "
     >
       <!-- DARK OVERLAY -->
-      <div class="absolute inset-0 bg-black/65"></div>
+      <div class="absolute inset-0 bg-black/45"></div>
 
       <!-- CENTER CARD -->
       <div
-        class="relative z-10 flex min-h-screen items-center justify-center px-4"
+        class="relative z-10 flex h-screen items-center justify-center px-4 py-0"
       >
         <div
-          class="h-[95vh] w-120 max-w-full overflow-y-auto rounded-2xl bg-white/55 px-10 py-8 shadow-2xl"
+          class="max-h-[90%] w-120 max-w-full overflow-y-auto rounded-2xl bg-white/45 px-10 py-4 shadow-2xl"
         >
           <!-- HEADER -->
-          <div class="mb-7 text-center">
+          <div class="mb-3 text-center">
             <div
               class="mx-auto mb-4 flex h-16 items-center justify-center "
             >
@@ -37,7 +37,7 @@
 
             <h1 class="text-2xl font-bold text-slate-900">Create an account</h1>
 
-            <p class="mt-1.5 text-sm text-zinc-600">
+            <p class="mt-2 text-sm text-zinc-950">
               Register to manage your auto services
             </p>
           </div>
@@ -178,11 +178,11 @@
                 class="mt-0.5 h-4 w-4 rounded border-slate-300 text-orange-500 focus:ring-orange-500"
               />
 
-              <label for="terms" class="text-xs leading-5 text-slate-500">
+              <label for="terms" class="text-xs leading-5 text-zinc-950">
                 I agree to the
-                <a href="#" class="font-medium text-indigo-600"> Terms </a>
+                <a href="#" class="font-medium text-indigo-800"> Terms </a>
                 and
-                <a href="#" class="font-medium text-indigo-600">
+                <a href="#" class="font-medium text-indigo-800">
                   Privacy Policy
                 </a>
               </label>
@@ -192,20 +192,20 @@
             <button
             id="registerButton"
               type="submit"
-              class="h-11 w-full rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99]"
+              class="h-11 w-full cursor-default md:cursor-pointer rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99]"
             >
               Create account
             </button>
           </form>
 
           <!-- LOGIN -->
-          <div class="mt-6 text-center">
-            <p class="text-sm text-zinc-600">
+          <div class="mt-4 text-center">
+            <p class="text-sm text-zinc-950">
               Already have an account?
 
               <a
                 href="./index.html"
-                class="ml-1 font-semibold text-indigo-600 transition hover:text-blue-500"
+                class="cursor-default md:cursor-pointer ml-1 font-semibold text-indigo-800 transition hover:text-blue-500"
               >
                 Sign in
               </a>

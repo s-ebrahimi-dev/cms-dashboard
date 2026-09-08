@@ -57,11 +57,7 @@
           class="logo items-center justify-center gap-3 transition-all duration-500;"
         >
           <div class="logo-mark">
-            <img
-              class="w-12 h-8"
-              src="/images/icon.jpg"
-              alt=""
-            />
+            <img class="w-20 h-12" src="/images/icon.png" alt="" />
           </div>
 
           <div class="logo-text">
@@ -460,22 +456,45 @@
       <main class="main">
         <!-- Header -->
 
-        <header
-          class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
-        >
+        <header class="flex items-center justify-between mb-8">
           <div>
-            <h1 class="text-3xl font-bold">Invoices</h1>
+            <h2 class="text-3xl font-bold">Invoices</h2>
 
             <p class="text-slate-500 mt-1">
-              View and manage your service invoices
+              Welcome back, manage your auto service center
             </p>
           </div>
 
-          <button
-            class="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl font-semibold transition"
-          >
-            ⬇ Download All
-          </button>
+          <div class="flex items-center gap-4">
+            <input
+              class="hidden md:block w-72 px-4 py-3 rounded-xl border border-slate-200 bg-white outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="Search..."
+            />
+
+            <button
+              class="w-12 h-12 rounded-xl bg-white border border-slate-200"
+            >
+              🔔
+            </button>
+
+            <div
+              class="flex items-center gap-3 bg-white rounded-xl px-3 py-1 border border-slate-200"
+            >
+              <div>
+                <img
+                  src=""
+                  class="user-image w-10 h-10 rounded-full object-cover bg-indigo-600"
+                  alt="user-image"
+                />
+
+              </div>
+
+              <div class="hidden md:block">
+                <p class="font-semibold text-sm">Saeed</p>
+                <p class="text-xs text-slate-500">Administrator</p>
+              </div>
+            </div>
+          </div>
         </header>
 
         <!-- ================================================= -->

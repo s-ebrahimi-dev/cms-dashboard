@@ -20,7 +20,7 @@
     @apply fixed sm:sticky top-0 bottom-0 h-screen;
   }
   .aside {
-    @apply top-0 bottom-0 h-screen
+    @apply relative h-full top-0 -bottom-full
                bg-slate-950 text-slate-400
               hidden sm:flex flex-col
                px-5 py-6
@@ -33,12 +33,15 @@
   .menu-item {
     @apply flex items-center justify-start
                gap-3 px-4 py-3 rounded-r-xl
-               hover:bg-white
-               hover:text-zinc-700
+               sm:hover:bg-white
+               sm:hover:text-zinc-700
                transition-all duration-300;
   }
-  .menu-item:hover .menu-icon {
+  
+  @media screen and (min-width:640px) {
+    .menu-item:hover .menu-icon {
     @apply text-zinc-700;
+  }
   }
   .menu-icon {
     @apply text-white transition-all duration-300;

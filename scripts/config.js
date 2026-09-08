@@ -1,2 +1,2 @@
 export const base_URL =
-  "https://cms-dashboard-53w-cms-dashboard.runflare.cloud/api";
+  "http://localhost:4000/api";

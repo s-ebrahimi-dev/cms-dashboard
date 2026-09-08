@@ -53,8 +53,8 @@
         >
           <div class="logo-mark">
             <img
-              class="w-12 h-8"
-              src="../../../public/images/icon.jpg"
+              class="w-20 h-12"
+              src="../../../public/images/icon.png"
               alt=""
             />
           </div>
@@ -455,9 +455,8 @@
 
         <header class="flex flex-col lg:flex-row justify-between gap-5 mb-8">
           <h1 class="text-3xl font-bold">Appointments</h1>
-
-          <div class="flex gap-3">
-            <input
+          <div class="flex gap-3 lg:flex-row items-center justify-between">
+            <div> <input
               type="search"
               placeholder="Search appointments..."
               class="bg-white border border-slate-200 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
@@ -467,7 +466,26 @@
               class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg font-medium"
             >
               + New Appointment
-            </button>
+            </button></div>
+           
+            <!-- User Profile -->
+             <div
+              class="flex items-center gap-3 bg-white rounded-xl px-3 py-1 border border-slate-200"
+            >
+              <div>
+                <img
+                  src=""
+                  class="user-image w-10 h-10 rounded-full object-cover bg-indigo-600"
+                  alt="user-image"
+                />
+         
+              </div>
+
+              <div class="hidden md:block">
+                <p class="font-semibold text-sm">Saeed</p>
+                <p class="text-xs text-slate-500">Administrator</p>
+              </div>
+            </div>
           </div>
         </header>
 
