@@ -1,19 +1,14 @@
-import { loadComponent } from "../../components/component-Loader.js";
-import { initSidebar } from "../../modules/sidebar.js";
+import { base_URL } from "../../config.js";
 import {
   previewProfileImage,
-  uploadProfileImage,
+  uploadProfileImage, loadProfileImage
 } from "../../funcs/profileImage.js";
-loadComponent(
-    "sidebar-container",
-    "/Components/sidebar.html"
-)
-.then(() => {
-    initSidebar();
-});
 
 const imageInput = document.querySelector("#profile-image");
 const profilePreview = document.querySelector("#profile-preview");
+
+// Load saved profile image
+profilePreview.src = `${base_URL}/users/profile-image`;
 
 imageInput.addEventListener("change", async () => {
   const file = imageInput.files[0];

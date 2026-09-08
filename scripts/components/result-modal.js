@@ -4,6 +4,7 @@ let title;
 let message;
 let closeBtn;
 let redirectUrl = null;
+
 export function initResultModal() {
   modal = document.querySelector("#result-modal");
   icon = document.querySelector("#modal-icon");
@@ -19,29 +20,32 @@ export function showResultModal(type, msg, redirect = null) {
   modal.classList.add("flex");
 
   message.textContent = msg;
-
   redirectUrl = redirect;
 
   if (type === "success") {
-    title.textContent = "Account created!";
-    title.style.color = "green"
+    title.textContent = "Success!";
+    title.style.color = "green";
+
     icon.innerHTML = `
-  <img 
-    src="/images/Gifs/success.gif" 
-    alt="success"
-    class="w-10 h-10 mx-auto"
-  >
-`;
+      <img
+        src="/images/Gifs/success.gif"
+        alt="success"
+        class="w-10 h-10 mx-auto"
+      >
+    `;
   }
 
   if (type === "error") {
-    title.textContent = "Registration failed";
-    title.style.color = "red"
-    icon.innerHTML = `  <img 
-    src="/images/Gifs/error.gif" 
-    alt="error"
-    class="w-10 h-10 mx-auto"
-  >`;
+    title.textContent = "Something went wrong!";
+    title.style.color = "red";
+
+    icon.innerHTML = `
+      <img
+        src="/images/Gifs/error.gif"
+        alt="error"
+        class="w-10 h-10 mx-auto"
+      >
+    `;
   }
 }
 

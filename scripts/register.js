@@ -19,7 +19,7 @@ registerBtn.addEventListener("click", async (event) => {
   const result = await register();
 
   if (result.success) {
-    showResultModal("success", "Your account has been created successfully.", "./pages/Admin/Dashboard/dashboard.html");
+    showResultModal("success", "Your account has been created successfully.", "/index.html");
   } else {
     showResultModal("error", result.message);
   }
