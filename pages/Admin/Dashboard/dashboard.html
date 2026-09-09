@@ -10,7 +10,7 @@
     <link rel="icon" href="/images/icon.jpg" />
   </head>
 
-  <body class="relative bg-slate-100 text-slate-900">
+  <body class="relative bg-[#020617] text-white">
     <svg class="hidden">
       <symbol
         id="arrow-right"
@@ -78,19 +78,19 @@
             </button>
 
             <div
-              class="flex items-center gap-3 bg-white rounded-full shrink-0 border border-slate-200"
+              class="flex items-center justify-between gap-3 md:w-25 md:gap-0.5 md:pr-2 bg-white rounded-full shrink-0 border border-slate-200"
             >
               <div>
                 <img
                   src="/images/default-profile.png"
-                  class="user-image w-10 h-10 rounded-full object-cover bg-indigo-600"
+                  class="user-image w-10 h-10 md:w-8 md:h-8 rounded-full object-cover bg-indigo-600"
                   alt="user-image"
                 />
               </div>
 
-              <div class="hidden md:block">
-                <p class="font-semibold text-sm">Saeed</p>
-                <p class="text-xs text-slate-500">Administrator</p>
+              <div class="hidden md:flex flex-col items-end">
+                <p class="font-semibold text-sm md:text-[10px]">Saeed</p>
+                <p class="text-xs md:text-[8px] text-slate-500">Administrator</p>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@
 
         <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5">
           <div
-            class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm"
+            class="bg-slate-800 rounded-2xl p-5 border border-slate-700 shadow-sm"
           >
             <p class="text-slate-500">Customers</p>
 
@@ -122,7 +122,7 @@
           </div>
 
           <div
-            class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm"
+            class="bg-slate-800 rounded-2xl p-5 border border-slate-700 shadow-sm"
           >
             <p class="text-slate-500">Vehicles</p>
 
@@ -132,7 +132,7 @@
           </div>
 
           <div
-            class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm"
+            class="bg-slate-800 rounded-2xl p-5 border border-slate-700 shadow-sm"
           >
             <p class="text-slate-500">Appointments</p>
 
@@ -142,7 +142,7 @@
           </div>
 
           <div
-            class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm"
+            class="bg-slate-800 rounded-2xl p-5 border border-slate-700 shadow-sm"
           >
             <p class="text-slate-500">Completed Jobs</p>
 
@@ -152,7 +152,7 @@
           </div>
 
           <div
-            class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm"
+            class="bg-slate-800 rounded-2xl p-5 border border-slate-700 shadow-sm"
           >
             <p class="text-slate-500">Revenue</p>
 
@@ -410,7 +410,9 @@
           class="hidden absolute inset-0 bg-black/40 z-40"
         ></div>
          <div id="modal-container"></div>
+         
       </main>
+
     </div>
 
     <script

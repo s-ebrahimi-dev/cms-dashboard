@@ -1,5 +1,5 @@
-
 import { base_URL } from "../config.js";
+import { getToken } from "../funcs/utils.js";
 const register = async () => {
   try {
     const firstNameInput = document.querySelector("#firstname");
@@ -110,6 +110,6 @@ const logout = async () => {
   } catch (error) {
     console.error("Logout error:", error);
   }
- }
+};
 
 export { register, login, getMe, logout };
