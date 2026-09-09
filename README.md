@@ -1,5 +1,5 @@
 <h1 align="center">
-  AutoCare CMS Dashboard 🚗
+  AutoCare CMS Dashboard  
 </h1>
 
 <p align="center">
