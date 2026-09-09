@@ -15,21 +15,14 @@ const initShared = async () => {
   initSidebar();
 
   const modalContainer = document.getElementById("modal-container");
-  const mobileModalContainer = document.getElementById("mobile-modal-container");
-    console.log(mobileModalContainer);
+
     
 
   if (modalContainer) {
     await loadComponent("modal-container", "/Components/logout-modal.html");
     
-    
     initLogoutModal();
-  } else if(mobileModalContainer) {
-       await loadComponent("mobile-modal-container", "/Components/logout-modal.html");
-    
-    
-    initLogoutModal();
-  }
+  } 
 
   const loaderContainer = document.getElementById("loader-container");
 

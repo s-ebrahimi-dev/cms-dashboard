@@ -1040,9 +1040,6 @@
   .border-t-white {
     border-top-color: var(--color-white);
   }
-  .bg-\[\#111827\] {
-    background-color: #111827;
-  }
   .bg-amber-50 {
     background-color: var(--color-amber-50);
   }
@@ -2206,6 +2203,11 @@
   }
   .mobile-aside.aside--open {
     left: 0px;
+  }
+  @media (width >= 40rem) {
+    #mobile-sidebar-container {
+      display: none;
+    }
   }
   .sidebar-container {
     position: fixed;

@@ -1,30 +1,33 @@
 import { logout } from "../funcs/auth.js";
 
 export function initLogoutModal() {
-    const logoutLinks = document.querySelectorAll("#logout");
-    console.log(logoutLinks);
+    const logoutLink = document.querySelector("#logout");
+    const mobileLogoutLink = document.querySelector("#mobile-logout");
     
     const logoutModal = document.getElementById("logout-modal");
-    console.log(logoutModal);
-    
+
     const cancelLogout = document.getElementById("cancel-logout");
 
     const confirmLogout = document.getElementById("confirm-logout");
 
 
-    if (!logoutLinks || !logoutModal) return;
-
+    if (!logoutLink || !logoutModal) return;
+    if (!mobileLogoutLink || !logoutModal) return;
 
     // Open modal
-    logoutLinks.forEach((logoutlink) => {
-        logoutlink.addEventListener("click", (event) => {
+    logoutLink?.addEventListener("click", (event) => {
             event.preventDefault();
-            
+            console.log("Logout clicked");
             logoutModal.classList.remove("hidden");
             logoutModal.classList.add("flex");
         })
+    
+    mobileLogoutLink?.addEventListener("click", (event) => { 
+        event.preventDefault();
+        console.log("Mobile logout clicked");
+        logoutModal.classList.remove("hidden");
+        logoutModal.classList.add("flex");
     })
-
 
     // Cancel logout
     cancelLogout?.addEventListener("click", () => {
