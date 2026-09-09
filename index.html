@@ -13,7 +13,7 @@
     <!-- BACKGROUND -->
     <main
       class="relative min-h-screen bg-cover bg-center"
-      style="background-image: url('/images/cover.png')"
+      style="background-image: url(&quot;/images/cover.png&quot;)"
     >
       <!-- DARK OVERLAY -->
       <div class="absolute inset-0 bg-black/45"></div>
@@ -29,9 +29,7 @@
           <!-- HEADER -->
           <div class="mb-9 text-center">
             <!-- LOGO -->
-            <div
-              class="mx-auto mb-5 flex h-16  items-center justify-center"
-            >
+            <div class="mx-auto mb-5 flex h-16 items-center justify-center">
               <img class="" src="/images/icon-2.png" alt="logo-png" />
             </div>
 
@@ -104,8 +102,8 @@
 
             <!-- LOGIN BUTTON -->
             <a
-            id="loginButton"           
-            href="#"
+              id="loginButton"
+              href="#"
               type="submit"
               class="flex items-center justify-center cursor-default md:cursor-pointer mt-2 h-12 w-full rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99]"
             >
@@ -137,9 +135,9 @@
           </div>
         </div>
       </div>
-<div id="result-modal-container"></div>
+      <div id="result-modal-container"></div>
+      <div id="loader-container"></div>
     </main>
-   
 
     <script type="module" src="/scripts/login.js"></script>
   </body>
