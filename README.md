@@ -1,5 +1,5 @@
 <h1 align="center">
-  AutoCare CMS Dashboard 🚗
+  AutoCare CMS Dashboard &nbsp &nbsp <img src="./icons8-cms-50.png" alt="CMS-Logo" width="30"/>
 </h1>
 
 <p align="center">
