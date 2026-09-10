@@ -1,36 +1,30 @@
 <div
-    id="logout-modal"
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4"
+  id="logout-modal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4"
 >
-    <div class="w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+  <div class="w-full max-w-md rounded-2xl p-6 shadow-xl">
+    <h2 class="mb-2 text-xl font-bold">Logout</h2>
 
-        <h2 class="mb-2 text-xl font-bold">
-            Logout
-        </h2>
+    <p class="text-sm text-zinc-500">
+      Are you sure you want to logout from your account?
+    </p>
 
-        <p class="text-sm text-zinc-500">
-            Are you sure you want to logout from your account?
-        </p>
+    <div class="mt-6 flex justify-end gap-3">
+      <button
+        id="cancel-logout"
+        type="button"
+        class="rounded-lg cursor-default sm:cursor-pointer border border-zinc-300 px-4 py-2"
+      >
+        Cancel
+      </button>
 
-        <div class="mt-6 flex justify-end gap-3">
-
-            <button
-                id="cancel-logout"
-                type="button"
-                class="rounded-lg cursor-default sm:cursor-pointer border border-zinc-300 px-4 py-2"
-            >
-                Cancel
-            </button>
-
-            <button
-                id="confirm-logout"
-                type="button"
-                class="rounded-lg bg-red-500 cursor-default sm:cursor-pointer px-4 py-2 text-white"
-            >
-                Logout
-            </button>
-
-        </div>
-
+      <button
+        id="confirm-logout"
+        type="button"
+        class="rounded-lg bg-red-500 cursor-default sm:cursor-pointer px-4 py-2 text-white"
+      >
+        Logout
+      </button>
     </div>
+  </div>
 </div>

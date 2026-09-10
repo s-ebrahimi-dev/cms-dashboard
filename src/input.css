@@ -17,6 +17,9 @@
   p,th,td{
     @apply text-[#B7C1C9] dark:text-[#4E5B65];
   }
+  section > *{
+    @apply bg-[#FCFBF8] dark:bg-[#151B23]
+  }
   .layout {
     @apply relative block
          sm:grid sm:items-start
