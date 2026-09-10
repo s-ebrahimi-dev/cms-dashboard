@@ -2,7 +2,9 @@ import { loadComponent } from "./components/component-Loader.js";
 import { initSidebar } from "./modules/sidebar.js";
 import { base_URL } from "./config.js";
 import { initLogoutModal } from "./modules/logout.js";
+import { themeHandler } from "./funcs/utils.js";
 
+const themeBtn = document.querySelector(".theme-btn")
 const initShared = async () => {
     await loadComponent("sidebar-container",
         "/Components/sidebar.html");
@@ -38,3 +40,4 @@ if (userImage) {
 }
 
 initShared();
+themeBtn.addEventListener("click", themeHandler);

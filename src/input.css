@@ -2,7 +2,21 @@
 
 @source "../**/*.html";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer components {
+  body {
+    @apply bg-[#F3F1EC] dark:bg-[#0D1117] ;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-[#17212B] dark:text-[#e1f2fd];
+  }
+  p,th,td{
+    @apply text-[#B7C1C9] dark:text-[#4E5B65];
+  }
   .layout {
     @apply relative block
          sm:grid sm:items-start
@@ -17,7 +31,7 @@
     @apply left-0;
   }
 
-  #mobile-sidebar-container{
+  #mobile-sidebar-container {
     @apply sm:hidden;
   }
 
@@ -26,40 +40,36 @@
   }
   .aside {
     @apply relative h-full top-0 -bottom-full
-               bg-slate-900 text-slate-400
+               bg-[#182A3A] dark:bg-zinc-800 text-slate-400
               hidden sm:flex flex-col
                px-5 py-6
                transition-all duration-500;
   }
   .mobile-aside {
-    @apply fixed flex flex-col top-0 bottom-0 -left-51  sm:hidden bg-slate-900 text-slate-400 px-5 py-6 transition-all duration-500;
+    @apply fixed flex flex-col top-0 bottom-0 -left-51  sm:hidden bg-[#182A3A] dark:bg-zinc-800 text-slate-400 px-5 py-6 transition-all duration-500;
   }
 
   .menu-item {
     @apply flex items-center justify-start
                gap-3 px-4 py-3 rounded-r-xl
-               sm:hover:bg-slate-700
-               sm:hover:text-zinc-300
+               sm:hover:bg-zinc-700
                transition-all duration-300;
   }
-  
-  @media screen and (min-width:640px) {
+
+  @media screen and (min-width: 640px) {
     .menu-item:hover .menu-icon {
-    @apply text-zinc-700;
-  }
+      @apply text-[#9cd7ff];
+    }
   }
   .menu-icon {
-    @apply text-white transition-all duration-300;
+    @apply  shrink-0 text-xl text-white transition-all duration-300;
   }
 
   .aside.aside--open .menu-item {
     @apply justify-start;
   }
 
-  .menu-icon {
-    @apply shrink-0 text-xl;
-  }
-
+ 
   .menu-text {
     @apply max-w-0 opacity-0 overflow-hidden
                whitespace-nowrap

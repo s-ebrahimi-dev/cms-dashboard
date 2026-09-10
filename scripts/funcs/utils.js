@@ -26,6 +26,17 @@ const getUrlParams = (key) => {
   return urlPrams.get(key);
 };
 
+const themeHandler = () => {
+const htmlElem = document.querySelector("html");
+  htmlElem.classList.toggle("dark");
+
+  if (htmlElem.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+};
+
 const searchInArray = (array, searchProperty, searchValue) => {
   let outputArray = array.filter((item) =>
     item[searchProperty].includes(searchValue),
@@ -87,6 +98,7 @@ export {
   getToken,
   isUserLogin,
   getUrlParams,
+  themeHandler,
   searchInArray,
   paginateItems,
   addParamToUrl,
