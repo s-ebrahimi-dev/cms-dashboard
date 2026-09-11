@@ -5,20 +5,40 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
+
   body {
-    @apply bg-[#F3F1EC] dark:bg-[#0D1117] ;
+    @apply bg-[#F3F1EC] dark:bg-[#212731];
   }
+
   h1,
   h2,
   h3,
   h4 {
     @apply text-[#17212B] dark:text-[#e1f2fd];
   }
-  p,th,td{
-    @apply text-[#B7C1C9] dark:text-[#4E5B65];
+  thead{
+    @apply bg-slate-50 dark:bg-[#00738c]
   }
-  section > *{
-    @apply bg-[#FCFBF8] dark:bg-[#151B23]
+  p,
+  span,
+  th,
+  td {
+    @apply text-zinc-600 dark:text-[#d3d3d3];
+  }
+  tr{
+    @apply sm:hover:bg-slate-50 dark:sm:hover:bg-gray-800 border-slate-100 dark:border-slate-100/10
+  }
+  select{
+    @apply bg-transparent dark:bg-[#a6a6a8]
+  }
+  input{
+    @apply bg-white dark:bg-[#212731] dark:border border-white/30 dark:text-[#B7C1C9]
+  }
+section{
+ @apply bg-[#F3F1EC] dark:bg-[#212731] border-[#D9D9D3] dark:border-[#2A3540];
+}
+  section > * {
+    @apply bg-[#FCFBF8] dark:bg-[#151B23] border-[#D9D9D3] dark:border-[#2A3540];
   }
   .layout {
     @apply relative block
@@ -29,6 +49,9 @@
 
   .layout:has(.aside.aside--open) {
     @apply sm:grid-cols-[280px_1fr];
+  }
+  .theme-btn{
+    @apply absolute block w-5 h-5 ml-auto left-0 right-15 sm:right-0 sm:mx-auto top-1.5 text-zinc-800 dark:text-[#B7C1C9];
   }
   .mobile-aside.aside--open {
     @apply left-0;
@@ -65,26 +88,27 @@
     }
   }
   .menu-icon {
-    @apply  shrink-0 text-xl text-white transition-all duration-300;
+    @apply shrink-0 text-xl text-white transition-all duration-300;
   }
 
   .aside.aside--open .menu-item {
     @apply justify-start;
   }
 
- 
   .menu-text {
-    @apply max-w-0 opacity-0 overflow-hidden
+    @apply max-w-0 opacity-0 text-[#c2c3c3] overflow-hidden
                whitespace-nowrap
                transition-all duration-500;
   }
-
+.mobile-menu-text{
+  @apply text-[#c2c3c3]
+}
   .aside.aside--open .menu-text {
     @apply max-w-45 opacity-100;
   }
 
   .logo-text {
-    @apply max-w-0 opacity-0
+    @apply  max-w-0 opacity-0
                overflow-hidden
                whitespace-nowrap
                transition-all duration-300;
@@ -98,10 +122,10 @@
   }
 
   .aside.aside--open .logo-mark {
-    transform: translateX(80px);
+     @apply translate-x-20;
   }
   .mobile-aside.aside--open .logo-mark {
-    transform: translateX(50px);
+    @apply translate-x-11;
   }
 
   .aside.aside--open .logo-text {

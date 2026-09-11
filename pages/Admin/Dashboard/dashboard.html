@@ -94,16 +94,14 @@
 
           <div class="flex items-center gap-4">
             <input
-              class="hidden md:block w-72 px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+              class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Search..."
             />
 
-            <button class="w-12 h-12 rounded-xl border border-slate-200">
-              🔔
-            </button>
+            <button class="w-12 h-12 rounded-xl border">🔔</button>
 
             <div
-              class="flex items-center justify-between gap-3 md:w-25 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-slate-200"
+              class="flex items-center justify-between gap-3 md:w-25 md:gap-0.5 md:pr-2 rounded-full shrink-0 border"
             >
               <div>
                 <img
@@ -119,7 +117,7 @@
               </div>
             </div>
           </div>
-          <div class="theme-btn cursor-default sm:cursor-pointer">
+          <div class="theme-btn absolute cursor-default sm:cursor-pointer">
             <svg class="inline-block dark:hidden w-5 h-5">
               <use href="#moon"></use>
             </svg>
@@ -145,7 +143,7 @@
 
         <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5">
           <div
-            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-slate-700 shadow-sm"
+            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
           >
             <p class="text-">Customers</p>
 
@@ -155,7 +153,7 @@
           </div>
 
           <div
-            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-slate-700 shadow-sm"
+            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
           >
             <p class="text-">Vehicles</p>
 
@@ -165,7 +163,7 @@
           </div>
 
           <div
-            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-slate-700 shadow-sm"
+            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
           >
             <p class="text-">Appointments</p>
 
@@ -175,7 +173,7 @@
           </div>
 
           <div
-            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-slate-700 shadow-sm"
+            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
           >
             <p class="text-">Completed Jobs</p>
 
@@ -185,7 +183,7 @@
           </div>
 
           <div
-            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-slate-700 shadow-sm"
+            class="bg-[#FCFBF8] dark:bg-[#151B23] rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
           >
             <p class="text-">Revenue</p>
 
@@ -200,7 +198,7 @@
           <!-- Revenue Overview -->
 
           <div
-            class="xl:col-span-2 rounded-2xl border border-slate-200 shadow-sm p-6"
+            class="xl:col-span-2 rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
           >
             <div class="flex justify-between items-center mb-6">
               <div>
@@ -209,9 +207,7 @@
                 <p class="text-sm text-">Monthly income statistics</p>
               </div>
 
-              <select
-                class="border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none"
-              >
+              <select class="border rounded-lg px-3 py-2 text-sm outline-none">
                 <option>2026</option>
 
                 <option>2025</option>
@@ -261,7 +257,7 @@
 
           <!-- Appointment Overview -->
 
-          <div class="rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div class="rounded-2xl border shadow-sm p-6">
             <h2 class="text-xl font-bold mb-6">Appointment Overview</h2>
 
             <div class="flex justify-center items-center h-48">
@@ -272,7 +268,7 @@
                   class="absolute inset-8 rounded-full flex items-center justify-center"
                 >
                   <div class="text-center">
-                    <p class="text-3xl font-bold">78%</p>
+                    <p class="text-3xl font-bold text-[#f4f4fc]">78%</p>
 
                     <p class="text-xs text-">Completed</p>
                   </div>
@@ -282,19 +278,19 @@
 
             <div class="space-y-4 mt-5">
               <div class="flex justify-between">
-                <span class="text-slate-600"> Completed </span>
+                <span class=""> Completed </span>
 
                 <span class="font-semibold"> 98 </span>
               </div>
 
               <div class="flex justify-between">
-                <span class="text-slate-600"> Pending </span>
+                <span class=""> Pending </span>
 
                 <span class="font-semibold"> 35 </span>
               </div>
 
               <div class="flex justify-between">
-                <span class="text-slate-600"> Cancelled </span>
+                <span class=""> Cancelled </span>
 
                 <span class="font-semibold"> 12 </span>
               </div>
@@ -308,7 +304,7 @@
           <!-- Recent Appointments -->
 
           <div
-            class="xl:col-span-2 rounded-2xl border border-slate-200 shadow-sm p-6 overflow-x-auto"
+            class="xl:col-span-2 rounded-2xl border shadow-sm p-6 overflow-x-auto"
           >
             <div class="flex justify-between items-center mb-5">
               <h2 class="text-xl font-bold">Recent Appointments</h2>
@@ -332,7 +328,7 @@
               </thead>
 
               <tbody>
-                <tr class="border-b border-slate-100">
+                <tr class="border-b">
                   <td class="p-3 font-semibold">John Smith</td>
 
                   <td class="p-3">BMW X5</td>
@@ -348,7 +344,7 @@
                   </td>
                 </tr>
 
-                <tr class="border-b border-slate-100">
+                <tr class="border-b">
                   <td class="p-3 font-semibold">Alice Brown</td>
 
                   <td class="p-3">Toyota Camry</td>
@@ -385,7 +381,7 @@
 
           <!-- Recent Activities -->
 
-          <div class="rounded-2xl border border-slate-200 shadow-sm p-6">
+          <div class="rounded-2xl border shadow-sm p-6">
             <h2 class="text-xl font-bold mb-6">Recent Activities</h2>
 
             <div class="space-y-6">
@@ -436,7 +432,7 @@
 
         <div
           id="overlay"
-          class="hidden absolute inset-0 bg-black/40 z-40"
+          class="overlay hidden fixed inset-0 bg-black/20 z-40"
         ></div>
         <div id="modal-container"></div>
       </main>

@@ -156,7 +156,7 @@
         >
           <!-- Total Customers -->
 
-          <div class="border border-slate-200 rounded-2xl p-5">
+          <div class="border rounded-2xl p-5">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-sm text-">Total Customers</p>
@@ -176,7 +176,7 @@
 
           <!-- New Customers -->
 
-          <div class="border border-slate-200 rounded-2xl p-5">
+          <div class="border rounded-2xl p-5">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-sm text-">New This Month</p>
@@ -196,7 +196,7 @@
 
           <!-- Active Customers -->
 
-          <div class="border border-slate-200 rounded-2xl p-5">
+          <div class="border rounded-2xl p-5">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-sm text-">Active Customers</p>
@@ -216,7 +216,7 @@
 
           <!-- New Appointments -->
 
-          <div class="border border-slate-200 rounded-2xl p-5">
+          <div class="border rounded-2xl p-5">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-sm text-">Appointments Today</p>
@@ -239,7 +239,7 @@
         <!-- SEARCH / FILTER -->
         <!-- ================================================= -->
 
-        <section class="border border-slate-200 rounded-2xl p-5 mb-6">
+        <section class="border rounded-2xl p-5 mb-6">
           <div class="flex flex-col xl:flex-row xl:items-center gap-4">
             <!-- Search -->
 
@@ -253,15 +253,13 @@
               <input
                 type="search"
                 placeholder="Search by name, phone, email or customer ID..."
-                class="w-full pl-11 pr-4 py-3 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"
+                class="w-full pl-11 pr-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
             <!-- Status -->
 
-            <select
-              class="border border-slate-200 rounded-xl px-4 py-3 outline-none"
-            >
+            <select class="border rounded-xl px-4 py-3 outline-none">
               <option>All Customers</option>
 
               <option>Active</option>
@@ -271,9 +269,7 @@
 
             <!-- Sort -->
 
-            <select
-              class="border border-slate-200 rounded-xl px-4 py-3 outline-none"
-            >
+            <select class="border rounded-xl px-4 py-3 outline-none">
               <option>Recently Added</option>
 
               <option>Name A-Z</option>
@@ -289,11 +285,11 @@
         <!-- CUSTOMER TABLE -->
         <!-- ================================================= -->
 
-        <section class="border border-slate-200 rounded-2xl overflow-hidden">
+        <section class="border rounded-2xl overflow-hidden">
           <!-- Header -->
 
           <div
-            class="px-6 py-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+            class="px-6 py-5 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
           >
             <div>
               <h2 class="text-xl font-bold">Customer Directory</h2>
@@ -328,10 +324,10 @@
                 </tr>
               </thead>
 
-              <tbody class="divide-y divide-slate-100">
+              <tbody class="divide-y divide-slate-100/30">
                 <!-- Customer 1 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -387,7 +383,7 @@
 
                 <!-- Customer 2 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -443,7 +439,7 @@
 
                 <!-- Customer 3 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -499,7 +495,7 @@
 
                 <!-- Customer 4 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -555,7 +551,7 @@
 
                 <!-- Customer 5 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -594,7 +590,7 @@
 
                   <td class="px-6 py-5">
                     <span
-                      class="inline-flex px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold"
+                      class="inline-flex px-3 py-1.5 rounded-full bg-slate-100 text-xs font-semibold"
                     >
                       Inactive
                     </span>
@@ -615,14 +611,12 @@
           <!-- Pagination -->
 
           <div
-            class="px-6 py-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+            class="px-6 py-4 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
           >
             <p class="text-sm text-">Showing 1–5 of 1,248 customers</p>
 
             <div class="flex items-center gap-2">
-              <button
-                class="w-9 h-9 rounded-lg border border-slate-200 text-slate-400"
-              >
+              <button class="w-9 h-9 rounded-lg border text-slate-400">
                 ←
               </button>
 
@@ -632,21 +626,13 @@
                 1
               </button>
 
-              <button class="w-9 h-9 rounded-lg border border-slate-200">
-                2
-              </button>
+              <button class="w-9 h-9 rounded-lg border">2</button>
 
-              <button class="w-9 h-9 rounded-lg border border-slate-200">
-                3
-              </button>
+              <button class="w-9 h-9 rounded-lg border">3</button>
 
-              <button class="w-9 h-9 rounded-lg border border-slate-200">
-                ...
-              </button>
+              <button class="w-9 h-9 rounded-lg border">...</button>
 
-              <button class="w-9 h-9 rounded-lg border border-slate-200">
-                →
-              </button>
+              <button class="w-9 h-9 rounded-lg border">→</button>
             </div>
           </div>
         </section>

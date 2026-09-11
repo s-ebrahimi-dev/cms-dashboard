@@ -144,9 +144,7 @@
           </div>
 
           <div class="flex flex-wrap gap-3">
-            <button
-              class="px-4 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold"
-            >
+            <button class="px-4 py-2.5 rounded-xl border text-sm font-semibold">
               🔍 Search Parts
             </button>
 
@@ -167,7 +165,7 @@
         >
           <!-- Required -->
 
-          <div class="border border-slate-200 rounded-2xl p-5">
+          <div class="border rounded-2xl p-5">
             <div class="flex items-center justify-between">
               <div
                 class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl"
@@ -185,7 +183,7 @@
 
           <!-- Available -->
 
-          <div class="border border-slate-200 rounded-2xl p-5">
+          <div class="border rounded-2xl p-5">
             <div
               class="w-11 h-11 rounded-xl bg-green-50 text-green-600 flex items-center justify-center text-xl"
             >
@@ -199,7 +197,7 @@
 
           <!-- Waiting -->
 
-          <div class="border border-slate-200 rounded-2xl p-5">
+          <div class="border rounded-2xl p-5">
             <div
               class="w-11 h-11 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center text-xl"
             >
@@ -213,7 +211,7 @@
 
           <!-- Installed -->
 
-          <div class="border border-slate-200 rounded-2xl p-5">
+          <div class="border rounded-2xl p-5">
             <div
               class="w-11 h-11 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl"
             >
@@ -230,7 +228,7 @@
         <!-- FILTER BAR -->
         <!-- ================================================= -->
 
-        <section class="border border-slate-200 rounded-2xl p-4 mb-6">
+        <section class="border rounded-2xl p-4 mb-6">
           <div class="flex flex-col lg:flex-row lg:items-center gap-3">
             <div class="relative flex-1">
               <span
@@ -242,13 +240,11 @@
               <input
                 type="text"
                 placeholder="Search by part name, number or vehicle..."
-                class="w-full rounded-xl border border-slate-200 pl-11 pr-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                class="w-full rounded-xl border pl-11 pr-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
               />
             </div>
 
-            <select
-              class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none"
-            >
+            <select class="rounded-xl border px-4 py-3 text-sm outline-none">
               <option>All Status</option>
 
               <option>Available</option>
@@ -260,9 +256,7 @@
               <option>Installed</option>
             </select>
 
-            <select
-              class="rounded-xl border border-slate-200 px-4 py-3 text-sm outline-none"
-            >
+            <select class="rounded-xl border px-4 py-3 text-sm outline-none">
               <option>All Jobs</option>
 
               <option>BMW X5</option>
@@ -278,12 +272,10 @@
         <!-- PARTS TABLE -->
         <!-- ================================================= -->
 
-        <section class="border border-slate-200 rounded-2xl overflow-hidden">
+        <section class="border rounded-2xl overflow-hidden">
           <!-- Table header -->
 
-          <div
-            class="px-6 py-5 border-b border-slate-100 flex items-center justify-between"
-          >
+          <div class="px-6 py-5 border-b flex items-center justify-between">
             <div>
               <h2 class="text-lg font-bold">Required Parts</h2>
 
@@ -319,10 +311,10 @@
                 </tr>
               </thead>
 
-              <tbody class="divide-y divide-slate-100">
+              <tbody class="divide-y divide-slate-100/30">
                 <!-- Row 1 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -368,7 +360,7 @@
 
                 <!-- Row 2 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -414,7 +406,7 @@
 
                 <!-- Row 3 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -460,7 +452,7 @@
 
                 <!-- Row 4 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -497,7 +489,7 @@
 
                   <td class="px-6 py-5 text-right">
                     <button
-                      class="px-3 py-2 rounded-lg border border-slate-200 text-slate-600 text-xs font-semibold"
+                      class="px-3 py-2 rounded-lg border text-xs font-semibold"
                     >
                       Details
                     </button>
@@ -506,7 +498,7 @@
 
                 <!-- Row 5 -->
 
-                <tr class="hover:bg-slate-50">
+                <tr class="">
                   <td class="px-6 py-5">
                     <div class="flex items-center gap-3">
                       <div
@@ -535,7 +527,7 @@
 
                   <td class="px-6 py-5">
                     <span
-                      class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-xs font-semibold"
+                      class="px-3 py-1.5 rounded-full bg-slate-100 text-xs font-semibold"
                     >
                       Waiting
                     </span>
@@ -543,7 +535,7 @@
 
                   <td class="px-6 py-5 text-right">
                     <button
-                      class="px-3 py-2 rounded-lg border border-slate-200 text-slate-600 text-xs font-semibold"
+                      class="px-3 py-2 rounded-lg border text-xs font-semibold"
                     >
                       Track
                     </button>
@@ -557,7 +549,7 @@
           <!-- MOBILE CARDS -->
           <!-- ================================================= -->
 
-          <div class="lg:hidden divide-y divide-slate-100">
+          <div class="lg:hidden divide-y divide-slate-100/30">
             <!-- Mobile item -->
 
             <div class="p-5">
@@ -674,7 +666,7 @@
         <!-- PART REQUESTS -->
         <!-- ================================================= -->
 
-        <section class="border border-slate-200 rounded-2xl p-6 mt-6">
+        <section class="border rounded-2xl p-6 mt-6">
           <div
             class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5"
           >

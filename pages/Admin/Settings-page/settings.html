@@ -90,16 +90,14 @@
 
           <div class="flex items-center gap-4">
             <input
-              class="hidden md:block w-72 px-4 py-3 rounded-xl border border-slate-200 outline-none focus:ring-2 focus:ring-indigo-500"
+              class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Search..."
             />
 
-            <button class="w-12 h-12 rounded-xl border border-slate-200">
-              🔔
-            </button>
+            <button class="w-12 h-12 rounded-xl border">🔔</button>
 
             <div
-              class="flex items-center justify-between gap-3 md:w-25 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-slate-200"
+              class="flex items-center justify-between gap-3 md:w-25 md:gap-0.5 md:pr-2 rounded-full shrink-0 border"
             >
               <div>
                 <img
@@ -129,7 +127,7 @@
           <!-- Profile -->
 
           <section
-            class="xl:col-span-2 rounded-xl border border-slate-200 shadow-sm p-6"
+            class="xl:col-span-2 rounded-xl border bg-[#FCFBF8] dark:bg-[#151B23] *:dark:bg-[#1D2630] shadow-sm p-6"
           >
             <h2 class="text-xl font-bold mb-6">Profile Information</h2>
 
@@ -137,14 +135,12 @@
               <div class="md:col-span-2">
                 <!-- Profile Picture -->
                 <div class="mb-8">
-                  <label class="block text-sm mb-3 text-slate-600">
-                    Profile Picture
-                  </label>
+                  <label class="block text-sm mb-3"> Profile Picture </label>
 
                   <div class="flex flex-col items-center w-fit">
                     <!-- Large profile image -->
                     <div
-                      class="w-32 h-32 rounded-full border-4 border-slate-200 p-1 overflow-hidden bg-slate-100"
+                      class="w-32 h-32 rounded-full border-4 p-1 overflow-hidden bg-slate-100"
                     >
                       <img
                         id="profile-preview"
@@ -172,42 +168,38 @@
                     <p class="mt-2 text-xs text-slate-400">JPG, PNG or WEBP</p>
                   </div>
                 </div>
-                <label class="block text-sm mb-2 text-slate-600">
-                  First Name
-                </label>
+                <label class="block text-sm mb-2"> First Name </label>
 
                 <input
                   value="Saeed"
-                  class="w-full rounded-lg border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                  class="w-full rounded-lg border px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div>
-                <label class="block text-sm mb-2 text-slate-600">
-                  Last Name
-                </label>
+                <label class="block text-sm mb-2"> Last Name </label>
 
                 <input
                   value="Ebrahimi"
-                  class="w-full rounded-lg border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                  class="w-full rounded-lg border px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div>
-                <label class="block text-sm mb-2 text-slate-600"> Email </label>
+                <label class="block text-sm mb-2"> Email </label>
 
                 <input
                   value="admin@autocare.com"
-                  class="w-full rounded-lg border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                  class="w-full rounded-lg border px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
 
               <div>
-                <label class="block text-sm mb-2 text-slate-600"> Phone </label>
+                <label class="block text-sm mb-2"> Phone </label>
 
                 <input
                   value="+98 912 0000000"
-                  class="w-full rounded-lg border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
+                  class="w-full rounded-lg border px-4 py-3 outline-none focus:ring-2 focus:ring-indigo-500"
                 />
               </div>
             </div>
@@ -221,7 +213,9 @@
 
           <!-- System Settings -->
 
-          <section class="rounded-xl border border-slate-200 shadow-sm p-6">
+          <section
+            class="rounded-xl shadow-sm border bg-[#FCFBF8] dark:bg-[#151B23] p-6"
+          >
             <h2 class="text-xl font-bold mb-6">System</h2>
 
             <div class="space-y-5">
@@ -264,48 +258,46 @@
           <!-- Business Information -->
 
           <section
-            class="xl:col-span-2 rounded-xl border border-slate-200 shadow-sm p-6"
+            class="xl:col-span-2 rounded-xl border bg-[#FCFBF8] dark:bg-[#151B23] shadow-sm p-6"
           >
             <h2 class="text-xl font-bold mb-6">Business Information</h2>
 
             <div class="grid md:grid-cols-2 gap-5">
               <input
                 placeholder="Business Name"
-                class="border border-slate-200 rounded-lg px-4 py-3"
+                class="border rounded-lg px-4 py-3"
               />
 
               <input
                 placeholder="Website"
-                class="border border-slate-200 rounded-lg px-4 py-3"
+                class="border rounded-lg px-4 py-3"
               />
 
               <input
                 placeholder="Address"
-                class="border border-slate-200 rounded-lg px-4 py-3"
+                class="border rounded-lg px-4 py-3"
               />
 
               <input
                 placeholder="Working Hours"
-                class="border border-slate-200 rounded-lg px-4 py-3"
+                class="border rounded-lg px-4 py-3"
               />
             </div>
           </section>
 
           <!-- Security -->
 
-          <section class="rounded-xl border border-slate-200 shadow-sm p-6">
+          <section
+            class="rounded-xl border bg-[#FCFBF8] dark:bg-[#151B23] shadow-sm p-6"
+          >
             <h2 class="text-xl font-bold mb-6">Security</h2>
 
             <div class="space-y-4">
-              <button
-                class="w-full text-left border border-slate-200 rounded-lg p-4 hover:bg-slate-50"
-              >
+              <button class="w-full text-left border rounded-lg p-4">
                 Change Password
               </button>
 
-              <button
-                class="w-full text-left border border-slate-200 rounded-lg p-4 hover:bg-slate-50"
-              >
+              <button class="w-full text-left border rounded-lg p-4">
                 Two Factor Authentication
               </button>
 
@@ -320,7 +312,7 @@
 
         <div
           id="overlay"
-          class="overlay hidden absolute inset-0 bg-black/40 z-40"
+          class="overlay hidden fixed inset-0 bg-black/20 z-40"
         ></div>
         <div id="modal-container"></div>
       </main>
