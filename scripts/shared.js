@@ -3,8 +3,30 @@ import { initSidebar } from "./modules/sidebar.js";
 import { base_URL } from "./config.js";
 import { initLogoutModal } from "./modules/logout.js";
 import { themeHandler } from "./funcs/utils.js";
-
+import { getMe } from "./funcs/auth.js";
+const user = await getMe()
+ console.log("CURRENT USER:", user);
+console.log("HAS PROFILE IMAGE:", user?.data?.hasProfileImage);
+  
+  
 const themeBtn = document.querySelector(".theme-btn")
+
+const loadUserImage = async () => {
+  const userImage = document.querySelector(".user-image");
+
+  if (!userImage) return;
+
+  try {
+    const user = await getMe();
+
+    if (!user?.data?.hasProfileImage) return;
+
+    userImage.src = `${base_URL}/users/profile-image`;
+  } catch (error) {
+    console.error("Failed to load user image:", error);
+  }
+};
+
 const initShared = async () => {
     await loadComponent("sidebar-container",
         "/Components/sidebar.html");
@@ -15,7 +37,7 @@ const initShared = async () => {
   );
 
   initSidebar();
-
+  loadUserImage();
   const modalContainer = document.getElementById("modal-container");
 
     
@@ -33,11 +55,6 @@ const initShared = async () => {
   }
 };
 
-const userImage = document.querySelector(".user-image");
-
-if (userImage) {
-  userImage.src = `${base_URL}/users/profile-image`;
-}
 
 initShared();
 themeBtn.addEventListener("click", themeHandler);

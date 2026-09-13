@@ -8,11 +8,6 @@ const getFromLocalStorage = (key) => {
   return JSON.stringify(localStorage.getItem(key));
 };
 
-const getToken = () => {
-  const userInfo = JSON.parse(localStorage.getItem("user"));
-
-  return userInfo ? userInfo.token : null;
-};
 
 const isUserLogin = () => {
   const userInfos = localStorage.getItem("user");
@@ -95,7 +90,6 @@ const addParamToUrl = (param, value) => {
 export {
   saveIntoLocalStorage,
   getFromLocalStorage,
-  getToken,
   isUserLogin,
   getUrlParams,
   themeHandler,

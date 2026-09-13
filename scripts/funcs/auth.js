@@ -1,5 +1,4 @@
 import { base_URL } from "../config.js";
-import { getToken } from "../funcs/utils.js";
 const register = async () => {
   try {
     const firstNameInput = document.querySelector("#firstname");
@@ -77,18 +76,17 @@ const login = async () => {
   console.log("LOGIN RESPONSE:", checkRes);
   return { success: true, data: checkRes.data, message: checkRes.message };
 };
-
+ 
 const getMe = async () => {
-  const token = getToken();
-
-  if (!token) {
-    return false;
-  }
-  const res = await fetch(`http://localhost:4000/api/users/me`, {
+  const res = await fetch(`${base_URL}/users/me`, {
     credentials: "include",
   });
-  const data = await res.json();
-  return data;
+
+  if (!res.ok) {
+    return null;
+  }
+
+  return await res.json();
 };
 
 const logout = async () => {
@@ -122,7 +120,8 @@ const createUser = async () => {
     const emailInput = document.querySelector("#email");
     const passwordInput = document.querySelector("#password");
     const confirmPasswordInput = document.querySelector("#confirmPassword");
-    createRoleElem.value;
+    console.log(createRoleElem.value);
+    
     const role = createRoleElem.value;
 
     if (!role) {

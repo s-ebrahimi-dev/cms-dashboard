@@ -1,14 +1,28 @@
-import { base_URL } from "../../config.js";
+import { getMe } from "../../funcs/auth.js";
+
 import {
   previewProfileImage,
-  uploadProfileImage, loadProfileImage
+  uploadProfileImage,
+  loadProfileImage,
 } from "../../funcs/profileImage.js";
 
 const imageInput = document.querySelector("#profile-image");
 const profilePreview = document.querySelector("#profile-preview");
 
-// Load saved profile image
-profilePreview.src = `${base_URL}/users/profile-image`;
+const initProfileImage = async () => {
+  try {
+    const user = await getMe();
+
+    if (user?.data?.hasProfileImage) {
+      await loadProfileImage(profilePreview);
+     
+    }
+  } catch (error) {
+    console.error("Failed to load profile image:", error);
+  }
+};
+
+initProfileImage();
 
 imageInput.addEventListener("change", async () => {
   const file = imageInput.files[0];
@@ -21,6 +35,10 @@ imageInput.addEventListener("change", async () => {
   try {
     // Save image to backend/database
     await uploadProfileImage(file);
+    // Update all header/sidebar profile images immediately 
+    
+  const imageURL = URL.createObjectURL(file);
+    document.querySelectorAll(".user-image").forEach((image) => image.src = imageURL);
 
     console.log("Profile picture uploaded successfully");
   } catch (error) {

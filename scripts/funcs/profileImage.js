@@ -33,17 +33,7 @@ export async function loadProfileImage(element) {
       }
     );
 
-    console.log("Profile image GET status:", response.status);
-
-    if (response.status === 404) {
-      return;
-    }
-
     if (!response.ok) {
-      const errorText = await response.text();
-
-      console.log("Profile image response:", errorText);
-
       throw new Error("Failed to load profile picture.");
     }
 
