@@ -702,7 +702,7 @@
         id="createUserModal"
         class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/60 px-4 backdrop-blur-sm"
       >
-        <div class="w-full max-w-lg overflow-hidden rounded-2xl shadow-2xl">
+        <div class="w-full bg-white max-w-lg overflow-hidden rounded-2xl shadow-2xl">
           <!-- HEADER -->
 
           <div class="flex items-start justify-between border-b px-6 py-5">
@@ -744,14 +744,14 @@
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <label
-                  for="createFirstname"
+                  for="firstname"
                   class="mb-2 block text-sm font-medium text-slate-700"
                 >
                   First Name
                 </label>
 
                 <input
-                  id="createFirstname"
+                  id="firstname"
                   name="firstname"
                   type="text"
                   autocomplete="given-name"
@@ -762,14 +762,14 @@
 
               <div>
                 <label
-                  for="createLastname"
+                  for="lastname"
                   class="mb-2 block text-sm font-medium text-slate-700"
                 >
                   Last Name
                 </label>
 
                 <input
-                  id="createLastname"
+                  id="lastname"
                   name="lastname"
                   type="text"
                   autocomplete="family-name"
@@ -783,14 +783,14 @@
 
             <div>
               <label
-                for="createUsername"
+                for="username"
                 class="mb-2 block text-sm font-medium text-slate-700"
               >
                 Username
               </label>
 
               <input
-                id="createUsername"
+                id="username"
                 name="username"
                 type="text"
                 autocomplete="username"
@@ -803,18 +803,35 @@
 
             <div>
               <label
-                for="createEmail"
+                for="email"
                 class="mb-2 block text-sm font-medium text-slate-700"
               >
                 Email
               </label>
 
               <input
-                id="createEmail"
+                id="email"
                 name="email"
                 type="email"
                 autocomplete="email"
                 placeholder="john@example.com"
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus: focus:ring-2 focus:ring-orange-500/20"
+              />
+            </div>
+             <div>
+              <label
+                for="phone"
+                class="mb-2 block text-sm font-medium text-slate-700"
+              >
+                Phone
+              </label>
+
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autocomplete="tel"
+                placeholder="09123456789"
                 class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus: focus:ring-2 focus:ring-orange-500/20"
               />
             </div>
@@ -823,15 +840,32 @@
 
             <div>
               <label
-                for="createPassword"
+                for="password"
                 class="mb-2 block text-sm font-medium text-slate-700"
               >
                 Password
               </label>
 
               <input
-                id="createPassword"
+                id="password"
                 name="password"
+                type="password"
+                autocomplete="new-password"
+                placeholder="••••••••"
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus: focus:ring-2 focus:ring-orange-500/20"
+              />
+            </div>
+            <div>
+              <label
+                for="password"
+                class="mb-2 block text-sm font-medium text-slate-700"
+              >
+                Confirm Password
+              </label>
+
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
                 type="password"
                 autocomplete="new-password"
                 placeholder="••••••••"
@@ -843,29 +877,32 @@
 
             <div>
               <label
-                for="createRole"
+                for="role"
                 class="mb-2 block text-sm font-medium text-slate-700"
               >
                 Role
               </label>
 
               <select
+             
                 id="createRole"
                 name="role"
-                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-700 outline-none transition focus:border-orange-500 focus: focus:ring-2 focus:ring-orange-500/20"
+                class="role h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-700 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
               >
+              <option value="" disabled selected>Select a role</option>
                 <option value="CUSTOMER">Customer</option>
 
                 <option value="RECEPTIONIST">Receptionist</option>
 
                 <option value="MECHANIC">Mechanic</option>
 
-                <option value="OIL_SERVICE">Oil Service</option>
+                <option value="OIL_TECHNICIAN">Oil technician</option>
 
                 <option value="BODY_REPAIR">Body Repair</option>
 
-                <option value="DETAILING">Detailing</option>
+                <option value="DETAILING_TECHNICIAN">Detailing technician</option>
 
+                <option value="WASH_TECHNICIAN">Wash technician</option>
                 <option value="ADMIN">Admin</option>
               </select>
             </div>
@@ -884,6 +921,7 @@
               </button>
 
               <button
+              id="submit-user"
                 type="submit"
                 class="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500/30"
               >

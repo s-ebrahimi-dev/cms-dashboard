@@ -112,4 +112,53 @@ const logout = async () => {
   }
 };
 
-export { register, login, getMe, logout };
+const createUser = async () => {
+  try {
+    const createRoleElem = document.querySelector("#createRole");
+    const firstNameInput = document.querySelector("#firstname");
+    const lastNameInput = document.querySelector("#lastname");
+    const userNameInput = document.querySelector("#username");
+    const phoneInput = document.querySelector("#phone");
+    const emailInput = document.querySelector("#email");
+    const passwordInput = document.querySelector("#password");
+    const confirmPasswordInput = document.querySelector("#confirmPassword");
+    createRoleElem.value;
+    const role = createRoleElem.value;
+
+    if (!role) {
+      console.error("Role must be selected");
+      return;
+    }
+
+    const newUser = {
+      firstname: firstNameInput.value.trim(),
+      lastname: lastNameInput.value.trim(),
+      username: userNameInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      email: emailInput.value.trim(),
+      password: passwordInput.value.trim(),
+      confirmPassword: confirmPasswordInput.value.trim(),
+      role: role,
+    };
+
+    const res = await fetch(`${base_URL}/users`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(newUser),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Failed to create user");
+    }
+
+    console.log("USER CREATED:", data);
+  } catch (error) {
+    console.error("CREATE USER ERROR:", error);
+  }
+};
+
+export { register, login, getMe, logout, createUser };
