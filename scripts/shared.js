@@ -5,14 +5,9 @@ import { initLogoutModal } from "./modules/logout.js";
 import { themeHandler } from "./funcs/utils.js";
 import { getMe } from "./funcs/auth.js";
 
-
-
-
 const user = await getMe()
 
- console.log("CURRENT USER:", user);
-  
-  
+ console.log("CURRENT USER:", user);  
 const themeBtn = document.querySelector(".theme-btn");
 
 const loadUserImage = async () => {
