@@ -2556,6 +2556,20 @@
   .list-item:hover::before {
     height: 100%;
   }
+  .list-item::before {
+    height: 0;
+  }
+  .list-item.active::before {
+    height: 100%;
+  }
+  .list-item.active .menu-icon {
+    color: #9cd7ff;
+  }
+  .list-item.active .menu-text {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+    color: #9cd7ff;
+  }
 }
 @property --tw-translate-x {
   syntax: "*";

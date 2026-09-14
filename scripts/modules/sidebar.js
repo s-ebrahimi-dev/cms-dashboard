@@ -44,4 +44,16 @@ asideSmBtn.addEventListener("click", (event) => {
   toggleSidebar(mobileSidebar, mobileOpenSvgIcon, mobileCloseSvgIcon);
 });
 
+const menuItems = document.querySelectorAll(".menu-item");
+const currentPage = window.location.pathname;
+
+menuItems.forEach((menuItem) => {
+  if (
+    !menuItem.classList.contains("logout-item") &&
+    menuItem.pathname === currentPage
+  ) {
+   menuItem.closest(".list-item").classList.add("active");
+  }
+});
+
 }

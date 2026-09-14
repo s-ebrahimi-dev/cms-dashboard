@@ -4,12 +4,16 @@ import { base_URL } from "./config.js";
 import { initLogoutModal } from "./modules/logout.js";
 import { themeHandler } from "./funcs/utils.js";
 import { getMe } from "./funcs/auth.js";
+
+
+
+
 const user = await getMe()
+
  console.log("CURRENT USER:", user);
-console.log("HAS PROFILE IMAGE:", user?.data?.hasProfileImage);
   
   
-const themeBtn = document.querySelector(".theme-btn")
+const themeBtn = document.querySelector(".theme-btn");
 
 const loadUserImage = async () => {
   const userImage = document.querySelector(".user-image");
@@ -58,3 +62,4 @@ const initShared = async () => {
 
 initShared();
 themeBtn.addEventListener("click", themeHandler);
+

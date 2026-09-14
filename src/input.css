@@ -164,7 +164,24 @@ section{
     transition: height 500ms ease;
   }
 
+
+
+.list-item::before {
+  height: 0;
+}
   .list-item:hover::before {
     height: 100%;
   }
+
+.list-item.active::before {
+  height: 100%;
+}
+
+.list-item.active .menu-icon {
+  @apply text-[#9cd7ff];
+}
+
+.list-item.active .menu-text {
+  @apply text-[#9cd7ff] font-semibold;
+}
 }
