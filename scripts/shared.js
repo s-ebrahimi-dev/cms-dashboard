@@ -5,6 +5,7 @@ import { initLogoutModal } from "./modules/logout.js";
 import { themeHandler } from "./funcs/utils.js";
 import { getMe } from "./funcs/auth.js";
 import { initDeleteUserModal } from "./funcs/shared.js";
+import { initEditUserModal } from "./funcs/shared.js";
 const user = await getMe()
 
  console.log("CURRENT USER:", user);  
@@ -28,6 +29,7 @@ const loadUserImage = async () => {
 const deleteModalContainer = document.getElementById(
   "delete-user-modal-container",
 );
+const editModalContainer = document.querySelector("#edit-user-modal-container")
 
 if (deleteModalContainer) {
   await loadComponent(
@@ -36,6 +38,14 @@ if (deleteModalContainer) {
   );
 
   initDeleteUserModal();
+}
+if (editModalContainer) {
+  await loadComponent(
+    "edit-user-modal-container",
+    "/Components/edit-user-modal.html",
+  );
+
+  initEditUserModal();
 }
 const initShared = async () => {
     await loadComponent("sidebar-container",

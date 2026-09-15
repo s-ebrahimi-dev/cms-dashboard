@@ -3,13 +3,11 @@ import {
   getAndShowAllUsers,
 } from "../../funcs/shared.js";
 
-
 const userModal = document.querySelector("#createUserModal");
 const createUserBtn = document.querySelector("#openCreateUserModal");
 const cancelCreateUser = document.querySelector("#cancelCreateUser");
 const closeCreateModal = document.querySelector("#closeCreateUserModal");
 const submitUserBtn = document.querySelector("#submit-user");
-const deleteUserBtn = document.querySelector(".deleteUserBtn");
 
 createUserBtn.addEventListener("click", (event) => {
   event.preventDefault();

@@ -1,20 +1,19 @@
 import { base_URL } from "../config.js";
 
-let currentUser = null;
+let currentDeleteUser = null;
+let currentEditUser = null;
 
+// Delete User modal
 const openDeleteUserModal = (user) => {
   const deleteUserModal = document.querySelector("#delete-user-modal");
   const deleteUserTitle = document.querySelector("#delete-user-title");
   const deleteUserMessage = document.querySelector("#delete-user-message");
 
-  currentUser = user;
-
-  deleteUserTitle.textContent = "Delete User";
-
-  deleteUserMessage.textContent = `Are you sure you want to delete ${user.username}?`;
-
+  currentDeleteUser = user;
   deleteUserModal.classList.remove("hidden");
   deleteUserModal.classList.add("flex");
+
+  deleteUserMessage.textContent = `Are you sure you want to delete ${user.username}?`;
 };
 
 const closeDeleteUserModal = () => {
@@ -23,7 +22,7 @@ const closeDeleteUserModal = () => {
   deleteUserModal.classList.remove("flex");
   deleteUserModal.classList.add("hidden");
 
-  currentUser = null;
+  currentDeleteUser = null;
 };
 
 const initDeleteUserModal = () => {
@@ -35,12 +34,54 @@ const initDeleteUserModal = () => {
   });
 
   confirmDeleteUser.addEventListener("click", async () => {
-    if (!currentUser) return;
-
-    await deleteUser(currentUser._id);
+    if (!currentDeleteUser) return;
+    const userId = currentDeleteUser._id;
 
     closeDeleteUserModal();
 
+    await deleteUser(userId);
+    await getAndShowAllUsers();
+  });
+};
+
+// Edit User Modal
+
+const openEditUserModal = (user) => {
+  const editUserModal = document.querySelector("#editUserModal");
+  currentEditUser = user;
+   document.querySelector("#editUserId").value = user._id;
+  document.querySelector("#editFirstname").value = user.firstname;
+  document.querySelector("#editLastname").value = user.lastname;
+  document.querySelector("#editUsername").value = user.username;
+  document.querySelector("#editEmail").value = user.email;
+  document.querySelector("#editPhone").value = user.phone;
+  document.querySelector("#editPassword").value = "";
+
+  editUserModal.classList.remove("hidden");
+  editUserModal.classList.add("flex");
+};
+const closeEditUserModal = () => {
+  const editUserModal = document.querySelector("#editUserModal");
+
+  editUserModal.classList.remove("flex");
+  editUserModal.classList.add("hidden");
+
+  currentEditUser = null;
+};
+const initEditUserModal = () => {
+  const cancelEditUser = document.querySelector("#cancelEditUser");
+  const confirmEditUser = document.querySelector("#confirmEditUser");
+
+  cancelEditUser.addEventListener("click", () => {
+    closeEditUserModal();
+  });
+
+  confirmEditUser.addEventListener("click", async () => {
+    if (!currentEditUser) return;
+    const userId = currentEditUser._id
+    closeEditUserModal();
+
+    await editUser(userId);
     await getAndShowAllUsers();
   });
 };
@@ -190,10 +231,7 @@ const getAndShowAllUsers = async () => {
     const deleteUserBtn = row.querySelector(".deleteUserBtn");
 
     editUserBtn.addEventListener("click", () => {
-      console.log("EDIT USER:", user);
-
-      // We'll build this next:
-      // openEditUserModal(user);
+      openEditUserModal(user);
     });
 
     deleteUserBtn.addEventListener("click", () => {
@@ -212,9 +250,38 @@ const deleteUser = async (userId) => {
   console.log(result);
 };
 
+const editUser = async (userId) => {
+  const firstnameElem = document.querySelector("#editFirstname");
+  const lastnameElem = document.querySelector("#editLastname");
+  const usernameElem = document.querySelector("#editUsername");
+  const emailElem = document.querySelector("#editEmail");
+  const phoneElem = document.querySelector("#editPhone");
+  const passwordElem = document.querySelector("#editPassword");
+
+  const updatedUser = {
+    firstname: firstnameElem.value.trim(),
+    lastname: lastnameElem.value.trim(),
+    username: usernameElem.value.trim(),
+    email: emailElem.value.trim(),
+    phone: phoneElem.value.trim(),
+    password: passwordElem.value.trim(),
+  };
+
+  const res = await fetch(`${base_URL}/users/update/${userId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify(updatedUser),
+  });
+  console.log(res);
+  const result = await res.json();
+  console.log(result);
+};
+
 export {
   getAndShowAllUsers,
-  deleteUser,
   openDeleteUserModal,
   initDeleteUserModal,
+  openEditUserModal,
+  initEditUserModal,
 };
