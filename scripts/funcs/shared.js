@@ -1,13 +1,13 @@
 import { base_URL } from "../config.js";
-import { initResultModal, showResultModal } from "../components/result-modal.js";
+import {
+  initResultModal,
+  showResultModal,
+} from "../components/result-modal.js";
 import { loadComponent } from "../components/component-Loader.js";
 
-await loadComponent(
-  "result-modal-container",
-  "/Components/result-modal.html",
-)
+await loadComponent("result-modal-container", "/Components/result-modal.html");
 
-initResultModal()
+initResultModal();
 let currentDeleteUser = null;
 let currentEditUser = null;
 let currentChatUser = null;
@@ -58,7 +58,7 @@ const initDeleteUserModal = () => {
 const openEditUserModal = (user) => {
   const editUserModal = document.querySelector("#editUserModal");
   currentEditUser = user;
-   document.querySelector("#editUserId").value = user._id;
+  document.querySelector("#editUserId").value = user._id;
   document.querySelector("#editFirstname").value = user.firstname;
   document.querySelector("#editLastname").value = user.lastname;
   document.querySelector("#editUsername").value = user.username;
@@ -87,7 +87,7 @@ const initEditUserModal = () => {
 
   confirmEditUser.addEventListener("click", async () => {
     if (!currentEditUser) return;
-    const userId = currentEditUser._id
+    const userId = currentEditUser._id;
     closeEditUserModal();
 
     await editUser(userId);
@@ -95,20 +95,66 @@ const initEditUserModal = () => {
   });
 };
 
-// Chat User Modal
+//--------- Chat User Modal---------
 
 const openChatUserModal = (user) => {
-    currentChatUser = user;
+  const chatUserModal = document.querySelector("#chatUserModal");
 
-  document.querySelector("#chatUserImage").src = ...;
+  currentChatUser = user;
+
+  const chatUserImage = document.querySelector("#chatUserImage");
+
+  if (user.profileImage?.data?.data) {
+    const byteArray = new Uint8Array(user.profileImage.data.data);
+
+    let binary = "";
+
+    byteArray.forEach((byte) => {
+      binary += String.fromCharCode(byte);
+    });
+
+    const base64 = btoa(binary);
+
+    chatUserImage.src = `data:${user.profileImage.contentType};base64,${base64}`;
+  } else {
+    chatUserImage.src = "/images/default-profile.png";
+  }
+
+  chatUserImage.alt = `${user.firstname} ${user.lastname}`;
+
   document.querySelector("#chatUserFullname").textContent =
     `${user.firstname} ${user.lastname}`;
-  document.querySelector("#chatUserUsername").textContent =
-    `@${user.username}`;
 
-  document.querySelector("#chatUserModal").classList.remove("hidden");
-  document.querySelector("#chatUserModal").classList.add("flex");
-}
+  document.querySelector("#chatUserUsername").textContent = `@${user.username}`;
+
+  chatUserModal.classList.remove("hidden");
+  chatUserModal.classList.add("flex");
+};
+
+const closeChatUserModal = () => {
+  const chatUserModal = document.querySelector("#chatUserModal");
+
+  chatUserModal.classList.remove("flex");
+  chatUserModal.classList.add("hidden");
+
+  currentChatUser = null;
+};
+
+const initChatUserModal = () => {
+  const cancelChatUser = document.querySelector("#cancelChatUser");
+  const confirmChatUser = document.querySelector("#confirmChatUser");
+  cancelChatUser.addEventListener("click", () => {
+    closeChatUserModal();
+  });
+  confirmChatUser.addEventListener("click", async () => {
+    if (!currentChatUser) return;
+    const userId = currentChatUser._id;
+    closeChatUserModal();
+
+    await sendMessage(userId);
+  });
+};
+//---- Get And Show All Users------------
 
 const getAndShowAllUsers = async () => {
   const usersTable = document.querySelector("#usersTableBody");
@@ -260,10 +306,11 @@ const getAndShowAllUsers = async () => {
 
     const editUserBtn = row.querySelector(".editUserBtn");
     const deleteUserBtn = row.querySelector(".deleteUserBtn");
-    const chatUserBtn = row.querySelector(".chatUserBtn")
+    const chatUserBtn = row.querySelector(".chatUserBtn");
+
     chatUserBtn.addEventListener("click", () => {
       openChatUserModal(user);
-    })
+    });
     editUserBtn.addEventListener("click", () => {
       openEditUserModal(user);
     });
@@ -281,20 +328,13 @@ const deleteUser = async (userId) => {
     credentials: "include",
   });
 
-  
   const result = await res.json();
-    console.log(result);
+  console.log(result);
   if (res.ok) {
-    
-    showResultModal("success","user deleted successfully",)
+    showResultModal("success", "user deleted successfully");
   } else {
-     showResultModal(
-                "error",
-                result.message
-            );
-}
-  
-
+    showResultModal("error", result.message);
+  }
 };
 
 const editUser = async (userId) => {
@@ -322,16 +362,37 @@ const editUser = async (userId) => {
   });
   console.log(res);
   const result = await res.json();
-    console.log(result);
- if (res.ok) {
-    
-    showResultModal("success","user updated successfully",)
+  console.log(result);
+  if (res.ok) {
+    showResultModal("success", "user updated successfully");
   } else {
-     showResultModal(
-                "error",
-                result.message
-            );
-}
+    showResultModal("error", result.message);
+  }
+};
+
+const sendMessage = async (userId) => {
+  const receiver = userId;
+  const messageTextElem = document.querySelector("#chatMessage");
+  const message = messageTextElem.value.trim();
+  const userMessage = {
+    receiver,
+    message,
+  };
+  const res = await fetch("http://localhost:4000/api/users/message", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(userMessage),
+  });
+  const result = await res.json();
+  console.log(result);
+  if (res.ok) {
+    showResultModal("success", "message sent successfully");
+  } else {
+    showResultModal("error", result.message);
+  }
 };
 
 export {
@@ -340,4 +401,6 @@ export {
   initDeleteUserModal,
   openEditUserModal,
   initEditUserModal,
+  openChatUserModal,
+  initChatUserModal,
 };

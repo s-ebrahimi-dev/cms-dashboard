@@ -358,6 +358,12 @@
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
+  .top-14 {
+    top: calc(var(--spacing) * 14);
+  }
+  .top-20 {
+    top: calc(var(--spacing) * 20);
+  }
   .-right-2 {
     right: calc(var(--spacing) * -2);
   }
@@ -638,6 +644,12 @@
   .h-screen {
     height: 100vh;
   }
+  .max-h-80 {
+    max-height: calc(var(--spacing) * 80);
+  }
+  .max-h-\[60vh\] {
+    max-height: 60vh;
+  }
   .max-h-\[90\%\] {
     max-height: 90%;
   }
@@ -698,6 +710,9 @@
   .w-72 {
     width: calc(var(--spacing) * 72);
   }
+  .w-80 {
+    width: calc(var(--spacing) * 80);
+  }
   .w-120 {
     width: calc(var(--spacing) * 120);
   }
@@ -749,6 +764,9 @@
   .w-\[90\%\] {
     width: 90%;
   }
+  .w-\[calc\(100vw-2rem\)\] {
+    width: calc(100vw - 2rem);
+  }
   .w-fit {
     width: fit-content;
   }
@@ -760,6 +778,9 @@
   }
   .max-w-2xl {
     max-width: var(--container-2xl);
+  }
+  .max-w-80 {
+    max-width: calc(var(--spacing) * 80);
   }
   .max-w-full {
     max-width: 100%;
@@ -2071,11 +2092,17 @@
     scale: 0.99;
   }
   @media (width >= 40rem) {
+    .sm\:right-6 {
+      right: calc(var(--spacing) * 6);
+    }
     .sm\:block {
       display: block;
     }
     .sm\:flex {
       display: flex;
+    }
+    .sm\:w-80 {
+      width: calc(var(--spacing) * 80);
     }
     .sm\:cursor-pointer {
       cursor: pointer;
@@ -2270,6 +2297,9 @@
   .dark\:border-\[\#2A3540\]:where(.dark, .dark *) {
     border-color: #2A3540;
   }
+  .dark\:border-slate-700:where(.dark, .dark *) {
+    border-color: var(--color-slate-700);
+  }
   .dark\:border-white:where(.dark, .dark *) {
     border-color: var(--color-white);
   }
@@ -2284,6 +2314,9 @@
   }
   .dark\:bg-\[\#5f6774\]:where(.dark, .dark *) {
     background-color: #5f6774;
+  }
+  .dark\:bg-\[\#151B23\]:where(.dark, .dark *) {
+    background-color: #151B23;
   }
   .dark\:bg-\[\#FCFBF8\]:where(.dark, .dark *) {
     background-color: #FCFBF8;
@@ -2304,6 +2337,9 @@
     background-color: #5f6774;
   }
   @media (hover: hover) {
+    .dark\:hover\:bg-slate-800:where(.dark, .dark *):hover {
+      background-color: var(--color-slate-800);
+    }
     .hover\:dark\:bg-blue-50:hover:where(.dark, .dark *) {
       background-color: var(--color-blue-50);
     }

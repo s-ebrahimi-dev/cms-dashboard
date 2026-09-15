@@ -4,8 +4,8 @@ import { base_URL } from "./config.js";
 import { initLogoutModal } from "./modules/logout.js";
 import { themeHandler } from "./funcs/utils.js";
 import { getMe } from "./funcs/auth.js";
-import { initDeleteUserModal } from "./funcs/shared.js";
-import { initEditUserModal } from "./funcs/shared.js";
+import { initDeleteUserModal,initEditUserModal, initChatUserModal } from "./funcs/shared.js";
+
 const user = await getMe()
 
  console.log("CURRENT USER:", user);  
@@ -31,6 +31,8 @@ const deleteModalContainer = document.getElementById(
 );
 const editModalContainer = document.querySelector("#edit-user-modal-container")
 
+const chatUserModalContainer = document.querySelector("#chat-user-modal-container")
+
 if (deleteModalContainer) {
   await loadComponent(
     "delete-user-modal-container",
@@ -47,6 +49,15 @@ if (editModalContainer) {
 
   initEditUserModal();
 }
+
+if (chatUserModalContainer) {
+  await loadComponent(
+    "chat-user-modal-container",
+    "/Components/chat-user-modal.html",
+  );
+  initChatUserModal();
+}
+
 const initShared = async () => {
     await loadComponent("sidebar-container",
         "/Components/sidebar.html");
@@ -74,6 +85,15 @@ const initShared = async () => {
     await loadComponent("loader-container", "/Components/loader.html");
   }
 };
+
+const messageNotif = document.querySelector("#message-notif");
+const messageNotificationModal = document.querySelector(
+  "#messageNotificationModal",
+);
+
+messageNotif.addEventListener("click", () => {
+  messageNotificationModal.classList.toggle("hidden");
+});
 
 
 initShared();
