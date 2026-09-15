@@ -1124,9 +1124,6 @@
   .bg-cyan-600 {
     background-color: var(--color-cyan-600);
   }
-  .bg-emerald-500 {
-    background-color: var(--color-emerald-500);
-  }
   .bg-green-50 {
     background-color: var(--color-green-50);
   }
@@ -1564,9 +1561,6 @@
   .text-cyan-700 {
     color: var(--color-cyan-700);
   }
-  .text-emerald-600 {
-    color: var(--color-emerald-600);
-  }
   .text-green-600 {
     color: var(--color-green-600);
   }
@@ -1674,6 +1668,9 @@
   }
   .text-zinc-500 {
     color: var(--color-zinc-500);
+  }
+  .text-zinc-700 {
+    color: var(--color-zinc-700);
   }
   .text-zinc-950 {
     color: var(--color-zinc-950);
@@ -2196,6 +2193,9 @@
   }
   .dark\:text-\[\#B7C1C9\]:where(.dark, .dark *) {
     color: #B7C1C9;
+  }
+  .dark\:text-white:where(.dark, .dark *) {
+    color: var(--color-white);
   }
   :is(.\*\:dark\:bg-\[\#1D2630\] > *):where(.dark, .dark *) {
     background-color: #1D2630;

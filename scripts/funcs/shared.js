@@ -81,7 +81,7 @@ const getAndShowAllUsers = async () => {
                             class="h-10 w-10 shrink-0 rounded-full object-cover"/>
 
                         <div>
-                          <p class="text-sm font-semibold text-slate-800">
+                          <p class="text-sm font-semibold text-slate-800 dark:text-white">
                             ${user.firstname} ${user.lastname}
                           </p>
 
@@ -107,10 +107,8 @@ const getAndShowAllUsers = async () => {
                     <!-- STATUS -->
 
                     <td class="whitespace-nowrap px-6 py-4">
-                      <span class="inline-flex items-center gap-2 text-sm font-medium text-emerald-600">
-                        <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-
-                        Active
+                      <span class="inline-flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-white">
+                        ${user.phone}
                       </span>
                     </td>
 
