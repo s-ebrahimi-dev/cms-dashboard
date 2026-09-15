@@ -1,66 +1,47 @@
 import { base_URL } from "../config.js";
 
-let currentUserAction = null;
 let currentUser = null;
 
-const openUserActionModal = (action, user) => {
-  const userActionModal = document.querySelector("#user-action-modal");
-  const userActionTitle = document.querySelector("#user-action-title");
-  const userActionMessage = document.querySelector("#user-action-message");
-  const confirmUserAction = document.querySelector("#confirm-user-action");
+const openDeleteUserModal = (user) => {
+  const deleteUserModal = document.querySelector("#delete-user-modal");
+  const deleteUserTitle = document.querySelector("#delete-user-title");
+  const deleteUserMessage = document.querySelector("#delete-user-message");
 
-  currentUserAction = action;
   currentUser = user;
 
-  if (action === "delete") {
-    userActionTitle.textContent = "Delete User";
+  deleteUserTitle.textContent = "Delete User";
 
-    userActionMessage.textContent = `Are you sure you want to delete ${user.username}?`;
+  deleteUserMessage.textContent = `Are you sure you want to delete ${user.username}?`;
 
-    confirmUserAction.textContent = "Delete";
-
-    confirmUserAction.classList.remove("bg-indigo-500");
-    confirmUserAction.classList.add("bg-[#EF6A6A]");
-  }
-
-  if (action === "edit") {
-    userActionTitle.textContent = "Edit User";
-
-    userActionMessage.textContent = `Are you sure you want to edit ${user.username}?`;
-
-    confirmUserAction.textContent = "Edit";
-
-    confirmUserAction.classList.remove("bg-[#EF6A6A]");
-    confirmUserAction.classList.add("bg-indigo-500");
-  }
-
-  userActionModal.classList.remove("hidden");
-  userActionModal.classList.add("flex");
+  deleteUserModal.classList.remove("hidden");
+  deleteUserModal.classList.add("flex");
 };
 
-const closeUserActionModal = () => {
-  const userActionModal = document.querySelector("#user-action-modal");
+const closeDeleteUserModal = () => {
+  const deleteUserModal = document.querySelector("#delete-user-modal");
 
-  userActionModal.classList.remove("flex");
-  userActionModal.classList.add("hidden");
+  deleteUserModal.classList.remove("flex");
+  deleteUserModal.classList.add("hidden");
 
-  currentUserAction = null;
   currentUser = null;
 };
 
-const initUserActionModal = () => {
-  const cancelUserAction = document.querySelector("#cancel-user-action");
-  const confirmUserAction = document.querySelector("#confirm-user-action");
+const initDeleteUserModal = () => {
+  const cancelDeleteUser = document.querySelector("#cancel-delete-user");
+  const confirmDeleteUser = document.querySelector("#confirm-delete-user");
 
-  cancelUserAction.addEventListener("click", () => {
-    closeUserActionModal();
+  cancelDeleteUser.addEventListener("click", () => {
+    closeDeleteUserModal();
   });
 
-  confirmUserAction.addEventListener("click", () => {
-    console.log("CONFIRMED ACTION:", currentUserAction);
-    console.log("USER:", currentUser);
+  confirmDeleteUser.addEventListener("click", async () => {
+    if (!currentUser) return;
 
-    closeUserActionModal();
+    await deleteUser(currentUser._id);
+
+    closeDeleteUserModal();
+
+    await getAndShowAllUsers();
   });
 };
 
@@ -114,7 +95,7 @@ const getAndShowAllUsers = async () => {
   const result = await res.json();
 
   const users = result.data;
-  console.log(users);
+
   usersTable.innerHTML = "";
   users.forEach((user) => {
     const role = roleConfig[user.role];
@@ -131,7 +112,7 @@ const getAndShowAllUsers = async () => {
       const base64 = btoa(binary);
       profileImageSrc = `data:${user.profileImage.contentType};base64,${base64}`;
     }
-   
+
     usersTable.insertAdjacentHTML(
       "beforeend",
       `
@@ -203,23 +184,26 @@ const getAndShowAllUsers = async () => {
                   </tr>
       `,
     );
-     const row = usersTable.lastElementChild;
+    const row = usersTable.lastElementChild;
 
-const editUserBtn = row.querySelector(".editUserBtn");
-const deleteUserBtn = row.querySelector(".deleteUserBtn");
+    const editUserBtn = row.querySelector(".editUserBtn");
+    const deleteUserBtn = row.querySelector(".deleteUserBtn");
 
-editUserBtn.addEventListener("click", () => {
-  openUserActionModal("edit", user);
-});
+    editUserBtn.addEventListener("click", () => {
+      console.log("EDIT USER:", user);
 
-deleteUserBtn.addEventListener("click", () => {
-  openUserActionModal("delete", user);
-});
+      // We'll build this next:
+      // openEditUserModal(user);
+    });
+
+    deleteUserBtn.addEventListener("click", () => {
+      openDeleteUserModal(user);
+    });
   });
 };
 
 const deleteUser = async (userId) => {
-  const res = await fetch(`${base_URL}/users/${userId}`, {
+  const res = await fetch(`${base_URL}/users/delete/${userId}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -231,6 +215,6 @@ const deleteUser = async (userId) => {
 export {
   getAndShowAllUsers,
   deleteUser,
-  openUserActionModal,
-  initUserActionModal,
+  openDeleteUserModal,
+  initDeleteUserModal,
 };

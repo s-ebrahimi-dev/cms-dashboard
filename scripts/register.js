@@ -5,7 +5,7 @@ import { initResultModal, showResultModal } from "./components/result-modal.js";
 // Load modal HTML
 await loadComponent(
   "result-modal-container",
-  "/Components/register-modal.html",
+  "/Components/result-modal.html",
 );
 
 // Prepare modal (but don't show it)

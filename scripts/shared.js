@@ -4,7 +4,7 @@ import { base_URL } from "./config.js";
 import { initLogoutModal } from "./modules/logout.js";
 import { themeHandler } from "./funcs/utils.js";
 import { getMe } from "./funcs/auth.js";
-
+import { initDeleteUserModal } from "./funcs/shared.js";
 const user = await getMe()
 
  console.log("CURRENT USER:", user);  
@@ -25,7 +25,18 @@ const loadUserImage = async () => {
     console.error("Failed to load user image:", error);
   }
 };
+const deleteModalContainer = document.getElementById(
+  "delete-user-modal-container",
+);
 
+if (deleteModalContainer) {
+  await loadComponent(
+    "delete-user-modal-container",
+    "/Components/delete-user-modal.html",
+  );
+
+  initDeleteUserModal();
+}
 const initShared = async () => {
     await loadComponent("sidebar-container",
         "/Components/sidebar.html");

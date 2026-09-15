@@ -7,7 +7,7 @@ import {
 } from "./funcs/loader.js";
 await loadComponent(
   "result-modal-container",
-  "/Components/register-modal.html",
+  "/Components/result-modal.html",
 );
 await loadComponent(
     "loader-container",
