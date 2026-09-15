@@ -1,5 +1,69 @@
 import { base_URL } from "../config.js";
 
+let currentUserAction = null;
+let currentUser = null;
+
+const openUserActionModal = (action, user) => {
+  const userActionModal = document.querySelector("#user-action-modal");
+  const userActionTitle = document.querySelector("#user-action-title");
+  const userActionMessage = document.querySelector("#user-action-message");
+  const confirmUserAction = document.querySelector("#confirm-user-action");
+
+  currentUserAction = action;
+  currentUser = user;
+
+  if (action === "delete") {
+    userActionTitle.textContent = "Delete User";
+
+    userActionMessage.textContent = `Are you sure you want to delete ${user.username}?`;
+
+    confirmUserAction.textContent = "Delete";
+
+    confirmUserAction.classList.remove("bg-indigo-500");
+    confirmUserAction.classList.add("bg-[#EF6A6A]");
+  }
+
+  if (action === "edit") {
+    userActionTitle.textContent = "Edit User";
+
+    userActionMessage.textContent = `Are you sure you want to edit ${user.username}?`;
+
+    confirmUserAction.textContent = "Edit";
+
+    confirmUserAction.classList.remove("bg-[#EF6A6A]");
+    confirmUserAction.classList.add("bg-indigo-500");
+  }
+
+  userActionModal.classList.remove("hidden");
+  userActionModal.classList.add("flex");
+};
+
+const closeUserActionModal = () => {
+  const userActionModal = document.querySelector("#user-action-modal");
+
+  userActionModal.classList.remove("flex");
+  userActionModal.classList.add("hidden");
+
+  currentUserAction = null;
+  currentUser = null;
+};
+
+const initUserActionModal = () => {
+  const cancelUserAction = document.querySelector("#cancel-user-action");
+  const confirmUserAction = document.querySelector("#confirm-user-action");
+
+  cancelUserAction.addEventListener("click", () => {
+    closeUserActionModal();
+  });
+
+  confirmUserAction.addEventListener("click", () => {
+    console.log("CONFIRMED ACTION:", currentUserAction);
+    console.log("USER:", currentUser);
+
+    closeUserActionModal();
+  });
+};
+
 const getAndShowAllUsers = async () => {
   const usersTable = document.querySelector("#usersTableBody");
   const roleConfig = {
@@ -67,6 +131,7 @@ const getAndShowAllUsers = async () => {
       const base64 = btoa(binary);
       profileImageSrc = `data:${user.profileImage.contentType};base64,${base64}`;
     }
+   
     usersTable.insertAdjacentHTML(
       "beforeend",
       `
@@ -127,7 +192,7 @@ const getAndShowAllUsers = async () => {
                         </button>
 
                         <!-- DELETE -->
-
+  
                         <button type="button" class="deleteUserBtn rounded-lg p-2 text-slate-400 transition hover:bg-red-50 hover:text-red-600" title="Delete user">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673A2.25 2.25 0 0 1 15.916 21.75H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-10.208 0c-.34.059-.68.114-1.022.166m1.022-.165a48.11 48.11 0 0 1 3.478-.397m7.73 0V4.58c0-1.18-.91-2.203-2.09-2.25a51.964 51.964 0 0 0-3.32 0C8.91 2.377 8 3.4 8 4.58v.813m7.73 0a48.667 48.667 0 0 0-7.73 0"></path>
@@ -138,7 +203,34 @@ const getAndShowAllUsers = async () => {
                   </tr>
       `,
     );
+     const row = usersTable.lastElementChild;
+
+const editUserBtn = row.querySelector(".editUserBtn");
+const deleteUserBtn = row.querySelector(".deleteUserBtn");
+
+editUserBtn.addEventListener("click", () => {
+  openUserActionModal("edit", user);
+});
+
+deleteUserBtn.addEventListener("click", () => {
+  openUserActionModal("delete", user);
+});
   });
 };
 
-export { getAndShowAllUsers };
+const deleteUser = async (userId) => {
+  const res = await fetch(`${base_URL}/users/${userId}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+  });
+  const result = await res.json();
+  console.log(result);
+};
+
+export {
+  getAndShowAllUsers,
+  deleteUser,
+  openUserActionModal,
+  initUserActionModal,
+};
