@@ -97,20 +97,14 @@
 
             <button class="w-12 h-12 rounded-xl border">🔔</button>
 
-            <div
-              class="flex items-center justify-between gap-3 md:w-25 md:gap-0.5 md:pr-2 rounded-full shrink-0 border"
-            >
+            <div class="flex items-center justify-between gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600 dark:border-white">
               <div>
-                <img
-                  src="/images/default-profile.png"
-                  class="user-image w-10 h-10 md:w-8 md:h-8 rounded-full object-cover bg-indigo-600"
-                  alt="user-image"
-                />
+                <img src="http://localhost:4000/api/users/profile-image" class="user-image w-12 h-12 rounded-full object-cover bg-indigo-600" alt="user-image">
               </div>
 
-              <div class="hidden md:block">
-                <p class="font-semibold md:text-[10px] text-sm">Saeed</p>
-                <p class="text-xs md:text-[8px] text-">Administrator</p>
+              <div class="hidden md:flex flex-col items-end">
+                <p class="font-semibold text-[12px]">Saeed</p>
+                <p class="text-xs text-[9px]">Administrator</p>
               </div>
             </div>
           </div>

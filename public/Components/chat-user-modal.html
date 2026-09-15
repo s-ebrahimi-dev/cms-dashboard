@@ -1,0 +1,119 @@
+<!-- CHAT USER MODAL -->
+<div
+  id="chatUserModal"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 px-4 backdrop-blur-sm"
+>
+  <div
+    class="w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-[#5f6774]"
+  >
+    <!-- HEADER -->
+    <div class="flex items-start justify-between border-b px-6 py-5">
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">
+          Send Message
+        </h2>
+
+        <p class="mt-1 text-sm text-slate-500">
+          Send a message to this user.
+        </p>
+      </div>
+
+      <button
+        id="closeChatUserModal"
+        type="button"
+        class="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.8"
+          stroke="currentColor"
+          class="h-5 w-5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- FORM -->
+    <div id="chatUserForm" class="space-y-5 p-6">
+
+      <!-- USER INFORMATION -->
+      <div
+        class="flex items-center gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4"
+      >
+        <img
+          id="chatUserImage"
+          src="/images/default-profile.png"
+          alt=""
+          class="h-14 w-14 shrink-0 rounded-full object-cover"
+        />
+
+        <div class="min-w-0">
+          <p
+            id="chatUserFullname"
+            class="truncate text-sm font-semibold text-slate-800"
+          >
+            User Name
+          </p>
+
+          <p
+            id="chatUserUsername"
+            class="mt-1 truncate text-xs text-slate-400"
+          >
+            @username
+          </p>
+        </div>
+      </div>
+
+      <!-- MESSAGE -->
+      <div>
+        <label
+          for="chatMessage"
+          class="mb-2 block text-sm font-medium text-slate-700"
+        >
+          Message
+        </label>
+
+        <textarea
+          id="chatMessage"
+          name="message"
+          rows="6"
+          maxlength="1000"
+          placeholder="Write your message..."
+          class="w-full resize-none rounded-lg border border-slate-300 px-4 py-3 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
+        ></textarea>
+
+        <p class="mt-1 text-right text-xs text-slate-400">
+          Maximum 1000 characters
+        </p>
+      </div>
+
+      <!-- FOOTER -->
+      <div
+        class="flex flex-col-reverse gap-3 border-t pt-5 sm:flex-row sm:justify-end"
+      >
+        <button
+          id="cancelChatUser"
+          type="button"
+          class="rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-semibold transition hover:bg-red-400"
+        >
+          Cancel
+        </button>
+
+        <button
+          id="confirmChatUser"
+          type="button"
+          class="rounded-lg bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-600"
+        >
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

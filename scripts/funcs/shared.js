@@ -1,7 +1,16 @@
 import { base_URL } from "../config.js";
+import { initResultModal, showResultModal } from "../components/result-modal.js";
+import { loadComponent } from "../components/component-Loader.js";
 
+await loadComponent(
+  "result-modal-container",
+  "/Components/result-modal.html",
+)
+
+initResultModal()
 let currentDeleteUser = null;
 let currentEditUser = null;
+let currentChatUser = null;
 
 // Delete User modal
 const openDeleteUserModal = (user) => {
@@ -85,6 +94,21 @@ const initEditUserModal = () => {
     await getAndShowAllUsers();
   });
 };
+
+// Chat User Modal
+
+const openChatUserModal = (user) => {
+    currentChatUser = user;
+
+  document.querySelector("#chatUserImage").src = ...;
+  document.querySelector("#chatUserFullname").textContent =
+    `${user.firstname} ${user.lastname}`;
+  document.querySelector("#chatUserUsername").textContent =
+    `@${user.username}`;
+
+  document.querySelector("#chatUserModal").classList.remove("hidden");
+  document.querySelector("#chatUserModal").classList.add("flex");
+}
 
 const getAndShowAllUsers = async () => {
   const usersTable = document.querySelector("#usersTableBody");
@@ -203,9 +227,16 @@ const getAndShowAllUsers = async () => {
 
                     <td class="whitespace-nowrap px-6 py-4">
                       <div class="flex justify-end gap-2">
+
+                       <button type="button" class="chatUserBtn rounded-lg p-2 text-slate-400 transition md:hover:bg-emerald-200 md:hover:dark:bg-emerald-100 hover:text-emerald-700 md:cursor-pointer" title="Chat user">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                          </svg>
+                        </button>
+
                         <!-- EDIT -->
 
-                        <button type="button" class="editUserBtn rounded-lg p-2 text-slate-400 transition hover:bg-blue-50 hover:text-blue-600" title="Edit user">
+                        <button type="button" class="editUserBtn rounded-lg p-2 text-slate-400 transition md:hover:bg-blue-200 md:hover:dark:bg-blue-100 hover:text-blue-600 md:cursor-pointer" title="Edit user">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.5 16.154 6 17.5l1.346-4.5 9.516-8.513Z"></path>
 
@@ -215,7 +246,7 @@ const getAndShowAllUsers = async () => {
 
                         <!-- DELETE -->
   
-                        <button type="button" class="deleteUserBtn rounded-lg p-2 text-slate-400 transition hover:bg-red-50 hover:text-red-600" title="Delete user">
+                        <button type="button" class="deleteUserBtn rounded-lg p-2 text-slate-400 transition md:hover:bg-red-200 md:hover:dark:bg-red-100 hover:text-red-600 md:cursor-pointer" title="Delete user">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673A2.25 2.25 0 0 1 15.916 21.75H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-10.208 0c-.34.059-.68.114-1.022.166m1.022-.165a48.11 48.11 0 0 1 3.478-.397m7.73 0V4.58c0-1.18-.91-2.203-2.09-2.25a51.964 51.964 0 0 0-3.32 0C8.91 2.377 8 3.4 8 4.58v.813m7.73 0a48.667 48.667 0 0 0-7.73 0"></path>
                           </svg>
@@ -229,7 +260,10 @@ const getAndShowAllUsers = async () => {
 
     const editUserBtn = row.querySelector(".editUserBtn");
     const deleteUserBtn = row.querySelector(".deleteUserBtn");
-
+    const chatUserBtn = row.querySelector(".chatUserBtn")
+    chatUserBtn.addEventListener("click", () => {
+      openChatUserModal(user);
+    })
     editUserBtn.addEventListener("click", () => {
       openEditUserModal(user);
     });
@@ -246,8 +280,21 @@ const deleteUser = async (userId) => {
     headers: { "Content-Type": "application/json" },
     credentials: "include",
   });
+
+  
   const result = await res.json();
-  console.log(result);
+    console.log(result);
+  if (res.ok) {
+    
+    showResultModal("success","user deleted successfully",)
+  } else {
+     showResultModal(
+                "error",
+                result.message
+            );
+}
+  
+
 };
 
 const editUser = async (userId) => {
@@ -275,7 +322,16 @@ const editUser = async (userId) => {
   });
   console.log(res);
   const result = await res.json();
-  console.log(result);
+    console.log(result);
+ if (res.ok) {
+    
+    showResultModal("success","user updated successfully",)
+  } else {
+     showResultModal(
+                "error",
+                result.message
+            );
+}
 };
 
 export {
