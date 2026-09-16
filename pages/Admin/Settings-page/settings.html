@@ -94,11 +94,22 @@
               placeholder="Search..."
             />
 
-            <button id="message-notif" class="message-notif w-12 h-12 rounded-xl border">🔔</button>
+            <button
+              id="message-notif"
+              class="message-notif w-12 h-12 rounded-xl border border-black/40 dark:border-white/50"
+            >
+              🔔
+            </button>
 
-            <div class="flex items-center justify-between gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600 dark:border-white">
+            <div
+              class="flex items-center justify-between gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600 dark:border-white"
+            >
               <div>
-                <img src="http://localhost:4000/api/users/profile-image" class="user-image w-12 h-12 rounded-full object-cover bg-indigo-600" alt="user-image">
+                <img
+                  src="http://localhost:4000/api/users/profile-image"
+                  class="user-image w-12 h-12 rounded-full object-cover bg-indigo-600"
+                  alt="user-image"
+                />
               </div>
 
               <div class="hidden md:flex flex-col items-end">
@@ -107,15 +118,8 @@
               </div>
             </div>
           </div>
-          <div class="theme-btn cursor-default sm:cursor-pointer">
-            <svg class="inline-block dark:hidden w-5 h-5">
-              <use href="#moon"></use>
-            </svg>
-            <svg class="hidden dark:inline-block w-5 h-5">
-              <use href="#sun"></use>
-            </svg>
-          </div>
-           <div
+        
+          <div
             id="messageNotificationModal"
             class="absolute right-0 top-14 z-50 hidden w-[calc(100vw-2rem)] max-w-80 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-[#151B23]"
           >
@@ -167,7 +171,9 @@
           <section
             class="xl:col-span-2 rounded-xl border bg-[#FCFBF8] dark:bg-[#5f6774] *:dark:bg-[#5f6774] shadow-sm p-6"
           >
-            <h2 class="text-xl font-bold mb-6 bg-[#FCFBF8] dark:bg-[#5f6774] ">Profile Information</h2>
+            <h2 class="text-xl font-bold mb-6 bg-[#FCFBF8] dark:bg-[#5f6774]">
+              Profile Information
+            </h2>
 
             <div class="grid md:grid-cols-2 gap-5">
               <div class="md:col-span-2">
@@ -288,7 +294,11 @@
                   <p class="text-sm text-">Enable dark theme</p>
                 </div>
 
-                <input type="checkbox" class="w-5 h-5 accent-indigo-600" />
+                <input
+                  id="dark-mode-toggle"
+                  type="checkbox"
+                  class="w-5 h-5 accent-indigo-600"
+                />
               </div>
             </div>
           </section>
@@ -353,7 +363,7 @@
           class="overlay hidden fixed inset-0 bg-black/20 z-40"
         ></div>
         <div id="modal-container"></div>
-         <div id="result-modal-container"></div>
+        <div id="result-modal-container"></div>
       </main>
     </div>
 

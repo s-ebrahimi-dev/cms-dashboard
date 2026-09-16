@@ -9,7 +9,6 @@ import { initDeleteUserModal,initEditUserModal, initChatUserModal } from "./func
 const user = await getMe()
 
  console.log("CURRENT USER:", user);  
-const themeBtn = document.querySelector(".theme-btn");
 
 const loadUserImage = async () => {
   const userImage = document.querySelector(".user-image");
@@ -91,11 +90,19 @@ const messageNotificationModal = document.querySelector(
   "#messageNotificationModal",
 );
 
+document.addEventListener("click", (event) => {
+  const clickedInsideModal = messageNotificationModal.contains(event.target);
+  const clickedNotification = messageNotif.contains(event.target);
+
+  if (!clickedInsideModal && !clickedNotification) {
+    messageNotificationModal.classList.add("hidden");
+  }
+});
+
 messageNotif.addEventListener("click", () => {
   messageNotificationModal.classList.toggle("hidden");
 });
 
 
 initShared();
-themeBtn.addEventListener("click", themeHandler);
 

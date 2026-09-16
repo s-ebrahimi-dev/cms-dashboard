@@ -45,3 +45,20 @@ imageInput.addEventListener("change", async () => {
     console.error(error);
   }
 });
+
+
+const darkModeToggle = document.querySelector("#dark-mode-toggle");
+
+const currentTheme = localStorage.getItem("theme");
+
+darkModeToggle.checked = currentTheme === "dark";
+
+darkModeToggle.addEventListener("change", () => {
+  if (darkModeToggle.checked) {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  }
+});
