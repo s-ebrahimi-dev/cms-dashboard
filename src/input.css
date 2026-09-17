@@ -7,7 +7,7 @@
 @layer components {
 
   body {
-    @apply bg-[#F3F1EC] dark:bg-[#212731];
+    @apply bg-[#F3F1EC] dark:bg-[#1f0a19];
   }
 
   h1,
@@ -38,7 +38,7 @@
     @apply bg-white dark:bg-white dark:border border-white/30 dark:text-zinc-500 
   }
 section{
- @apply bg-[#F3F1EC] dark:bg-[#212731] border-[#D9D9D3] dark:border-[#2A3540];
+ @apply bg-[#F3F1EC] dark:bg-[#1f0a19] border-[#D9D9D3] dark:border-[#2A3540];
 }
   section > * {
     @apply bg-[#FCFBF8] dark:bg-[#5f6774] border-[#D9D9D3] dark:border-[#2A3540] ;

@@ -93,10 +93,9 @@
               class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="Search..."
             />
-
             <button
               id="message-notif"
-              class="message-notif w-12 h-12 rounded-xl border border-black/40 dark:border-white/50"
+              class="message-notif w-12 h-12 rounded-xl border border-black/40 dark:border-white/50 shadow-sm transition-all duration-100 hover:shadow-md active:translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)]"
             >
               🔔
             </button>
@@ -106,7 +105,7 @@
             >
               <div>
                 <img
-                  src="http://localhost:4000/api/users/profile-image"
+                  src="/images/default-profile.png"
                   class="user-image w-12 h-12 rounded-full object-cover bg-indigo-600"
                   alt="user-image"
                 />
@@ -118,10 +117,10 @@
               </div>
             </div>
           </div>
-        
+
           <div
             id="messageNotificationModal"
-            class="absolute right-0 top-14 z-50 hidden w-[calc(100vw-2rem)] max-w-80 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-[#151B23]"
+            class="absolute right-0 top-14 z-50 w-[calc(100vw-2rem)] max-w-80 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl opacity-0 scale-0 invisible origin-top-right transition-all duration-200 ease-out dark:border-slate-700 dark:bg-[#151B23]"
           >
             <!-- Header -->
             <div
@@ -156,7 +155,7 @@
             <!-- Footer -->
             <div class="border-t border-slate-200 p-3 dark:border-slate-700">
               <a
-                href="/pages/admin/notifications.html"
+                href="/pages/admin/Notifications/notifications.html"
                 class="block w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-orange-600"
               >
                 View all notifications

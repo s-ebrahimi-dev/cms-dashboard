@@ -9,6 +9,10 @@ const cancelCreateUser = document.querySelector("#cancelCreateUser");
 const closeCreateModal = document.querySelector("#closeCreateUserModal");
 const submitUserBtn = document.querySelector("#submit-user");
 
+
+  
+  getAndShowAllUsers();
+
 createUserBtn.addEventListener("click", (event) => {
   event.preventDefault();
   userModal.classList.remove("hidden");
@@ -25,9 +29,7 @@ submitUserBtn.addEventListener("click", async (event) => {
   await getAndShowAllUsers();
 });
 
-window.addEventListener("load", () => {
-  getAndShowAllUsers();
-});
+
 
 cancelCreateUser.addEventListener("click", hideCreateUserModal);
 closeCreateModal.addEventListener("click", hideCreateUserModal);

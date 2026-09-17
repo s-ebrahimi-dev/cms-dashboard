@@ -395,6 +395,17 @@ const sendMessage = async (userId) => {
   }
 };
 
+const getAndShowAllMessages = async () => {
+  const res = await fetch(`${base_URL}/notifications`, {
+    credentials: "include"
+  });
+
+  const result = await res.json()
+  
+    return result
+  
+}
+
 export {
   getAndShowAllUsers,
   openDeleteUserModal,
@@ -403,4 +414,5 @@ export {
   initEditUserModal,
   openChatUserModal,
   initChatUserModal,
+  getAndShowAllMessages,
 };

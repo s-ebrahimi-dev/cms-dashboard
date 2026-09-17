@@ -82,12 +82,12 @@
       <main class="main">
         <!-- Header -->
 
-        <header class="relative flex flex-col lg:flex-row justify-between gap-5 mb-8">
+        <header
+          class="relative flex flex-col lg:flex-row justify-between gap-5 mb-8"
+        >
           <h1 class="text-3xl font-bold">Appointments</h1>
           <div class="flex gap-3 lg:flex-row items-center justify-between">
             <div>
-             
-
               <button
                 class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg font-medium"
               >
@@ -97,35 +97,39 @@
 
             <!-- User Profile -->
             <div class="flex items-center gap-4">
-            <input
-              class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-500"
-              placeholder="Search..."
-            />
+              <input
+                class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Search..."
+              />
 
-            <button id="message-notif" class="message-notif w-12 h-12 rounded-xl border border-black/40 dark:border-white/50">🔔</button>
+              <button
+                id="message-notif"
+                class="message-notif w-12 h-12 rounded-xl border border-black/40 dark:border-white/50 shadow-sm dark:shadow-white/10 transition-all duration-100 hover:shadow-md dark:hover:shadow-white/20 active:translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] dark:active:shadow-[inset_0_2px_4px_rgba(255,255,255,0.15)]"
+              >
+                🔔
+              </button>
+              <div
+                class="flex items-center justify-between bg-sky-500 dark:bg-black gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600/40 dark:border-white/40"
+              >
+                <div>
+                  <img
+                    src="/images/default-profile.png"
+                    class="user-image w-12 h-12 rounded-full object-cover bg-indigo-600"
+                    alt="user-image"
+                  />
+                </div>
 
-            <div
-              class="flex items-center justify-between bg-sky-500 dark:bg-black  gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600/40 dark:border-white/40"
-            >
-              <div>
-                <img
-                  src="/images/default-profile.png"
-                  class="user-image w-12 h-12 rounded-full object-cover bg-indigo-600"
-                  alt="user-image"
-                />
-              </div>
-
-              <div class="hidden md:flex flex-col items-end">
-                <p class="font-semibold text-[12px]">Saeed</p>
-                <p class="text-xs text-[9px]">Administrator</p>
+                <div class="hidden md:flex flex-col items-end">
+                  <p class="font-semibold text-[12px]">Saeed</p>
+                  <p class="text-xs text-[9px]">Administrator</p>
+                </div>
               </div>
             </div>
           </div>
-          </div>
-          
+
            <div
             id="messageNotificationModal"
-            class="absolute right-0 top-14 z-50 hidden w-[calc(100vw-2rem)] max-w-80 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-[#151B23]"
+            class="absolute right-0 top-14 z-50 w-[calc(100vw-2rem)] max-w-80 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl opacity-0 scale-0 invisible origin-top-right transition-all duration-200 ease-out dark:border-slate-700 dark:bg-[#151B23]"
           >
             <!-- Header -->
             <div
@@ -160,7 +164,7 @@
             <!-- Footer -->
             <div class="border-t border-slate-200 p-3 dark:border-slate-700">
               <a
-                href="/pages/admin/notifications.html"
+                href="/pages/admin/Notifications/notifications.html"
                 class="block w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-orange-600"
               >
                 View all notifications
@@ -323,7 +327,7 @@
           class="overlay hidden fixed inset-0 bg-black/20 z-40"
         ></div>
         <div id="modal-container"></div>
-         <div id="result-modal-container"></div>
+        <div id="result-modal-container"></div>
       </main>
     </div>
 
