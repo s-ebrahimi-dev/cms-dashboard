@@ -3,6 +3,7 @@ import { logout } from "../funcs/auth.js";
 export function initLogoutModal() {
     const logoutLink = document.querySelector("#logout");
     const mobileLogoutLink = document.querySelector("#mobile-logout");
+    const profileLogoutLink = document.querySelector("#user-menu-logout");
     
     const logoutModal = document.getElementById("logout-modal");
 
@@ -10,7 +11,7 @@ export function initLogoutModal() {
 
     const confirmLogout = document.getElementById("confirm-logout");
 
-
+   
     if (!logoutLink || !logoutModal) return;
     if (!mobileLogoutLink || !logoutModal) return;
 
@@ -25,6 +26,12 @@ export function initLogoutModal() {
     mobileLogoutLink?.addEventListener("click", (event) => { 
         event.preventDefault();
         console.log("Mobile logout clicked");
+        logoutModal.classList.remove("hidden");
+        logoutModal.classList.add("flex");
+    })
+    profileLogoutLink?.addEventListener("click", (event) => { 
+        event.preventDefault();
+        console.log("Profile logout clicked");
         logoutModal.classList.remove("hidden");
         logoutModal.classList.add("flex");
     })

@@ -65,16 +65,18 @@ if (userNotifs) {
 }
 
 const loadUserImage = async () => {
-  const userImage = document.querySelector(".user-image");
+  const userImages = document.querySelectorAll(".user-image");
 
-  if (!userImage) return;
+  if (!userImages) return;
 
   try {
     const user = await getMe();
 
     if (!user?.data?.hasProfileImage) return;
-
-    userImage.src = `${base_URL}/users/profile-image`;
+    userImages.forEach((userImage) => {
+   userImage.src = `${base_URL}/users/profile-image`;
+})
+   
   } catch (error) {
     console.error("Failed to load user image:", error);
   }
@@ -141,32 +143,156 @@ const initShared = async () => {
 initShared();
 
 // messages-notifications
+
 const messageNotif = document.querySelector("#message-notif");
 const messageNotificationModal = document.querySelector(
   "#messageNotificationModal",
 );
 
-document.addEventListener("click", (event) => {
-  const clickedInsideModal = messageNotificationModal.contains(event.target);
-  const clickedNotification = messageNotif.contains(event.target);
+const compactView = document.querySelector("#notification-compact-view");
+const expandedView = document.querySelector("#notification-expanded-view");
 
-  if (!clickedInsideModal && !clickedNotification) {
-    messageNotificationModal.classList.remove(
-      "opacity-100",
-      "scale-100",
-      "visible",
-    );
+const viewAllNotifications = document.querySelector(
+  "#view-all-notifications",
+);
 
-    messageNotificationModal.classList.add("opacity-0", "scale-0", "invisible");
+const backToNotifications = document.querySelector(
+  "#back-to-notifications",
+);
+
+// Open notification modal
+const openNotificationModal = () => {
+  messageNotificationModal.classList.remove(
+    "opacity-0",
+    "invisible",
+  );
+
+  messageNotificationModal.classList.add(
+    "opacity-100",
+    "visible",
+  );
+};
+
+// Close notification modal
+const closeNotificationModal = () => {
+  collapseNotificationModal();
+
+  messageNotificationModal.classList.remove(
+    "opacity-100",
+    "visible",
+  );
+
+  messageNotificationModal.classList.add(
+    "opacity-0",
+    "invisible",
+  );
+};
+
+// Show compact view
+const showCompactView = () => {
+  compactView.classList.remove("hidden");
+  expandedView.classList.add("hidden");
+};
+
+// Show expanded view
+const showExpandedView = () => {
+  compactView.classList.add("hidden");
+  expandedView.classList.remove("hidden");
+};
+
+
+// Notification button
+messageNotif.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  // Always start with compact view when opening
+  showCompactView();
+
+  // Toggle modal
+  const isOpen =
+    messageNotificationModal.classList.contains("visible");
+
+  if (isOpen) {
+    closeNotificationModal();
+  } else {
+    openNotificationModal();
   }
 });
 
-messageNotif.addEventListener("click", () => {
-  messageNotificationModal.classList.toggle("opacity-0");
-  messageNotificationModal.classList.toggle("scale-0");
-  messageNotificationModal.classList.toggle("invisible");
 
-  messageNotificationModal.classList.toggle("opacity-100");
-  messageNotificationModal.classList.toggle("scale-100");
-  messageNotificationModal.classList.toggle("visible");
+// Outside click
+document.addEventListener("click", (event) => {
+  const clickedInsideModal =
+    messageNotificationModal.contains(event.target);
+
+  const clickedNotification =
+    messageNotif.contains(event.target);
+
+  if (!clickedInsideModal && !clickedNotification) {
+    closeNotificationModal();
+  }
+});
+
+const expandNotificationModal = () => {
+  if (window.innerWidth >= 1280) {
+    messageNotificationModal.classList.add(
+      "w-[680px]",
+      "h-[680px]",
+    );
+  } else if (window.innerWidth >= 1024) {
+    messageNotificationModal.classList.add(
+      "w-[640px]",
+      "h-[640px]",
+    );
+  } else if (window.innerWidth >= 768) {
+    messageNotificationModal.classList.add(
+      "w-[600px]",
+      "h-[600px]",
+    );
+  } else {
+    messageNotificationModal.classList.add(
+      "w-[calc(100vw-2rem)]",
+      "h-[calc(100vw-2rem)]",
+      "right-1/2",
+      "translate-x-1/2",
+    );
+
+    messageNotificationModal.classList.remove("right-0");
+  }
+
+  showExpandedView();
+};
+const collapseNotificationModal = () => {
+  messageNotificationModal.classList.remove(
+    "w-[680px]",
+    "h-[680px]",
+    "w-[640px]",
+    "h-[640px]",
+    "w-[600px]",
+    "h-[600px]",
+    "w-[calc(100vw-2rem)]",
+    "h-[calc(100vw-2rem)]",
+  );
+
+  messageNotificationModal.classList.add(
+    "w-80",
+    "h-auto",
+  );
+
+  showCompactView();
+};
+
+// View all notifications
+viewAllNotifications.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  expandNotificationModal();
+});
+
+
+// Back button
+backToNotifications.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  collapseNotificationModal();
 });
