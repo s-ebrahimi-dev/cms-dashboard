@@ -253,12 +253,18 @@ const expandNotificationModal = () => {
     messageNotificationModal.classList.add(
       "w-[calc(100vw-2rem)]",
       "h-[calc(100vw-2rem)]",
+      "right-4",
+    );
+
+    messageNotificationModal.classList.remove(
+      "right-0",
       "right-1/2",
       "translate-x-1/2",
     );
-
-    messageNotificationModal.classList.remove("right-0");
   }
+
+  messageNotificationModal.classList.remove("absolute");
+  messageNotificationModal.classList.add("fixed");
 
   showExpandedView();
 };
@@ -272,11 +278,17 @@ const collapseNotificationModal = () => {
     "h-[600px]",
     "w-[calc(100vw-2rem)]",
     "h-[calc(100vw-2rem)]",
+    "right-4",
+    "right-1/2",
+    "translate-x-1/2",
+    "fixed",
   );
 
   messageNotificationModal.classList.add(
     "w-80",
     "h-auto",
+    "right-0",
+    "absolute",
   );
 
   showCompactView();
