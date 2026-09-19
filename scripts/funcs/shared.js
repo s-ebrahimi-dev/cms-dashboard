@@ -405,6 +405,29 @@ const getAndShowAllMessages = async () => {
     return result
   
 }
+const markNotificationAsRead = async (notificationId) => {
+  try {
+    const response = await fetch(
+      `${base_URL}/notifications/${notificationId}/read`,
+      {
+        method: "PATCH",
+        credentials: "include",
+      },
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.message || "Failed to mark notification as read",
+      );
+    }
+
+    return data;
+  } catch (error) {
+    console.error("MARK NOTIFICATION AS READ ERROR:", error);
+  }
+};
 
 export {
   getAndShowAllUsers,
@@ -415,4 +438,5 @@ export {
   openChatUserModal,
   initChatUserModal,
   getAndShowAllMessages,
+  markNotificationAsRead
 };

@@ -211,7 +211,7 @@ section{
 
   @media (max-width: 767px) {
     .notification-modal.expanded {
-      @apply right-4 w-[calc(100vw-2rem)] h-[calc(100vw-2rem)];
+     @apply left-4 right-4 w-auto h-[calc(100vw-2rem)];
     }
   }
 }

@@ -150,7 +150,6 @@
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
     --radius-2xl: 1rem;
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --animate-spin: spin 1s linear infinite;
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -2915,8 +2914,9 @@
   @media (max-width: 767px) {
     .notification-modal.expanded {
       right: calc(var(--spacing) * 4);
+      left: calc(var(--spacing) * 4);
       height: calc(100vw - 2rem);
-      width: calc(100vw - 2rem);
+      width: auto;
     }
   }
 }
