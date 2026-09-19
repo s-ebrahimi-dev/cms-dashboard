@@ -15,6 +15,8 @@ const roleLabels = {
   DETAILING_TECHNICIAN: "Detailing Technician",
   WASH_TECHNICIAN: "Wash Technician",
 };
+const userProfile = document.querySelector("#user-profile");
+const userMenu = document.querySelector("#user-menu");
 
 const notificationDetailModal = document.querySelector(
   "#notification-detail-modal",
@@ -50,25 +52,15 @@ const messageNotificationList = document.querySelector(
   "#messageNotificationList",
 );
 
-const allNotificationsList = document.querySelector(
-  "#all-notifications-list",
-);
+const allNotificationsList = document.querySelector("#all-notifications-list");
 
-const compactView = document.querySelector(
-  "#notification-compact-view",
-);
+const compactView = document.querySelector("#notification-compact-view");
 
-const expandedView = document.querySelector(
-  "#notification-expanded-view",
-);
+const expandedView = document.querySelector("#notification-expanded-view");
 
-const viewAllNotifications = document.querySelector(
-  "#view-all-notifications",
-);
+const viewAllNotifications = document.querySelector("#view-all-notifications");
 
-const backToNotifications = document.querySelector(
-  "#back-to-notifications",
-);
+const backToNotifications = document.querySelector("#back-to-notifications");
 
 const notificationDetailOverlay = document.querySelector(
   "#notification-detail-overlay",
@@ -217,16 +209,8 @@ const createNotificationHTML = (notif, clickable = false) => {
       data-notification-id="${notif._id}"
       class="notification-item flex items-start gap-3 border-b border-slate-100 px-4 py-4
         dark:border-white/5
-        ${
-          clickable
-            ? "transition hover:bg-slate-50 dark:hover:bg-white/5"
-            : ""
-        }
-        ${
-          !notif.isRead
-            ? "bg-indigo-50 dark:bg-indigo-500/10"
-            : ""
-        }"
+        ${clickable ? "transition hover:bg-slate-50 dark:hover:bg-white/5" : ""}
+        ${!notif.isRead ? "bg-indigo-50 dark:bg-indigo-500/10" : ""}"
     >
       <img
         src="${senderImage}"
@@ -263,15 +247,11 @@ const createNotificationHTML = (notif, clickable = false) => {
 };
 
 const updateUnreadNotificationCount = (notifications) => {
-  const unreadMessageCount = document.querySelector(
-    "#unread-message-count",
-  );
+  const unreadMessageCount = document.querySelector("#unread-message-count");
 
   if (!unreadMessageCount) return;
 
-  const unreadCount = notifications.filter(
-    (notif) => !notif.isRead,
-  ).length;
+  const unreadCount = notifications.filter((notif) => !notif.isRead).length;
 
   if (unreadCount > 0) {
     unreadMessageCount.textContent = unreadCount;
@@ -282,43 +262,31 @@ const updateUnreadNotificationCount = (notifications) => {
 };
 
 const openNotificationDetail = () => {
-  notificationDetailModal.classList.remove(
-    "invisible",
-    "opacity-0",
-  );
+  notificationDetailModal.classList.remove("invisible", "opacity-0");
 
-  notificationDetailModal.classList.add(
-    "visible",
-    "opacity-100",
-  );
+  notificationDetailModal.classList.add("visible", "opacity-100");
 };
 
 const closeNotificationDetail = () => {
-  notificationDetailModal.classList.remove(
-    "visible",
-    "opacity-100",
-  );
+  notificationDetailModal.classList.remove("visible", "opacity-100");
 
-  notificationDetailModal.classList.add(
-    "invisible",
-    "opacity-0",
-  );
+  notificationDetailModal.classList.add("invisible", "opacity-0");
 };
 
 const showNotificationDetail = (notif) => {
   notificationDetailTitle.textContent = notif.title;
 
-  notificationDetailSender.textContent =
-    notif.sender?.username || "System";
+  notificationDetailSender.textContent = notif.sender?.username || "System";
 
-  notificationDetailMessage.textContent =
-    notif.message;
+  notificationDetailMessage.textContent = notif.message;
 
-  notificationDetailTime.textContent =
-    new Date(notif.createdAt).toLocaleString([], {
+  notificationDetailTime.textContent = new Date(notif.createdAt).toLocaleString(
+    [],
+    {
       dateStyle: "medium",
       timeStyle: "short",
-    });
+    },
+  );
 
   notificationDetailImage.src =
     notif.type === "SYSTEM" || !notif.sender
@@ -329,29 +297,17 @@ const showNotificationDetail = (notif) => {
 };
 
 const openNotificationModal = () => {
-  messageNotificationModal.classList.remove(
-    "opacity-0",
-    "invisible",
-  );
+  messageNotificationModal.classList.remove("opacity-0", "invisible");
 
-  messageNotificationModal.classList.add(
-    "opacity-100",
-    "visible",
-  );
+  messageNotificationModal.classList.add("opacity-100", "visible");
 };
 
-const closeNotificationModal = () => {
+export const closeNotificationModal = () => {
   collapseNotificationModal();
 
-  messageNotificationModal.classList.remove(
-    "opacity-100",
-    "visible",
-  );
+  messageNotificationModal.classList.remove("opacity-100", "visible");
 
-  messageNotificationModal.classList.add(
-    "opacity-0",
-    "invisible",
-  );
+  messageNotificationModal.classList.add("opacity-0", "invisible");
 };
 
 const showCompactView = () => {
@@ -365,34 +321,25 @@ const showExpandedView = () => {
 };
 
 const expandNotificationModal = () => {
-  messageNotificationModal.classList.replace(
-    "compact",
-    "expanded",
-  );
+  messageNotificationModal.classList.replace("compact", "expanded");
 
   showExpandedView();
 };
 
 const collapseNotificationModal = () => {
-  messageNotificationModal.classList.replace(
-    "expanded",
-    "compact",
-  );
+  messageNotificationModal.classList.replace("expanded", "compact");
 
   showCompactView();
 };
 
 const initNotificationClickHandlers = (notifications) => {
   document
-    .querySelectorAll(
-      "#all-notifications-list .notification-item",
-    )
+    .querySelectorAll("#all-notifications-list .notification-item")
     .forEach((notification) => {
       notification.addEventListener("click", async (event) => {
         event.preventDefault();
 
-        const notificationId =
-          notification.dataset.notificationId;
+        const notificationId = notification.dataset.notificationId;
 
         const selectedNotification = notifications.find(
           (notif) => notif._id === notificationId,
@@ -404,25 +351,20 @@ const initNotificationClickHandlers = (notifications) => {
 
         if (selectedNotification.isRead) return;
 
-        const result =
-          await markNotificationAsRead(notificationId);
+        const result = await markNotificationAsRead(notificationId);
 
         if (!result?.success) return;
 
         selectedNotification.isRead = true;
 
-        notification.classList.remove(
-          "bg-indigo-50",
-          "dark:bg-indigo-500/10",
-        );
+        notification.classList.remove("bg-indigo-50", "dark:bg-indigo-500/10");
 
         const statusIcon = notification.querySelector(
           ".notification-status-icon",
         );
 
         if (statusIcon) {
-          statusIcon.outerHTML =
-            getNotificationStatusIcon(true);
+          statusIcon.outerHTML = getNotificationStatusIcon(true);
         }
 
         updateUnreadNotificationCount(notifications);
@@ -434,10 +376,11 @@ const initNotificationModal = () => {
   messageNotif.addEventListener("click", (event) => {
     event.stopPropagation();
 
+    userMenu?.classList.add("hidden");
+
     showCompactView();
 
-    const isOpen =
-      messageNotificationModal.classList.contains("visible");
+    const isOpen = messageNotificationModal.classList.contains("visible");
 
     if (isOpen) {
       closeNotificationModal();
@@ -445,7 +388,6 @@ const initNotificationModal = () => {
       openNotificationModal();
     }
   });
-
   viewAllNotifications.addEventListener("click", (event) => {
     event.stopPropagation();
     expandNotificationModal();
@@ -457,14 +399,15 @@ const initNotificationModal = () => {
   });
 
   document.addEventListener("click", (event) => {
-    const clickedInsideNotificationModal =
-      messageNotificationModal.contains(event.target);
+    const clickedInsideNotificationModal = messageNotificationModal.contains(
+      event.target,
+    );
 
-    const clickedNotification =
-      messageNotif.contains(event.target);
+    const clickedNotification = messageNotif.contains(event.target);
 
-    const clickedInsideDetailModal =
-      notificationDetailModal?.contains(event.target);
+    const clickedInsideDetailModal = notificationDetailModal?.contains(
+      event.target,
+    );
 
     if (
       !clickedInsideNotificationModal &&
@@ -480,10 +423,7 @@ const initNotificationModal = () => {
     closeNotificationDetail,
   );
 
-  notificationDetailOverlay?.addEventListener(
-    "click",
-    closeNotificationDetail,
-  );
+  notificationDetailOverlay?.addEventListener("click", closeNotificationDetail);
 };
 
 const loadNotifications = async () => {

@@ -1,7 +1,7 @@
 import { loadComponent } from "./components/component-Loader.js";
 
 import { initSidebar } from "./modules/sidebar.js";
-import { initNotifications } from "./modules/notifications.js";
+import { initNotifications,  closeNotificationModal, } from "./modules/notifications.js";
 
 import { base_URL } from "./config.js";
 
@@ -33,6 +33,40 @@ const loadUserImage = async () => {
   }
 };
 
+const loadUserInfos = async () => {
+  const userInfosElem = document.querySelector("#user-infos")
+  if (!userInfosElem) return
+  try {
+    const user = await getMe()
+    if (!user?.data) return
+     const { firstname, lastname, role } = user.data;
+       const nameElem = userInfosElem.querySelector(".user-name");
+    const roleElem = userInfosElem.querySelector(".user-role");
+
+  if (nameElem) {
+      nameElem.textContent =
+        [firstname, lastname].filter(Boolean).join(" ") || "User";
+    }
+
+    if (roleElem) {
+      const roleLabels = {
+        ADMIN: "Admin",
+        CUSTOMER: "Customer",
+        RECEPTIONIST: "Recept",
+        MECHANIC: "Mechanic",
+        OIL_TECHNICIAN: "OilTech",
+        BODY_REPAIR: "Body",
+        DETAILING_TECHNICIAN: "Detailing",
+        WASH_TECHNICIAN: "WashTech",
+      };
+
+      roleElem.textContent = roleLabels[role] || role || "User";
+    }
+  } catch (error) {
+    console.error("Failed to load user information:", error);
+  }
+}
+
 const initUserProfile = () => {
   const userProfile = document.querySelector("#user-profile");
   const userMenu = document.querySelector("#user-menu");
@@ -41,6 +75,7 @@ const initUserProfile = () => {
 
   userProfile.addEventListener("click", (event) => {
     event.stopPropagation();
+      closeNotificationModal();
 
     userMenu.classList.toggle("hidden");
   });
@@ -110,6 +145,7 @@ const initShared = async () => {
   initSidebar();
 
   loadUserImage();
+  loadUserInfos();
 
   await initDynamicModals();
 
