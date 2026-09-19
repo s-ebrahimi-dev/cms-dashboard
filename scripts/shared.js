@@ -151,7 +151,7 @@ const allNotificationsList = document.querySelector(
   "#all-notifications-list",
 );
 
-  const createNotificationHTML = (notif) => {
+  const createNotificationHTML = (notif, clickable = false) => {
   const senderImage =
     notif.type === "SYSTEM"
       ? "/images/default-profile.png"
@@ -163,9 +163,14 @@ const allNotificationsList = document.querySelector(
       : roleLabels[notif.sender.role] || notif.sender.role;
 
   return `
-    <div
+    <${clickable ? "a" : "div"}
+      ${clickable ? 'href="#"' : ""}
       data-notification-id="${notif._id}"
-      class="notification-item flex items-start gap-3 border-b border-slate-100 px-4 py-4 dark:border-white/5 ${
+      class="notification-item flex items-start gap-3 border-b border-slate-100 px-4 py-4 ${
+        clickable
+          ? "transition hover:bg-slate-50 dark:hover:bg-white/5"
+          : ""
+      } dark:border-white/5 ${
         !notif.isRead
           ? "bg-indigo-50 dark:bg-indigo-500/10"
           : ""
@@ -201,7 +206,7 @@ const allNotificationsList = document.querySelector(
       </div>
 
       ${getNotificationStatusIcon(notif.isRead)}
-    </div>
+    </${clickable ? "a" : "div"}>
   `;
 };
 const updateUnreadNotificationCount = () => {
@@ -233,23 +238,164 @@ if (userNotifs) {
   updateUnreadNotificationCount();
 
   const compactNotifications = userNotifs.slice(0, 3);
-  const expandedNotifications = userNotifs;
 
+  // Compact: NOT clickable
   compactNotifications.forEach((notif) => {
     messageNotificationList.insertAdjacentHTML(
       "beforeend",
-      createNotificationHTML(notif),
+      createNotificationHTML(notif, false),
     );
   });
 
-  expandedNotifications.forEach((notif) => {
+  // Expanded: clickable
+  userNotifs.forEach((notif) => {
     allNotificationsList.insertAdjacentHTML(
       "beforeend",
-      createNotificationHTML(notif),
+      createNotificationHTML(notif, true),
     );
   });
 }
+const notificationDetailModal = document.querySelector(
+  "#notification-detail-modal",
+);
 
+const notificationDetailTitle = document.querySelector(
+  "#notification-detail-title",
+);
+
+const notificationDetailImage = document.querySelector(
+  "#notification-detail-image",
+);
+
+const notificationDetailSender = document.querySelector(
+  "#notification-detail-sender",
+);
+
+const notificationDetailMessage = document.querySelector(
+  "#notification-detail-message",
+);
+
+const notificationDetailTime = document.querySelector(
+  "#notification-detail-time",
+);
+const openNotificationDetail = () => {
+  notificationDetailModal.classList.remove(
+    "invisible",
+    "opacity-0",
+  );
+
+  notificationDetailModal.classList.add(
+    "visible",
+    "opacity-100",
+  );
+};
+
+
+const closeNotificationDetail = () => {
+  notificationDetailModal.classList.remove(
+    "visible",
+    "opacity-100",
+  );
+
+  notificationDetailModal.classList.add(
+    "invisible",
+    "opacity-0",
+  );
+};
+
+const showNotificationDetail = (notif) => {
+  notificationDetailTitle.textContent = notif.title;
+
+  notificationDetailSender.textContent =
+    notif.sender?.username || "System";
+
+  notificationDetailMessage.textContent =
+    notif.message;
+
+  notificationDetailTime.textContent =
+    new Date(notif.createdAt).toLocaleString([], {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+
+  if (notif.type === "SYSTEM" || !notif.sender) {
+    notificationDetailImage.src =
+      "/images/default-profile.png";
+  } else {
+    notificationDetailImage.src =
+      `${base_URL}/users/profile-image/${notif.sender._id}`;
+  }
+
+  openNotificationDetail();
+};
+
+document.querySelectorAll("#all-notifications-list .notification-item").forEach(
+  (notification) => {
+    notification.addEventListener("click", async (event) => {
+      event.preventDefault();
+
+      const notificationId =
+        notification.dataset.notificationId;
+
+      const selectedNotification = userNotifs.find(
+        (notif) => notif._id === notificationId,
+      );
+
+      if (!selectedNotification) return;
+
+      showNotificationDetail(selectedNotification);
+
+      if (!selectedNotification.isRead) {
+        const result = await markNotificationAsRead(notificationId);
+
+        if (result?.success) {
+          selectedNotification.isRead = true;
+
+          notification.classList.remove(
+            "bg-indigo-50",
+            "dark:bg-indigo-500/10",
+          );
+
+          const statusIcon = notification.querySelector(
+            ".notification-status-icon",
+          );
+
+          if (statusIcon) {
+            statusIcon.outerHTML =
+              getNotificationStatusIcon(true);
+          }
+
+          updateUnreadNotificationCount();
+        }
+      }
+    });
+  },
+);
+const notificationDetailOverlay = document.querySelector(
+  "#notification-detail-overlay",
+);
+
+const closeNotificationDetailButton = document.querySelector(
+  "#close-notification-detail",
+);
+if (closeNotificationDetailButton) {
+  closeNotificationDetailButton.addEventListener("click", () => {
+    closeNotificationDetail();
+  });
+}
+
+if (notificationDetailOverlay) {
+  notificationDetailOverlay.addEventListener("click", (event) => {
+    console.log("DETAIL OVERLAY CLICK");
+    console.log("TARGET:", event.target);
+    console.log(
+      "DETAIL MODAL CONTAINS TARGET:",
+      notificationDetailModal?.contains(event.target),
+    );
+
+    closeNotificationDetail();
+  });
+}
 
 const loadUserImage = async () => {
   const userImages = document.querySelectorAll(".user-image");
@@ -412,13 +558,36 @@ userMenu.classList.add("hidden");
 
 // Outside click
 document.addEventListener("click", (event) => {
-  const clickedInsideModal =
+  const clickedInsideNotificationModal =
     messageNotificationModal.contains(event.target);
 
   const clickedNotification =
     messageNotif.contains(event.target);
 
-  if (!clickedInsideModal && !clickedNotification) {
+  const clickedInsideDetailModal =
+    notificationDetailModal?.contains(event.target);
+
+  console.log("DOCUMENT CLICK");
+  console.log("TARGET:", event.target);
+  console.log(
+    "INSIDE NOTIFICATION:",
+    clickedInsideNotificationModal,
+  );
+  console.log(
+    "ON NOTIFICATION BUTTON:",
+    clickedNotification,
+  );
+  console.log(
+    "INSIDE DETAIL:",
+    clickedInsideDetailModal,
+  );
+
+  if (
+    !clickedInsideNotificationModal &&
+    !clickedNotification &&
+    !clickedInsideDetailModal
+  ) {
+    console.log("DOCUMENT → CLOSE MAIN NOTIFICATION");
     closeNotificationModal();
   }
 });
@@ -468,25 +637,4 @@ if (userProfile && userMenu) {
 }
 
 
-// detailed-notification-modal
 
-
-const notificationDetailTitle = document.querySelector(
-  "#notification-detail-title",
-);
-
-const notificationDetailImage = document.querySelector(
-  "#notification-detail-image",
-);
-
-const notificationDetailSender = document.querySelector(
-  "#notification-detail-sender",
-);
-
-const notificationDetailMessage = document.querySelector(
-  "#notification-detail-message",
-);
-
-const notificationDetailTime = document.querySelector(
-  "#notification-detail-time",
-);
