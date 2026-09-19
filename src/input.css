@@ -187,4 +187,31 @@ section{
 .list-item.active .menu-text {
   @apply text-[#9cd7ff] font-semibold;
 }
+
+/* notification-modals */
+  .notification-modal.compact {
+    @apply w-80 h-auto right-0;
+  }
+
+  .notification-modal.expanded {
+    @apply w-[600px] h-[600px] right-0;
+  }
+
+  @media (min-width: 1024px) {
+    .notification-modal.expanded {
+      @apply w-[640px] h-[640px];
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .notification-modal.expanded {
+      @apply w-[680px] h-[680px];
+    }
+  }
+
+  @media (max-width: 767px) {
+    .notification-modal.expanded {
+      @apply right-4 w-[calc(100vw-2rem)] h-[calc(100vw-2rem)];
+    }
+  }
 }
