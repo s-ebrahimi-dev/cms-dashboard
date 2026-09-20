@@ -85,16 +85,14 @@
       <main class="main">
         <!-- Header -->
 
-        <header class="relative flex items-center justify-between mb-8">
-          <div>
-            <h2 class="text-3xl font-bold">Dashboard</h2>
-
-            <p class="mt-1">Welcome back, manage your auto service center</p>
-          </div>
+        <header
+          class="sticky top-0 z-40 -mx-8 px-6 py-1.5 mb-8 flex items-center justify-end bg-white/95 backdrop-blur-md border-b border-slate-200 dark:bg-zinc-800/95 dark:border-zinc-700"
+        >
+         
 
           <div class="flex items-center gap-4">
             <input
-              class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-500 text-gray-500"
+              class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-1 outline-black/20 dark:outline-white/50 focus:ring-2 focus:ring-indigo-500 text-gray-500"
               placeholder="Search..."
             />
 
@@ -269,7 +267,7 @@
 
           <div
             id="messageNotificationModal"
-            class="notification-modal compact absolute right-0  top-17 z-50 overflow-hidden overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-xl opacity-0 invisible transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
+            class="notification-modal compact absolute right-0 top-17 z-50 overflow-hidden overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-xl opacity-0 invisible transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
           >
             <!-- ==================== COMPACT VIEW ==================== -->
             <div id="notification-compact-view">
@@ -358,10 +356,7 @@
               </div>
 
               <!-- Expanded Notifications -->
-              <div
-                id="all-notifications-list"
-                class="max-h-[65vh]"
-              >
+              <div id="all-notifications-list" class="max-h-[65vh]">
                 <div class="px-4 pt-4 pb-2">
                   <p
                     class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
@@ -402,7 +397,17 @@
                   type="button"
                   class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m8.401 16.333l-.734-.727L11.266 12L7.667 8.42l.734-.728L12 11.29l3.574-3.597l.734.727L12.709 12l3.599 3.606l-.734.727L12 12.737z"/></svg>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m8.401 16.333l-.734-.727L11.266 12L7.667 8.42l.734-.728L12 11.29l3.574-3.597l.734.727L12.709 12l3.599 3.606l-.734.727L12 12.737z"
+                    />
+                  </svg>
                 </button>
               </div>
 
@@ -437,7 +442,11 @@
             </div>
           </div>
         </header>
+         <div class="mb-4">
+            <h2 class="text-3xl font-bold">Dashboard</h2>
 
+            <p class="mt-1">Welcome back, manage your auto service center</p>
+          </div>
         <!-- Welcome Banner -->
 
         <div class="bg-emerald-700 rounded-2xl p-8 text-white mb-8">
