@@ -3,255 +3,770 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>AutoCare - Customer Dashboard</title>
-
-    <link rel="stylesheet" href="../assets/styles/app.css" />
+    <title>AutoCare Pro CMS</title>
+    <link rel="stylesheet" href="/styles/app.css" />
+    <link rel="icon" href="/images/icon.jpg" />
+    <script src="../../../scripts/theme.js"></script>
   </head>
 
-  <body class="bg-slate-100 text-slate-900">
-    <div class="flex min-h-screen">
-      <!-- ================= SIDEBAR ================= -->
-
-      <aside
-        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+  <body>
+    <svg class="hidden">
+      <symbol
+        id="arrow-right"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
       >
-        <!-- Logo -->
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        />
+      </symbol>
+      <symbol
+        id="arrow-left"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 19.5 8.25 12l7.5-7.5"
+        />
+      </symbol>
+      <symbol
+        id="moon"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+        />
+      </symbol>
+      <symbol
+        id="sun"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+        />
+      </symbol>
+    </svg>
 
-        <div class="mb-10">
-          <div class="flex items-center gap-3">
-            <div
-              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
-            >
-              A
-            </div>
+    <div class="layout">
+      <section id="sidebar-container" class="sidebar-container z-50">
+        <!-- Data Loaded By Js -->
+      </section>
 
-            <div>
-              <h1 class="font-bold text-xl">AutoCare</h1>
-
-              <p class="text-xs text-slate-400">Customer Portal</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Menu -->
-
-        <nav class="space-y-2">
-          <a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600">
-            🏠 Dashboard
-          </a>
-
-          <a
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
-          >
-            🚗 My Vehicles
-          </a>
-
-          <a
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
-          >
-            📅 Appointments
-          </a>
-
-          <a
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
-          >
-            🔧 Service History
-          </a>
-
-          <a
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
-          >
-            💳 Payments
-          </a>
-
-          <a
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
-          >
-            🧾 Invoices
-          </a>
-
-          <a
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800"
-          >
-            👤 Profile
-          </a>
-        </nav>
-
-        <!-- User -->
-
-        <div class="mt-auto flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
-          >
-            J
-          </div>
-
-          <div>
-            <p class="font-semibold">John Smith</p>
-
-            <p class="text-xs text-slate-400">Customer</p>
-          </div>
-        </div>
-      </aside>
+      <section id="mobile-sidebar-container">
+        <!-- Data loaded By JS -->
+      </section>
 
       <!-- ================= MAIN ================= -->
 
-      <main class="flex-1 p-6 lg:p-8">
-        <!-- Header -->
+      <main class="main">
+        <!-- ================= HEADER ================= -->
 
-        <header class="flex justify-between items-center mb-8">
+        <header class="relative flex items-center justify-between mb-8">
           <div>
-            <h1 class="text-3xl font-bold">Dashboard</h1>
+            <h2 class="text-3xl font-bold">Dashboard</h2>
 
-            <p class="mt-1">Welcome back John 👋</p>
+            <p class="mt-1">
+              Welcome back, here's an overview of your vehicles and services
+            </p>
           </div>
 
           <div class="flex items-center gap-4">
-            <button class="w-12 h-12 rounded-xl border">🔔</button>
+            <!-- Search -->
+            <input
+              class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-500 text-gray-500"
+              placeholder="Search..."
+            />
 
-            <div
-              class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold"
+            <!-- Notification -->
+            <button
+              id="message-notif"
+              class="relative message-notif w-12 h-12 rounded-xl border border-black/40 dark:border-white/50 shadow-sm dark:shadow-white/10 transition-all duration-100 hover:shadow-md dark:hover:shadow-white/20 active:translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] dark:active:shadow-[inset_0_2px_4px_rgba(255,255,255,0.15)]"
             >
-              J
+              🔔
+
+              <span
+                id="unread-message-count"
+                class="absolute -right-1 -top-1 hidden min-w-5 rounded-full bg-orange-500 px-1.5 py-0.5 text-center text-[10px] font-bold leading-none text-white"
+              >
+                0
+              </span>
+            </button>
+
+            <!-- Profile -->
+            <div
+              class="flex items-center justify-between bg-sky-500 dark:bg-black gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600/40 dark:border-white/40"
+            >
+              <div class="relative">
+                <button
+                  id="user-profile"
+                  class="block h-12 w-12 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
+                >
+                  <img
+                    src="/images/default-profile.png"
+                    class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
+                    alt="user-image"
+                  />
+                </button>
+
+                <!-- User menu -->
+                <div
+                  id="user-menu"
+                  class="absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
+                >
+                  <div
+                    class="border-b border-black/10 px-5 py-1 dark:border-white/10"
+                  >
+                    <div class="flex items-center gap-3">
+                      <img
+                        src="/images/default-profile.png"
+                        class="user-image h-12 w-12 rounded-full object-cover bg-indigo-600"
+                        alt="user-image"
+                      />
+
+                      <div class="min-w-0">
+                        <p
+                          class="user-name truncate text-sm font-semibold text-gray-900 dark:text-white"
+                        >
+                          Customer
+                        </p>
+
+                        <p
+                          class="user-role truncate text-xs text-gray-500 dark:text-gray-400"
+                        >
+                          Customer
+                        </p>
+
+                        <p
+                          class="user-email truncate text-xs text-gray-400 dark:text-gray-500"
+                        >
+                          customer@example.com
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="p-1.5">
+                    <a
+                      href="#"
+                      id="profile-menu-item"
+                      class="flex w-full items-center gap-3 rounded-xl px-3 py-1 text-sm font-medium text-gray-700 transition-colors hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/5"
+                    >
+                      <span
+                        class="flex h-6 w-6 items-center justify-center rounded-lg"
+                      >
+                        👤
+                      </span>
+
+                      <span>My Profile</span>
+                    </a>
+
+                    <a
+                      href="../Settings-page/settings.html"
+                      id="settings-menu-item"
+                      class="flex w-full items-center gap-3 rounded-xl px-3 py-1 text-sm font-medium text-gray-700 transition-colors hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/5"
+                    >
+                      <span
+                        class="flex h-6 w-6 items-center justify-center rounded-lg"
+                      >
+                        ⚙️
+                      </span>
+
+                      <span>Settings</span>
+                    </a>
+                  </div>
+
+                  <div
+                    class="border-t border-black/10 p-1.5 dark:border-white/10"
+                  >
+                    <a
+                      href="#"
+                      id="user-menu-logout"
+                      class="flex w-full items-center gap-3 rounded-xl px-3 py-1 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg"
+                      >
+                        ⇥
+                      </span>
+
+                      <span>Logout</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div id="user-infos" class="hidden md:flex flex-col items-start">
+                <p class="user-name font-semibold text-[12px]"></p>
+                <p class="user-role text-xs text-[9px]"></p>
+              </div>
             </div>
           </div>
         </header>
 
-        <!-- Welcome Card -->
+        <!-- ================= WELCOME BANNER ================= -->
 
-        <section
-          class="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-2xl p-8 text-white mb-8"
-        >
-          <h2 class="text-3xl font-bold">Your BMW X5 needs service soon 🚗</h2>
+        <div class="bg-emerald-700 rounded-2xl p-8 text-white mb-8">
+          <h1 class="text-3xl text-white font-bold">Good Morning, Saeed 👋</h1>
 
-          <p class="mt-3 text-indigo-100">
-            Your next appointment is tomorrow at 10:30 AM
-          </p>
+          <p class="mt-2 text-indigo-100">Welcome to your AutoCare dashboard</p>
+        </div>
 
-          <button
-            class="mt-6 text-indigo-600 px-5 py-3 rounded-xl font-semibold"
+        <!-- ================= CUSTOMER STATISTICS ================= -->
+
+        <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+          <!-- My Vehicles -->
+
+          <div
+            class="rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
           >
-            View Appointment
-          </button>
-        </section>
-
-        <!-- Statistics -->
-
-        <section
-          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8"
-        >
-          <div class="rounded-2xl p-6 border">
-            <p class="text-">My Vehicles</p>
+            <p>My Vehicles</p>
 
             <h3 class="text-3xl font-bold mt-3">2</h3>
+
+            <span class="text-blue-600 text-sm"> Registered vehicles </span>
           </div>
 
-          <div class="rounded-2xl p-6 border">
-            <p class="text-">Appointments</p>
+          <!-- Appointments -->
 
-            <h3 class="text-3xl font-bold mt-3">5</h3>
+          <div
+            class="rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
+          >
+            <p>Appointments</p>
+
+            <h3 class="text-3xl font-bold mt-3">1</h3>
+
+            <span class="text-blue-600 text-sm"> Upcoming </span>
           </div>
 
-          <div class="rounded-2xl p-6 border">
-            <p class="text-">Services Completed</p>
+          <!-- Services -->
 
-            <h3 class="text-3xl font-bold mt-3">12</h3>
+          <div
+            class="rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
+          >
+            <p>Completed Services</p>
+
+            <h3 class="text-3xl font-bold mt-3">8</h3>
+
+            <span class="text-green-600 text-sm"> All time </span>
           </div>
 
-          <div class="rounded-2xl p-6 border">
-            <p class="text-">Total Paid</p>
+          <!-- Payments -->
 
-            <h3 class="text-3xl font-bold mt-3">$2450</h3>
+          <div
+            class="rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
+          >
+            <p>Total Payments</p>
+
+            <h3 class="text-3xl font-bold mt-3">$1,280</h3>
+
+            <span class="text-green-600 text-sm"> All services </span>
           </div>
         </section>
 
-        <!-- Appointment + Vehicle -->
-
-        <section class="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          <!-- Upcoming Appointment -->
-
-          <div class="rounded-2xl border p-6">
-            <h2 class="text-xl font-bold mb-5">Upcoming Appointment</h2>
-
-            <div class="space-y-4">
+        <!-- ================= MY VEHICLES ================= -->
+        <section class="mt-8">
+          <div
+            class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
+          >
+            <!-- Section Header -->
+            <div class="flex justify-between items-center mb-6">
               <div>
-                <p class="text-sm">Date</p>
-
-                <p class="font-semibold">August 20, 2026</p>
+                <h2 class="text-xl font-bold">My Vehicles</h2>
+                <p class="text-sm">Your registered vehicles</p>
               </div>
 
-              <div>
-                <p class="text-sm">Service</p>
-
-                <p class="font-semibold">Oil Change</p>
-              </div>
-
-              <div>
-                <p class="text-sm">Vehicle</p>
-
-                <p class="font-semibold">BMW X5</p>
-              </div>
-
-              <span
-                class="inline-block bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold"
+              <a
+                href="../Vehicles-page/vehicles.html"
+                class="text-orange-500 text-sm font-medium hover:text-orange-600"
               >
-                Confirmed
-              </span>
+                View All
+              </a>
+            </div>
+
+            <!-- Vehicles -->
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+              <!-- Vehicle 1 -->
+              <div
+                class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] p-5"
+              >
+                <div class="flex flex-col lg:flex-row gap-5">
+                  <!-- Vehicle image -->
+                  <div
+                    class="w-full lg:w-1/2 h-44 shrink-0 rounded-xl overflow-hidden"
+                  >
+                    <img
+                      src="/images/toyota.png"
+                      alt="Toyota Camry"
+                      class="block w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <!-- Vehicle information -->
+                  <div class="w-full lg:w-1/2 min-w-0">
+                    <!-- Name + status -->
+                    <div
+                      class="flex flex-col min-[380px]:flex-row min-[380px]:items-start min-[420px]:justify-between gap-3"
+                    >
+                      <div class="min-w-0">
+                        <h3 class="text-lg font-bold truncate">Toyota Camry</h3>
+
+                        <p class="text-sm mt-1">2021 · Sedan · ABC-123</p>
+                      </div>
+
+                      <span
+                        class="self-start shrink-0 bg-green-100 text-green-700 px-3 py-1.5 rounded-full text-xs font-semibold"
+                      >
+                        Active
+                      </span>
+                    </div>
+
+                    <!-- Vehicle details -->
+                    <div
+                      class="grid grid-cols-1 min-[380px]:grid-cols-2 gap-4 mt-6 pt-5 border-t border-[#D9D9D3] dark:border-[#2A3540]"
+                    >
+                      <div>
+                        <p class="text-xs">Mileage</p>
+                        <p class="font-semibold mt-1">42,350 km</p>
+                      </div>
+
+                      <div>
+                        <p class="text-xs">Last Service</p>
+                        <p class="font-semibold mt-1">Aug 12, 2026</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Vehicle 2 -->
+              <div
+                class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] p-5"
+              >
+                <div class="flex flex-col lg:flex-row gap-5">
+                  <!-- Vehicle image -->
+                  <div
+                    class="w-full lg:w-1/2 h-44 shrink-0 rounded-xl overflow-hidden"
+                  >
+                    <img
+                      src="/images/bmw.png"
+                      alt="BMW X5"
+                      class="block w-full h-full object-cover"
+                    />
+                  </div>
+
+                  <!-- Vehicle information -->
+                  <div class="w-full lg:w-1/2 min-w-0">
+                    <!-- Name + status -->
+                    <div
+                      class="flex flex-col min-[380px]:flex-row min-[380px]:items-start min-[420px]:justify-between gap-3"
+                    >
+                      <div class="min-w-0">
+                        <h3 class="text-lg font-bold truncate">BMW X5</h3>
+
+                        <p class="text-sm mt-1">2021 · Sedan · ABC-123</p>
+                      </div>
+
+                      <span
+                        class="self-start shrink-0 bg-green-100 text-green-700 px-3 py-1.5 rounded-full text-xs font-semibold"
+                      >
+                        Active
+                      </span>
+                    </div>
+
+                    <!-- Vehicle details -->
+                    <div
+                      class="grid grid-cols-1 min-[380px]:grid-cols-2 gap-4 mt-6 pt-5 border-t border-[#D9D9D3] dark:border-[#2A3540]"
+                    >
+                      <div>
+                        <p class="text-xs">Mileage</p>
+                        <p class="font-semibold mt-1">42,350 km</p>
+                      </div>
+
+                      <div>
+                        <p class="text-xs">Last Service</p>
+                        <p class="font-semibold mt-1">Aug 12, 2026</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= MAIN CUSTOMER SECTION ================= -->
+
+        <section class="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-8">
+          <!-- ================= UPCOMING APPOINTMENT ================= -->
+
+          <div
+            class="xl:col-span-2 rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
+          >
+            <div class="flex justify-between items-center mb-6">
+              <div>
+                <h2 class="text-xl font-bold">Upcoming Appointment</h2>
+
+                <p class="text-sm">Your next scheduled service</p>
+              </div>
+
+              <a
+                href="../Appointments-page/appointments.html"
+                class="text-orange-500 text-sm font-medium hover:text-orange-600"
+              >
+                View All
+              </a>
+            </div>
+
+            <!-- Appointment card -->
+
+            <div
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] p-5"
+            >
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-5"
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="w-14 h-14 rounded-xl bg-indigo-100 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600"
+                  >
+                    📅
+                  </div>
+
+                  <div>
+                    <h3 class="font-bold text-lg">Oil Change & Inspection</h3>
+
+                    <p class="text-sm mt-1">Toyota Camry · ABC-123</p>
+                  </div>
+                </div>
+
+                <span
+                  class="self-start sm:self-center bg-green-100 text-green-700 px-3 py-1.5 rounded-full text-xs font-semibold"
+                >
+                  Confirmed
+                </span>
+              </div>
+
+              <div
+                class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-5 border-t border-[#D9D9D3] dark:border-[#2A3540]"
+              >
+                <div>
+                  <p class="text-xs">Date</p>
+
+                  <p class="font-semibold mt-1">September 22, 2026</p>
+                </div>
+
+                <div>
+                  <p class="text-xs">Time</p>
+
+                  <p class="font-semibold mt-1">10:30 AM</p>
+                </div>
+
+                <div>
+                  <p class="text-xs">Service Center</p>
+
+                  <p class="font-semibold mt-1">AutoCare Service Center</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= LOWER SECTION ================= -->
+
+        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8">
+          <!-- ================= RECENT SERVICES ================= -->
+
+          <div
+            class="xl:col-span-2 rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
+          >
+            <div class="flex justify-between items-center mb-5">
+              <div>
+                <h2 class="text-xl font-bold">Recent Services</h2>
+
+                <p class="text-sm">Your latest vehicle services</p>
+              </div>
+
+              <a
+                href="../Services-page/services.html"
+                class="text-orange-500 text-sm font-medium"
+              >
+                View All
+              </a>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                    <th class="p-3 text-left">Service</th>
+
+                    <th class="p-3 text-left">Vehicle</th>
+
+                    <th class="p-3 text-left">Date</th>
+
+                    <th class="p-3 text-left">Status</th>
+
+                    <th class="p-3 text-right">Amount</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                    <td class="p-3 font-semibold">Oil Change</td>
+
+                    <td class="p-3">Toyota Camry</td>
+
+                    <td class="p-3">Aug 15, 2026</td>
+
+                    <td class="p-3">
+                      <span
+                        class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs"
+                      >
+                        Completed
+                      </span>
+                    </td>
+
+                    <td class="p-3 text-right font-semibold">$85</td>
+                  </tr>
+
+                  <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                    <td class="p-3 font-semibold">Brake Inspection</td>
+
+                    <td class="p-3">BMW X5</td>
+
+                    <td class="p-3">Jul 28, 2026</td>
+
+                    <td class="p-3">
+                      <span
+                        class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs"
+                      >
+                        Completed
+                      </span>
+                    </td>
+
+                    <td class="p-3 text-right font-semibold">$120</td>
+                  </tr>
+
+                  <tr>
+                    <td class="p-3 font-semibold">Tire Rotation</td>
+
+                    <td class="p-3">Toyota Camry</td>
+
+                    <td class="p-3">Jun 12, 2026</td>
+
+                    <td class="p-3">
+                      <span
+                        class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs"
+                      >
+                        Completed
+                      </span>
+                    </td>
+
+                    <td class="p-3 text-right font-semibold">$50</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
-          <!-- Vehicle Card -->
+          <!-- ================= RECENT PAYMENTS ================= -->
 
-          <div class="rounded-2xl border p-6">
-            <h2 class="text-xl font-bold mb-5">My Vehicle</h2>
+          <div
+            class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
+          >
+            <div class="flex justify-between items-center mb-5">
+              <div>
+                <h2 class="text-xl font-bold">Recent Payments</h2>
 
-            <div class="flex items-center gap-5">
+                <p class="text-sm">Your latest payments</p>
+              </div>
+
+              <a
+                href="../Payments-page/payments.html"
+                class="text-orange-500 text-sm font-medium"
+              >
+                View All
+              </a>
+            </div>
+
+            <div class="space-y-5">
+              <!-- Payment -->
+
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-11 h-11 shrink-0 rounded-xl bg-green-100 dark:bg-green-500/10 flex items-center justify-center text-green-600"
+                >
+                  ✓
+                </div>
+
+                <div class="min-w-0 flex-1">
+                  <p class="font-semibold truncate">Oil Change</p>
+
+                  <p class="text-xs mt-1">Aug 15, 2026</p>
+                </div>
+
+                <p class="font-bold">$85</p>
+              </div>
+
+              <!-- Payment -->
+
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-11 h-11 shrink-0 rounded-xl bg-green-100 dark:bg-green-500/10 flex items-center justify-center text-green-600"
+                >
+                  ✓
+                </div>
+
+                <div class="min-w-0 flex-1">
+                  <p class="font-semibold truncate">Brake Inspection</p>
+
+                  <p class="text-xs mt-1">Jul 28, 2026</p>
+                </div>
+
+                <p class="font-bold">$120</p>
+              </div>
+
+              <!-- Payment -->
+
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-11 h-11 shrink-0 rounded-xl bg-green-100 dark:bg-green-500/10 flex items-center justify-center text-green-600"
+                >
+                  ✓
+                </div>
+
+                <div class="min-w-0 flex-1">
+                  <p class="font-semibold truncate">Tire Rotation</p>
+
+                  <p class="text-xs mt-1">Jun 12, 2026</p>
+                </div>
+
+                <p class="font-bold">$50</p>
+              </div>
+
+              <!-- Total -->
+
               <div
-                class="w-24 h-24 rounded-2xl bg-slate-200 flex items-center justify-center text-4xl"
+                class="border-t border-[#D9D9D3] dark:border-[#2A3540] pt-5 flex justify-between items-center"
+              >
+                <span class="text-sm"> Total spent </span>
+
+                <span class="text-xl font-bold"> $255 </span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="mt-8">
+          <h2 class="text-xl font-bold mb-5">Quick Actions</h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <a
+              href="../Appointments-page/appointments.html"
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600"
+              >
+                📅
+              </div>
+
+              <div>
+                <h3 class="font-semibold">Book Appointment</h3>
+
+                <p class="text-xs mt-1">Schedule a service</p>
+              </div>
+            </a>
+
+            <a
+              href="../Vehicles-page/vehicles.html"
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-500/10 flex items-center justify-center text-blue-600"
               >
                 🚗
               </div>
 
               <div>
-                <h3 class="text-xl font-bold">BMW X5</h3>
+                <h3 class="font-semibold">My Vehicles</h3>
 
-                <p class="text-">2024 Model</p>
-
-                <p class="text-">Plate: AB-1234</p>
+                <p class="text-xs mt-1">Manage your vehicles</p>
               </div>
-            </div>
+            </a>
+
+            <a
+              href="../Services-page/services.html"
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-500/10 flex items-center justify-center text-orange-600"
+              >
+                🔧
+              </div>
+
+              <div>
+                <h3 class="font-semibold">Service History</h3>
+
+                <p class="text-xs mt-1">View your services</p>
+              </div>
+            </a>
+
+            <a
+              href="../Messages-page/messages.html"
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
+            >
+              <div
+                class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600"
+              >
+                💬
+              </div>
+
+              <div>
+                <h3 class="font-semibold">Messages</h3>
+
+                <p class="text-xs mt-1">Contact service center</p>
+              </div>
+            </a>
           </div>
         </section>
 
-        <!-- Recent Services -->
+        <!-- ================= OVERLAY / MODALS ================= -->
 
-        <section class="mt-8 rounded-2xl border p-6">
-          <h2 class="text-xl font-bold mb-5">Recent Services</h2>
+        <div
+          id="overlay"
+          class="overlay hidden fixed inset-0 bg-black/20 z-40"
+        ></div>
 
-          <div class="space-y-4">
-            <div class="flex justify-between border-b pb-4">
-              <div>
-                <p class="font-semibold">Brake Repair</p>
+        <div id="modal-container"></div>
 
-                <p class="text-sm text-">July 10, 2026</p>
-              </div>
-
-              <span class="text-green-600 font-semibold"> Completed </span>
-            </div>
-
-            <div class="flex justify-between border-b pb-4">
-              <div>
-                <p class="font-semibold">Oil Change</p>
-
-                <p class="text-sm text-">June 15, 2026</p>
-              </div>
-
-              <span class="text-green-600 font-semibold"> Completed </span>
-            </div>
-          </div>
-        </section>
+        <div id="result-modal-container"></div>
       </main>
     </div>
+
+
+    <script type="module" src="../../scripts/shared.js"></script>
   </body>
 </html>

@@ -1,62 +1,87 @@
 import { login } from "./funcs/auth.js";
+
 import { loadComponent } from "./components/component-Loader.js";
-import { initResultModal, showResultModal } from "./components/result-modal.js";
+
 import {
-    showLoader,
-    hideLoader
+  initResultModal,
+  showResultModal,
+} from "./components/result-modal.js";
+
+import {
+  showLoader,
+  hideLoader,
 } from "./funcs/loader.js";
+
+
+const dashboardRoutes = {
+  ADMIN: "/pages/Admin/Dashboard/dashboard.html",
+  CUSTOMER: "/pages/Customer/dashboard.html",
+  RECEPTIONIST: "/pages/Receptionist/dashboard.html",
+  MECHANIC: "/pages/Mechanic/dashboard.html",
+  OIL_TECHNICIAN: "/pages/Oil-Technician/dashboard.html",
+  BODY_REPAIR: "/pages/Body-Repair/dashboard.html",
+  DETAILING_TECHNICIAN: "/pages/Detailing-Technician/dashboard.html",
+  WASH_TECHNICIAN: "/pages/Wash-Technician/dashboard.html",
+};
+
+
 await loadComponent(
   "result-modal-container",
   "/Components/result-modal.html",
 );
+
 await loadComponent(
-    "loader-container",
-    "/Components/loader.html"
+  "loader-container",
+  "/Components/loader.html"
 );
+
 initResultModal();
+
+
 const loginBtn = document.querySelector("#loginButton");
 
 loginBtn.addEventListener("click", async (event) => {
   event.preventDefault();
 
-    // 1. Show loader immediately
   showLoader();
- 
-    try {
 
-        // 2. Wait for login request
-        const result = await login();
+  try {
+    const result = await login();
 
-        // 3. Hide loader BEFORE showing result modal
-        hideLoader();
+    hideLoader();
 
-        // 4. Show result modal
-        if (result.success) {
+    if (result.success) {
+      const dashboardRoute = dashboardRoutes[result.data.role];
 
-            showResultModal(
-                "success",
-                "You have logged in successfully.",
-                "./pages/Admin/Dashboard/dashboard.html"
-            );
-
-        } else {
-
-            showResultModal(
-                "error",
-                result.message
-            );
-        }
-
-    } catch (error) {
-
-        // Make sure loader disappears if something unexpected happens
-        hideLoader();
-
+      if (!dashboardRoute) {
         showResultModal(
-            "error",
-            "Something went wrong. Please try again."
+          "error",
+          "Your account does not have a valid dashboard."
         );
+        return;
+      }
 
-        console.error(error);
+      showResultModal(
+        "success",
+        "You have logged in successfully.",
+        dashboardRoute
+      );
+
+    } else {
+      showResultModal(
+        "error",
+        result.message
+      );
     }
+
+  } catch (error) {
+    hideLoader();
+
+    showResultModal(
+      "error",
+      "Something went wrong. Please try again."
+    );
+
+    console.error(error);
+  }
 });

@@ -141,8 +141,13 @@ const initShared = async () => {
     "mobile-sidebar-container",
     "/Components/mobile-sidebar.html",
   );
+  
 
-  initSidebar();
+ const user = await getMe();
+
+if (user?.data) {
+  initSidebar(user.data);
+}
 
   loadUserImage();
   loadUserInfos();
