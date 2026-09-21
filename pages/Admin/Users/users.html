@@ -85,13 +85,8 @@
         <!-- TOP BAR -->
 
         <header
-          class="sticky top-0 z-40 -mx-8 px-6 py-4 mb-8 flex items-center justify-between bg-white/95 backdrop-blur-md border-b border-slate-200 dark:bg-zinc-800/95 dark:border-zinc-700"
+          class="sticky top-0 z-40 -mx-8 px-6 py-1.5 mb-8 flex items-center justify-end bg-white/95 backdrop-blur-md border-b border-slate-200 dark:bg-zinc-800/95 dark:border-zinc-700"
         >
-          <div>
-            <h2 class="text-3xl font-bold">Users</h2>
-            <p class="mt-1">Manage users and their access roles.</p>
-          </div>
-
           <div class="flex items-center gap-4">
             <!-- Search -->
             <input
@@ -115,20 +110,16 @@
 
             <!-- Profile -->
             <div
-              class="flex items-center justify-between bg-sky-500 dark:bg-black gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600/40 dark:border-white/40"
+              class="relative flex items-center justify-between bg-transparent gap-3 md:w-48 h-12 md:gap-0.5 md:pr-2 md:pl-1 shrink-0 border-l border-zinc-600/20 dark:border-white/40"
             >
-              <div class="relative">
+              <div>
                 <!-- User profile button -->
-                <button
-                  id="user-profile"
-                  class="block h-12 w-12 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
-                >
-                  <img
-                    src="/images/default-profile.png"
-                    class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
-                    alt="user-image"
-                  />
-                </button>
+
+                <img
+                  src="/images/default-profile.png"
+                  class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
+                  alt="user-image"
+                />
 
                 <!-- User menu -->
                 <div
@@ -149,21 +140,15 @@
                       <div class="min-w-0">
                         <p
                           class="user-name truncate text-sm font-semibold text-gray-900 dark:text-white"
-                        >
-                          Saeed Ebrahimi
-                        </p>
+                        ></p>
 
                         <p
                           class="user-role truncate text-xs text-gray-500 dark:text-gray-400"
-                        >
-                          Administrator
-                        </p>
+                        ></p>
 
                         <p
                           class="user-email truncate text-xs text-gray-400 dark:text-gray-500"
-                        >
-                          saeed@example.com
-                        </p>
+                        ></p>
                       </div>
                     </div>
                   </div>
@@ -264,10 +249,31 @@
                 </div>
               </div>
 
-              <div class="hidden md:flex flex-col items-end">
-                <p class="font-semibold text-[12px]">Saeed</p>
-                <p class="text-xs text-[9px]">Administrator</p>
+              <div
+                id="user-infos"
+                class="hidden md:flex flex-col justify-center items-center"
+              >
+                <p class="user-name font-semibold text-[14px]"></p>
+                <p class="user-role text-xs text-[10px]"></p>
               </div>
+              <button
+                id="user-profile"
+                class="block h-5 w-5 text-zinc-600 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -520,167 +526,160 @@
             </div>
           </div>
         </header>
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-3xl font-bold">Users</h2>
+            <p class="mt-1">Manage users and their access roles.</p>
+          </div>
+          <button
+            id="openCreateUserModal"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="h-5 w-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
 
+            Create User
+          </button>
+        </div>
         <!-- =========================
              USERS CONTENT
         ========================== -->
+        <!-- USERS TABLE CARD -->
 
-        <div class="p-5 sm:p-6 lg:p-8">
-          <!-- PAGE TITLE -->
+        <section class="overflow-hidden border rounded-2xl shadow-sm">
+          <!-- SEARCH -->
 
-          <section
-            class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+          <div
+            class="flex flex-col gap-4 border-b p-5 md:flex-row md:items-center md:justify-between"
           >
-            <button
-              id="openCreateUserModal"
-              type="button"
-              class="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-orange-600"
+            <div class="relative w-full md:max-w-sm">
+              <input
+                id="searchUsers"
+                type="search"
+                placeholder="Search users..."
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus: focus:ring-2 focus:ring-orange-500/20"
+              />
+            </div>
+
+            <select
+              id="roleFilter"
+              class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm outline-none focus:border-orange-500 md:w-52"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                class="h-5 w-5"
+              <option value="ALL">All Roles</option>
+
+              <option value="ADMIN">Admin</option>
+
+              <option value="CUSTOMER">Customer</option>
+
+              <option value="RECEPTIONIST">Receptionist</option>
+
+              <option value="MECHANIC">Mechanic</option>
+
+              <option value="OIL_SERVICE">Oil Service</option>
+
+              <option value="BODY_REPAIR">Body Repair</option>
+
+              <option value="DETAILING">Detailing</option>
+            </select>
+          </div>
+
+          <!-- TABLE -->
+
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[900px] text-left">
+              <thead class="bg-slate-50">
+                <tr>
+                  <th
+                    class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-"
+                  >
+                    User
+                  </th>
+
+                  <th
+                    class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-"
+                  >
+                    Email
+                  </th>
+
+                  <th
+                    class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-"
+                  >
+                    Role
+                  </th>
+
+                  <th
+                    class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-"
+                  >
+                    Phone
+                  </th>
+
+                  <th
+                    class="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-"
+                  >
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody id="usersTableBody" class="divide-y divide-slate-100/30">
+                <!-- Users Loaded By Js-->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- PAGINATION -->
+
+          <div
+            class="flex flex-col gap-3 border-t px-6 py-4 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <p class="text-sm text-">
+              Showing
+              <span class="font-medium text-slate-700"> 1 </span>
+              to
+              <span class="font-medium text-slate-700"> 10 </span>
+              of
+              <span class="font-medium text-slate-700"> 24 </span>
+              users
+            </p>
+
+            <div class="flex items-center gap-1">
+              <button
+                class="rounded-lg border px-3 py-2 text-sm text-slate-400"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 4.5v15m7.5-7.5h-15"
-                />
-              </svg>
+                Previous
+              </button>
 
-              Create User
-            </button>
-          </section>
-
-          <!-- USERS TABLE CARD -->
-
-          <section class="overflow-hidden border rounded-2xl shadow-sm">
-            <!-- SEARCH -->
-
-            <div
-              class="flex flex-col gap-4 border-b p-5 md:flex-row md:items-center md:justify-between"
-            >
-              <div class="relative w-full md:max-w-sm">
-                <input
-                  id="searchUsers"
-                  type="search"
-                  placeholder="Search users..."
-                  class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus: focus:ring-2 focus:ring-orange-500/20"
-                />
-              </div>
-
-              <select
-                id="roleFilter"
-                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm outline-none focus:border-orange-500 md:w-52"
+              <button
+                class="rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white"
               >
-                <option value="ALL">All Roles</option>
+                1
+              </button>
 
-                <option value="ADMIN">Admin</option>
+              <button class="rounded-lg px-3 py-2 text-sm hover:bg-slate-100">
+                2
+              </button>
 
-                <option value="CUSTOMER">Customer</option>
+              <button class="rounded-lg px-3 py-2 text-sm hover:bg-slate-100">
+                3
+              </button>
 
-                <option value="RECEPTIONIST">Receptionist</option>
-
-                <option value="MECHANIC">Mechanic</option>
-
-                <option value="OIL_SERVICE">Oil Service</option>
-
-                <option value="BODY_REPAIR">Body Repair</option>
-
-                <option value="DETAILING">Detailing</option>
-              </select>
+              <button class="rounded-lg border px-3 py-2 text-sm">Next</button>
             </div>
-
-            <!-- TABLE -->
-
-            <div class="overflow-x-auto">
-              <table class="w-full min-w-[900px] text-left">
-                <thead class="bg-slate-50">
-                  <tr>
-                    <th
-                      class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-"
-                    >
-                      User
-                    </th>
-
-                    <th
-                      class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-"
-                    >
-                      Email
-                    </th>
-
-                    <th
-                      class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-"
-                    >
-                      Role
-                    </th>
-
-                    <th
-                      class="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-"
-                    >
-                      Phone
-                    </th>
-
-                    <th
-                      class="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-"
-                    >
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody id="usersTableBody" class="divide-y divide-slate-100/30">
-                  <!-- Users Loaded By Js-->
-                </tbody>
-              </table>
-            </div>
-
-            <!-- PAGINATION -->
-
-            <div
-              class="flex flex-col gap-3 border-t px-6 py-4 sm:flex-row sm:items-center sm:justify-between"
-            >
-              <p class="text-sm text-">
-                Showing
-                <span class="font-medium text-slate-700"> 1 </span>
-                to
-                <span class="font-medium text-slate-700"> 10 </span>
-                of
-                <span class="font-medium text-slate-700"> 24 </span>
-                users
-              </p>
-
-              <div class="flex items-center gap-1">
-                <button
-                  class="rounded-lg border px-3 py-2 text-sm text-slate-400"
-                >
-                  Previous
-                </button>
-
-                <button
-                  class="rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white"
-                >
-                  1
-                </button>
-
-                <button class="rounded-lg px-3 py-2 text-sm hover:bg-slate-100">
-                  2
-                </button>
-
-                <button class="rounded-lg px-3 py-2 text-sm hover:bg-slate-100">
-                  3
-                </button>
-
-                <button class="rounded-lg border px-3 py-2 text-sm">
-                  Next
-                </button>
-              </div>
-            </div>
-          </section>
-        </div>
+          </div>
+        </section>
 
         <div
           id="overlay"

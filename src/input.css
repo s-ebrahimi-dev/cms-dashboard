@@ -26,7 +26,7 @@
     @apply text-zinc-600 dark:text-[#d3d3d3];
   }
   tbody tr{
-    @apply sm:hover:bg-slate-100 dark:sm:hover:bg-gray-500 border-slate-100 dark:border-slate-100/10
+    @apply bg-[#efefef] dark:bg-gray-700 sm:hover:bg-slate-100 dark:sm:hover:bg-gray-500 border-slate-100 dark:border-slate-100/10
   }
   tr th{
     @apply text-white
@@ -38,7 +38,7 @@
     @apply bg-white dark:bg-white dark:border border-white/30 dark:text-zinc-500 
   }
 section{
- @apply bg-[#F3F1EC] dark:bg-[#1f0a19] border-[#D9D9D3] dark:border-[#2A3540];
+ @apply bg-[#FCFBF8] dark:bg-[#5f6774] border-[#D9D9D3] dark:border-[#2A3540];
 }
   section > * {
     @apply bg-[#FCFBF8] dark:bg-[#5f6774] border-[#D9D9D3] dark:border-[#2A3540] ;

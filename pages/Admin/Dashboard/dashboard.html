@@ -109,20 +109,17 @@
               </span>
             </button>
             <div
-              class="flex items-center justify-between bg-sky-500 dark:bg-black gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600/40 dark:border-white/40"
+              class="relative flex items-center justify-between bg-transparent  gap-3 md:w-48 h-12 md:gap-0.5 md:pr-2 md:pl-1 shrink-0 border-l border-zinc-600/20 dark:border-white/40"
             >
-              <div class="relative">
+              <div>
                 <!-- User profile button -->
-                <button
-                  id="user-profile"
-                  class="block h-12 w-12 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
-                >
+                
                   <img
                     src="/images/default-profile.png"
                     class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
                     alt="user-image"
                   />
-                </button>
+              
 
                 <!-- User menu -->
                 <div
@@ -144,19 +141,19 @@
                         <p
                           class="user-name truncate text-sm font-semibold text-gray-900 dark:text-white"
                         >
-                          Saeed Ebrahimi
+                         
                         </p>
 
                         <p
                           class="user-role truncate text-xs text-gray-500 dark:text-gray-400"
                         >
-                          Administrator
+                         
                         </p>
 
                         <p
                           class="user-email truncate text-xs text-gray-400 dark:text-gray-500"
                         >
-                          saeed@example.com
+                        
                         </p>
                       </div>
                     </div>
@@ -258,10 +255,19 @@
                 </div>
               </div>
 
-              <div id="user-infos" class="hidden md:flex flex-col items-start">
-                <p class="user-name font-semibold text-[12px]"></p>
-                <p class="user-role text-xs text-[9px]"></p>
+              <div id="user-infos" class="hidden md:flex flex-col justify-center items-center">
+                <p class="user-name font-semibold text-[14px]"></p>
+                <p class="user-role text-xs text-[10px]"></p>
               </div>
+              <button
+                  id="user-profile"
+                  class="block h-5 w-5 text-zinc-600 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
+                >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+</svg>
+
+                </button>
             </div>
           </div>
 
@@ -459,7 +465,7 @@
 
         <!-- Statistics -->
 
-        <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5">
+        <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5 bg-[#F3F1EC] dark:bg-[#1f0a19]">
           <div
             class="rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
           >
@@ -512,7 +518,7 @@
         </section>
         <!-- ================= ANALYTICS SECTION ================= -->
 
-        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8">
+        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8 bg-[#F3F1EC] dark:bg-[#1f0a19]">
           <!-- Revenue Overview -->
 
           <div
@@ -618,7 +624,7 @@
 
         <!-- ================= TABLES SECTION ================= -->
 
-        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8">
+        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8 bg-[#F3F1EC] dark:bg-[#1f0a19]">
           <!-- Recent Appointments -->
 
           <div

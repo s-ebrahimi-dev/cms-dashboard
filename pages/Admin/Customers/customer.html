@@ -83,14 +83,8 @@
       <main class="main">
         <!-- Header -->
         <header
-          class="sticky top-0 z-40 -mx-8 px-6 py-4 mb-8 flex items-center justify-between bg-white/95 backdrop-blur-md border-b border-slate-200 dark:bg-zinc-800/95 dark:border-zinc-700"
+          class="sticky top-0 z-40 -mx-8 px-6 py-1.5 mb-8 flex items-center justify-end bg-white/95 backdrop-blur-md border-b border-slate-200 dark:bg-zinc-800/95 dark:border-zinc-700"
         >
-          <div>
-            <h2 class="text-3xl font-bold">Customers</h2>
-
-            <p class="mt-1">Welcome back, manage your auto service center</p>
-          </div>
-
           <div class="flex items-center gap-4">
             <input
               class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-1 outline-black/20 dark:outline-white/50 focus:ring-2 focus:ring-indigo-500"
@@ -110,20 +104,16 @@
               </span>
             </button>
             <div
-              class="flex items-center justify-between bg-sky-500 dark:bg-black gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600/40 dark:border-white/40"
+              class="relative flex items-center justify-between bg-transparent gap-3 md:w-48 h-12 md:gap-0.5 md:pr-2 md:pl-1 shrink-0 border-l border-zinc-600/20 dark:border-white/40"
             >
-              <div class="relative">
+              <div>
                 <!-- User profile button -->
-                <button
-                  id="user-profile"
-                  class="block h-12 w-12 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
-                >
-                  <img
-                    src="/images/default-profile.png"
-                    class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
-                    alt="user-image"
-                  />
-                </button>
+
+                <img
+                  src="/images/default-profile.png"
+                  class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
+                  alt="user-image"
+                />
 
                 <!-- User menu -->
                 <div
@@ -144,21 +134,15 @@
                       <div class="min-w-0">
                         <p
                           class="user-name truncate text-sm font-semibold text-gray-900 dark:text-white"
-                        >
-                          Saeed Ebrahimi
-                        </p>
+                        ></p>
 
                         <p
                           class="user-role truncate text-xs text-gray-500 dark:text-gray-400"
-                        >
-                          Administrator
-                        </p>
+                        ></p>
 
                         <p
                           class="user-email truncate text-xs text-gray-400 dark:text-gray-500"
-                        >
-                          saeed@example.com
-                        </p>
+                        ></p>
                       </div>
                     </div>
                   </div>
@@ -259,10 +243,31 @@
                 </div>
               </div>
 
-              <div class="hidden md:flex flex-col items-end">
-                <p class="font-semibold text-[12px]">Saeed</p>
-                <p class="text-xs text-[9px]">Administrator</p>
+              <div
+                id="user-infos"
+                class="hidden md:flex flex-col justify-center items-center"
+              >
+                <p class="user-name font-semibold text-[14px]"></p>
+                <p class="user-role text-xs text-[10px]"></p>
               </div>
+              <button
+                id="user-profile"
+                class="block h-5 w-5 text-zinc-600 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -514,15 +519,18 @@
             </div>
           </div>
         </header>
-        <header class="flex flex-col lg:flex-row justify-end gap-5 mb-8">
-          <div class="flex gap-3">
-            <button
-              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg font-medium"
-            >
-              + Add Customer
-            </button>
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h2 class="text-3xl font-bold">Customers</h2>
+
+            <p class="mt-1">Welcome back, manage your auto service center</p>
           </div>
-        </header>
+          <button
+            class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-lg font-medium"
+          >
+            + Add Customer
+          </button>
+        </div>
 
         <!-- Customers Table -->
 
