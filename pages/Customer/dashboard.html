@@ -1,15 +1,21 @@
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>AutoCare Pro CMS</title>
+
     <link rel="stylesheet" href="/styles/app.css" />
     <link rel="icon" href="/images/icon.jpg" />
+
     <script src="../../../scripts/theme.js"></script>
   </head>
 
-  <body>
+  <body class="relative text-white">
+    <!-- ================= SHARED SVG SYMBOLS ================= -->
+
     <svg class="hidden">
       <symbol
         id="arrow-right"
@@ -24,6 +30,7 @@
           d="m8.25 4.5 7.5 7.5-7.5 7.5"
         />
       </symbol>
+
       <symbol
         id="arrow-left"
         fill="none"
@@ -37,6 +44,7 @@
           d="M15.75 19.5 8.25 12l7.5-7.5"
         />
       </symbol>
+
       <symbol
         id="moon"
         xmlns="http://www.w3.org/2000/svg"
@@ -51,6 +59,7 @@
           d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
         />
       </symbol>
+
       <symbol
         id="sun"
         xmlns="http://www.w3.org/2000/svg"
@@ -68,12 +77,16 @@
     </svg>
 
     <div class="layout">
+      <!-- ================= SIDEBAR ================= -->
+
       <section id="sidebar-container" class="sidebar-container z-50">
-        <!-- Data Loaded By Js -->
+        <!-- Data Loaded By JS -->
       </section>
 
+      <!-- Mobile sidebar -->
+
       <section id="mobile-sidebar-container">
-        <!-- Data loaded By JS -->
+        <!-- Data Loaded By JS -->
       </section>
 
       <!-- ================= MAIN ================= -->
@@ -81,25 +94,22 @@
       <main class="main">
         <!-- ================= HEADER ================= -->
 
-        <header class="relative flex items-center justify-between mb-8">
-          <div>
-            <h2 class="text-3xl font-bold">Dashboard</h2>
-
-            <p class="mt-1">
-              Welcome back, here's an overview of your vehicles and services
-            </p>
-          </div>
-
+        <header
+          class="sticky top-0 z-40 -mx-8 px-6 py-1.5 mb-8 flex items-center justify-end bg-white/95 backdrop-blur-md border-b border-slate-200 dark:bg-zinc-800/95 dark:border-zinc-700"
+        >
           <div class="flex items-center gap-4">
-            <!-- Search -->
+            <!-- ================= SEARCH ================= -->
+
             <input
-              class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-none focus:ring-2 focus:ring-indigo-500 text-gray-500"
+              class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-1 outline-black/20 dark:outline-white/50 focus:ring-2 focus:ring-indigo-500 text-gray-500"
               placeholder="Search..."
             />
 
-            <!-- Notification -->
+            <!-- ================= NOTIFICATION ================= -->
+
             <button
               id="message-notif"
+              type="button"
               class="relative message-notif w-12 h-12 rounded-xl border border-black/40 dark:border-white/50 shadow-sm dark:shadow-white/10 transition-all duration-100 hover:shadow-md dark:hover:shadow-white/20 active:translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] dark:active:shadow-[inset_0_2px_4px_rgba(255,255,255,0.15)]"
             >
               🔔
@@ -112,27 +122,28 @@
               </span>
             </button>
 
-            <!-- Profile -->
-            <div
-              class="flex items-center justify-between bg-sky-500 dark:bg-black gap-3 md:w-28 h-12 md:gap-0.5 md:pr-2 rounded-full shrink-0 border border-zinc-600/40 dark:border-white/40"
-            >
-              <div class="relative">
-                <button
-                  id="user-profile"
-                  class="block h-12 w-12 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
-                >
-                  <img
-                    src="/images/default-profile.png"
-                    class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
-                    alt="user-image"
-                  />
-                </button>
+            <!-- ================= PROFILE AREA ================= -->
 
-                <!-- User menu -->
+            <div
+              class="relative flex items-center justify-between bg-transparent gap-2 md:w-48 h-12 md:gap-0.5 md:pr-2 pl-1 shrink-0 border-l border-zinc-600/20 dark:border-white/40"
+            >
+              <!-- Profile image + dropdown -->
+
+              <div>
+                <img
+                  src="/images/default-profile.png"
+                  class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
+                  alt="user-image"
+                />
+
+                <!-- ================= USER MENU ================= -->
+
                 <div
-                  id="user-menu"
-                  class="absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
+                  id="user-infos"
+                  class="user-menu absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
                 >
+                  <!-- User information -->
+
                   <div
                     class="border-b border-black/10 px-5 py-1 dark:border-white/10"
                   >
@@ -146,39 +157,52 @@
                       <div class="min-w-0">
                         <p
                           class="user-name truncate text-sm font-semibold text-gray-900 dark:text-white"
-                        >
-                          Customer
-                        </p>
+                        ></p>
 
                         <p
                           class="user-role truncate text-xs text-gray-500 dark:text-gray-400"
-                        >
-                          Customer
-                        </p>
+                        ></p>
 
                         <p
                           class="user-email truncate text-xs text-gray-400 dark:text-gray-500"
-                        >
-                          customer@example.com
-                        </p>
+                        ></p>
                       </div>
                     </div>
                   </div>
 
+                  <!-- Menu items -->
+
                   <div class="p-1.5">
+                    <!-- My Profile -->
+
                     <a
                       href="#"
                       id="profile-menu-item"
                       class="flex w-full items-center gap-3 rounded-xl px-3 py-1 text-sm font-medium text-gray-700 transition-colors hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/5"
                     >
                       <span
-                        class="flex h-6 w-6 items-center justify-center rounded-lg"
+                        class="flex h-6 w-6 items-center justify-center rounded-lg bg-transparent"
                       >
-                        👤
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="dark:text-white"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                          />
+                        </svg>
                       </span>
 
                       <span>My Profile</span>
                     </a>
+
+                    <!-- Settings -->
 
                     <a
                       href="../Settings-page/settings.html"
@@ -188,12 +212,33 @@
                       <span
                         class="flex h-6 w-6 items-center justify-center rounded-lg"
                       >
-                        ⚙️
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="dark:text-white"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"
+                          />
+
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                          />
+                        </svg>
                       </span>
 
                       <span>Settings</span>
                     </a>
                   </div>
+
+                  <!-- Logout -->
 
                   <div
                     class="border-t border-black/10 p-1.5 dark:border-white/10"
@@ -206,7 +251,20 @@
                       <span
                         class="flex h-8 w-8 items-center justify-center rounded-lg"
                       >
-                        ⇥
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="text-red-400 rotate-180"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+                          />
+                        </svg>
                       </span>
 
                       <span>Logout</span>
@@ -215,9 +273,241 @@
                 </div>
               </div>
 
-              <div id="user-infos" class="hidden md:flex flex-col items-start">
-                <p class="user-name font-semibold text-[12px]"></p>
-                <p class="user-role text-xs text-[9px]"></p>
+              <!-- User name / role -->
+
+              <div
+                id="user-infos"
+                class="hidden md:flex flex-col justify-center items-center"
+              >
+                <p class="user-name font-semibold text-[14px]"></p>
+                <p class="user-role text-xs text-[10px]"></p>
+              </div>
+
+              <!-- Profile dropdown button -->
+
+              <button
+                id="user-profile"
+                type="button"
+                class="block h-5 w-5 text-zinc-600 dark:text-amber-50 rounded-full transition-all duration-250 md:hover:scale-105 focus:outline-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- NOTIFICATION MODAL -->
+          <!-- ================================================= -->
+
+          <div
+            id="messageNotificationModal"
+            class="notification-modal compact absolute right-0 top-17 z-50 overflow-hidden overflow-y-auto rounded-2xl border border-slate-200 bg-white shadow-xl opacity-0 invisible transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
+          >
+            <!-- ================= COMPACT VIEW ================= -->
+
+            <div id="notification-compact-view">
+              <!-- Header -->
+
+              <div
+                class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-700"
+              >
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-800 dark:text-white">
+                    Messages
+                  </h3>
+
+                  <p class="mt-0.5 text-xs text-slate-400">Recent messages</p>
+                </div>
+
+                <span
+                  id="unread-message-count"
+                  class="hidden shrink-0 rounded-full bg-orange-100 px-2 py-1 text-xs font-semibold text-orange-600"
+                >
+                  0
+                </span>
+              </div>
+
+              <!-- Messages -->
+
+              <div
+                id="messageNotificationList"
+                class="max-h-[60vh] overflow-y-auto"
+              >
+                <div class="px-4 py-8 text-center text-sm text-slate-400">
+                  No new messages
+                </div>
+              </div>
+
+              <!-- Footer -->
+
+              <div class="border-t border-slate-200 p-3 dark:border-slate-700">
+                <button
+                  id="view-all-notifications"
+                  type="button"
+                  class="block w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-orange-600"
+                >
+                  View all notifications
+                </button>
+              </div>
+            </div>
+
+            <!-- ================= EXPANDED VIEW ================= -->
+
+            <div id="notification-expanded-view" class="hidden">
+              <!-- Expanded Header -->
+
+              <div
+                class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-700"
+              >
+                <div class="flex min-w-0 items-center gap-3">
+                  <button
+                    id="back-to-notifications"
+                    type="button"
+                    class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white"
+                    aria-label="Back to recent notifications"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                      />
+                    </svg>
+                  </button>
+
+                  <div class="min-w-0">
+                    <h3
+                      class="text-sm font-bold text-slate-800 dark:text-white"
+                    >
+                      Notifications
+                    </h3>
+
+                    <p class="mt-0.5 text-xs text-slate-400">
+                      All notifications
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  id="mark-all-notifications-read"
+                  type="button"
+                  class="shrink-0 text-xs font-medium text-indigo-600 transition hover:text-orange-600 dark:text-indigo-400 dark:hover:text-orange-400"
+                >
+                  Mark all as read
+                </button>
+              </div>
+
+              <!-- Expanded Notifications -->
+
+              <div id="all-notifications-list" class="max-h-[65vh]">
+                <div class="px-4 pt-4 pb-2">
+                  <p
+                    class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                  >
+                    Today
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================================================= -->
+          <!-- NOTIFICATION DETAIL MODAL -->
+          <!-- ================================================= -->
+
+          <div
+            id="notification-detail-modal"
+            class="fixed inset-0 z-[1000] invisible flex items-center justify-center opacity-0 transition-all duration-300"
+          >
+            <!-- Overlay -->
+
+            <div
+              id="notification-detail-overlay"
+              class="absolute inset-0 bg-black/60"
+            ></div>
+
+            <!-- Modal -->
+
+            <div
+              class="relative z-10 w-[calc(100%-2rem)] max-w-xl rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-[#151B23]"
+            >
+              <!-- Header -->
+
+              <div
+                class="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-700"
+              >
+                <h3
+                  id="notification-detail-title"
+                  class="text-base font-bold text-slate-800 dark:text-white"
+                >
+                  Notification
+                </h3>
+
+                <button
+                  id="close-notification-detail"
+                  type="button"
+                  class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m8.401 16.333l-.734-.727L11.266 12L7.667 8.42l.734-.728L12 11.29l3.574-3.597l.734.727L12.709 12l3.599 3.606l-.734.727L12 12.737z"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Body -->
+
+              <div class="px-5 py-6">
+                <div class="flex items-start gap-4">
+                  <img
+                    id="notification-detail-image"
+                    src="/images/default-profile.png"
+                    alt=""
+                    class="h-12 w-12 shrink-0 rounded-xl object-cover"
+                  />
+
+                  <div class="min-w-0 flex-1">
+                    <p
+                      id="notification-detail-sender"
+                      class="text-xs font-semibold text-indigo-600 dark:text-indigo-400"
+                    ></p>
+
+                    <p
+                      id="notification-detail-message"
+                      class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
+                    ></p>
+
+                    <p
+                      id="notification-detail-time"
+                      class="mt-4 text-xs text-slate-400"
+                    ></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -226,14 +516,14 @@
         <!-- ================= WELCOME BANNER ================= -->
 
         <div class="bg-emerald-700 rounded-2xl p-8 text-white mb-8">
-          <h1 class="text-3xl text-white font-bold">Good Morning, Saeed 👋</h1>
+          <h1 class="text-3xl text-white font-bold">Keep your vehicle in the best shape</h1>
 
-          <p class="mt-2 text-indigo-100">Welcome to your AutoCare dashboard</p>
+          <p class="mt-2 text-indigo-100">Book an appointment, track your services, and maintain your vehicle with ease - all in one place.</p>
         </div>
 
         <!-- ================= CUSTOMER STATISTICS ================= -->
 
-        <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+        <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 bg-[#F3F1EC]">
           <!-- My Vehicles -->
 
           <div
@@ -284,14 +574,17 @@
         </section>
 
         <!-- ================= MY VEHICLES ================= -->
-        <section class="mt-8">
+
+        <section class="mt-8 bg-[#F3F1EC]">
           <div
             class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
           >
             <!-- Section Header -->
+
             <div class="flex justify-between items-center mb-6">
               <div>
                 <h2 class="text-xl font-bold">My Vehicles</h2>
+
                 <p class="text-sm">Your registered vehicles</p>
               </div>
 
@@ -304,13 +597,16 @@
             </div>
 
             <!-- Vehicles -->
+
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
               <!-- Vehicle 1 -->
+
               <div
                 class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] p-5"
               >
                 <div class="flex flex-col lg:flex-row gap-5">
                   <!-- Vehicle image -->
+
                   <div
                     class="w-full lg:w-1/2 h-44 shrink-0 rounded-xl overflow-hidden"
                   >
@@ -322,8 +618,8 @@
                   </div>
 
                   <!-- Vehicle information -->
+
                   <div class="w-full lg:w-1/2 min-w-0">
-                    <!-- Name + status -->
                     <div
                       class="flex flex-col min-[380px]:flex-row min-[380px]:items-start min-[420px]:justify-between gap-3"
                     >
@@ -341,16 +637,19 @@
                     </div>
 
                     <!-- Vehicle details -->
+
                     <div
                       class="grid grid-cols-1 min-[380px]:grid-cols-2 gap-4 mt-6 pt-5 border-t border-[#D9D9D3] dark:border-[#2A3540]"
                     >
                       <div>
                         <p class="text-xs">Mileage</p>
+
                         <p class="font-semibold mt-1">42,350 km</p>
                       </div>
 
                       <div>
                         <p class="text-xs">Last Service</p>
+
                         <p class="font-semibold mt-1">Aug 12, 2026</p>
                       </div>
                     </div>
@@ -359,11 +658,13 @@
               </div>
 
               <!-- Vehicle 2 -->
+
               <div
                 class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] p-5"
               >
                 <div class="flex flex-col lg:flex-row gap-5">
                   <!-- Vehicle image -->
+
                   <div
                     class="w-full lg:w-1/2 h-44 shrink-0 rounded-xl overflow-hidden"
                   >
@@ -375,8 +676,8 @@
                   </div>
 
                   <!-- Vehicle information -->
+
                   <div class="w-full lg:w-1/2 min-w-0">
-                    <!-- Name + status -->
                     <div
                       class="flex flex-col min-[380px]:flex-row min-[380px]:items-start min-[420px]:justify-between gap-3"
                     >
@@ -394,16 +695,19 @@
                     </div>
 
                     <!-- Vehicle details -->
+
                     <div
                       class="grid grid-cols-1 min-[380px]:grid-cols-2 gap-4 mt-6 pt-5 border-t border-[#D9D9D3] dark:border-[#2A3540]"
                     >
                       <div>
                         <p class="text-xs">Mileage</p>
+
                         <p class="font-semibold mt-1">42,350 km</p>
                       </div>
 
                       <div>
                         <p class="text-xs">Last Service</p>
+
                         <p class="font-semibold mt-1">Aug 12, 2026</p>
                       </div>
                     </div>
@@ -414,11 +718,9 @@
           </div>
         </section>
 
-        <!-- ================= MAIN CUSTOMER SECTION ================= -->
+        <!-- ================= UPCOMING APPOINTMENT ================= -->
 
-        <section class="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-8">
-          <!-- ================= UPCOMING APPOINTMENT ================= -->
-
+        <section class="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-8 bg-[#F3F1EC]">
           <div
             class="xl:col-span-2 rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
           >
@@ -493,8 +795,8 @@
 
         <!-- ================= LOWER SECTION ================= -->
 
-        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8">
-          <!-- ================= RECENT SERVICES ================= -->
+        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8 bg-[#F3F1EC]">
+          <!-- Recent Services -->
 
           <div
             class="xl:col-span-2 rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
@@ -589,7 +891,7 @@
             </div>
           </div>
 
-          <!-- ================= RECENT PAYMENTS ================= -->
+          <!-- Recent Payments -->
 
           <div
             class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-6"
@@ -610,8 +912,6 @@
             </div>
 
             <div class="space-y-5">
-              <!-- Payment -->
-
               <div class="flex items-center gap-4">
                 <div
                   class="w-11 h-11 shrink-0 rounded-xl bg-green-100 dark:bg-green-500/10 flex items-center justify-center text-green-600"
@@ -628,8 +928,6 @@
                 <p class="font-bold">$85</p>
               </div>
 
-              <!-- Payment -->
-
               <div class="flex items-center gap-4">
                 <div
                   class="w-11 h-11 shrink-0 rounded-xl bg-green-100 dark:bg-green-500/10 flex items-center justify-center text-green-600"
@@ -645,8 +943,6 @@
 
                 <p class="font-bold">$120</p>
               </div>
-
-              <!-- Payment -->
 
               <div class="flex items-center gap-4">
                 <div
@@ -679,13 +975,13 @@
 
         <!-- ================= QUICK ACTIONS ================= -->
 
-        <section class="mt-8">
-          <h2 class="text-xl font-bold mb-5">Quick Actions</h2>
+        <div class="mt-8 *:bg-[#F3F1EC]">
+          <h2 class="text-xl font-bold mb-5 bg-[#F3F1EC] ">Quick Actions</h2>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 bg-[#F3F1EC] ">
             <a
               href="../Appointments-page/appointments.html"
-              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] bg-[#FCFBF8] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <div
                 class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-600"
@@ -702,7 +998,7 @@
 
             <a
               href="../Vehicles-page/vehicles.html"
-              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] bg-[#FCFBF8] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <div
                 class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-500/10 flex items-center justify-center text-blue-600"
@@ -719,7 +1015,7 @@
 
             <a
               href="../Services-page/services.html"
-              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] bg-[#FCFBF8] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <div
                 class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-500/10 flex items-center justify-center text-orange-600"
@@ -736,7 +1032,7 @@
 
             <a
               href="../Messages-page/messages.html"
-              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
+              class="rounded-2xl border border-[#D9D9D3] dark:border-[#2A3540] bg-[#FCFBF8] shadow-sm p-5 flex items-center gap-4 transition hover:-translate-y-0.5 hover:shadow-md"
             >
               <div
                 class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600"
@@ -751,7 +1047,7 @@
               </div>
             </a>
           </div>
-        </section>
+        </div>
 
         <!-- ================= OVERLAY / MODALS ================= -->
 
@@ -765,7 +1061,6 @@
         <div id="result-modal-container"></div>
       </main>
     </div>
-
 
     <script type="module" src="../../scripts/shared.js"></script>
   </body>

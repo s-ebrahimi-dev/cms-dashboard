@@ -13,8 +13,12 @@ const roleMenus = {
   },
 
   CUSTOMER: {
-    dashboard: "/pages/Customer/dashboard.html",
+     dashboard: {
+    href: "/pages/Customer/dashboard.html",
+    label: "My Dashboard",
+  },
     vehicles: "/pages/Customer/vehicles.html",
+    messages: "/pages/Customer/messages.html",
     appointments: "/pages/Customer/appointment.html",
     payments: "/pages/Customer/payment.html",
     settings: "/pages/Customer/settings.html",
@@ -83,19 +87,36 @@ const roleMenuItems = document.querySelectorAll(
   ".menu-list .list-item[data-menu]"
 );
 
-roleMenuItems.forEach((menuItem) => {
-  const menuName = menuItem.dataset.menu;
+  roleMenuItems.forEach((menuItem) => {
+   const menuName = menuItem.dataset.menu;
+const menuConfig = userMenus[menuName];
 
-  if (!userMenus[menuName]) {
-    menuItem.remove();
-    return;
+if (!menuConfig) {
+  menuItem.remove();
+  return;
+}
+
+const link = menuItem.querySelector(".menu-item");
+
+if (link) {
+  if (typeof menuConfig === "string") {
+    link.href = menuConfig;
+  } else {
+    link.href = menuConfig.href;
+
+    const menuText = link.querySelector(".menu-text");
+    const mobileMenuText = link.querySelector(".mobile-menu-text");
+      if (menuConfig.label) {
+        if (menuText) {
+          menuText.textContent = menuConfig.label;
+        }
+
+        if (mobileMenuText) {
+          mobileMenuText.textContent = menuConfig.label;
+        }
+      }
   }
-
-  const link = menuItem.querySelector(".menu-item");
-
-  if (link) {
-    link.href = userMenus[menuName];
-  }
+}
 });
   
 overlay.addEventListener("click", () => {

@@ -15,7 +15,8 @@ const roleLabels = {
   DETAILING_TECHNICIAN: "Detailing Technician",
   WASH_TECHNICIAN: "Wash Technician",
 };
-const userProfile = document.querySelector("#user-profile");
+const userProfile = document.querySelector("#user-infos");
+const userProfileBtn = document.querySelector("#user-profile");
 const userMenu = document.querySelector("#user-menu");
 
 const notificationDetailModal = document.querySelector(
@@ -377,7 +378,8 @@ const initNotificationModal = () => {
     event.stopPropagation();
 
     userMenu?.classList.add("hidden");
-
+     userProfile?.classList.add("hidden");
+    userProfileBtn?.classList.remove("open");
     showCompactView();
 
     const isOpen = messageNotificationModal.classList.contains("visible");

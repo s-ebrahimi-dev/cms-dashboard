@@ -88,8 +88,6 @@
         <header
           class="sticky top-0 z-40 -mx-8 px-6 py-1.5 mb-8 flex items-center justify-end bg-white/95 backdrop-blur-md border-b border-slate-200 dark:bg-zinc-800/95 dark:border-zinc-700"
         >
-         
-
           <div class="flex items-center gap-4">
             <input
               class="hidden md:block w-72 px-4 py-3 rounded-xl border outline-1 outline-black/20 dark:outline-white/50 focus:ring-2 focus:ring-indigo-500 text-gray-500"
@@ -109,22 +107,21 @@
               </span>
             </button>
             <div
-              class="relative flex items-center justify-between bg-transparent  gap-3 md:w-48 h-12 md:gap-0.5 md:pr-2 md:pl-1 shrink-0 border-l border-zinc-600/20 dark:border-white/40"
+              class="relative flex items-center justify-between bg-transparent gap-2 md:w-48 h-12 md:gap-0.5 md:pr-2 pl-1 shrink-0 border-l border-zinc-600/20 dark:border-white/40"
             >
               <div>
                 <!-- User profile button -->
-                
-                  <img
-                    src="/images/default-profile.png"
-                    class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
-                    alt="user-image"
-                  />
-              
+
+                <img
+                  src="/images/default-profile.png"
+                  class="user-image block h-12 w-12 rounded-full object-cover bg-indigo-600"
+                  alt="user-image"
+                />
 
                 <!-- User menu -->
                 <div
-                  id="user-menu"
-                  class="absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
+                  id="user-infos"
+                  class="user-menu absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
                 >
                   <!-- User info -->
                   <div
@@ -140,21 +137,15 @@
                       <div class="min-w-0">
                         <p
                           class="user-name truncate text-sm font-semibold text-gray-900 dark:text-white"
-                        >
-                         
-                        </p>
+                        ></p>
 
                         <p
                           class="user-role truncate text-xs text-gray-500 dark:text-gray-400"
-                        >
-                         
-                        </p>
+                        ></p>
 
                         <p
                           class="user-email truncate text-xs text-gray-400 dark:text-gray-500"
-                        >
-                        
-                        </p>
+                        ></p>
                       </div>
                     </div>
                   </div>
@@ -255,19 +246,31 @@
                 </div>
               </div>
 
-              <div id="user-infos" class="hidden md:flex flex-col justify-center items-center">
+              <div
+                id="user-infos"
+                class="hidden md:flex flex-col justify-center items-center"
+              >
                 <p class="user-name font-semibold text-[14px]"></p>
                 <p class="user-role text-xs text-[10px]"></p>
               </div>
               <button
-                  id="user-profile"
-                  class="block h-5 w-5 text-zinc-600 rounded-full transition-all duration-150 md:hover:scale-105 focus:outline-none"
+                id="user-profile"
+                class="block h-5 w-5 text-zinc-600 dark:text-amber-50 rounded-full transition-all duration-250 md:hover:scale-105 focus:outline-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
                 >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-</svg>
-
-                </button>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
 
@@ -448,11 +451,11 @@
             </div>
           </div>
         </header>
-         <div class="mb-4">
-            <h2 class="text-3xl font-bold">Dashboard</h2>
+        <div class="mb-4">
+          <h2 class="text-3xl font-bold">Dashboard</h2>
 
-            <p class="mt-1">Welcome back, manage your auto service center</p>
-          </div>
+          <p class="mt-1">Welcome back, manage your auto service center</p>
+        </div>
         <!-- Welcome Banner -->
 
         <div class="bg-emerald-700 rounded-2xl p-8 text-white mb-8">
@@ -465,7 +468,9 @@
 
         <!-- Statistics -->
 
-        <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5 bg-[#F3F1EC] dark:bg-[#1f0a19]">
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5 bg-[#F3F1EC] dark:bg-[#1f0a19]"
+        >
           <div
             class="rounded-2xl p-5 border border-[#D9D9D3] dark:border-[#2A3540] shadow-sm"
           >
@@ -518,7 +523,9 @@
         </section>
         <!-- ================= ANALYTICS SECTION ================= -->
 
-        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8 bg-[#F3F1EC] dark:bg-[#1f0a19]">
+        <section
+          class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8 bg-[#F3F1EC] dark:bg-[#1f0a19]"
+        >
           <!-- Revenue Overview -->
 
           <div
@@ -624,7 +631,9 @@
 
         <!-- ================= TABLES SECTION ================= -->
 
-        <section class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8 bg-[#F3F1EC] dark:bg-[#1f0a19]">
+        <section
+          class="grid grid-cols-1 xl:grid-cols-3 gap-6 mt-8 bg-[#F3F1EC] dark:bg-[#1f0a19]"
+        >
           <!-- Recent Appointments -->
 
           <div

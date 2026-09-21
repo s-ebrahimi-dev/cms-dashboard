@@ -34,14 +34,16 @@ const loadUserImage = async () => {
 };
 
 const loadUserInfos = async () => {
-  const userInfosElem = document.querySelector("#user-infos")
+  const userInfosElem = document.querySelectorAll("#user-infos")
   if (!userInfosElem) return
   try {
     const user = await getMe()
     if (!user?.data) return
-     const { firstname, lastname, role } = user.data;
-       const nameElem = userInfosElem.querySelector(".user-name");
-    const roleElem = userInfosElem.querySelector(".user-role");
+    const { firstname, lastname, role } = user.data;
+    userInfosElem.forEach((elem) => { 
+             const nameElem = elem.querySelector(".user-name");
+      const roleElem = elem.querySelector(".user-role");
+      const emailElem = elem.querySelector(".user-email");
 
   if (nameElem) {
       nameElem.textContent =
@@ -50,18 +52,23 @@ const loadUserInfos = async () => {
 
     if (roleElem) {
       const roleLabels = {
-        ADMIN: "Admin",
+        ADMIN: "Administrator",
         CUSTOMER: "Customer",
-        RECEPTIONIST: "Recept",
+        RECEPTIONIST: "Receptionist",
         MECHANIC: "Mechanic",
-        OIL_TECHNICIAN: "OilTech",
-        BODY_REPAIR: "Body",
-        DETAILING_TECHNICIAN: "Detailing",
-        WASH_TECHNICIAN: "WashTech",
+        OIL_TECHNICIAN: "Oil Technician",
+        BODY_REPAIR: "Body Repair",
+        DETAILING_TECHNICIAN: "Detailing Technician",
+        WASH_TECHNICIAN: "Wash Technician",
       };
 
       roleElem.textContent = roleLabels[role] || role || "User";
-    }
+      }
+      if(emailElem) {
+        emailElem.textContent = user.data.email || "";
+      }
+    })
+
   } catch (error) {
     console.error("Failed to load user information:", error);
   }
@@ -69,12 +76,13 @@ const loadUserInfos = async () => {
 
 const initUserProfile = () => {
   const userProfile = document.querySelector("#user-profile");
-  const userMenu = document.querySelector("#user-menu");
+  const userMenu = document.querySelector(".user-menu");
 
   if (!userProfile || !userMenu) return;
 
   userProfile.addEventListener("click", (event) => {
     event.stopPropagation();
+    userProfile.classList.toggle("open");
       closeNotificationModal();
 
     userMenu.classList.toggle("hidden");
@@ -86,6 +94,7 @@ const initUserProfile = () => {
       !userProfile.contains(event.target)
     ) {
       userMenu.classList.add("hidden");
+      userProfile.classList.remove("open");
     }
   });
 };
