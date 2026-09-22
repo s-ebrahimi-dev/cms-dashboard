@@ -55,8 +55,9 @@ const initDeleteUserModal = () => {
 
 // Edit User Modal
 
-const openEditUserModal = (user) => {
-  const editUserModal = document.querySelector("#editUserModal");
+ const openEditUserModal = (user) => {
+   const editUserModal = document.querySelector("#editUserModal");
+
   currentEditUser = user;
   document.querySelector("#editUserId").value = user._id;
   document.querySelector("#editFirstname").value = user.firstname;
