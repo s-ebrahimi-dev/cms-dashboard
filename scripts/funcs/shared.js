@@ -370,6 +370,47 @@ const editUser = async (userId) => {
     showResultModal("error", result.message);
   }
 };
+const updateOwnProfile = async () => {
+  const firstnameElem = document.querySelector("#editFirstname");
+  const lastnameElem = document.querySelector("#editLastname");
+  const usernameElem = document.querySelector("#editUsername");
+  const emailElem = document.querySelector("#editEmail");
+  const phoneElem = document.querySelector("#editPhone");
+  const passwordElem = document.querySelector("#editPassword");
+
+  const updatedUser = {
+    firstname: firstnameElem.value.trim(),
+    lastname: lastnameElem.value.trim(),
+    username: usernameElem.value.trim(),
+    email: emailElem.value.trim(),
+    phone: phoneElem.value.trim(),
+    password: passwordElem.value.trim(),
+  };
+
+  const res = await fetch(`${base_URL}/users/profile`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify(updatedUser),
+  });
+
+  console.log(res);
+
+  const result = await res.json();
+
+  console.log(result);
+
+  if (res.ok) {
+    showResultModal("success", "Profile updated successfully");
+    return result.data;
+  }
+
+  showResultModal("error", result.message);
+
+  return null;
+};
 
 const sendMessage = async (userId) => {
   const receiver = userId;
@@ -435,6 +476,8 @@ export {
   openDeleteUserModal,
   initDeleteUserModal,
   openEditUserModal,
+  closeEditUserModal,
+  updateOwnProfile,
   initEditUserModal,
   openChatUserModal,
   initChatUserModal,

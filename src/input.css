@@ -40,7 +40,7 @@
     @apply bg-[#FCFBF8] dark:bg-[#5f6774] border-[#D9D9D3] dark:border-[#2A3540];
   }
   section > * {
-    @apply bg-[#FCFBF8] dark:bg-[#5f6774] border-[#D9D9D3] dark:border-[#2A3540];
+    @apply bg-[#FCFBF8] dark:bg-[#151B23] border-[#D9D9D3] dark:border-[#2A3540];
   }
   .layout {
     @apply relative block

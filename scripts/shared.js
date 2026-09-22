@@ -100,6 +100,7 @@ const initUserProfile = () => {
 };
 
 const initDynamicModals = async () => {
+  const page = document.body.dataset.page;
   const deleteModalContainer = document.getElementById(
     "delete-user-modal-container",
   );
@@ -121,7 +122,7 @@ const initDynamicModals = async () => {
     initDeleteUserModal();
   }
 
-  if (editModalContainer) {
+  if (editModalContainer && page === "users") {
     await loadComponent(
       "edit-user-modal-container",
       "/Components/edit-user-modal.html",

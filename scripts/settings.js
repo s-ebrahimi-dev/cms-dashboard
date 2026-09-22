@@ -1,11 +1,12 @@
 import { getMe } from "../scripts/funcs/auth.js";
-
+import { loadComponent } from "./components/component-Loader.js";
 import {
   previewProfileImage,
   uploadProfileImage,
   loadProfileImage,
 } from "../scripts/funcs/profileImage.js";
-import { openEditUserModal, initEditUserModal } from "./funcs/shared.js";
+import { base_URL } from "./config.js";
+import { openEditUserModal, updateOwnProfile, closeEditUserModal  } from "./funcs/shared.js";
 
 let currentUser = null;
 
@@ -51,14 +52,36 @@ imageInput.addEventListener("change", async () => {
 });
 
 
-// Edit User Handle
-const editUserBtn = document.querySelector(".editUserBtn")
-editUserBtn.addEventListener("click", async () => {
+// Edit User Handler
 
-  openEditUserModal(currentUser)
+const editModalContainer = document.querySelector(
+  "#edit-user-modal-container"
+);
+
+if (editModalContainer) {
+  await loadComponent(
+    "edit-user-modal-container",
+    "/Components/edit-user-modal.html"
+  );
+}
+const editUserBtn = document.querySelector(".editUserBtn");
+const confirmEditUserBtn = document.querySelector("#confirmEditUser");
+const cancelEditUserBtn = document.querySelector("#cancelEditUser")
+editUserBtn.addEventListener("click", () => {
+  openEditUserModal(currentUser);
+});
+
+confirmEditUserBtn.addEventListener("click", async (event) => {
+  event.preventDefault()
+  closeEditUserModal()
+  await updateOwnProfile();
+});
+
+cancelEditUserBtn.addEventListener("click",  (event) => {
+  event.preventDefault()
+  closeEditUserModal()
 })
-
-// Theme Handle
+// Theme Handler
 const themeOptions = document.querySelectorAll(
   'input[name="theme"]'
 );
