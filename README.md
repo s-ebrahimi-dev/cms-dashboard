@@ -127,7 +127,8 @@ The project is actively under development.
 - Authentication UI
 - API integration
 - Frontend deployment
-
+- Dark/light theme
+  
 ### 🚧 In Progress
 
 - Customer dashboard
@@ -137,7 +138,7 @@ The project is actively under development.
 
 ### 🔮 Future Improvements
 
-- Dark/light theme
+
 - Dashboard analytics charts
 - More animations
 - Advanced role-based permissions
