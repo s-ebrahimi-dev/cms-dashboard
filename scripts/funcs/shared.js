@@ -320,6 +320,7 @@ const getAndShowAllUsers = async () => {
       openDeleteUserModal(user);
     });
   });
+  return users
 };
 
 const deleteUser = async (userId) => {

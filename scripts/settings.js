@@ -7,18 +7,29 @@ import {
 } from "../scripts/funcs/profileImage.js";
 import { base_URL } from "./config.js";
 import { openEditUserModal, updateOwnProfile, closeEditUserModal  } from "./funcs/shared.js";
-
+import {
+  showLoader,
+  hideLoader,
+} from "./funcs/loader.js";
+import { loadUserInfos } from "./shared.js";
 let currentUser = null;
 
 const imageInput = document.querySelector("#profile-image");
 const profilePreview = document.querySelector("#profile-preview");
+const settingsUserNameElem = document.querySelector("#settings-user-name")
+const settingsUserEmailElem = document.querySelector("#settings-user-email")
+const settingsUserRoleElem = document.querySelector("#settings-user-role")
 
 const initSettings = async () => {
   try {
     const result = await getMe();
 
     currentUser = result.data;
-
+    console.log(currentUser);
+    
+    settingsUserNameElem.textContent = `${currentUser.firstname} ${currentUser.lastname}`
+    settingsUserEmailElem.innerHTML = currentUser.email
+    settingsUserRoleElem.innerHTML = currentUser.role
     if (currentUser?.hasProfileImage) {
       await loadProfileImage(profilePreview);
     }
@@ -74,7 +85,11 @@ editUserBtn.addEventListener("click", () => {
 confirmEditUserBtn.addEventListener("click", async (event) => {
   event.preventDefault()
   closeEditUserModal()
+  showLoader()
   await updateOwnProfile();
+  hideLoader()
+  await initSettings()
+  await loadUserInfos()
 });
 
 cancelEditUserBtn.addEventListener("click",  (event) => {

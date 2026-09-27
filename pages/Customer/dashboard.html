@@ -80,7 +80,6 @@
     <!-- ========================================================= -->
 
     <div class="layout">
-
       <!-- ======================================================= -->
       <!-- SIDEBAR -->
       <!-- ======================================================= -->
@@ -99,7 +98,6 @@
       <!-- ======================================================= -->
 
       <main class="main">
-
         <!-- ===================================================== -->
         <!-- HEADER -->
         <!-- ===================================================== -->
@@ -108,7 +106,6 @@
           class="sticky top-0 z-40 -mx-8 mb-8 flex items-center justify-end border-b border-slate-200 bg-white/95 px-6 py-1.5 backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-800/95"
         >
           <div class="flex items-center gap-4">
-
             <!-- Search -->
             <input
               class="hidden w-72 rounded-xl border px-4 py-3 text-gray-500 outline-1 outline-black/20 focus:ring-2 focus:ring-indigo-500 dark:outline-white/50 md:block"
@@ -141,7 +138,6 @@
             <div
               class="relative flex h-12 shrink-0 items-center gap-2 border-l border-zinc-600/20 bg-transparent pl-1 md:w-48 md:justify-between md:gap-0.5 md:pr-2 dark:border-white/40"
             >
-
               <!-- Profile image -->
               <div>
                 <img
@@ -153,17 +149,15 @@
                 <!-- ================= USER MENU ================= -->
 
                 <div
-                  id="user-infos"
+                 
                   class="user-menu absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
                 >
-
                   <!-- User information -->
 
                   <div
                     class="border-b border-black/10 px-5 py-2 dark:border-white/10"
                   >
                     <div class="flex items-center gap-3">
-
                       <img
                         src="/images/default-profile.png"
                         class="user-image h-12 w-12 rounded-full bg-indigo-600 object-cover"
@@ -183,14 +177,12 @@
                           class="user-email truncate text-xs text-gray-400 dark:text-gray-500"
                         ></p>
                       </div>
-
                     </div>
                   </div>
 
                   <!-- Menu -->
 
                   <div class="p-1.5">
-
                     <!-- My Profile -->
 
                     <a
@@ -254,7 +246,6 @@
 
                       <span>Settings</span>
                     </a>
-
                   </div>
 
                   <!-- Logout -->
@@ -289,42 +280,42 @@
                       <span>Logout</span>
                     </a>
                   </div>
-
                 </div>
               </div>
 
               <!-- User name / role -->
 
               <div
-              id="user-infos"
-                class="hidden flex-col items-center justify-center md:flex"
+                id="user-infos"
+                class="hidden items-center justify-between md:flex cursor-default md:cursor-pointer"
               >
+              <div class="flex flex-col items-center justify-center gap-0.5 mr-3.5">
                 <p class="user-name text-[14px] font-semibold"></p>
                 <p class="user-role text-[10px] text-xs"></p>
               </div>
+                
+                <!-- Profile dropdown button -->
 
-              <!-- Profile dropdown button -->
-
-              <button
-                id="user-profile"
-                type="button"
-                class="block h-5 w-5 rounded-full text-zinc-600 transition-all duration-250 focus:outline-none dark:text-amber-50 md:hover:scale-105"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
+                <span
+                  id="user-profile"
+                  type="button"
+                  class="block h-5 w-5 rounded-full text-zinc-600 transition-all duration-250 focus:outline-none dark:text-amber-50 md:hover:scale-105"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                  />
-                </svg>
-              </button>
-
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -336,24 +327,18 @@
             id="messageNotificationModal"
             class="notification-modal compact absolute right-0 top-17 z-50 invisible overflow-hidden overflow-y-auto rounded-2xl border border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
           >
-
             <!-- Compact -->
 
             <div id="notification-compact-view">
-
               <div
                 class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-700"
               >
                 <div class="min-w-0">
-                  <h3
-                    class="text-sm font-bold text-slate-800 dark:text-white"
-                  >
+                  <h3 class="text-sm font-bold text-slate-800 dark:text-white">
                     Messages
                   </h3>
 
-                  <p class="mt-0.5 text-xs text-slate-400">
-                    Recent messages
-                  </p>
+                  <p class="mt-0.5 text-xs text-slate-400">Recent messages</p>
                 </div>
 
                 <span
@@ -373,9 +358,7 @@
                 </div>
               </div>
 
-              <div
-                class="border-t border-slate-200 p-3 dark:border-slate-700"
-              >
+              <div class="border-t border-slate-200 p-3 dark:border-slate-700">
                 <button
                   id="view-all-notifications"
                   type="button"
@@ -384,18 +367,15 @@
                   View all notifications
                 </button>
               </div>
-
             </div>
 
             <!-- Expanded -->
 
             <div id="notification-expanded-view" class="hidden">
-
               <div
                 class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-700"
               >
                 <div class="flex min-w-0 items-center gap-3">
-
                   <button
                     id="back-to-notifications"
                     type="button"
@@ -428,7 +408,6 @@
                       All notifications
                     </p>
                   </div>
-
                 </div>
 
                 <button
@@ -440,10 +419,7 @@
                 </button>
               </div>
 
-              <div
-                id="all-notifications-list"
-                class="max-h-[65vh]"
-              >
+              <div id="all-notifications-list" class="max-h-[65vh]">
                 <div class="px-4 pb-2 pt-4">
                   <p
                     class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
@@ -452,98 +428,88 @@
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
 
           <!-- ================================================= -->
           <!-- NOTIFICATION DETAIL MODAL -->
           <!-- ================================================= -->
-
-
         </header>
+        <div
+          id="notification-detail-modal"
+          class="fixed inset-0 z-[1000] invisible flex items-center justify-center opacity-0 transition-all duration-300"
+        >
           <div
-            id="notification-detail-modal"
-            class="fixed inset-0 z-[1000] invisible flex items-center justify-center opacity-0 transition-all duration-300"
+            id="notification-detail-overlay"
+            class="absolute inset-0 bg-black/60"
+          ></div>
+
+          <div
+            class="relative z-10 w-[calc(100%-2rem)] max-w-xl rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-[#151B23]"
           >
-
             <div
-              id="notification-detail-overlay"
-              class="absolute inset-0 bg-black/60"
-            ></div>
-
-            <div
-              class="relative z-10 w-[calc(100%-2rem)] max-w-xl rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-[#151B23]"
+              class="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-700"
             >
-
-              <div
-                class="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-700"
+              <h3
+                id="notification-detail-title"
+                class="text-base font-bold text-slate-800 dark:text-white"
               >
-                <h3
-                  id="notification-detail-title"
-                  class="text-base font-bold text-slate-800 dark:text-white"
+                Notification
+              </h3>
+
+              <button
+                id="close-notification-detail"
+                type="button"
+                class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
                 >
-                  Notification
-                </h3>
-
-                <button
-                  id="close-notification-detail"
-                  type="button"
-                  class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="m8.401 16.333l-.734-.727L11.266 12L7.667 8.42l.734-.728L12 11.29l3.574-3.597l.734.727L12.709 12l3.599 3.606l-.734.727L12 12.737z"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              <div class="px-5 py-6">
-                <div class="flex items-start gap-4">
-
-                  <img
-                    id="notification-detail-image"
-                    src="/images/default-profile.png"
-                    alt=""
-                    class="h-12 w-12 shrink-0 rounded-xl object-cover"
+                  <path
+                    fill="currentColor"
+                    d="m8.401 16.333l-.734-.727L11.266 12L7.667 8.42l.734-.728L12 11.29l3.574-3.597l.734.727L12.709 12l3.599 3.606l-.734.727L12 12.737z"
                   />
+                </svg>
+              </button>
+            </div>
 
-                  <div class="min-w-0 flex-1">
+            <div class="px-5 py-6">
+              <div class="flex items-start gap-4">
+                <img
+                  id="notification-detail-image"
+                  src="/images/default-profile.png"
+                  alt=""
+                  class="h-12 w-12 shrink-0 rounded-xl object-cover"
+                />
 
-                    <p
-                      id="notification-detail-sender"
-                      class="text-xs font-semibold text-indigo-600 dark:text-indigo-400"
-                    ></p>
+                <div class="min-w-0 flex-1">
+                  <p
+                    id="notification-detail-sender"
+                    class="text-xs font-semibold text-indigo-600 dark:text-indigo-400"
+                  ></p>
 
-                    <p
-                      id="notification-detail-message"
-                      class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
-                    ></p>
+                  <p
+                    id="notification-detail-message"
+                    class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
+                  ></p>
 
-                    <p
-                      id="notification-detail-time"
-                      class="mt-4 text-xs text-slate-400"
-                    ></p>
-
-                  </div>
+                  <p
+                    id="notification-detail-time"
+                    class="mt-4 text-xs text-slate-400"
+                  ></p>
                 </div>
               </div>
-
             </div>
           </div>
+        </div>
         <!-- ===================================================== -->
         <!-- DASHBOARD CONTENT -->
         <!-- ===================================================== -->
 
         <div class="space-y-8">
-
           <!-- =================================================== -->
           <!-- WELCOME -->
           <!-- =================================================== -->
@@ -568,11 +534,10 @@
           <section
             class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 bg-[#F3F1EC] dark:bg-[#1f0a19]"
           >
-
             <!-- Vehicles -->
 
             <article
-              class="rounded-2xl border border-[#D9D9D3]  p-5 shadow-sm dark:border-[#2A3540] bg-[#FCFBF8] dark:bg-[#151B23] "
+              class="rounded-2xl border border-[#D9D9D3] p-5 shadow-sm dark:border-[#2A3540] bg-[#FCFBF8] dark:bg-[#151B23]"
             >
               <p class="text-sm text-slate-500 dark:text-slate-400">
                 My Vehicles
@@ -592,7 +557,7 @@
             <!-- Appointments -->
 
             <article
-              class="rounded-2xl border border-[#D9D9D3]  p-5 shadow-sm dark:border-[#2A3540] bg-[#FCFBF8] dark:bg-[#151B23]"
+              class="rounded-2xl border border-[#D9D9D3] p-5 shadow-sm dark:border-[#2A3540] bg-[#FCFBF8] dark:bg-[#151B23]"
             >
               <p class="text-sm text-slate-500 dark:text-slate-400">
                 Appointments
@@ -648,7 +613,6 @@
                 All services
               </span>
             </article>
-
           </section>
 
           <!-- =================================================== -->
@@ -658,7 +622,6 @@
           <section
             class="grid grid-cols-1 gap-6 xl:grid-cols-5 bg-[#F3F1EC] dark:bg-[#1f0a19]"
           >
-
             <!-- ================================================= -->
             <!-- YOUR RECENT VEHICLES -->
             <!-- ================================================= -->
@@ -666,14 +629,10 @@
             <article
               class="xl:col-span-2 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
-
               <!-- Header -->
 
               <div class="mb-5 flex items-center justify-between">
-
-                <h2
-                  class="text-lg font-bold text-slate-900 dark:text-white"
-                >
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
                   Your Recent Vehicles
                 </h2>
 
@@ -697,23 +656,16 @@
                     />
                   </svg>
                 </a>
-
               </div>
 
               <!-- Vehicles -->
 
               <div class="space-y-5">
-
                 <!-- ================= TOYOTA ================= -->
 
                 <div>
-
-                  <div
-                    class="flex items-center justify-between gap-3"
-                  >
-
+                  <div class="flex items-center justify-between gap-3">
                     <div class="flex min-w-0 items-center gap-3">
-
                       <div
                         class="flex h-16 w-24 shrink-0 items-center justify-center"
                       >
@@ -725,7 +677,6 @@
                       </div>
 
                       <div class="min-w-0">
-
                         <h3
                           class="truncate text-base font-bold text-slate-900 dark:text-white"
                         >
@@ -739,7 +690,6 @@
                           <span class="mx-1">•</span>
                           ABC-123
                         </p>
-
                       </div>
                     </div>
 
@@ -748,7 +698,6 @@
                     >
                       Active
                     </span>
-
                   </div>
 
                   <!-- Vehicle stats -->
@@ -756,11 +705,8 @@
                   <div
                     class="mt-4 grid grid-cols-2 gap-2 rounded-xl bg-slate-50 p-3 dark:bg-[#1D2630]"
                   >
-
                     <div class="min-w-0">
-                      <p
-                        class="text-[10px] text-slate-400 dark:text-slate-500"
-                      >
+                      <p class="text-[10px] text-slate-400 dark:text-slate-500">
                         Total Services
                       </p>
 
@@ -772,9 +718,7 @@
                     </div>
 
                     <div class="min-w-0">
-                      <p
-                        class="text-[10px] text-slate-400 dark:text-slate-500"
-                      >
+                      <p class="text-[10px] text-slate-400 dark:text-slate-500">
                         Last Service
                       </p>
 
@@ -784,9 +728,7 @@
                         Aug 15, 2026
                       </p>
                     </div>
-
                   </div>
-
                 </div>
 
                 <!-- Divider -->
@@ -798,13 +740,8 @@
                 <!-- ================= BMW ================= -->
 
                 <div>
-
-                  <div
-                    class="flex items-center justify-between gap-3"
-                  >
-
+                  <div class="flex items-center justify-between gap-3">
                     <div class="flex min-w-0 items-center gap-3">
-
                       <div
                         class="flex h-16 w-24 shrink-0 items-center justify-center"
                       >
@@ -816,7 +753,6 @@
                       </div>
 
                       <div class="min-w-0">
-
                         <h3
                           class="truncate text-base font-bold text-slate-900 dark:text-white"
                         >
@@ -830,9 +766,7 @@
                           <span class="mx-1">•</span>
                           XYZ-456
                         </p>
-
                       </div>
-
                     </div>
 
                     <span
@@ -840,7 +774,6 @@
                     >
                       Active
                     </span>
-
                   </div>
 
                   <!-- Vehicle stats -->
@@ -848,11 +781,8 @@
                   <div
                     class="mt-4 grid grid-cols-2 gap-2 rounded-xl bg-slate-50 p-3 dark:bg-[#1D2630]"
                   >
-
                     <div class="min-w-0">
-                      <p
-                        class="text-[10px] text-slate-400 dark:text-slate-500"
-                      >
+                      <p class="text-[10px] text-slate-400 dark:text-slate-500">
                         Total Services
                       </p>
 
@@ -864,9 +794,7 @@
                     </div>
 
                     <div class="min-w-0">
-                      <p
-                        class="text-[10px] text-slate-400 dark:text-slate-500"
-                      >
+                      <p class="text-[10px] text-slate-400 dark:text-slate-500">
                         Last Service
                       </p>
 
@@ -876,11 +804,8 @@
                         Jul 28, 2026
                       </p>
                     </div>
-
                   </div>
-
                 </div>
-
               </div>
             </article>
 
@@ -891,14 +816,10 @@
             <article
               class="xl:col-span-3 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
-
               <!-- Header -->
 
               <div class="mb-5 flex items-center justify-between">
-
-                <h2
-                  class="text-lg font-bold text-slate-900 dark:text-white"
-                >
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
                   Upcoming Appointment
                 </h2>
 
@@ -922,23 +843,17 @@
                     />
                   </svg>
                 </a>
-
               </div>
 
               <!-- Appointment -->
 
-              <div
-                class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
-              >
-
+              <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
                 <!-- Main appointment -->
 
                 <div
                   class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
                 >
-
                   <div class="flex min-w-0 items-center gap-4">
-
                     <!-- Icon -->
 
                     <div
@@ -961,7 +876,6 @@
                     </div>
 
                     <div class="min-w-0">
-
                       <h3
                         class="truncate text-base font-bold text-slate-900 dark:text-white"
                       >
@@ -975,9 +889,7 @@
                         <span class="mx-1">•</span>
                         ABC-123
                       </p>
-
                     </div>
-
                   </div>
 
                   <!-- Status -->
@@ -987,7 +899,6 @@
                   >
                     Confirmed
                   </span>
-
                 </div>
 
                 <!-- Appointment details -->
@@ -995,11 +906,8 @@
                 <div
                   class="mt-5 grid grid-cols-1 gap-3 border-t border-slate-200 pt-4 dark:border-[#2A3540] sm:grid-cols-3"
                 >
-
                   <div>
-                    <p
-                      class="text-[11px] text-slate-400 dark:text-slate-500"
-                    >
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500">
                       Date
                     </p>
 
@@ -1011,9 +919,7 @@
                   </div>
 
                   <div>
-                    <p
-                      class="text-[11px] text-slate-400 dark:text-slate-500"
-                    >
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500">
                       Time
                     </p>
 
@@ -1025,9 +931,7 @@
                   </div>
 
                   <div>
-                    <p
-                      class="text-[11px] text-slate-400 dark:text-slate-500"
-                    >
+                    <p class="text-[11px] text-slate-400 dark:text-slate-500">
                       Service Center
                     </p>
 
@@ -1037,13 +941,9 @@
                       AutoCare Service Center
                     </p>
                   </div>
-
                 </div>
-
               </div>
-
             </article>
-
           </section>
 
           <!-- =================================================== -->
@@ -1053,7 +953,6 @@
           <section
             class="grid grid-cols-1 gap-6 xl:grid-cols-3 bg-[#F3F1EC] dark:bg-[#1f0a19]"
           >
-
             <!-- ================================================= -->
             <!-- RECENT SERVICES -->
             <!-- ================================================= -->
@@ -1061,19 +960,13 @@
             <article
               class="xl:col-span-2 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
-
               <div class="mb-5 flex items-center justify-between">
-
                 <div>
-                  <h2
-                    class="text-lg font-bold text-slate-900 dark:text-white"
-                  >
+                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
                     Recent Services
                   </h2>
 
-                  <p
-                    class="mt-1 text-sm text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                     Your latest vehicle services
                   </p>
                 </div>
@@ -1084,55 +977,33 @@
                 >
                   View all
                 </a>
-
               </div>
 
               <div class="overflow-x-auto">
-
                 <table class="w-full text-sm">
-
                   <thead>
                     <tr
                       class="border-b border-[#D9D9D3] text-slate-500 dark:border-[#2A3540] dark:text-slate-400"
                     >
-                      <th class="p-3 text-left font-medium">
-                        Service
-                      </th>
+                      <th class="p-3 text-left font-medium">Service</th>
 
-                      <th class="p-3 text-left font-medium">
-                        Vehicle
-                      </th>
+                      <th class="p-3 text-left font-medium">Vehicle</th>
 
-                      <th class="p-3 text-left font-medium">
-                        Date
-                      </th>
+                      <th class="p-3 text-left font-medium">Date</th>
 
-                      <th class="p-3 text-left font-medium">
-                        Status
-                      </th>
+                      <th class="p-3 text-left font-medium">Status</th>
 
-                      <th class="p-3 text-right font-medium">
-                        Amount
-                      </th>
+                      <th class="p-3 text-right font-medium">Amount</th>
                     </tr>
                   </thead>
 
                   <tbody>
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                      <td class="p-3 font-semibold">Oil Change</td>
 
-                    <tr
-                      class="border-b border-[#D9D9D3] dark:border-[#2A3540]"
-                    >
-                      <td class="p-3 font-semibold">
-                        Oil Change
-                      </td>
+                      <td class="p-3">Toyota Camry</td>
 
-                      <td class="p-3">
-                        Toyota Camry
-                      </td>
-
-                      <td class="p-3">
-                        Aug 15, 2026
-                      </td>
+                      <td class="p-3">Aug 15, 2026</td>
 
                       <td class="p-3">
                         <span
@@ -1142,25 +1013,15 @@
                         </span>
                       </td>
 
-                      <td class="p-3 text-right font-semibold">
-                        $85
-                      </td>
+                      <td class="p-3 text-right font-semibold">$85</td>
                     </tr>
 
-                    <tr
-                      class="border-b border-[#D9D9D3] dark:border-[#2A3540]"
-                    >
-                      <td class="p-3 font-semibold">
-                        Brake Inspection
-                      </td>
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                      <td class="p-3 font-semibold">Brake Inspection</td>
 
-                      <td class="p-3">
-                        BMW X5
-                      </td>
+                      <td class="p-3">BMW X5</td>
 
-                      <td class="p-3">
-                        Jul 28, 2026
-                      </td>
+                      <td class="p-3">Jul 28, 2026</td>
 
                       <td class="p-3">
                         <span
@@ -1170,23 +1031,15 @@
                         </span>
                       </td>
 
-                      <td class="p-3 text-right font-semibold">
-                        $120
-                      </td>
+                      <td class="p-3 text-right font-semibold">$120</td>
                     </tr>
 
                     <tr>
-                      <td class="p-3 font-semibold">
-                        Tire Rotation
-                      </td>
+                      <td class="p-3 font-semibold">Tire Rotation</td>
 
-                      <td class="p-3">
-                        Toyota Camry
-                      </td>
+                      <td class="p-3">Toyota Camry</td>
 
-                      <td class="p-3">
-                        Jun 12, 2026
-                      </td>
+                      <td class="p-3">Jun 12, 2026</td>
 
                       <td class="p-3">
                         <span
@@ -1196,14 +1049,10 @@
                         </span>
                       </td>
 
-                      <td class="p-3 text-right font-semibold">
-                        $50
-                      </td>
+                      <td class="p-3 text-right font-semibold">$50</td>
                     </tr>
-
                   </tbody>
                 </table>
-
               </div>
             </article>
 
@@ -1214,19 +1063,13 @@
             <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
-
               <div class="mb-5 flex items-center justify-between">
-
                 <div>
-                  <h2
-                    class="text-lg font-bold text-slate-900 dark:text-white"
-                  >
+                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
                     Recent Payments
                   </h2>
 
-                  <p
-                    class="mt-1 text-sm text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                     Your latest payments
                   </p>
                 </div>
@@ -1237,15 +1080,12 @@
                 >
                   View all
                 </a>
-
               </div>
 
               <div class="space-y-5">
-
                 <!-- Payment 1 -->
 
                 <div class="flex items-center gap-4">
-
                   <div
                     class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400"
                   >
@@ -1259,25 +1099,17 @@
                       Oil Change
                     </p>
 
-                    <p
-                      class="mt-1 text-xs text-slate-400 dark:text-slate-500"
-                    >
+                    <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">
                       Aug 15, 2026
                     </p>
                   </div>
 
-                  <p
-                    class="font-bold text-slate-900 dark:text-white"
-                  >
-                    $85
-                  </p>
-
+                  <p class="font-bold text-slate-900 dark:text-white">$85</p>
                 </div>
 
                 <!-- Payment 2 -->
 
                 <div class="flex items-center gap-4">
-
                   <div
                     class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400"
                   >
@@ -1291,25 +1123,17 @@
                       Brake Inspection
                     </p>
 
-                    <p
-                      class="mt-1 text-xs text-slate-400 dark:text-slate-500"
-                    >
+                    <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">
                       Jul 28, 2026
                     </p>
                   </div>
 
-                  <p
-                    class="font-bold text-slate-900 dark:text-white"
-                  >
-                    $120
-                  </p>
-
+                  <p class="font-bold text-slate-900 dark:text-white">$120</p>
                 </div>
 
                 <!-- Payment 3 -->
 
                 <div class="flex items-center gap-4">
-
                   <div
                     class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400"
                   >
@@ -1323,19 +1147,12 @@
                       Tire Rotation
                     </p>
 
-                    <p
-                      class="mt-1 text-xs text-slate-400 dark:text-slate-500"
-                    >
+                    <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">
                       Jun 12, 2026
                     </p>
                   </div>
 
-                  <p
-                    class="font-bold text-slate-900 dark:text-white"
-                  >
-                    $50
-                  </p>
-
+                  <p class="font-bold text-slate-900 dark:text-white">$50</p>
                 </div>
 
                 <!-- Total -->
@@ -1343,9 +1160,7 @@
                 <div
                   class="flex items-center justify-between border-t border-[#D9D9D3] pt-5 dark:border-[#2A3540]"
                 >
-                  <span
-                    class="text-sm text-slate-500 dark:text-slate-400"
-                  >
+                  <span class="text-sm text-slate-500 dark:text-slate-400">
                     Total spent
                   </span>
 
@@ -1355,10 +1170,8 @@
                     $255
                   </span>
                 </div>
-
               </div>
             </article>
-
           </section>
 
           <!-- =================================================== -->
@@ -1366,17 +1179,11 @@
           <!-- =================================================== -->
 
           <div>
-
-            <h2
-              class="mb-5 text-xl font-bold text-slate-900 dark:text-white"
-            >
+            <h2 class="mb-5 text-xl font-bold text-slate-900 dark:text-white">
               Quick Actions
             </h2>
 
-            <div
-              class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
-            >
-
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
               <!-- Book -->
 
               <a
@@ -1390,15 +1197,11 @@
                 </div>
 
                 <div>
-                  <h3
-                    class="font-semibold text-slate-900 dark:text-white"
-                  >
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
                     Book Appointment
                   </h3>
 
-                  <p
-                    class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     Schedule a service
                   </p>
                 </div>
@@ -1417,15 +1220,11 @@
                 </div>
 
                 <div>
-                  <h3
-                    class="font-semibold text-slate-900 dark:text-white"
-                  >
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
                     My Vehicles
                   </h3>
 
-                  <p
-                    class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     Manage your vehicles
                   </p>
                 </div>
@@ -1444,15 +1243,11 @@
                 </div>
 
                 <div>
-                  <h3
-                    class="font-semibold text-slate-900 dark:text-white"
-                  >
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
                     Service History
                   </h3>
 
-                  <p
-                    class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     View your services
                   </p>
                 </div>
@@ -1471,23 +1266,17 @@
                 </div>
 
                 <div>
-                  <h3
-                    class="font-semibold text-slate-900 dark:text-white"
-                  >
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
                     Messages
                   </h3>
 
-                  <p
-                    class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     Contact service center
                   </p>
                 </div>
               </a>
-
             </div>
           </div>
-
         </div>
 
         <!-- ===================================================== -->
@@ -1502,7 +1291,6 @@
         <div id="modal-container"></div>
 
         <div id="result-modal-container"></div>
-
       </main>
     </div>
 
@@ -1510,9 +1298,6 @@
     <!-- SHARED JS -->
     <!-- ========================================================= -->
 
-    <script
-      type="module"
-      src="../../scripts/shared.js"
-    ></script>
+    <script type="module" src="../../scripts/shared.js"></script>
   </body>
 </html>

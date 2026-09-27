@@ -15,6 +15,7 @@ import {
   initChatUserModal,
 } from "./funcs/shared.js";
 
+
 const loadUserImage = async () => {
   const userImages = document.querySelectorAll(".user-image");
 
@@ -34,55 +35,53 @@ const loadUserImage = async () => {
 };
 
 const loadUserInfos = async () => {
-  const userInfosElem = document.querySelectorAll("#user-infos")
-  if (!userInfosElem) return
   try {
-    const user = await getMe()
-    if (!user?.data) return
-    const { firstname, lastname, role } = user.data;
-    userInfosElem.forEach((elem) => { 
-             const nameElem = elem.querySelector(".user-name");
-      const roleElem = elem.querySelector(".user-role");
-      const emailElem = elem.querySelector(".user-email");
+    const user = await getMe();
 
-  if (nameElem) {
-      nameElem.textContent =
-        [firstname, lastname].filter(Boolean).join(" ") || "User";
-    }
+    if (!user?.data) return;
 
-    if (roleElem) {
-      const roleLabels = {
-        ADMIN: "Administrator",
-        CUSTOMER: "Customer",
-        RECEPTIONIST: "Receptionist",
-        MECHANIC: "Mechanic",
-        OIL_TECHNICIAN: "Oil Technician",
-        BODY_REPAIR: "Body Repair",
-        DETAILING_TECHNICIAN: "Detailing Technician",
-        WASH_TECHNICIAN: "Wash Technician",
-      };
+    const { firstname, lastname, role, email } = user.data;
 
-      roleElem.textContent = roleLabels[role] || role || "User";
-      }
-      if(emailElem) {
-        emailElem.textContent = user.data.email || "";
-      }
-    })
+    const fullName =
+      [firstname, lastname].filter(Boolean).join(" ") || "User";
 
+    const roleLabels = {
+      ADMIN: "Administrator",
+      CUSTOMER: "Customer",
+      RECEPTIONIST: "Receptionist",
+      MECHANIC: "Mechanic",
+      OIL_TECHNICIAN: "Oil Technician",
+      BODY_REPAIR: "Body Repair",
+      DETAILING_TECHNICIAN: "Detailing Technician",
+      WASH_TECHNICIAN: "Wash Technician",
+    };
+
+    document.querySelectorAll(".user-name").forEach((elem) => {
+      elem.textContent = fullName;
+    });
+
+    document.querySelectorAll(".user-role").forEach((elem) => {
+      elem.textContent = roleLabels[role] || role || "User";
+    });
+
+    document.querySelectorAll(".user-email").forEach((elem) => {
+      elem.textContent = email || "";
+    });
   } catch (error) {
     console.error("Failed to load user information:", error);
   }
-}
+};
 
 const initUserProfile = () => {
-  const userProfile = document.querySelector("#user-profile");
+  const userInfosBtn = document.querySelector("#user-infos");
+  const userProfileIcon = document.querySelector("#user-profile");
   const userMenu = document.querySelector(".user-menu");
 
-  if (!userProfile || !userMenu) return;
+  if (!userProfileIcon || !userMenu) return;
 
-  userProfile.addEventListener("click", (event) => {
+  userInfosBtn.addEventListener("click", (event) => {
     event.stopPropagation();
-    userProfile.classList.toggle("open");
+    userProfileIcon.classList.toggle("open");
       closeNotificationModal();
 
     userMenu.classList.toggle("hidden");
@@ -91,10 +90,10 @@ const initUserProfile = () => {
   document.addEventListener("click", (event) => {
     if (
       !userMenu.contains(event.target) &&
-      !userProfile.contains(event.target)
+      !userInfosBtn.contains(event.target)
     ) {
       userMenu.classList.add("hidden");
-      userProfile.classList.remove("open");
+      userProfileIcon.classList.remove("open");
     }
   });
 };
@@ -192,3 +191,4 @@ if (user?.data) {
 };
 
 initShared();
+export {loadUserInfos}
