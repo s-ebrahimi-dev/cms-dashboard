@@ -146,7 +146,7 @@ The project is actively under development.
 
 ## 🖥️ Dashboard Preview
 
-![Dashboard Screenshot](./public/images/screenshots/dashboard.png)
+![Dashboard Screenshot](./public/images/screenshots/CMS-Dashboard.png)
 
 ---
 
