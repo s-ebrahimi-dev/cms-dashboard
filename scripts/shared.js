@@ -80,6 +80,8 @@ const initUserProfile = () => {
   if (!userProfileIcon || !userMenu) return;
 
   userInfosBtn.addEventListener("click", (event) => {
+    console.log("clicked");
+    
     event.stopPropagation();
     userProfileIcon.classList.toggle("open");
       closeNotificationModal();
