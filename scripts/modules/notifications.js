@@ -17,7 +17,7 @@ const roleLabels = {
 };
 const userProfile = document.querySelector("#user-infos");
 const userProfileBtn = document.querySelector("#user-profile");
-const userMenu = document.querySelector("#user-menu");
+const userMenu = document.querySelector(".user-menu");
 
 const notificationDetailModal = document.querySelector(
   "#notification-detail-modal",
@@ -377,13 +377,13 @@ const initNotificationModal = () => {
   messageNotif.addEventListener("click", (event) => {
     event.stopPropagation();
 
-    userMenu?.classList.add("hidden");
-     userProfile?.classList.add("hidden");
-    userProfileBtn?.classList.remove("open");
     showCompactView();
+    userMenu?.classList.add("hidden");
+    
+    userProfileBtn?.classList.remove("open");
 
     const isOpen = messageNotificationModal.classList.contains("visible");
-
+    
     if (isOpen) {
       closeNotificationModal();
     } else {

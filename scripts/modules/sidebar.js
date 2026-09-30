@@ -17,10 +17,10 @@ const roleMenus = {
     href: "/pages/Customer/dashboard.html",
     label: "My Dashboard",
   },
-    vehicles: "/pages/Customer/vehicles.html",
+    vehicles: "/pages/Customer/myvehicle.html",
     messages: "/pages/Customer/messages.html",
     appointments: "/pages/Customer/appointment.html",
-    payments: "/pages/Customer/payment.html",
+    payments: "/pages/Customer/payments.html",
     settings: "/pages/Customer/settings.html",
   },
 
