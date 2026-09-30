@@ -93,7 +93,7 @@
 
             <button
               id="message-notif"
-              class="message-notif w-12 h-12 rounded-xl border border-black/40 dark:border-white/50 shadow-sm dark:shadow-white/10 transition-all duration-100 hover:shadow-md dark:hover:shadow-white/20 active:translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] dark:active:shadow-[inset_0_2px_4px_rgba(255,255,255,0.15)]"
+              class="message-notif relative w-12 h-12 rounded-xl border border-black/40 dark:border-white/50 shadow-sm dark:shadow-white/10 transition-all duration-100 hover:shadow-md dark:hover:shadow-white/20 active:translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] dark:active:shadow-[inset_0_2px_4px_rgba(255,255,255,0.15)]"
             >
               🔔
               <span
@@ -117,7 +117,6 @@
 
                 <!-- User menu -->
                 <div
-                  
                   class="user-menu absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
                 >
                   <!-- User info -->
@@ -242,39 +241,43 @@
                   </div>
                 </div>
               </div>
- <div
-                  id="user-infos"
-                  class="hidden min-w-0 items-center justify-between md:flex cursor-default md:cursor-pointer"
+              <div
+                id="user-infos"
+                class="hidden min-w-0 items-center justify-between md:flex cursor-default md:cursor-pointer"
+              >
+                <div
+                  class="flex flex-col min-w-0 items-center justify-center gap-0.5 mr-3.5"
                 >
-                  <div
-                    class="flex flex-col min-w-0 items-center justify-center gap-0.5 mr-3.5"
-                  >
-                    <p class="user-name max-w-full truncate text-[14px] font-semibold"></p>
-                    <p class="user-role max-w-full truncate text-[10px] text-xs"></p>
-                  </div>
-
-                  <!-- Profile dropdown button -->
-
-                  <span
-                    id="user-profile"
-                    type="button"
-                    class="block h-5 w-5 rounded-full text-zinc-600 transition-all duration-250 focus:outline-none dark:text-amber-50 md:hover:scale-105"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
-                  </span>
+                  <p
+                    class="user-name max-w-full truncate text-[14px] font-semibold"
+                  ></p>
+                  <p
+                    class="user-role max-w-full truncate text-[10px] text-xs"
+                  ></p>
                 </div>
+
+                <!-- Profile dropdown button -->
+
+                <span
+                  id="user-profile"
+                  type="button"
+                  class="block h-5 w-5 rounded-full text-zinc-600 transition-all duration-250 focus:outline-none dark:text-amber-50 md:hover:scale-105"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </span>
+              </div>
             </div>
           </div>
 
@@ -451,85 +454,84 @@
               </div>
             </div>
           </div>
-         
         </header>
-          <!-- ================================================= -->
-          <!-- NOTIFICATION DETAIL MODAL -->
-          <!-- ================================================= -->
-            <div
-            id="notification-detail-modal"
-            class="fixed inset-0 z-[1000] invisible flex items-center justify-center opacity-0 transition-all duration-300"
+        <!-- ================================================= -->
+        <!-- NOTIFICATION DETAIL MODAL -->
+        <!-- ================================================= -->
+        <div
+          id="notification-detail-modal"
+          class="fixed inset-0 z-[1000] invisible flex items-center justify-center opacity-0 transition-all duration-300"
+        >
+          <!-- Overlay -->
+          <div
+            id="notification-detail-overlay"
+            class="absolute inset-0 bg-black/60"
+          ></div>
+
+          <!-- Modal -->
+          <div
+            class="relative z-10 w-[calc(100%-2rem)] max-w-xl rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-[#151B23]"
           >
-            <!-- Overlay -->
+            <!-- Header -->
             <div
-              id="notification-detail-overlay"
-              class="absolute inset-0 bg-black/60"
-            ></div>
-
-            <!-- Modal -->
-            <div
-              class="relative z-10 w-[calc(100%-2rem)] max-w-xl rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-[#151B23]"
+              class="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-700"
             >
-              <!-- Header -->
-              <div
-                class="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-700"
+              <h3
+                id="notification-detail-title"
+                class="text-base font-bold text-slate-800 dark:text-white"
               >
-                <h3
-                  id="notification-detail-title"
-                  class="text-base font-bold text-slate-800 dark:text-white"
-                >
-                  Notification
-                </h3>
+                Notification
+              </h3>
 
-                <button
-                  id="close-notification-detail"
-                  type="button"
-                  class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
+              <button
+                id="close-notification-detail"
+                type="button"
+                class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="m8.401 16.333l-.734-.727L11.266 12L7.667 8.42l.734-.728L12 11.29l3.574-3.597l.734.727L12.709 12l3.599 3.606l-.734.727L12 12.737z"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              <!-- Body -->
-              <div class="px-5 py-6">
-                <div class="flex items-start gap-4">
-                  <img
-                    id="notification-detail-image"
-                    src="/images/default-profile.png"
-                    alt=""
-                    class="h-12 w-12 shrink-0 rounded-xl object-cover"
+                  <path
+                    fill="currentColor"
+                    d="m8.401 16.333l-.734-.727L11.266 12L7.667 8.42l.734-.728L12 11.29l3.574-3.597l.734.727L12.709 12l3.599 3.606l-.734.727L12 12.737z"
                   />
+                </svg>
+              </button>
+            </div>
 
-                  <div class="min-w-0 flex-1">
-                    <p
-                      id="notification-detail-sender"
-                      class="text-xs font-semibold text-indigo-600 dark:text-indigo-400"
-                    ></p>
+            <!-- Body -->
+            <div class="px-5 py-6">
+              <div class="flex items-start gap-4">
+                <img
+                  id="notification-detail-image"
+                  src="/images/default-profile.png"
+                  alt=""
+                  class="h-12 w-12 shrink-0 rounded-xl object-cover"
+                />
 
-                    <p
-                      id="notification-detail-message"
-                      class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
-                    ></p>
+                <div class="min-w-0 flex-1">
+                  <p
+                    id="notification-detail-sender"
+                    class="text-xs font-semibold text-indigo-600 dark:text-indigo-400"
+                  ></p>
 
-                    <p
-                      id="notification-detail-time"
-                      class="mt-4 text-xs text-slate-400"
-                    ></p>
-                  </div>
+                  <p
+                    id="notification-detail-message"
+                    class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
+                  ></p>
+
+                  <p
+                    id="notification-detail-time"
+                    class="mt-4 text-xs text-slate-400"
+                  ></p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
         <div class="mb-4">
           <h2 class="text-3xl font-bold">Payments</h2>
 

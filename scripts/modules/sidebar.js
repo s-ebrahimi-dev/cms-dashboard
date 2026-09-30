@@ -116,7 +116,8 @@ if (link) {
         }
       }
   }
-}
+    }
+
 });
   
 overlay.addEventListener("click", () => {

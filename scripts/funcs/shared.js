@@ -4,6 +4,7 @@ import {
   showResultModal,
 } from "../components/result-modal.js";
 import { loadComponent } from "../components/component-Loader.js";
+import { hideLoader, showLoader } from "./loader.js";
 
 await loadComponent("result-modal-container", "/Components/result-modal.html");
 
@@ -147,12 +148,14 @@ const initChatUserModal = () => {
   cancelChatUser.addEventListener("click", () => {
     closeChatUserModal();
   });
-  confirmChatUser.addEventListener("click", async () => {
+  confirmChatUser.addEventListener("click", async (event) => {
+    event.preventDefault()
     if (!currentChatUser) return;
     const userId = currentChatUser._id;
     closeChatUserModal();
-
+    showLoader()
     await sendMessage(userId);
+    hideLoader()
   });
 };
 //---- Get And Show All Users------------
@@ -421,7 +424,8 @@ const sendMessage = async (userId) => {
     receiver,
     message,
   };
-  const res = await fetch("http://localhost:4000/api/users/message", {
+    console.log("BEFORE FETCH");
+  const res = await fetch(`${base_URL}/users/message`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -429,8 +433,9 @@ const sendMessage = async (userId) => {
     credentials: "include",
     body: JSON.stringify(userMessage),
   });
+    console.log("AFTER FETCH");
   const result = await res.json();
-  console.log(result);
+ console.log("AFTER JSON");
   if (res.ok) {
     showResultModal("success", "message sent successfully");
   } else {

@@ -158,6 +158,14 @@ const initShared = async () => {
 
 if (user?.data) {
   initSidebar(user.data);
+
+    document
+      .querySelector("#sidebar-container")
+    ?.classList.remove("invisible");
+  
+    document
+    .querySelector("#mobile-sidebar-container")
+    ?.classList.remove("invisible");
 }
 
   loadUserImage();
