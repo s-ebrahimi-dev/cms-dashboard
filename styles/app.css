@@ -2593,6 +2593,17 @@
       flex-direction: row;
     }
   }
+  @media (width >= 435px) {
+    .min-\[435px\]\:w-70 {
+      width: calc(var(--spacing) * 70);
+    }
+    .min-\[435px\]\:flex-row {
+      flex-direction: row;
+    }
+    .min-\[435px\]\:text-left {
+      text-align: left;
+    }
+  }
   @media (width >= 440px) {
     .min-\[440px\]\:flex-row {
       flex-direction: row;
