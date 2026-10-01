@@ -20,6 +20,8 @@ const roleMenus = {
     vehicles: "/pages/Customer/myvehicle.html",
     messages: "/pages/Customer/messages.html",
     appointments: "/pages/Customer/appointment.html",
+    invoices: "/pages/Customer/invoices.html",
+    services:"/pages/Customer/services.html",
     payments: "/pages/Customer/payments.html",
     settings: "/pages/Customer/settings.html",
   },
