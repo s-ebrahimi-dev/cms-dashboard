@@ -1,0 +1,203 @@
+<!-- New Conversation Modal -->
+<div
+  id="new-conversation-modal"
+  class="fixed inset-0 z-1000 hidden items-center justify-center px-4 py-6"
+>
+  <!-- Overlay -->
+  <div
+    id="new-conversation-overlay"
+    class="absolute inset-0 bg-slate-950/50 backdrop-blur-sm"
+  ></div>
+
+  <!-- Modal -->
+  <div
+    class="relative z-10 w-full max-w-lg overflow-hidden rounded-2xl border border-slate-200 bg-[#FCFBF8] shadow-2xl dark:border-white/10 dark:bg-[#151B23]"
+  >
+    <!-- Header -->
+    <div
+      class="flex items-start justify-between border-b border-slate-200 px-6 py-5 dark:border-white/10"
+    >
+      <div class="min-w-0">
+        <div class="flex items-center gap-3">
+          <div
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-600 dark:bg-indigo-400/10 dark:text-indigo-400"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8 10h8M8 14h5m7-2a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"
+              />
+            </svg>
+          </div>
+
+          <div class="min-w-0">
+            <h2
+              class="truncate text-lg font-bold text-slate-900 dark:text-white"
+            >
+              New Conversation
+            </h2>
+
+            <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
+              Start a conversation with our service team.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <button
+        id="close-new-conversation"
+        type="button"
+        class="ml-4 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-slate-500 transition hover:bg-red-400 hover:text-slate-700 dark:text-slate-400 dark:hover:bg-red-400 dark:hover:text-white"
+        aria-label="Close"
+      >
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 6l12 12M18 6 6 18"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form id="new-conversation-form">
+      <div class="space-y-5 px-6 py-6">
+        <!-- Employee -->
+        <div>
+          <label
+            for="conversation-employee"
+            class="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200"
+          >
+            Employee
+          </label>
+
+          <div class="relative">
+            <div
+              id="conversation-employee"
+              name="employee"
+              required
+              class="flex max-h-60 flex-col gap-2 overflow-y-auto pr-1 w-full appearance-none rounded-xl border border-slate-200 bg-white px-4 py-3 pr-10 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 dark:border-white/10 dark:bg-[#1D2630] dark:text-white dark:focus:border-indigo-400"
+            >
+              <option value="" selected disabled>Select an employee</option>
+
+              <!-- Employees will be inserted dynamically -->
+            </div>
+
+            <svg
+              class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m6 9 6 6 6-6"
+              />
+            </svg>
+          </div>
+
+          <p class="flex items-center justify-between mt-2 text-xs leading-5 text-slate-500 dark:text-slate-400">
+            Choose the employee you would like to contact.
+            <button
+            id="change-conversation-employee"
+            type="button"
+            class="hidden rounded-xl border bg-orange-300 border-slate-200 px-3 py-1.5 text-sm font-semibold text-slate-700 transition hover:bg-orange-500 dark:border-white/10 dark:text-slate-100  dark:hover:text-white"
+          >
+            Change
+          </button>
+          </p>
+          
+        </div>
+
+        <!-- Message -->
+        <div>
+          <div class="mb-2 flex items-center justify-between">
+            <label
+              for="conversation-message"
+              class="block text-sm font-semibold text-slate-800 dark:text-slate-200"
+            >
+              Message
+            </label>
+
+            <span
+              id="conversation-message-count"
+              class="text-xs text-slate-400"
+            >
+              0 / 1000
+            </span>
+          </div>
+
+          <textarea
+            id="conversation-message"
+            name="message"
+            rows="5"
+            maxlength="1000"
+            required
+            placeholder="Describe how we can help you..."
+            class="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm leading-6 text-slate-800 outline-none placeholder:text-slate-400 transition focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 dark:border-white/10 dark:bg-[#1D2630] dark:text-white dark:placeholder:text-slate-500 dark:focus:border-indigo-400"
+          ></textarea>
+
+          <p class="mt-2 text-xs text-slate-500 dark:text-slate-400">
+            Please provide enough detail so our team can assist you.
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        class="flex items-center justify-end gap-3 border-t border-slate-200 bg-slate-50/70 px-6 py-4 dark:border-white/10 dark:bg-white/[0.02]"
+      >
+        <button
+          id="cancel-new-conversation"
+          type="button"
+          class="rounded-xl border border-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-red-400 dark:border-white/10 dark:text-slate-100 dark:hover:bg-red-400 dark:hover:text-white"
+        >
+          Cancel
+        </button>
+
+        <button
+          id="submit-new-conversation"
+          type="submit"
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/20 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+        >
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M22 2 11 13"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m22 2-7 20-4-9-9-4Z"
+            />
+          </svg>
+
+          Start Chat
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

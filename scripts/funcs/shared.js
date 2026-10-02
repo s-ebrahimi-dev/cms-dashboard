@@ -12,6 +12,7 @@ initResultModal();
 let currentDeleteUser = null;
 let currentEditUser = null;
 let currentChatUser = null;
+let current
 
 // Delete User modal
 const openDeleteUserModal = (user) => {
@@ -325,6 +326,17 @@ const getAndShowAllUsers = async () => {
   });
   return users
 };
+const getAndShowAllEmployees = async () => {
+    const res = await fetch(`${base_URL}/users`, {
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    });
+  const result = await res.json()
+  console.log(result.data);
+  
+  return result
+  
+}
 
 const deleteUser = async (userId) => {
   const res = await fetch(`${base_URL}/users/delete/${userId}`, {
@@ -477,8 +489,32 @@ const markNotificationAsRead = async (notificationId) => {
   }
 };
 
+const openNewConversationModal = () => {
+  const newConversationModal = document.querySelector("#new-conversation-modal")
+
+  newConversationModal.classList.remove("hidden")
+  newConversationModal.classList.add("flex")
+}
+
+const closeNewConversationModal = () => {
+  const newConversationModal = document.querySelector("#new-conversation-modal")
+  newConversationModal.classList.add("hidden")
+  newConversationModal.classList.remove("flex")
+}
+const getAndShowAllConversations = async () => {
+
+  const res = await fetch(`${base_URL}/conversations/`, {
+     credentials: "include",
+  })
+  
+  const result = await res.json()
+
+  return result
+  
+}
 export {
   getAndShowAllUsers,
+  getAndShowAllEmployees,
   openDeleteUserModal,
   initDeleteUserModal,
   openEditUserModal,
@@ -488,5 +524,8 @@ export {
   openChatUserModal,
   initChatUserModal,
   getAndShowAllMessages,
-  markNotificationAsRead
+  markNotificationAsRead,
+  openNewConversationModal,
+  closeNewConversationModal,
+  getAndShowAllConversations
 };

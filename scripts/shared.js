@@ -10,11 +10,22 @@ import { initLogoutModal } from "./modules/logout.js";
 import { getMe } from "./funcs/auth.js";
 
 import {
+  getAndShowAllEmployees,
   initDeleteUserModal,
   initEditUserModal,
   initChatUserModal,
 } from "./funcs/shared.js";
 
+const roleLabels = {
+      ADMIN: "Administrator",
+      CUSTOMER: "Customer",
+      RECEPTIONIST: "Receptionist",
+      MECHANIC: "Mechanic",
+      OIL_TECHNICIAN: "Oil Technician",
+      BODY_REPAIR: "Body Repair",
+      DETAILING_TECHNICIAN: "Detailing Technician",
+      WASH_TECHNICIAN: "Wash Technician",
+    };
 
 const loadUserImage = async () => {
   const userImages = document.querySelectorAll(".user-image");
@@ -45,16 +56,7 @@ const loadUserInfos = async () => {
     const fullName =
       [firstname, lastname].filter(Boolean).join(" ") || "User";
 
-    const roleLabels = {
-      ADMIN: "Administrator",
-      CUSTOMER: "Customer",
-      RECEPTIONIST: "Receptionist",
-      MECHANIC: "Mechanic",
-      OIL_TECHNICIAN: "Oil Technician",
-      BODY_REPAIR: "Body Repair",
-      DETAILING_TECHNICIAN: "Detailing Technician",
-      WASH_TECHNICIAN: "Wash Technician",
-    };
+    
 
     document.querySelectorAll(".user-name").forEach((elem) => {
       elem.textContent = fullName;
@@ -199,6 +201,7 @@ if (user?.data) {
 
   await initNotifications();
 };
+
 
 initShared();
 export {loadUserInfos}
