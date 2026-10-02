@@ -14,6 +14,17 @@ let currentEditUser = null;
 let currentChatUser = null;
 let current
 
+
+const roleLabels = {
+  ADMIN: "Administrator",
+  CUSTOMER: "Customer",
+  RECEPTIONIST: "Receptionist",
+  MECHANIC: "Mechanic",
+  OIL_TECHNICIAN: "Oil Technician",
+  BODY_REPAIR: "Body Repair",
+  DETAILING_TECHNICIAN: "Detailing Technician",
+  WASH_TECHNICIAN: "Wash Technician",
+};
 // Delete User modal
 const openDeleteUserModal = (user) => {
   const deleteUserModal = document.querySelector("#delete-user-modal");
@@ -155,7 +166,7 @@ const initChatUserModal = () => {
     const userId = currentChatUser._id;
     closeChatUserModal();
     showLoader()
-    await sendMessage(userId);
+    await Conversation(userId);
     hideLoader()
   });
 };
@@ -326,17 +337,81 @@ const getAndShowAllUsers = async () => {
   });
   return users
 };
+
 const getAndShowAllEmployees = async () => {
-    const res = await fetch(`${base_URL}/users`, {
-    headers: { "Content-Type": "application/json" },
+  const res = await fetch(`${base_URL}/users`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
     credentials: "include",
+  });
+
+  const result = await res.json();
+
+  if (!res.ok) {
+    throw new Error(result.message || "Failed to retrieve employees");
+  }
+
+  const employeesContainer = document.querySelector(
+    "#conversation-employee",
+  );
+
+  if (!employeesContainer) {
+    return result;
+  }
+
+  employeesContainer.innerHTML = "";
+
+  result.data
+    .filter((user) => user.role !== "ADMIN" && user.role !== "CUSTOMER")
+    .forEach((user) => {
+      const imageUrl = user.hasProfileImage
+        ? `${base_URL}/users/profile-image/${user._id}`
+        : "/images/default-profile.png";
+
+      employeesContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+          <button
+            type="button"
+            class="
+              conversation-employee-option
+              flex w-full shrink-0 items-center gap-3
+              rounded-xl border border-slate-200
+              bg-white p-3 text-left
+              transition
+              hover:border-indigo-300
+              hover:bg-indigo-50
+              dark:border-white/10
+              dark:bg-[#1D2630]
+              dark:hover:border-indigo-400
+              dark:hover:bg-indigo-500/10
+            "
+            data-user-id="${user._id}"
+            data-role="${user.role}"
+          >
+            <img
+              src="${imageUrl}"
+              alt="${user.firstname} ${user.lastname}"
+              class="h-10 w-10 shrink-0 rounded-full object-cover"
+            />
+
+            <div class="min-w-0">
+              <p class="truncate font-medium text-slate-900 dark:text-white">
+                ${roleLabels[user.role]}
+              </p>
+
+              <p class="truncate text-sm text-slate-500 dark:text-slate-400">
+                ${user.firstname} ${user.lastname}
+              </p>
+            </div>
+          </button>
+        `,
+      );
     });
-  const result = await res.json()
-  console.log(result.data);
-  
-  return result
-  
-}
+
+  return result;
+};
 
 const deleteUser = async (userId) => {
   const res = await fetch(`${base_URL}/users/delete/${userId}`, {
@@ -428,7 +503,7 @@ const updateOwnProfile = async () => {
   return null;
 };
 
-const sendMessage = async (userId) => {
+const Conversation = async (userId) => {
   const receiver = userId;
   const messageTextElem = document.querySelector("#chatMessage");
   const message = messageTextElem.value.trim();
@@ -496,22 +571,104 @@ const openNewConversationModal = () => {
   newConversationModal.classList.add("flex")
 }
 
+const createNewConversation = async (employeeId) => {
+  const res = await fetch(`${base_URL}/conversations`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  credentials: "include",
+  body: JSON.stringify({
+    employee: employeeId,
+  }),
+});
+  const result = await res.json()
+  return result
+}
+
+const sendConversationMessage = async (conversationId, message) => {
+  const res = await fetch(
+    `${base_URL}/conversations/${conversationId}/messages`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        message,
+      }),
+    },
+  );
+
+  const result = await res.json();
+
+  return result;
+};
+
+
 const closeNewConversationModal = () => {
   const newConversationModal = document.querySelector("#new-conversation-modal")
   newConversationModal.classList.add("hidden")
   newConversationModal.classList.remove("flex")
 }
+
 const getAndShowAllConversations = async () => {
 
   const res = await fetch(`${base_URL}/conversations/`, {
      credentials: "include",
   })
   
-  const result = await res.json()
+  const result = await res.json();
 
-  return result
+    if (!res.ok) {
+    throw new Error(
+    result.message || "Failed to retrieve conversations",
+  );
+  }
+  const conversationsListElem = document.querySelector("#conversation-list");
+  const conversations = result.data
+console.log("Number of conversations:", conversations.length);
+console.log("Conversations:", conversations);
+  
+  conversationsListElem.innerHTML = "";
+  conversations.forEach((conversation) => {
+    conversationsListElem.insertAdjacentHTML(
+      "beforeend",
+      `
+          <button id="conversation-1" type="button" class="w-full border-b border-[#D9D9D3] bg-indigo-50 px-4 py-4 text-left cursor-default md:cursor-pointer transition hover:bg-indigo-100 dark:border-[#2A3540] dark:bg-indigo-500/10 dark:hover:bg-indigo-500/15">
+                        <div class="flex gap-3">
+                          <div class="relative shrink-0">
+                            <img src="/images/default-profile.png" alt="Service Advisor" class="h-11 w-11 rounded-full object-cover">
+                            <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#FCFBF8] bg-green-500 dark:border-[#151B23]"></span>
+  
+                          </div>
+                          <div class="min-w-0 flex-1">
+                            <div class="flex items-center justify-between gap-2">
+                              <h3 class="truncate text-sm font-bold text-slate-900 dark:text-white">
+                                ${conversation.employee.role}
+                              </h3>
+                              <span class="shrink-0 text-[10px] text-slate-400">
+                                ${conversation.createdAt.split("10")}
+                              </span>
+                            </div>
+                            <p class="mt-1 truncate text-xs font-medium text-slate-700 dark:text-slate-300">
+                              ${conversation.lastMessage}
+                            </p>
+                            <p class="mt-1 truncate text-xs text-slate-400">
+                              The service has been completed...
+                            </p>
+                          </div>
+                        </div>
+                      </button>
+          `,
+    );
+  });
   
 }
+
+
+
 export {
   getAndShowAllUsers,
   getAndShowAllEmployees,
@@ -526,6 +683,8 @@ export {
   getAndShowAllMessages,
   markNotificationAsRead,
   openNewConversationModal,
+  createNewConversation,
+  sendConversationMessage,
   closeNewConversationModal,
   getAndShowAllConversations
 };
