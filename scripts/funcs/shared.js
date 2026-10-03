@@ -636,7 +636,7 @@ console.log("Conversations:", conversations);
     conversationsListElem.insertAdjacentHTML(
       "beforeend",
       `
-          <button id="conversation-1" type="button" class="w-full border-b border-[#D9D9D3] bg-indigo-50 px-4 py-4 text-left cursor-default md:cursor-pointer transition hover:bg-indigo-100 dark:border-[#2A3540] dark:bg-indigo-500/10 dark:hover:bg-indigo-500/15">
+          <button id="conversations" type="button" class="w-full border-b border-[#D9D9D3] bg-indigo-50 px-4 py-4 text-left cursor-default md:cursor-pointer transition hover:bg-indigo-100 dark:border-[#2A3540] dark:bg-indigo-500/10 dark:hover:bg-indigo-500/15">
                         <div class="flex gap-3">
                           <div class="relative shrink-0">
                             <img src="/images/default-profile.png" alt="Service Advisor" class="h-11 w-11 rounded-full object-cover">
@@ -665,6 +665,15 @@ console.log("Conversations:", conversations);
     );
   });
   
+}
+
+const getOneConversation = async () => {
+  const conversations = document.querySelectorAll("#conversations")
+  conversations.forEach((conversation) => {
+    conversation.addEventListener("click", (event) => {
+      
+    })
+  })
 }
 
 

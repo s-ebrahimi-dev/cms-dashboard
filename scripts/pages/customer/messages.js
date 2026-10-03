@@ -139,7 +139,7 @@ sendNewConversationBtn.addEventListener("click", async (event) => {
     return;
   }
 
-  showLoader();
+  showLoader("Sending message", "please wait...");
 
   // 1. Create conversation
   const conversationResult = await createNewConversation(selectedEmployeeId);

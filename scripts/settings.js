@@ -85,7 +85,7 @@ editUserBtn.addEventListener("click", () => {
 confirmEditUserBtn.addEventListener("click", async (event) => {
   event.preventDefault()
   closeEditUserModal()
-  showLoader()
+  showLoader("Editing user profile", "please wait...")
   await updateOwnProfile();
   hideLoader()
   await initSettings()

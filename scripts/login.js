@@ -43,7 +43,7 @@ const loginBtn = document.querySelector("#loginButton");
 loginBtn.addEventListener("click", async (event) => {
   event.preventDefault();
 
-  showLoader();
+  showLoader("loading", "please wait...");
 
   try {
     const result = await login();
