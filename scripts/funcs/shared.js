@@ -12,8 +12,7 @@ initResultModal();
 let currentDeleteUser = null;
 let currentEditUser = null;
 let currentChatUser = null;
-let current
-
+let current;
 
 const roleLabels = {
   ADMIN: "Administrator",
@@ -68,8 +67,8 @@ const initDeleteUserModal = () => {
 
 // Edit User Modal
 
- const openEditUserModal = (user) => {
-   const editUserModal = document.querySelector("#editUserModal");
+const openEditUserModal = (user) => {
+  const editUserModal = document.querySelector("#editUserModal");
 
   currentEditUser = user;
   document.querySelector("#editUserId").value = user._id;
@@ -161,13 +160,13 @@ const initChatUserModal = () => {
     closeChatUserModal();
   });
   confirmChatUser.addEventListener("click", async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!currentChatUser) return;
     const userId = currentChatUser._id;
     closeChatUserModal();
-    showLoader()
+    showLoader();
     await Conversation(userId);
-    hideLoader()
+    hideLoader();
   });
 };
 //---- Get And Show All Users------------
@@ -335,7 +334,7 @@ const getAndShowAllUsers = async () => {
       openDeleteUserModal(user);
     });
   });
-  return users
+  return users;
 };
 
 const getAndShowAllEmployees = async () => {
@@ -352,9 +351,7 @@ const getAndShowAllEmployees = async () => {
     throw new Error(result.message || "Failed to retrieve employees");
   }
 
-  const employeesContainer = document.querySelector(
-    "#conversation-employee",
-  );
+  const employeesContainer = document.querySelector("#conversation-employee");
 
   if (!employeesContainer) {
     return result;
@@ -511,7 +508,7 @@ const Conversation = async (userId) => {
     receiver,
     message,
   };
-    console.log("BEFORE FETCH");
+  console.log("BEFORE FETCH");
   const res = await fetch(`${base_URL}/users/message`, {
     method: "POST",
     headers: {
@@ -520,9 +517,9 @@ const Conversation = async (userId) => {
     credentials: "include",
     body: JSON.stringify(userMessage),
   });
-    console.log("AFTER FETCH");
+  console.log("AFTER FETCH");
   const result = await res.json();
- console.log("AFTER JSON");
+  console.log("AFTER JSON");
   if (res.ok) {
     showResultModal("success", "message sent successfully");
   } else {
@@ -532,14 +529,13 @@ const Conversation = async (userId) => {
 
 const getAndShowAllMessages = async () => {
   const res = await fetch(`${base_URL}/notifications`, {
-    credentials: "include"
+    credentials: "include",
   });
 
-  const result = await res.json()
-  
-    return result
-  
-}
+  const result = await res.json();
+
+  return result;
+};
 const markNotificationAsRead = async (notificationId) => {
   try {
     const response = await fetch(
@@ -553,9 +549,7 @@ const markNotificationAsRead = async (notificationId) => {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(
-        data.message || "Failed to mark notification as read",
-      );
+      throw new Error(data.message || "Failed to mark notification as read");
     }
 
     return data;
@@ -565,26 +559,28 @@ const markNotificationAsRead = async (notificationId) => {
 };
 
 const openNewConversationModal = () => {
-  const newConversationModal = document.querySelector("#new-conversation-modal")
+  const newConversationModal = document.querySelector(
+    "#new-conversation-modal",
+  );
 
-  newConversationModal.classList.remove("hidden")
-  newConversationModal.classList.add("flex")
-}
+  newConversationModal.classList.remove("hidden");
+  newConversationModal.classList.add("flex");
+};
 
 const createNewConversation = async (employeeId) => {
   const res = await fetch(`${base_URL}/conversations`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  credentials: "include",
-  body: JSON.stringify({
-    employee: employeeId,
-  }),
-});
-  const result = await res.json()
-  return result
-}
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      employee: employeeId,
+    }),
+  });
+  const result = await res.json();
+  return result;
+};
 
 const sendConversationMessage = async (conversationId, message) => {
   const res = await fetch(
@@ -606,33 +602,35 @@ const sendConversationMessage = async (conversationId, message) => {
   return result;
 };
 
-
 const closeNewConversationModal = () => {
-  const newConversationModal = document.querySelector("#new-conversation-modal")
-  newConversationModal.classList.add("hidden")
-  newConversationModal.classList.remove("flex")
-}
+  const newConversationModal = document.querySelector(
+    "#new-conversation-modal",
+  );
+  newConversationModal.classList.add("hidden");
+  newConversationModal.classList.remove("flex");
+};
 
 const getAndShowAllConversations = async () => {
-
   const res = await fetch(`${base_URL}/conversations/`, {
-     credentials: "include",
-  })
-  
+    credentials: "include",
+  });
+
   const result = await res.json();
 
-    if (!res.ok) {
-    throw new Error(
-    result.message || "Failed to retrieve conversations",
-  );
+  if (!res.ok) {
+    throw new Error(result.message || "Failed to retrieve conversations");
   }
   const conversationsListElem = document.querySelector("#conversation-list");
-  const conversations = result.data
-console.log("Number of conversations:", conversations.length);
-console.log("Conversations:", conversations);
-  
+  const conversations = result.data;
   conversationsListElem.innerHTML = "";
   conversations.forEach((conversation) => {
+const time = conversation.lastMessageAt
+  ? new Date(conversation.lastMessageAt).toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    })
+  : "";
     conversationsListElem.insertAdjacentHTML(
       "beforeend",
       `
@@ -649,7 +647,7 @@ console.log("Conversations:", conversations);
                                 ${conversation.employee.role}
                               </h3>
                               <span class="shrink-0 text-[10px] text-slate-400">
-                                ${conversation.createdAt.split("10")}
+                                ${time}
                               </span>
                             </div>
                             <p class="mt-1 truncate text-xs font-medium text-slate-700 dark:text-slate-300">
@@ -664,19 +662,14 @@ console.log("Conversations:", conversations);
           `,
     );
   });
-  
-}
+};
 
 const getOneConversation = async () => {
-  const conversations = document.querySelectorAll("#conversations")
+  const conversations = document.querySelectorAll("#conversations");
   conversations.forEach((conversation) => {
-    conversation.addEventListener("click", (event) => {
-      
-    })
-  })
-}
-
-
+    conversation.addEventListener("click", (event) => {});
+  });
+};
 
 export {
   getAndShowAllUsers,
@@ -695,5 +688,5 @@ export {
   createNewConversation,
   sendConversationMessage,
   closeNewConversationModal,
-  getAndShowAllConversations
+  getAndShowAllConversations,
 };
