@@ -157,7 +157,7 @@ sendNewConversationBtn.addEventListener("click", async (event) => {
 
   if (messageResult.data) {
     await getAndShowAllConversations();
-
+    initConversationSelection()
     hideLoader();
 
     showResultModal("success", "Message sent successfully.");
