@@ -5,6 +5,7 @@ import {
   closeNewConversationModal,
   getAndShowAllConversations,
   getAndShowAllEmployees,
+  initConversationSelection
 } from "../../funcs/shared.js";
 import { showResultModal } from "../../components/result-modal.js";
 import { loadComponent } from "../../components/component-Loader.js";
@@ -32,6 +33,8 @@ if (newConversationModal) {
 }
 await getAndShowAllEmployees();
 await getAndShowAllConversations();
+ initConversationSelection()
+
 
 const newMessageBtn = document.querySelector("#new-message-button");
 newMessageBtn.addEventListener("click", (event) => {

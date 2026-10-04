@@ -610,6 +610,47 @@ const closeNewConversationModal = () => {
   newConversationModal.classList.remove("flex");
 };
 
+function formatConversationDate(dateValue) {
+  if (!dateValue) return "";
+
+  const date = new Date(dateValue);
+  const now = new Date();
+
+  const isToday =
+    date.getFullYear() === now.getFullYear() &&
+    date.getMonth() === now.getMonth() &&
+    date.getDate() === now.getDate();
+
+  if (isToday) {
+    return `Today, ${date.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    })}`;
+  }
+
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+
+  const isYesterday =
+    date.getFullYear() === yesterday.getFullYear() &&
+    date.getMonth() === yesterday.getMonth() &&
+    date.getDate() === yesterday.getDate();
+
+  if (isYesterday) {
+    return `Yesterday, ${date.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    })}`;
+  }
+
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+}
+
 const getAndShowAllConversations = async () => {
   const res = await fetch(`${base_URL}/conversations/`, {
     credentials: "include",
@@ -624,17 +665,11 @@ const getAndShowAllConversations = async () => {
   const conversations = result.data;
   conversationsListElem.innerHTML = "";
   conversations.forEach((conversation) => {
-const time = conversation.lastMessageAt
-  ? new Date(conversation.lastMessageAt).toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    })
-  : "";
+    const dateTime = formatConversationDate(conversation.lastMessageAt);
     conversationsListElem.insertAdjacentHTML(
       "beforeend",
       `
-          <button id="conversations" type="button" class="w-full border-b border-[#D9D9D3] bg-indigo-50 px-4 py-4 text-left cursor-default md:cursor-pointer transition hover:bg-indigo-100 dark:border-[#2A3540] dark:bg-indigo-500/10 dark:hover:bg-indigo-500/15">
+          <button id="conversations" type="button" data-conversation-id="${conversation._id}" class="w-full border-b border-[#D9D9D3] bg-indigo-50 px-4 py-4 text-left cursor-default md:cursor-pointer transition hover:bg-indigo-100 dark:border-[#2A3540] dark:bg-indigo-500/10 dark:hover:bg-indigo-500/15">
                         <div class="flex gap-3">
                           <div class="relative shrink-0">
                             <img src="/images/default-profile.png" alt="Service Advisor" class="h-11 w-11 rounded-full object-cover">
@@ -647,7 +682,7 @@ const time = conversation.lastMessageAt
                                 ${conversation.employee.role}
                               </h3>
                               <span class="shrink-0 text-[10px] text-slate-400">
-                                ${time}
+                                ${dateTime}
                               </span>
                             </div>
                             <p class="mt-1 truncate text-xs font-medium text-slate-700 dark:text-slate-300">
@@ -664,10 +699,42 @@ const time = conversation.lastMessageAt
   });
 };
 
-const getOneConversation = async () => {
+const getOneConversation = async (conversationId) => {
+  const res = await fetch(`${base_URL}/conversations/${conversationId}`, {
+     
+      credentials: "include",   
+  })
+  const result = await res.json()
+  console.log(result.data);
+  
+  return result.data
+  
+}
+
+const getConversationMessages = async (conversationId) => {
+  const res = await fetch(`${base_URL}/conversations/${conversationId}/messages`, {
+   credentials: "include",
+  })
+  const result = await res.json()
+  console.log(result.data);
+  return result.data
+  
+}
+
+const initConversationSelection =  () => {
   const conversations = document.querySelectorAll("#conversations");
   conversations.forEach((conversation) => {
-    conversation.addEventListener("click", (event) => {});
+   
+    conversation.addEventListener("click", async (event) => {
+      event.stopPropagation()
+       const conversationId =
+        conversation.dataset.conversationId;
+      showLoader("Loading messages", "please wait")
+      await getOneConversation(conversationId)
+      await getConversationMessages(conversationId)
+      hideLoader()
+      
+    });
   });
 };
 
@@ -689,4 +756,5 @@ export {
   sendConversationMessage,
   closeNewConversationModal,
   getAndShowAllConversations,
+  initConversationSelection
 };
