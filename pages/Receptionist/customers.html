@@ -18,7 +18,6 @@
     <!-- ========================================================= -->
 
     <svg class="hidden">
-      <!-- Arrow Right -->
       <symbol
         id="arrow-right"
         fill="none"
@@ -33,7 +32,6 @@
         />
       </symbol>
 
-      <!-- Arrow Left -->
       <symbol
         id="arrow-left"
         fill="none"
@@ -48,7 +46,6 @@
         />
       </symbol>
 
-      <!-- Moon -->
       <symbol
         id="moon"
         fill="none"
@@ -63,7 +60,6 @@
         />
       </symbol>
 
-      <!-- Sun -->
       <symbol
         id="sun"
         fill="none"
@@ -92,10 +88,7 @@
         <!-- Loaded by JS -->
       </section>
 
-      <!-- ======================================================= -->
-      <!-- MOBILE SIDEBAR -->
-      <!-- ======================================================= -->
-
+      <!-- Mobile sidebar -->
       <section id="mobile-sidebar-container" class="relative invisible">
         <!-- Loaded by JS -->
       </section>
@@ -113,13 +106,11 @@
           class="sticky top-0 z-40 -mx-8 mb-8 flex items-center justify-end border-b border-slate-200 bg-white/95 px-6 py-1.5 backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-800/95"
         >
           <div class="flex items-center gap-4">
-            <!-- ================================================= -->
-            <!-- SEARCH -->
-            <!-- ================================================= -->
+            <!-- Search -->
 
             <input
               class="hidden w-72 rounded-xl border px-4 py-3 text-gray-500 outline-1 outline-black/20 focus:ring-2 focus:ring-indigo-500 dark:outline-white/50 md:block"
-              placeholder="Search customers, appointments..."
+              placeholder="Search customers..."
             />
 
             <!-- ================================================= -->
@@ -148,7 +139,7 @@
             <div
               class="relative flex h-12 shrink-0 items-center gap-2 border-l border-zinc-600/20 bg-transparent pl-1 md:w-48 md:justify-between md:gap-0.5 md:pr-2 dark:border-white/40"
             >
-              <!-- Profile Image -->
+              <!-- Profile image -->
 
               <div class="shrink-0">
                 <img
@@ -162,7 +153,7 @@
                 <div
                   class="user-menu absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
                 >
-                  <!-- User Information -->
+                  <!-- User information -->
 
                   <div
                     class="border-b border-black/10 px-5 py-2 dark:border-white/10"
@@ -293,7 +284,7 @@
                 </div>
               </div>
 
-              <!-- User Name / Role -->
+              <!-- User name / role -->
 
               <div
                 id="user-infos"
@@ -311,7 +302,7 @@
                   ></p>
                 </div>
 
-                <!-- Profile Dropdown Button -->
+                <!-- Profile dropdown button -->
 
                 <span
                   id="user-profile"
@@ -525,796 +516,908 @@
         </div>
 
         <!-- ===================================================== -->
-        <!-- RECEPTIONIST DASHBOARD -->
+        <!-- CUSTOMERS CONTENT -->
         <!-- ===================================================== -->
 
         <div class="space-y-8">
           <!-- =================================================== -->
-          <!-- WELCOME -->
+          <!-- PAGE HEADER -->
           <!-- =================================================== -->
 
           <div
             class="overflow-hidden rounded-2xl bg-emerald-700 px-6 py-7 text-white sm:px-8"
           >
-            <h1 class="text-2xl font-bold sm:text-3xl">
-              Good morning, Receptionist
-            </h1>
+            <div
+              class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div>
+                <h1 class="text-2xl font-bold sm:text-3xl">Customers</h1>
 
-            <p class="mt-2 max-w-2xl text-sm text-emerald-100 sm:text-base">
-              Manage today's appointments, customers, payments, and
-              service-center activities from one place.
-            </p>
+                <p class="mt-2 max-w-2xl text-sm text-emerald-100 sm:text-base">
+                  Manage customer information, vehicles, appointments, and
+                  service history from one place.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50"
+              >
+                <span class="text-lg leading-none">+</span>
+                Add Customer
+              </button>
+            </div>
           </div>
 
           <!-- =================================================== -->
-          <!-- RECEPTIONIST STATISTICS -->
+          <!-- CUSTOMER STATISTICS -->
           <!-- =================================================== -->
 
           <section
             class="grid grid-cols-1 gap-5 bg-[#F3F1EC] dark:bg-[#1f0a19] sm:grid-cols-2 xl:grid-cols-4"
           >
-            <!-- Today's Appointments -->
+            <!-- Total Customers -->
 
             <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
               <p class="text-sm text-slate-500 dark:text-slate-400">
-                Today's Appointments
+                Total Customers
               </p>
 
               <h3
                 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
               >
-                12
+                248
               </h3>
 
               <span class="text-sm text-blue-600 dark:text-blue-400">
-                Scheduled today
+                Registered customers
               </span>
             </article>
 
-            <!-- Waiting Customers -->
+            <!-- Active Customers -->
 
             <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
               <p class="text-sm text-slate-500 dark:text-slate-400">
-                Waiting Customers
+                Active Customers
               </p>
 
               <h3
                 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
               >
-                3
-              </h3>
-
-              <span class="text-sm text-orange-600 dark:text-orange-400">
-                Need attention
-              </span>
-            </article>
-
-            <!-- Pending Payments -->
-
-            <article
-              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
-            >
-              <p class="text-sm text-slate-500 dark:text-slate-400">
-                Pending Payments
-              </p>
-
-              <h3
-                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
-              >
-                $860
-              </h3>
-
-              <span class="text-sm text-orange-600 dark:text-orange-400">
-                5 invoices
-              </span>
-            </article>
-
-            <!-- Completed Today -->
-
-            <article
-              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
-            >
-              <p class="text-sm text-slate-500 dark:text-slate-400">
-                Completed Today
-              </p>
-
-              <h3
-                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
-              >
-                7
+                192
               </h3>
 
               <span class="text-sm text-green-600 dark:text-green-400">
-                Services completed
+                Active accounts
+              </span>
+            </article>
+
+            <!-- New Customers -->
+
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                New This Month
+              </p>
+
+              <h3
+                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
+              >
+                18
+              </h3>
+
+              <span class="text-sm text-indigo-600 dark:text-indigo-400">
+                New registrations
+              </span>
+            </article>
+
+            <!-- Customers Today -->
+
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                Appointments Today
+              </p>
+
+              <h3
+                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
+              >
+                14
+              </h3>
+
+              <span class="text-sm text-orange-600 dark:text-orange-400">
+                Customer visits
               </span>
             </article>
           </section>
 
           <!-- =================================================== -->
-          <!-- TODAY'S APPOINTMENTS + CUSTOMER -->
+          <!-- SEARCH + FILTERS -->
           <!-- =================================================== -->
 
           <section
-            class="grid grid-cols-1 gap-6 bg-[#F3F1EC] dark:bg-[#1f0a19] xl:grid-cols-5"
+            class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
           >
-            <!-- ================================================= -->
-            <!-- TODAY'S APPOINTMENTS -->
-            <!-- ================================================= -->
-
-            <article
-              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23] xl:col-span-3"
+            <div
+              class="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between"
             >
-              <!-- Header -->
+              <div class="min-w-0">
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                  Customer Directory
+                </h2>
 
-              <div class="mb-5 flex items-center justify-between">
-                <div>
-                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
-                    Today's Appointments
-                  </h2>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                  Search and manage registered customers.
+                </p>
+              </div>
 
-                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Appointments requiring receptionist attention
-                  </p>
+              <div class="flex flex-col gap-3 sm:flex-row">
+                <!-- Search -->
+
+                <div class="relative">
+                  <input
+                    type="text"
+                    placeholder="Search by name, phone, email..."
+                    class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200 sm:w-80"
+                  />
                 </div>
 
-                <a
-                  href="../Appointments-page/appointments.html"
-                  class="flex items-center gap-1 text-sm font-medium text-blue-600 transition hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                <!-- Status -->
+
+                <select
+                  class="rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
                 >
-                  View all
+                  <option>All Customers</option>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </select>
 
-                  <svg
-                    class="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="m8.25 4.5 7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
-                </a>
+                <button
+                  type="button"
+                  class="rounded-xl border border-[#D9D9D3] px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- =================================================== -->
+          <!-- CUSTOMER TABLE -->
+          <!-- =================================================== -->
+
+          <section
+            class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+          >
+            <div class="mb-5 flex items-center justify-between">
+              <div>
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                  Customers
+                </h2>
+
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                  248 registered customers
+                </p>
               </div>
 
-              <!-- Appointment List -->
+              <span
+                class="rounded-full bg-indigo-100 px-3 py-1.5 text-xs font-semibold text-indigo-700 dark:bg-indigo-500/10 dark:text-indigo-400"
+              >
+                All Customers
+              </span>
+            </div>
 
-              <div class="space-y-4">
-                <!-- Appointment 1 -->
-
-                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
-                  <div
-                    class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr
+                    class="border-b border-[#D9D9D3] text-slate-500 dark:border-[#2A3540] dark:text-slate-400"
                   >
-                    <div class="flex min-w-0 items-center gap-4">
-                      <div
-                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
-                      >
-                        09:00
+                    <th class="p-3 text-left font-medium">Customer</th>
+
+                    <th class="p-3 text-left font-medium">Contact</th>
+
+                    <th class="p-3 text-left font-medium">Vehicle</th>
+
+                    <th class="p-3 text-left font-medium">Appointments</th>
+
+                    <th class="p-3 text-left font-medium">Last Visit</th>
+
+                    <th class="p-3 text-left font-medium">Status</th>
+
+                    <th class="p-3 text-right font-medium">Action</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- Customer 1 -->
+
+                  <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                    <td class="p-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="/images/default-profile.png"
+                          alt="John Smith"
+                          class="h-10 w-10 shrink-0 rounded-full object-cover"
+                        />
+
+                        <div class="min-w-0">
+                          <p
+                            class="truncate font-semibold text-slate-900 dark:text-white"
+                          >
+                            John Smith
+                          </p>
+
+                          <p class="mt-1 text-xs text-slate-400">
+                            Customer #CUS-1024
+                          </p>
+                        </div>
                       </div>
+                    </td>
 
-                      <div class="min-w-0">
-                        <h3
-                          class="truncate text-base font-bold text-slate-900 dark:text-white"
-                        >
-                          Oil Change & Inspection
-                        </h3>
+                    <td class="p-3">
+                      <div>
+                        <p class="text-slate-700 dark:text-slate-300">
+                          +1 555 234 8890
+                        </p>
 
+                        <p class="mt-1 text-xs text-slate-400">
+                          john@example.com
+                        </p>
+                      </div>
+                    </td>
+
+                    <td class="p-3">
+                      <div>
                         <p
-                          class="mt-1 text-sm text-slate-500 dark:text-slate-400"
+                          class="font-medium text-slate-800 dark:text-slate-200"
                         >
-                          John Smith
-                          <span class="mx-1">•</span>
                           Toyota Camry
-                          <span class="mx-1">•</span>
-                          ABC-123
+                        </p>
+
+                        <p class="mt-1 text-xs text-slate-400">
+                          2021 • ABC-123
                         </p>
                       </div>
-                    </div>
+                    </td>
 
-                    <span
-                      class="self-start shrink-0 rounded-full bg-blue-100 px-3 py-1.5 text-xs font-semibold text-blue-700 dark:bg-blue-500/10 dark:text-blue-400 sm:self-center"
+                    <td
+                      class="p-3 font-semibold text-slate-800 dark:text-slate-200"
                     >
-                      Confirmed
-                    </span>
-                  </div>
-                </div>
+                      12
+                    </td>
 
-                <!-- Appointment 2 -->
+                    <td class="p-3">
+                      <span class="text-slate-600 dark:text-slate-300">
+                        Sep 18, 2026
+                      </span>
+                    </td>
 
-                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
-                  <div
-                    class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    <div class="flex min-w-0 items-center gap-4">
-                      <div
-                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400"
+                    <td class="p-3">
+                      <span
+                        class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
                       >
-                        10:30
+                        Active
+                      </span>
+                    </td>
+
+                    <td class="p-3 text-right">
+                      <button
+                        type="button"
+                        class="rounded-lg px-3 py-2 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-500/10"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+
+                  <!-- Customer 2 -->
+
+                  <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                    <td class="p-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="/images/default-profile.png"
+                          alt="Sarah Johnson"
+                          class="h-10 w-10 shrink-0 rounded-full object-cover"
+                        />
+
+                        <div class="min-w-0">
+                          <p
+                            class="truncate font-semibold text-slate-900 dark:text-white"
+                          >
+                            Sarah Johnson
+                          </p>
+
+                          <p class="mt-1 text-xs text-slate-400">
+                            Customer #CUS-1025
+                          </p>
+                        </div>
                       </div>
+                    </td>
 
-                      <div class="min-w-0">
-                        <h3
-                          class="truncate text-base font-bold text-slate-900 dark:text-white"
-                        >
-                          Brake Inspection
-                        </h3>
+                    <td class="p-3">
+                      <div>
+                        <p class="text-slate-700 dark:text-slate-300">
+                          +1 555 782 4412
+                        </p>
 
+                        <p class="mt-1 text-xs text-slate-400">
+                          sarah@example.com
+                        </p>
+                      </div>
+                    </td>
+
+                    <td class="p-3">
+                      <div>
                         <p
-                          class="mt-1 text-sm text-slate-500 dark:text-slate-400"
+                          class="font-medium text-slate-800 dark:text-slate-200"
                         >
-                          Sarah Johnson
-                          <span class="mx-1">•</span>
                           BMW X5
-                          <span class="mx-1">•</span>
-                          XYZ-456
+                        </p>
+
+                        <p class="mt-1 text-xs text-slate-400">
+                          2023 • XYZ-456
                         </p>
                       </div>
-                    </div>
+                    </td>
 
-                    <span
-                      class="self-start shrink-0 rounded-full bg-orange-100 px-3 py-1.5 text-xs font-semibold text-orange-700 dark:bg-orange-500/10 dark:text-orange-400 sm:self-center"
+                    <td
+                      class="p-3 font-semibold text-slate-800 dark:text-slate-200"
                     >
-                      Waiting
-                    </span>
-                  </div>
-                </div>
+                      8
+                    </td>
 
-                <!-- Appointment 3 -->
+                    <td class="p-3">
+                      <span class="text-slate-600 dark:text-slate-300">
+                        Sep 12, 2026
+                      </span>
+                    </td>
 
-                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
-                  <div
-                    class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
-                  >
-                    <div class="flex min-w-0 items-center gap-4">
-                      <div
-                        class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400"
+                    <td class="p-3">
+                      <span
+                        class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
                       >
-                        11:30
+                        Active
+                      </span>
+                    </td>
+
+                    <td class="p-3 text-right">
+                      <button
+                        type="button"
+                        class="rounded-lg px-3 py-2 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-500/10"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+
+                  <!-- Customer 3 -->
+
+                  <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                    <td class="p-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="/images/default-profile.png"
+                          alt="Michael Brown"
+                          class="h-10 w-10 shrink-0 rounded-full object-cover"
+                        />
+
+                        <div class="min-w-0">
+                          <p
+                            class="truncate font-semibold text-slate-900 dark:text-white"
+                          >
+                            Michael Brown
+                          </p>
+
+                          <p class="mt-1 text-xs text-slate-400">
+                            Customer #CUS-1026
+                          </p>
+                        </div>
                       </div>
+                    </td>
 
-                      <div class="min-w-0">
-                        <h3
-                          class="truncate text-base font-bold text-slate-900 dark:text-white"
-                        >
-                          Full Service
-                        </h3>
+                    <td class="p-3">
+                      <div>
+                        <p class="text-slate-700 dark:text-slate-300">
+                          +1 555 631 2087
+                        </p>
 
-                        <p
-                          class="mt-1 text-sm text-slate-500 dark:text-slate-400"
-                        >
-                          Michael Brown
-                          <span class="mx-1">•</span>
-                          Honda Accord
-                          <span class="mx-1">•</span>
-                          DEF-789
+                        <p class="mt-1 text-xs text-slate-400">
+                          michael@example.com
                         </p>
                       </div>
-                    </div>
+                    </td>
 
-                    <span
-                      class="self-start shrink-0 rounded-full bg-emerald-100 px-3 py-1.5 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400 sm:self-center"
+                    <td class="p-3">
+                      <div>
+                        <p
+                          class="font-medium text-slate-800 dark:text-slate-200"
+                        >
+                          Ford F-150
+                        </p>
+
+                        <p class="mt-1 text-xs text-slate-400">
+                          2020 • DEF-789
+                        </p>
+                      </div>
+                    </td>
+
+                    <td
+                      class="p-3 font-semibold text-slate-800 dark:text-slate-200"
                     >
-                      Checked In
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </article>
+                      5
+                    </td>
 
-            <!-- ================================================= -->
-            <!-- CURRENT CUSTOMER -->
-            <!-- ================================================= -->
+                    <td class="p-3">
+                      <span class="text-slate-600 dark:text-slate-300">
+                        Sep 08, 2026
+                      </span>
+                    </td>
+
+                    <td class="p-3">
+                      <span
+                        class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                      >
+                        Active
+                      </span>
+                    </td>
+
+                    <td class="p-3 text-right">
+                      <button
+                        type="button"
+                        class="rounded-lg px-3 py-2 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-500/10"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+
+                  <!-- Customer 4 -->
+
+                  <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                    <td class="p-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="/images/default-profile.png"
+                          alt="Emily Davis"
+                          class="h-10 w-10 shrink-0 rounded-full object-cover"
+                        />
+
+                        <div class="min-w-0">
+                          <p
+                            class="truncate font-semibold text-slate-900 dark:text-white"
+                          >
+                            Emily Davis
+                          </p>
+
+                          <p class="mt-1 text-xs text-slate-400">
+                            Customer #CUS-1027
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td class="p-3">
+                      <div>
+                        <p class="text-slate-700 dark:text-slate-300">
+                          +1 555 924 1178
+                        </p>
+
+                        <p class="mt-1 text-xs text-slate-400">
+                          emily@example.com
+                        </p>
+                      </div>
+                    </td>
+
+                    <td class="p-3">
+                      <div>
+                        <p
+                          class="font-medium text-slate-800 dark:text-slate-200"
+                        >
+                          Honda Civic
+                        </p>
+
+                        <p class="mt-1 text-xs text-slate-400">
+                          2022 • GHI-321
+                        </p>
+                      </div>
+                    </td>
+
+                    <td
+                      class="p-3 font-semibold text-slate-800 dark:text-slate-200"
+                    >
+                      3
+                    </td>
+
+                    <td class="p-3">
+                      <span class="text-slate-600 dark:text-slate-300">
+                        Aug 29, 2026
+                      </span>
+                    </td>
+
+                    <td class="p-3">
+                      <span
+                        class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600 dark:bg-slate-500/10 dark:text-slate-400"
+                      >
+                        Inactive
+                      </span>
+                    </td>
+
+                    <td class="p-3 text-right">
+                      <button
+                        type="button"
+                        class="rounded-lg px-3 py-2 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-500/10"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+
+                  <!-- Customer 5 -->
+
+                  <tr>
+                    <td class="p-3">
+                      <div class="flex items-center gap-3">
+                        <img
+                          src="/images/default-profile.png"
+                          alt="Daniel Wilson"
+                          class="h-10 w-10 shrink-0 rounded-full object-cover"
+                        />
+
+                        <div class="min-w-0">
+                          <p
+                            class="truncate font-semibold text-slate-900 dark:text-white"
+                          >
+                            Daniel Wilson
+                          </p>
+
+                          <p class="mt-1 text-xs text-slate-400">
+                            Customer #CUS-1028
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td class="p-3">
+                      <div>
+                        <p class="text-slate-700 dark:text-slate-300">
+                          +1 555 443 9081
+                        </p>
+
+                        <p class="mt-1 text-xs text-slate-400">
+                          daniel@example.com
+                        </p>
+                      </div>
+                    </td>
+
+                    <td class="p-3">
+                      <div>
+                        <p
+                          class="font-medium text-slate-800 dark:text-slate-200"
+                        >
+                          Mercedes C-Class
+                        </p>
+
+                        <p class="mt-1 text-xs text-slate-400">
+                          2024 • JKL-654
+                        </p>
+                      </div>
+                    </td>
+
+                    <td
+                      class="p-3 font-semibold text-slate-800 dark:text-slate-200"
+                    >
+                      2
+                    </td>
+
+                    <td class="p-3">
+                      <span class="text-slate-600 dark:text-slate-300">
+                        Aug 22, 2026
+                      </span>
+                    </td>
+
+                    <td class="p-3">
+                      <span
+                        class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                      >
+                        Active
+                      </span>
+                    </td>
+
+                    <td class="p-3 text-right">
+                      <button
+                        type="button"
+                        class="rounded-lg px-3 py-2 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-500/10"
+                      >
+                        View
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+
+            <div
+              class="mt-5 flex flex-col gap-3 border-t border-[#D9D9D3] pt-5 dark:border-[#2A3540] sm:flex-row sm:items-center sm:justify-between"
+            >
+              <p class="text-xs text-slate-500 dark:text-slate-400">
+                Showing 1–5 of 248 customers
+              </p>
+
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D9D3] text-slate-500 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-400 dark:hover:bg-[#1D2630]"
+                >
+                  ‹
+                </button>
+
+                <button
+                  type="button"
+                  class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-xs font-semibold text-white"
+                >
+                  1
+                </button>
+
+                <button
+                  type="button"
+                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D9D3] text-xs text-slate-600 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
+                >
+                  2
+                </button>
+
+                <button
+                  type="button"
+                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D9D3] text-xs text-slate-600 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
+                >
+                  3
+                </button>
+
+                <button
+                  type="button"
+                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D9D3] text-slate-500 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-400 dark:hover:bg-[#1D2630]"
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- =================================================== -->
+          <!-- CUSTOMER ACTIVITY -->
+          <!-- =================================================== -->
+
+          <section
+            class="grid grid-cols-1 gap-6 xl:grid-cols-3 bg-[#F3F1EC] dark:bg-[#1f0a19]"
+          >
+            <!-- Recent Customers -->
 
             <article
-              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23] xl:col-span-2"
+              class="xl:col-span-2 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
               <div class="mb-5 flex items-center justify-between">
                 <div>
                   <h2 class="text-lg font-bold text-slate-900 dark:text-white">
-                    Customer at Reception
+                    Recently Registered
                   </h2>
 
                   <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Current customer information
+                    Latest customers added to the system
                   </p>
                 </div>
 
                 <span
-                  class="rounded-full bg-emerald-100 px-3 py-1.5 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                  class="text-sm font-medium text-blue-600 dark:text-blue-400"
                 >
-                  Checked In
+                  This month
                 </span>
               </div>
 
-              <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
-                <div class="flex items-center gap-4">
+              <div class="space-y-4">
+                <!-- Customer -->
+
+                <div
+                  class="flex items-center gap-4 rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
+                >
                   <img
                     src="/images/default-profile.png"
-                    alt="Customer"
-                    class="h-12 w-12 shrink-0 rounded-full object-cover"
+                    class="h-11 w-11 shrink-0 rounded-full object-cover"
+                    alt="customer"
                   />
 
-                  <div class="min-w-0">
-                    <h3
-                      class="truncate text-base font-bold text-slate-900 dark:text-white"
+                  <div class="min-w-0 flex-1">
+                    <p
+                      class="truncate font-semibold text-slate-900 dark:text-white"
                     >
-                      Michael Brown
-                    </h3>
+                      Olivia Martinez
+                    </p>
 
                     <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                      michael@example.com
+                      Registered Sep 20, 2026
                     </p>
                   </div>
-                </div>
 
-                <!-- Customer Information -->
+                  <div class="text-right">
+                    <p
+                      class="text-sm font-semibold text-slate-800 dark:text-slate-200"
+                    >
+                      Toyota RAV4
+                    </p>
+
+                    <p class="mt-1 text-xs text-slate-400">2022 • MNO-123</p>
+                  </div>
+                </div>
 
                 <div
-                  class="mt-5 grid grid-cols-2 gap-3 border-t border-[#D9D9D3] pt-4 dark:border-[#2A3540]"
+                  class="flex items-center gap-4 rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
                 >
-                  <div>
-                    <p class="text-[11px] text-slate-400 dark:text-slate-500">
-                      Phone
+                  <img
+                    src="/images/default-profile.png"
+                    class="h-11 w-11 shrink-0 rounded-full object-cover"
+                    alt="customer"
+                  />
+
+                  <div class="min-w-0 flex-1">
+                    <p
+                      class="truncate font-semibold text-slate-900 dark:text-white"
+                    >
+                      James Anderson
                     </p>
 
-                    <p
-                      class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
-                    >
-                      +1 555 123 4567
+                    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      Registered Sep 18, 2026
                     </p>
                   </div>
 
-                  <div>
-                    <p class="text-[11px] text-slate-400 dark:text-slate-500">
-                      Vehicle
+                  <div class="text-right">
+                    <p
+                      class="text-sm font-semibold text-slate-800 dark:text-slate-200"
+                    >
+                      Kia Sportage
                     </p>
 
+                    <p class="mt-1 text-xs text-slate-400">2023 • PQR-456</p>
+                  </div>
+                </div>
+
+                <div
+                  class="flex items-center gap-4 rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
+                >
+                  <img
+                    src="/images/default-profile.png"
+                    class="h-11 w-11 shrink-0 rounded-full object-cover"
+                    alt="customer"
+                  />
+
+                  <div class="min-w-0 flex-1">
                     <p
-                      class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
+                      class="truncate font-semibold text-slate-900 dark:text-white"
                     >
-                      Honda Accord
+                      Sophia Taylor
+                    </p>
+
+                    <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                      Registered Sep 16, 2026
                     </p>
                   </div>
 
-                  <div>
-                    <p class="text-[11px] text-slate-400 dark:text-slate-500">
-                      Plate
-                    </p>
-
+                  <div class="text-right">
                     <p
-                      class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
+                      class="text-sm font-semibold text-slate-800 dark:text-slate-200"
                     >
-                      DEF-789
-                    </p>
-                  </div>
-
-                  <div>
-                    <p class="text-[11px] text-slate-400 dark:text-slate-500">
-                      Appointment
+                      Audi Q5
                     </p>
 
-                    <p
-                      class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
-                    >
-                      Full Service
-                    </p>
+                    <p class="mt-1 text-xs text-slate-400">2021 • STU-789</p>
                   </div>
                 </div>
               </div>
-
-              <!-- Action -->
-
-              <a
-                href="../Customers-page/customers.html"
-                class="mt-4 block w-full rounded-xl bg-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-orange-600"
-              >
-                Open Customer Profile
-              </a>
-            </article>
-          </section>
-
-          <!-- =================================================== -->
-          <!-- RECENT CUSTOMERS + PAYMENTS -->
-          <!-- =================================================== -->
-
-          <section
-            class="grid grid-cols-1 gap-6 bg-[#F3F1EC] dark:bg-[#1f0a19] xl:grid-cols-3"
-          >
-            <!-- ================================================= -->
-            <!-- RECENT CUSTOMERS -->
-            <!-- ================================================= -->
-
-            <article
-              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23] xl:col-span-2"
-            >
-              <div class="mb-5 flex items-center justify-between">
-                <div>
-                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
-                    Recent Customers
-                  </h2>
-
-                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Recently registered or served customers
-                  </p>
-                </div>
-
-                <a
-                  href="../Customers-page/customers.html"
-                  class="text-sm font-medium text-blue-600 dark:text-blue-400"
-                >
-                  View all
-                </a>
-              </div>
-
-              <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                  <thead>
-                    <tr
-                      class="border-b border-[#D9D9D3] text-slate-500 dark:border-[#2A3540] dark:text-slate-400"
-                    >
-                      <th class="p-3 text-left font-medium">Customer</th>
-
-                      <th class="p-3 text-left font-medium">Vehicle</th>
-
-                      <th class="p-3 text-left font-medium">Last Visit</th>
-
-                      <th class="p-3 text-left font-medium">Status</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
-                      <td class="p-3">
-                        <div class="flex items-center gap-3">
-                          <img
-                            src="/images/default-profile.png"
-                            alt=""
-                            class="h-9 w-9 rounded-full object-cover"
-                          />
-
-                          <div>
-                            <p
-                              class="font-semibold text-slate-900 dark:text-white"
-                            >
-                              John Smith
-                            </p>
-
-                            <p class="text-xs text-slate-400">
-                              john@example.com
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td class="p-3">Toyota Camry</td>
-
-                      <td class="p-3">Sep 21, 2026</td>
-
-                      <td class="p-3">
-                        <span
-                          class="rounded-full bg-green-100 px-3 py-1 text-xs text-green-700 dark:bg-green-500/10 dark:text-green-400"
-                        >
-                          Active
-                        </span>
-                      </td>
-                    </tr>
-
-                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
-                      <td class="p-3">
-                        <div class="flex items-center gap-3">
-                          <img
-                            src="/images/default-profile.png"
-                            alt=""
-                            class="h-9 w-9 rounded-full object-cover"
-                          />
-
-                          <div>
-                            <p
-                              class="font-semibold text-slate-900 dark:text-white"
-                            >
-                              Sarah Johnson
-                            </p>
-
-                            <p class="text-xs text-slate-400">
-                              sarah@example.com
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td class="p-3">BMW X5</td>
-
-                      <td class="p-3">Sep 20, 2026</td>
-
-                      <td class="p-3">
-                        <span
-                          class="rounded-full bg-green-100 px-3 py-1 text-xs text-green-700 dark:bg-green-500/10 dark:text-green-400"
-                        >
-                          Active
-                        </span>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="p-3">
-                        <div class="flex items-center gap-3">
-                          <img
-                            src="/images/default-profile.png"
-                            alt=""
-                            class="h-9 w-9 rounded-full object-cover"
-                          />
-
-                          <div>
-                            <p
-                              class="font-semibold text-slate-900 dark:text-white"
-                            >
-                              Michael Brown
-                            </p>
-
-                            <p class="text-xs text-slate-400">
-                              michael@example.com
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td class="p-3">Honda Accord</td>
-
-                      <td class="p-3">Sep 19, 2026</td>
-
-                      <td class="p-3">
-                        <span
-                          class="rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-700 dark:bg-blue-500/10 dark:text-blue-400"
-                        >
-                          In Service
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </article>
 
-            <!-- ================================================= -->
-            <!-- RECENT PAYMENTS -->
-            <!-- ================================================= -->
+            <!-- Customer Notes -->
 
             <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
-              <div class="mb-5 flex items-center justify-between">
-                <div>
-                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
-                    Recent Payments
-                  </h2>
+              <div class="mb-5">
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                  Reception Notes
+                </h2>
 
-                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Latest payment activity
-                  </p>
-                </div>
-
-                <a
-                  href="../Payments-page/payments.html"
-                  class="text-sm font-medium text-blue-600 dark:text-blue-400"
-                >
-                  View all
-                </a>
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                  Important customer-related reminders
+                </p>
               </div>
 
-              <div class="space-y-5">
-                <!-- Payment 1 -->
-
-                <div class="flex items-center gap-4">
-                  <div
-                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400"
-                  >
-                    ✓
-                  </div>
-
-                  <div class="min-w-0 flex-1">
-                    <p
-                      class="truncate font-semibold text-slate-900 dark:text-white"
+              <div class="space-y-4">
+                <div
+                  class="rounded-xl border border-orange-200 bg-orange-50 p-4 dark:border-orange-500/20 dark:bg-orange-500/10"
+                >
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400"
                     >
-                      Oil Change
-                    </p>
+                      !
+                    </span>
 
-                    <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">
-                      John Smith
-                    </p>
+                    <div>
+                      <p
+                        class="text-sm font-semibold text-slate-900 dark:text-white"
+                      >
+                        Customer follow-up
+                      </p>
+
+                      <p
+                        class="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400"
+                      >
+                        3 customers have not returned after their last service.
+                      </p>
+                    </div>
                   </div>
-
-                  <p class="font-bold text-slate-900 dark:text-white">$85</p>
                 </div>
-
-                <!-- Payment 2 -->
-
-                <div class="flex items-center gap-4">
-                  <div
-                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400"
-                  >
-                    ✓
-                  </div>
-
-                  <div class="min-w-0 flex-1">
-                    <p
-                      class="truncate font-semibold text-slate-900 dark:text-white"
-                    >
-                      Brake Inspection
-                    </p>
-
-                    <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">
-                      Sarah Johnson
-                    </p>
-                  </div>
-
-                  <p class="font-bold text-slate-900 dark:text-white">$120</p>
-                </div>
-
-                <!-- Payment 3 -->
-
-                <div class="flex items-center gap-4">
-                  <div
-                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400"
-                  >
-                    $
-                  </div>
-
-                  <div class="min-w-0 flex-1">
-                    <p
-                      class="truncate font-semibold text-slate-900 dark:text-white"
-                    >
-                      Full Service
-                    </p>
-
-                    <p class="mt-1 text-xs text-slate-400 dark:text-slate-500">
-                      Michael Brown
-                    </p>
-                  </div>
-
-                  <p class="font-bold text-orange-600 dark:text-orange-400">
-                    $350
-                  </p>
-                </div>
-
-                <!-- Total -->
 
                 <div
-                  class="flex items-center justify-between border-t border-[#D9D9D3] pt-5 dark:border-[#2A3540]"
+                  class="rounded-xl border border-indigo-200 bg-indigo-50 p-4 dark:border-indigo-500/20 dark:bg-indigo-500/10"
                 >
-                  <span class="text-sm text-slate-500 dark:text-slate-400">
-                    Collected today
-                  </span>
-
-                  <span
-                    class="text-xl font-bold text-slate-900 dark:text-white"
-                  >
-                    $555
-                  </span>
-                </div>
-              </div>
-            </article>
-          </section>
-
-          <!-- =================================================== -->
-          <!-- PENDING INVOICES -->
-          <!-- =================================================== -->
-
-          <section>
-            <article
-              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
-            >
-              <div class="mb-5 flex items-center justify-between">
-                <div>
-                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
-                    Pending Invoices
-                  </h2>
-
-                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Invoices waiting for payment
-                  </p>
-                </div>
-
-                <a
-                  href="../Invoices-page/invoices.html"
-                  class="text-sm font-medium text-blue-600 dark:text-blue-400"
-                >
-                  View all
-                </a>
-              </div>
-
-              <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                  <thead>
-                    <tr
-                      class="border-b border-[#D9D9D3] text-slate-500 dark:border-[#2A3540] dark:text-slate-400"
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
                     >
-                      <th class="p-3 text-left font-medium">Invoice</th>
+                      #
+                    </span>
 
-                      <th class="p-3 text-left font-medium">Customer</th>
-
-                      <th class="p-3 text-left font-medium">Date</th>
-
-                      <th class="p-3 text-left font-medium">Status</th>
-
-                      <th class="p-3 text-right font-medium">Amount</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
-                      <td
-                        class="p-3 font-semibold text-slate-900 dark:text-white"
+                    <div>
+                      <p
+                        class="text-sm font-semibold text-slate-900 dark:text-white"
                       >
-                        #INV-1042
-                      </td>
+                        Customer records
+                      </p>
 
-                      <td class="p-3">Michael Brown</td>
-
-                      <td class="p-3">Sep 22, 2026</td>
-
-                      <td class="p-3">
-                        <span
-                          class="rounded-full bg-orange-100 px-3 py-1 text-xs text-orange-700 dark:bg-orange-500/10 dark:text-orange-400"
-                        >
-                          Pending
-                        </span>
-                      </td>
-
-                      <td class="p-3 text-right font-semibold">$350</td>
-                    </tr>
-
-                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
-                      <td
-                        class="p-3 font-semibold text-slate-900 dark:text-white"
+                      <p
+                        class="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400"
                       >
-                        #INV-1041
-                      </td>
+                        Keep vehicle information updated when creating new
+                        appointments.
+                      </p>
+                    </div>
+                  </div>
+                </div>
 
-                      <td class="p-3">Sarah Johnson</td>
+                <div
+                  class="rounded-xl border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-500/20 dark:bg-emerald-500/10"
+                >
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400"
+                    >
+                      ✓
+                    </span>
 
-                      <td class="p-3">Sep 21, 2026</td>
-
-                      <td class="p-3">
-                        <span
-                          class="rounded-full bg-orange-100 px-3 py-1 text-xs text-orange-700 dark:bg-orange-500/10 dark:text-orange-400"
-                        >
-                          Pending
-                        </span>
-                      </td>
-
-                      <td class="p-3 text-right font-semibold">$210</td>
-                    </tr>
-
-                    <tr>
-                      <td
-                        class="p-3 font-semibold text-slate-900 dark:text-white"
+                    <div>
+                      <p
+                        class="text-sm font-semibold text-slate-900 dark:text-white"
                       >
-                        #INV-1040
-                      </td>
+                        Records up to date
+                      </p>
 
-                      <td class="p-3">John Smith</td>
-
-                      <td class="p-3">Sep 20, 2026</td>
-
-                      <td class="p-3">
-                        <span
-                          class="rounded-full bg-orange-100 px-3 py-1 text-xs text-orange-700 dark:bg-orange-500/10 dark:text-orange-400"
-                        >
-                          Pending
-                        </span>
-                      </td>
-
-                      <td class="p-3 text-right font-semibold">$180</td>
-                    </tr>
-                  </tbody>
-                </table>
+                      <p
+                        class="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400"
+                      >
+                        92% of active customer profiles contain complete contact
+                        information.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </article>
           </section>
@@ -1329,6 +1432,29 @@
             </h2>
 
             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <!-- Add Customer -->
+
+              <button
+                type="button"
+                class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
+              >
+                <div
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
+                >
+                  +
+                </div>
+
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
+                    Add Customer
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    Register a new customer
+                  </p>
+                </div>
+              </button>
+
               <!-- New Appointment -->
 
               <a
@@ -1336,7 +1462,7 @@
                 class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
               >
                 <div
-                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
                 >
                   📅
                 </div>
@@ -1347,56 +1473,33 @@
                   </h3>
 
                   <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    Schedule a customer
+                    Schedule for a customer
                   </p>
                 </div>
               </a>
 
-              <!-- Customers -->
+              <!-- Customer History -->
 
-              <a
-                href="../Customers-page/customers.html"
-                class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
-              >
-                <div
-                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
-                >
-                  👤
-                </div>
-
-                <div>
-                  <h3 class="font-semibold text-slate-900 dark:text-white">
-                    Customers
-                  </h3>
-
-                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    Find customer information
-                  </p>
-                </div>
-              </a>
-
-              <!-- Invoices -->
-
-              <a
-                href="../Invoices-page/invoices.html"
-                class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
+              <button
+                type="button"
+                class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
               >
                 <div
                   class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400"
                 >
-                  🧾
+                  📋
                 </div>
 
                 <div>
                   <h3 class="font-semibold text-slate-900 dark:text-white">
-                    Invoices
+                    Service History
                   </h3>
 
                   <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    Manage customer invoices
+                    Review customer history
                   </p>
                 </div>
-              </a>
+              </button>
 
               <!-- Messages -->
 
@@ -1416,7 +1519,7 @@
                   </h3>
 
                   <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                    Contact employees
+                    Contact customers
                   </p>
                 </div>
               </a>

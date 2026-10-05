@@ -717,9 +717,33 @@ const getConversationMessages = async (conversationId) => {
   })
   const result = await res.json()
   console.log(result.data);
-  return result.data
+  const messagesContainerElem = document.querySelector("#message-container")
+  const messages = result.data
+  
+  messages.forEach((message) => {
+    messagesContainerElem.innerHTML = ""
+    messagesContainerElem.insertAdjacentHTML("beforeend", `
+      <div id="message-container" class="flex items-end gap-3">
+                      <img src="/images/default-profile.png" alt="John Carter" class="h-8 w-8 shrink-0 rounded-full object-cover">
+
+                      <div class="max-w-[80%]">
+                        <div class="rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm dark:bg-[#151B23]">
+                          <p class="text-sm leading-6 text-slate-700 dark:text-slate-300">
+                            ${message.message}
+                          </p>
+                        </div>
+
+                        <p class="mt-1 px-1 text-[10px] text-slate-400">
+                          10:31 AM
+                        </p>
+                      </div>
+                    </div>
+      ` )
+  })
   
 }
+
+
 
 const initConversationSelection =  () => {
   const conversations = document.querySelectorAll("#conversations");
@@ -737,6 +761,7 @@ const initConversationSelection =  () => {
     });
   });
 };
+
 
 export {
   getAndShowAllUsers,

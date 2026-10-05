@@ -27,12 +27,12 @@ const roleMenus = {
   },
 
   RECEPTIONIST: {
-    dashboard: "/pages/Receptionist//dashboard.html",
-    customers: "/pages/Receptionist//customer.html",
-    vehicles: "/pages/Receptionist//vehicles.html",
-    appointments: "/pages/Receptionist//appointment.html",
-    services: "/pages/Receptionist/services.html",
-    payments: "/pages/Receptionist//payment.html",
+    dashboard: "/pages/Receptionist/dashboard.html",
+    appointments: "/pages/Receptionist/appointment.html",
+    customers: "/pages/Receptionist/customers.html",
+    invoices: "/pages/Receptionist/invoices.html",
+    payments: "/pages/Receptionist/payments.html",
+    messages: "/pages/Receptionist/messages.html",
     settings: "/pages/Receptionist/settings.html",
   },
 

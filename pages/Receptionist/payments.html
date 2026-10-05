@@ -2,693 +2,1430 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>AutoCare - Payments</title>
-
-    <link rel="stylesheet" href="../assets/styles/app.css" />
+    <title>AutoCare Pro CMS - Payments</title>
+    <link rel="stylesheet" href="/styles/app.css" />
+    <link rel="icon" href="/images/icon.jpg" />
+    <script src="../../../scripts/theme.js"></script>
   </head>
 
-  <body class="bg-slate-100 text-slate-900">
-    <div class="flex min-h-screen">
-      <!-- ================================================= -->
-      <!-- SIDEBAR -->
-      <!-- ================================================= -->
+  <body class="relative text-white">
+    <!-- ========================================================= -->
+    <!-- SHARED SVG SYMBOLS -->
+    <!-- ========================================================= -->
 
-      <aside
-        class="hidden lg:flex w-72 min-h-screen bg-slate-950 text-white flex-col p-6"
+    <svg class="hidden">
+      <!-- Arrow Right -->
+      <symbol
+        id="arrow-right"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
       >
-        <!-- Logo -->
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        />
+      </symbol>
 
-        <div class="mb-10">
-          <div class="flex items-center gap-3">
-            <div
-              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-xl"
-            >
-              A
-            </div>
+      <!-- Arrow Left -->
+      <symbol
+        id="arrow-left"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 19.5 8.25 12l7.5-7.5"
+        />
+      </symbol>
 
-            <div>
-              <h1 class="font-bold text-xl">AutoCare</h1>
+      <!-- Moon -->
+      <symbol
+        id="moon"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+        />
+      </symbol>
 
-              <p class="text-xs text-slate-400">Receptionist Portal</p>
-            </div>
-          </div>
-        </div>
+      <!-- Sun -->
+      <symbol
+        id="sun"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+        />
+      </symbol>
+    </svg>
 
-        <!-- Navigation -->
+    <!-- ========================================================= -->
+    <!-- LAYOUT -->
+    <!-- ========================================================= -->
 
-        <nav class="space-y-2">
-          <a
-            href="../dashboard/dashboard.html"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-          >
-            🏠 Dashboard
-          </a>
+    <div class="layout">
+      <!-- ======================================================= -->
+      <!-- SIDEBAR -->
+      <!-- ======================================================= -->
 
-          <a
-            href="../appointments/appointments.html"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-          >
-            📅 Appointments
+      <section id="sidebar-container" class="invisible sidebar-container z-50">
+        <!-- Loaded by JS -->
+      </section>
 
-            <span class="ml-auto text-xs bg-red-500 px-2 py-0.5 rounded-full">
-              3
-            </span>
-          </a>
+      <!-- ======================================================= -->
+      <!-- MOBILE SIDEBAR -->
+      <!-- ======================================================= -->
 
-          <a
-            href="../customers/customers.html"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-          >
-            👥 Customers
-          </a>
+      <section id="mobile-sidebar-container" class="relative invisible">
+        <!-- Loaded by JS -->
+      </section>
 
-          <a
-            href="../vehicles/vehicles.html"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-          >
-            🚗 Vehicles
-          </a>
-
-          <a
-            href="../services/services.html"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-          >
-            🔧 Services
-          </a>
-
-          <!-- Active -->
-
-          <a
-            href="#"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl bg-indigo-600"
-          >
-            💳 Payments
-          </a>
-
-          <a
-            href="../invoices/invoices.html"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-          >
-            🧾 Invoices
-          </a>
-
-          <a
-            href="../profile/profile.html"
-            class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 transition"
-          >
-            👤 Profile
-          </a>
-        </nav>
-
-        <!-- User -->
-
-        <div class="mt-auto flex items-center gap-3">
-          <div
-            class="w-11 h-11 rounded-full bg-indigo-600 flex items-center justify-center font-bold"
-          >
-            EM
-          </div>
-
-          <div>
-            <p class="font-semibold">Emily Miller</p>
-
-            <p class="text-xs text-slate-400">Receptionist</p>
-          </div>
-        </div>
-      </aside>
-
-      <!-- ================================================= -->
+      <!-- ======================================================= -->
       <!-- MAIN -->
-      <!-- ================================================= -->
+      <!-- ======================================================= -->
 
-      <main class="flex-1 min-w-0 p-6 lg:p-8">
-        <!-- ================================================= -->
+      <main class="main">
+        <!-- ===================================================== -->
         <!-- HEADER -->
-        <!-- ================================================= -->
+        <!-- ===================================================== -->
 
         <header
-          class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-8"
+          class="sticky top-0 z-40 -mx-8 mb-8 flex items-center justify-end border-b border-slate-200 bg-white/95 px-6 py-1.5 backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-800/95"
         >
-          <div>
-            <h1 class="text-3xl font-bold">Payments</h1>
+          <div class="flex items-center gap-4">
+            <!-- ================================================= -->
+            <!-- SEARCH -->
+            <!-- ================================================= -->
 
-            <p class="mt-1">Manage customer payments and transactions.</p>
+            <input
+              class="hidden w-72 rounded-xl border px-4 py-3 text-gray-500 outline-1 outline-black/20 focus:ring-2 focus:ring-indigo-500 dark:outline-white/50 md:block"
+              placeholder="Search customers, invoices..."
+            />
+
+            <!-- ================================================= -->
+            <!-- NOTIFICATION BUTTON -->
+            <!-- ================================================= -->
+
+            <button
+              id="message-notif"
+              type="button"
+              class="message-notif relative h-12 w-12 rounded-xl border border-black/40 shadow-sm transition-all duration-100 hover:shadow-md active:translate-y-0.5 active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] dark:border-white/50 dark:shadow-white/10 dark:hover:shadow-white/20 dark:active:shadow-[inset_0_2px_4px_rgba(255,255,255,0.15)]"
+            >
+              🔔
+
+              <span
+                id="unread-message-count"
+                class="absolute -right-1 -top-1 hidden min-w-5 rounded-full bg-orange-500 px-1.5 py-0.5 text-center text-[10px] font-bold leading-none text-white"
+              >
+                0
+              </span>
+            </button>
+
+            <!-- ================================================= -->
+            <!-- PROFILE -->
+            <!-- ================================================= -->
+
+            <div
+              class="relative flex h-12 shrink-0 items-center gap-2 border-l border-zinc-600/20 bg-transparent pl-1 md:w-48 md:justify-between md:gap-0.5 md:pr-2 dark:border-white/40"
+            >
+              <!-- Profile Image -->
+
+              <div class="shrink-0">
+                <img
+                  src="/images/default-profile.png"
+                  class="user-image block h-12 w-12 rounded-full bg-indigo-600 object-cover"
+                  alt="user-image"
+                />
+
+                <!-- ================= USER MENU ================= -->
+
+                <div
+                  class="user-menu absolute right-0 top-full z-50 mt-3 hidden w-64 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-xl shadow-black/10 dark:border-white/10 dark:bg-[#151B23] dark:shadow-black/30"
+                >
+                  <!-- User Information -->
+
+                  <div
+                    class="border-b border-black/10 px-5 py-2 dark:border-white/10"
+                  >
+                    <div class="flex items-center gap-3">
+                      <img
+                        src="/images/default-profile.png"
+                        class="user-image h-12 w-12 shrink-0 rounded-full bg-indigo-600 object-cover"
+                        alt="user-image"
+                      />
+
+                      <div class="min-w-0">
+                        <p
+                          class="user-name truncate text-sm font-semibold text-gray-900 dark:text-white"
+                        ></p>
+
+                        <p
+                          class="user-role truncate text-xs text-gray-500 dark:text-gray-400"
+                        ></p>
+
+                        <p
+                          class="user-email truncate text-xs text-gray-400 dark:text-gray-500"
+                        ></p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Menu -->
+
+                  <div class="p-1.5">
+                    <!-- My Profile -->
+
+                    <a
+                      href="#"
+                      id="profile-menu-item"
+                      class="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/5"
+                    >
+                      <span
+                        class="flex h-6 w-6 items-center justify-center rounded-lg"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="dark:text-white"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                          />
+                        </svg>
+                      </span>
+
+                      <span>My Profile</span>
+                    </a>
+
+                    <!-- Settings -->
+
+                    <a
+                      href="../Settings-page/settings.html"
+                      id="settings-menu-item"
+                      class="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-black/5 dark:text-gray-200 dark:hover:bg-white/5"
+                    >
+                      <span
+                        class="flex h-6 w-6 items-center justify-center rounded-lg"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="dark:text-white"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z"
+                          />
+
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                          />
+                        </svg>
+                      </span>
+
+                      <span>Settings</span>
+                    </a>
+                  </div>
+
+                  <!-- Logout -->
+
+                  <div
+                    class="border-t border-black/10 p-1.5 dark:border-white/10"
+                  >
+                    <a
+                      href="#"
+                      id="user-menu-logout"
+                      class="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/10"
+                    >
+                      <span
+                        class="flex h-8 w-8 items-center justify-center rounded-lg"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="rotate-180 text-red-400"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+                          />
+                        </svg>
+                      </span>
+
+                      <span>Logout</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- User Name / Role -->
+
+              <div
+                id="user-infos"
+                class="flex min-w-0 cursor-default items-center justify-between md:cursor-pointer"
+              >
+                <div
+                  class="mr-3.5 flex min-w-0 flex-col items-center justify-center gap-0.5"
+                >
+                  <p
+                    class="user-name max-w-full truncate text-[14px] font-semibold"
+                  ></p>
+
+                  <p class="user-role max-w-full truncate text-xs"></p>
+                </div>
+
+                <!-- Profile Dropdown Button -->
+
+                <span
+                  id="user-profile"
+                  type="button"
+                  class="block h-5 w-5 rounded-full text-zinc-600 transition-all duration-250 focus:outline-none dark:text-amber-50 md:hover:scale-105"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
           </div>
 
-          <button
-            class="flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition"
-          >
-            <span class="text-lg"> + </span>
+          <!-- ================================================= -->
+          <!-- NOTIFICATION MODAL -->
+          <!-- ================================================= -->
 
-            Record Payment
-          </button>
+          <div
+            id="messageNotificationModal"
+            class="notification-modal compact absolute right-0 top-17 z-50 invisible overflow-hidden overflow-y-auto rounded-2xl border border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
+          >
+            <!-- Compact -->
+
+            <div id="notification-compact-view">
+              <div
+                class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-700"
+              >
+                <div class="min-w-0">
+                  <h3 class="text-sm font-bold text-slate-800 dark:text-white">
+                    Messages
+                  </h3>
+
+                  <p class="mt-0.5 text-xs text-slate-400">Recent messages</p>
+                </div>
+
+                <span
+                  id="notification-unread-count"
+                  class="hidden shrink-0 rounded-full bg-orange-100 px-2 py-1 text-xs font-semibold text-orange-600"
+                >
+                  0
+                </span>
+              </div>
+
+              <div
+                id="messageNotificationList"
+                class="max-h-[60vh] overflow-y-auto"
+              >
+                <div class="px-4 py-8 text-center text-sm text-slate-400">
+                  No new messages
+                </div>
+              </div>
+
+              <div class="border-t border-slate-200 p-3 dark:border-slate-700">
+                <button
+                  id="view-all-notifications"
+                  type="button"
+                  class="block w-full rounded-lg bg-indigo-600 px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-orange-600"
+                >
+                  View all notifications
+                </button>
+              </div>
+            </div>
+
+            <!-- Expanded -->
+
+            <div id="notification-expanded-view" class="hidden">
+              <div
+                class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-700"
+              >
+                <div class="flex min-w-0 items-center gap-3">
+                  <button
+                    id="back-to-notifications"
+                    type="button"
+                    class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white"
+                    aria-label="Back to recent notifications"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                      />
+                    </svg>
+                  </button>
+
+                  <div class="min-w-0">
+                    <h3
+                      class="text-sm font-bold text-slate-800 dark:text-white"
+                    >
+                      Notifications
+                    </h3>
+
+                    <p class="mt-0.5 text-xs text-slate-400">
+                      All notifications
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  id="mark-all-notifications-read"
+                  type="button"
+                  class="shrink-0 text-xs font-medium text-indigo-600 transition hover:text-orange-600 dark:text-indigo-400 dark:hover:text-orange-400"
+                >
+                  Mark all as read
+                </button>
+              </div>
+
+              <div id="all-notifications-list" class="max-h-[65vh]">
+                <div class="px-4 pb-2 pt-4">
+                  <p
+                    class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
+                  >
+                    Today
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </header>
 
-        <!-- ================================================= -->
-        <!-- STAT CARDS -->
-        <!-- ================================================= -->
+        <!-- ===================================================== -->
+        <!-- NOTIFICATION DETAIL MODAL -->
+        <!-- ===================================================== -->
 
-        <section
-          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-6"
+        <div
+          id="notification-detail-modal"
+          class="fixed inset-0 z-[1000] invisible flex items-center justify-center opacity-0 transition-all duration-300"
         >
-          <!-- Today's Revenue -->
-
-          <div class="border rounded-2xl p-5">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm">Today's Payments</p>
-
-                <p class="text-3xl font-bold mt-2">$3,840</p>
-
-                <p class="text-xs text-green-600 mt-2">
-                  ↑ 14.2% from yesterday
-                </p>
-              </div>
-
-              <div
-                class="w-11 h-11 rounded-xl bg-green-100 text-green-600 flex items-center justify-center text-xl"
-              >
-                $
-              </div>
-            </div>
-          </div>
-
-          <!-- Monthly Revenue -->
-
-          <div class="border rounded-2xl p-5">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm">This Month</p>
-
-                <p class="text-3xl font-bold mt-2">$48,620</p>
-
-                <p class="text-xs text-green-600 mt-2">
-                  ↑ 8.6% from last month
-                </p>
-              </div>
-
-              <div
-                class="w-11 h-11 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl"
-              >
-                📈
-              </div>
-            </div>
-          </div>
-
-          <!-- Pending -->
-
-          <div class="border rounded-2xl p-5">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm">Pending Payments</p>
-
-                <p class="text-3xl font-bold mt-2">$7,240</p>
-
-                <p class="text-xs text-orange-600 mt-2">23 unpaid invoices</p>
-              </div>
-
-              <div
-                class="w-11 h-11 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center text-xl"
-              >
-                !
-              </div>
-            </div>
-          </div>
-
-          <!-- Transactions -->
-
-          <div class="border rounded-2xl p-5">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-sm">Transactions</p>
-
-                <p class="text-3xl font-bold mt-2">186</p>
-
-                <p class="text-xs mt-2">This month</p>
-              </div>
-
-              <div
-                class="w-11 h-11 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl"
-              >
-                #
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================================================= -->
-        <!-- SEARCH / FILTER -->
-        <!-- ================================================= -->
-
-        <section class="border rounded-2xl p-5 mb-6">
-          <div class="flex flex-col xl:flex-row xl:items-center gap-4">
-            <!-- Search -->
-
-            <div class="relative flex-1">
-              <span
-                class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
-              >
-                🔍
-              </span>
-
-              <input
-                type="search"
-                placeholder="Search customer, invoice or transaction ID..."
-                class="w-full pl-11 pr-4 py-3 border rounded-xl outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-            </div>
-
-            <!-- Payment Status -->
-
-            <select class="border rounded-xl px-4 py-3 outline-none">
-              <option>All Payments</option>
-
-              <option>Completed</option>
-
-              <option>Pending</option>
-
-              <option>Refunded</option>
-            </select>
-
-            <!-- Payment Method -->
-
-            <select class="border rounded-xl px-4 py-3 outline-none">
-              <option>All Methods</option>
-
-              <option>Cash</option>
-
-              <option>Card</option>
-
-              <option>Bank Transfer</option>
-            </select>
-
-            <!-- Date -->
-
-            <select class="border rounded-xl px-4 py-3 outline-none">
-              <option>All Dates</option>
-
-              <option>Today</option>
-
-              <option>This Week</option>
-
-              <option>This Month</option>
-            </select>
-          </div>
-        </section>
-
-        <!-- ================================================= -->
-        <!-- PAYMENTS TABLE -->
-        <!-- ================================================= -->
-
-        <section class="border rounded-2xl overflow-hidden">
-          <!-- Header -->
+          <div
+            id="notification-detail-overlay"
+            class="absolute inset-0 bg-black/60"
+          ></div>
 
           <div
-            class="px-6 py-5 border-b flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+            class="relative z-10 w-[calc(100%-2rem)] max-w-xl rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-[#151B23]"
           >
-            <div>
-              <h2 class="text-xl font-bold">Recent Transactions</h2>
-
-              <p class="text-sm mt-1">Latest customer payment activity</p>
-            </div>
-
-            <button class="text-sm hover:text-slate-900">Export</button>
-          </div>
-
-          <!-- Table -->
-
-          <div class="overflow-x-auto">
-            <table class="w-full min-w-[1050px] text-sm">
-              <thead class="bg-slate-50">
-                <tr>
-                  <th class="text-left px-6 py-4 font-semibold">Transaction</th>
-
-                  <th class="text-left px-6 py-4 font-semibold">Customer</th>
-
-                  <th class="text-left px-6 py-4 font-semibold">Invoice</th>
-
-                  <th class="text-left px-6 py-4 font-semibold">Method</th>
-
-                  <th class="text-left px-6 py-4 font-semibold">Date</th>
-
-                  <th class="text-left px-6 py-4 font-semibold">Amount</th>
-
-                  <th class="text-left px-6 py-4 font-semibold">Status</th>
-
-                  <th class="text-right px-6 py-4 font-semibold">Action</th>
-                </tr>
-              </thead>
-
-              <tbody class="divide-y divide-slate-100/30">
-                <!-- Payment 1 -->
-
-                <tr class="">
-                  <td class="px-6 py-5">
-                    <p class="font-mono font-semibold">#TXN-82941</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold"
-                      >
-                        JS
-                      </div>
-
-                      <div>
-                        <p class="font-medium">John Smith</p>
-
-                        <p class="text-xs text-slate-400">BMW X5</p>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
-                    >
-                      INV-2048
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="flex items-center gap-2"> 💳 Card </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <p>Aug 17, 2026</p>
-
-                    <p class="text-xs text-slate-400">09:42 AM</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="font-semibold"> $420.00 </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="inline-flex px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
-                    >
-                      Completed
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5 text-right">
-                    <button
-                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 text-xs font-semibold"
-                    >
-                      Receipt
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Payment 2 -->
-
-                <tr class="">
-                  <td class="px-6 py-5">
-                    <p class="font-mono font-semibold">#TXN-82940</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-semibold"
-                      >
-                        AM
-                      </div>
-
-                      <div>
-                        <p class="font-medium">Alex Morgan</p>
-
-                        <p class="text-xs text-slate-400">Toyota Camry</p>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
-                    >
-                      INV-2047
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="flex items-center gap-2"> 💵 Cash </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <p>Aug 17, 2026</p>
-
-                    <p class="text-xs text-slate-400">09:18 AM</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="font-semibold"> $180.00 </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="inline-flex px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
-                    >
-                      Completed
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5 text-right">
-                    <button
-                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 text-xs font-semibold"
-                    >
-                      Receipt
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Payment 3 -->
-
-                <tr class="">
-                  <td class="px-6 py-5">
-                    <p class="font-mono font-semibold">#TXN-82939</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-semibold"
-                      >
-                        DW
-                      </div>
-
-                      <div>
-                        <p class="font-medium">David Wilson</p>
-
-                        <p class="text-xs text-slate-400">Honda Civic</p>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
-                    >
-                      INV-2046
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="flex items-center gap-2">
-                      🏦 Bank Transfer
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <p>Aug 16, 2026</p>
-
-                    <p class="text-xs text-slate-400">04:32 PM</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="font-semibold"> $650.00 </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="inline-flex px-3 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-semibold"
-                    >
-                      Pending
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5 text-right">
-                    <button
-                      class="px-3 py-2 rounded-lg bg-orange-50 text-orange-600 text-xs font-semibold"
-                    >
-                      Verify
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Payment 4 -->
-
-                <tr class="">
-                  <td class="px-6 py-5">
-                    <p class="font-mono font-semibold">#TXN-82938</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="w-10 h-10 rounded-full bg-pink-100 text-pink-700 flex items-center justify-center font-semibold"
-                      >
-                        SJ
-                      </div>
-
-                      <div>
-                        <p class="font-medium">Sarah Johnson</p>
-
-                        <p class="text-xs text-slate-400">Ford Focus</p>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
-                    >
-                      INV-2045
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="flex items-center gap-2"> 💳 Card </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <p>Aug 16, 2026</p>
-
-                    <p class="text-xs text-slate-400">02:14 PM</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="font-semibold"> $275.00 </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="inline-flex px-3 py-1.5 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
-                    >
-                      Completed
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5 text-right">
-                    <button
-                      class="px-3 py-2 rounded-lg bg-indigo-50 text-indigo-600 text-xs font-semibold"
-                    >
-                      Receipt
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Payment 5 -->
-
-                <tr class="">
-                  <td class="px-6 py-5">
-                    <p class="font-mono font-semibold">#TXN-82937</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="w-10 h-10 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center font-semibold"
-                      >
-                        MR
-                      </div>
-
-                      <div>
-                        <p class="font-medium">Michael Ross</p>
-
-                        <p class="text-xs text-slate-400">BMW 3 Series</p>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="font-mono text-xs bg-slate-100 px-3 py-1.5 rounded-lg"
-                    >
-                      INV-2044
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="flex items-center gap-2"> 💵 Cash </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <p>Aug 15, 2026</p>
-
-                    <p class="text-xs text-slate-400">11:27 AM</p>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span class="font-semibold"> $320.00 </span>
-                  </td>
-
-                  <td class="px-6 py-5">
-                    <span
-                      class="inline-flex px-3 py-1.5 rounded-full bg-red-100 text-red-700 text-xs font-semibold"
-                    >
-                      Refunded
-                    </span>
-                  </td>
-
-                  <td class="px-6 py-5 text-right">
-                    <button
-                      class="px-3 py-2 rounded-lg bg-slate-100 text-xs font-semibold"
-                    >
-                      Details
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- ================================================= -->
-          <!-- PAGINATION -->
-          <!-- ================================================= -->
-
-          <div
-            class="px-6 py-4 border-t flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
-          >
-            <p class="text-sm">Showing 1–5 of 186 transactions</p>
-
-            <div class="flex items-center gap-2">
-              <button class="w-9 h-9 rounded-lg border text-slate-400">
-                ←
-              </button>
+            <div
+              class="flex items-center justify-between border-b border-slate-200 px-5 py-4 dark:border-slate-700"
+            >
+              <h3
+                id="notification-detail-title"
+                class="text-base font-bold text-slate-800 dark:text-white"
+              >
+                Notification
+              </h3>
 
               <button
-                class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-semibold"
+                id="close-notification-detail"
+                type="button"
+                class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
               >
-                1
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="m8.401 16.333l-.734-.727L11.266 12L7.667 8.42l.734-.728L12 11.29l3.574-3.597l.734.727L12.709 12l3.599 3.606l-.734.727L12 12.737z"
+                  />
+                </svg>
               </button>
+            </div>
 
-              <button class="w-9 h-9 rounded-lg border">2</button>
+            <div class="px-5 py-6">
+              <div class="flex items-start gap-4">
+                <img
+                  id="notification-detail-image"
+                  src="/images/default-profile.png"
+                  alt=""
+                  class="h-12 w-12 shrink-0 rounded-xl object-cover"
+                />
 
-              <button class="w-9 h-9 rounded-lg border">3</button>
+                <div class="min-w-0 flex-1">
+                  <p
+                    id="notification-detail-sender"
+                    class="text-xs font-semibold text-indigo-600 dark:text-indigo-400"
+                  ></p>
 
-              <button class="w-9 h-9 rounded-lg border">...</button>
+                  <p
+                    id="notification-detail-message"
+                    class="mt-2 text-sm leading-6 text-slate-700 dark:text-slate-300"
+                  ></p>
 
-              <button class="w-9 h-9 rounded-lg border">→</button>
+                  <p
+                    id="notification-detail-time"
+                    class="mt-4 text-xs text-slate-400"
+                  ></p>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- PAYMENTS PAGE -->
+        <!-- ===================================================== -->
+
+        <div class="space-y-8">
+          <!-- =================================================== -->
+          <!-- PAGE HEADER -->
+          <!-- =================================================== -->
+
+          <div
+            class="flex flex-col gap-5 rounded-2xl bg-emerald-700 px-6 py-7 text-white sm:px-8 lg:flex-row lg:items-center lg:justify-between"
+          >
+            <div>
+              <h1 class="text-2xl font-bold sm:text-3xl">Payments</h1>
+
+              <p class="mt-2 max-w-2xl text-sm text-emerald-100 sm:text-base">
+                Manage customer payments, outstanding balances, invoices, and
+                daily payment activities.
+              </p>
+            </div>
+
+            <button
+              id="record-payment-button"
+              type="button"
+              class="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50"
+            >
+              + Record Payment
+            </button>
+          </div>
+
+          <!-- =================================================== -->
+          <!-- PAYMENT STATISTICS -->
+          <!-- =================================================== -->
+
+          <section
+            class="grid grid-cols-1 gap-5 bg-[#F3F1EC] dark:bg-[#1f0a19] sm:grid-cols-2 xl:grid-cols-4"
+          >
+            <!-- Today's Revenue -->
+
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                Today's Revenue
+              </p>
+
+              <h3
+                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
+              >
+                $2,840
+              </h3>
+
+              <span class="text-sm text-emerald-600 dark:text-emerald-400">
+                8 payments received
+              </span>
+            </article>
+
+            <!-- Pending Payments -->
+
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                Pending Payments
+              </p>
+
+              <h3
+                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
+              >
+                $1,240
+              </h3>
+
+              <span class="text-sm text-orange-600 dark:text-orange-400">
+                5 invoices outstanding
+              </span>
+            </article>
+
+            <!-- Completed Payments -->
+
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                Completed Payments
+              </p>
+
+              <h3
+                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
+              >
+                24
+              </h3>
+
+              <span class="text-sm text-blue-600 dark:text-blue-400">
+                This month
+              </span>
+            </article>
+
+            <!-- Outstanding Balance -->
+
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                Outstanding Balance
+              </p>
+
+              <h3
+                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
+              >
+                $4,680
+              </h3>
+
+              <span class="text-sm text-red-600 dark:text-red-400">
+                Requires follow-up
+              </span>
+            </article>
+          </section>
+
+          <!-- =================================================== -->
+          <!-- PAYMENT FILTERS -->
+          <!-- =================================================== -->
+
+          <section
+            class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+          >
+            <div
+              class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"
+            >
+              <div
+                class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:flex-1"
+              >
+                <!-- Search -->
+
+                <div>
+                  <label
+                    class="mb-2 block text-xs font-semibold text-slate-500 dark:text-slate-400"
+                  >
+                    Search
+                  </label>
+
+                  <input
+                    id="payment-search"
+                    type="text"
+                    placeholder="Customer, invoice, payment..."
+                    class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
+                  />
+                </div>
+
+                <!-- Date -->
+
+                <div>
+                  <label
+                    class="mb-2 block text-xs font-semibold text-slate-500 dark:text-slate-400"
+                  >
+                    Date
+                  </label>
+
+                  <input
+                    id="payment-date"
+                    type="date"
+                    class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
+                  />
+                </div>
+
+                <!-- Payment Method -->
+
+                <div>
+                  <label
+                    class="mb-2 block text-xs font-semibold text-slate-500 dark:text-slate-400"
+                  >
+                    Payment Method
+                  </label>
+
+                  <select
+                    id="payment-method-filter"
+                    class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
+                  >
+                    <option value="">All Methods</option>
+                    <option value="CASH">Cash</option>
+                    <option value="CARD">Card</option>
+                    <option value="TRANSFER">Bank Transfer</option>
+                  </select>
+                </div>
+
+                <!-- Status -->
+
+                <div>
+                  <label
+                    class="mb-2 block text-xs font-semibold text-slate-500 dark:text-slate-400"
+                  >
+                    Status
+                  </label>
+
+                  <select
+                    id="payment-status-filter"
+                    class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
+                  >
+                    <option value="">All Statuses</option>
+                    <option value="COMPLETED">Completed</option>
+                    <option value="PENDING">Pending</option>
+                    <option value="REFUNDED">Refunded</option>
+                    <option value="FAILED">Failed</option>
+                  </select>
+                </div>
+              </div>
+
+              <button
+                id="clear-payment-filters"
+                type="button"
+                class="rounded-xl border border-[#D9D9D3] px-4 py-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
+              >
+                Clear Filters
+              </button>
+            </div>
+          </section>
+
+          <!-- =================================================== -->
+          <!-- PAYMENT TABLE -->
+          <!-- =================================================== -->
+
+          <section>
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <!-- Header -->
+
+              <div
+                class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div>
+                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                    Payment Transactions
+                  </h2>
+
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                    Review and manage recent customer payments.
+                  </p>
+                </div>
+
+                <span
+                  class="rounded-full bg-emerald-100 px-3 py-1.5 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                >
+                  8 Payments Today
+                </span>
+              </div>
+
+              <!-- Table -->
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr
+                      class="border-b border-[#D9D9D3] text-slate-500 dark:border-[#2A3540] dark:text-slate-400"
+                    >
+                      <th class="p-3 text-left font-medium">Date</th>
+                      <th class="p-3 text-left font-medium">Customer</th>
+                      <th class="p-3 text-left font-medium">Invoice</th>
+                      <th class="p-3 text-left font-medium">Service</th>
+                      <th class="p-3 text-left font-medium">Amount</th>
+                      <th class="p-3 text-left font-medium">Method</th>
+                      <th class="p-3 text-left font-medium">Status</th>
+                      <th class="p-3 text-right font-medium">Action</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <!-- Payment 1 -->
+
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                      <td
+                        class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        Oct 5, 2026
+                      </td>
+
+                      <td class="p-3">
+                        <div class="flex items-center gap-3">
+                          <img
+                            src="/images/default-profile.png"
+                            alt=""
+                            class="h-9 w-9 shrink-0 rounded-full object-cover"
+                          />
+
+                          <div>
+                            <p
+                              class="font-semibold text-slate-900 dark:text-white"
+                            >
+                              John Smith
+                            </p>
+
+                            <p class="text-xs text-slate-400">
+                              john@example.com
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-3 font-medium text-slate-800 dark:text-slate-200"
+                      >
+                        INV-1024
+                      </td>
+
+                      <td class="p-3">Oil Change & Inspection</td>
+
+                      <td
+                        class="p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        $180
+                      </td>
+
+                      <td class="p-3">Card</td>
+
+                      <td class="p-3">
+                        <span
+                          class="rounded-full bg-emerald-100 px-3 py-1 text-xs text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                        >
+                          Completed
+                        </span>
+                      </td>
+
+                      <td class="p-3 text-right">
+                        <button
+                          type="button"
+                          class="payment-view-button rounded-lg bg-indigo-100 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400"
+                          data-payment-id="1"
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+
+                    <!-- Payment 2 -->
+
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                      <td
+                        class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        Oct 5, 2026
+                      </td>
+
+                      <td class="p-3">
+                        <div class="flex items-center gap-3">
+                          <img
+                            src="/images/default-profile.png"
+                            alt=""
+                            class="h-9 w-9 shrink-0 rounded-full object-cover"
+                          />
+
+                          <div>
+                            <p
+                              class="font-semibold text-slate-900 dark:text-white"
+                            >
+                              Sarah Johnson
+                            </p>
+
+                            <p class="text-xs text-slate-400">
+                              sarah@example.com
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-3 font-medium text-slate-800 dark:text-slate-200"
+                      >
+                        INV-1023
+                      </td>
+
+                      <td class="p-3">Brake Inspection</td>
+
+                      <td
+                        class="p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        $240
+                      </td>
+
+                      <td class="p-3">Cash</td>
+
+                      <td class="p-3">
+                        <span
+                          class="rounded-full bg-emerald-100 px-3 py-1 text-xs text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                        >
+                          Completed
+                        </span>
+                      </td>
+
+                      <td class="p-3 text-right">
+                        <button
+                          type="button"
+                          class="payment-view-button rounded-lg bg-indigo-100 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400"
+                          data-payment-id="2"
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+
+                    <!-- Payment 3 -->
+
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                      <td
+                        class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        Oct 5, 2026
+                      </td>
+
+                      <td class="p-3">
+                        <div class="flex items-center gap-3">
+                          <img
+                            src="/images/default-profile.png"
+                            alt=""
+                            class="h-9 w-9 shrink-0 rounded-full object-cover"
+                          />
+
+                          <div>
+                            <p
+                              class="font-semibold text-slate-900 dark:text-white"
+                            >
+                              Michael Brown
+                            </p>
+
+                            <p class="text-xs text-slate-400">
+                              michael@example.com
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-3 font-medium text-slate-800 dark:text-slate-200"
+                      >
+                        INV-1022
+                      </td>
+
+                      <td class="p-3">Full Service</td>
+
+                      <td
+                        class="p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        $420
+                      </td>
+
+                      <td class="p-3">Transfer</td>
+
+                      <td class="p-3">
+                        <span
+                          class="rounded-full bg-orange-100 px-3 py-1 text-xs text-orange-700 dark:bg-orange-500/10 dark:text-orange-400"
+                        >
+                          Pending
+                        </span>
+                      </td>
+
+                      <td class="p-3 text-right">
+                        <button
+                          type="button"
+                          class="payment-view-button rounded-lg bg-indigo-100 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400"
+                          data-payment-id="3"
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+
+                    <!-- Payment 4 -->
+
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                      <td
+                        class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        Oct 4, 2026
+                      </td>
+
+                      <td class="p-3">
+                        <div class="flex items-center gap-3">
+                          <img
+                            src="/images/default-profile.png"
+                            alt=""
+                            class="h-9 w-9 shrink-0 rounded-full object-cover"
+                          />
+
+                          <div>
+                            <p
+                              class="font-semibold text-slate-900 dark:text-white"
+                            >
+                              Emily Davis
+                            </p>
+
+                            <p class="text-xs text-slate-400">
+                              emily@example.com
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-3 font-medium text-slate-800 dark:text-slate-200"
+                      >
+                        INV-1021
+                      </td>
+
+                      <td class="p-3">Tire Service</td>
+
+                      <td
+                        class="p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        $360
+                      </td>
+
+                      <td class="p-3">Card</td>
+
+                      <td class="p-3">
+                        <span
+                          class="rounded-full bg-emerald-100 px-3 py-1 text-xs text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                        >
+                          Completed
+                        </span>
+                      </td>
+
+                      <td class="p-3 text-right">
+                        <button
+                          type="button"
+                          class="payment-view-button rounded-lg bg-indigo-100 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400"
+                          data-payment-id="4"
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+
+                    <!-- Payment 5 -->
+
+                    <tr>
+                      <td
+                        class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        Oct 4, 2026
+                      </td>
+
+                      <td class="p-3">
+                        <div class="flex items-center gap-3">
+                          <img
+                            src="/images/default-profile.png"
+                            alt=""
+                            class="h-9 w-9 shrink-0 rounded-full object-cover"
+                          />
+
+                          <div>
+                            <p
+                              class="font-semibold text-slate-900 dark:text-white"
+                            >
+                              Daniel Wilson
+                            </p>
+
+                            <p class="text-xs text-slate-400">
+                              daniel@example.com
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td
+                        class="p-3 font-medium text-slate-800 dark:text-slate-200"
+                      >
+                        INV-1020
+                      </td>
+
+                      <td class="p-3">General Inspection</td>
+
+                      <td
+                        class="p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        $150
+                      </td>
+
+                      <td class="p-3">Cash</td>
+
+                      <td class="p-3">
+                        <span
+                          class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700 dark:bg-slate-500/10 dark:text-slate-400"
+                        >
+                          Refunded
+                        </span>
+                      </td>
+
+                      <td class="p-3 text-right">
+                        <button
+                          type="button"
+                          class="payment-view-button rounded-lg bg-indigo-100 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400"
+                          data-payment-id="5"
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <!-- =================================================== -->
+          <!-- PAYMENT SUMMARY -->
+          <!-- =================================================== -->
+
+          <section
+            class="grid grid-cols-1 gap-6 bg-[#F3F1EC] dark:bg-[#1f0a19] lg:grid-cols-2"
+          >
+            <!-- Payment Methods -->
+
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <div class="mb-5">
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                  Payment Methods
+                </h2>
+
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                  Today's payment distribution
+                </p>
+              </div>
+
+              <div class="space-y-4">
+                <!-- Card -->
+
+                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
+                  <div class="flex items-center justify-between">
+                    <p
+                      class="text-sm font-semibold text-slate-700 dark:text-slate-200"
+                    >
+                      Card
+                    </p>
+
+                    <span
+                      class="text-lg font-bold text-indigo-600 dark:text-indigo-400"
+                    >
+                      $1,420
+                    </span>
+                  </div>
+
+                  <div
+                    class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700"
+                  >
+                    <div class="h-2 w-3/5 rounded-full bg-indigo-500"></div>
+                  </div>
+                </div>
+
+                <!-- Cash -->
+
+                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
+                  <div class="flex items-center justify-between">
+                    <p
+                      class="text-sm font-semibold text-slate-700 dark:text-slate-200"
+                    >
+                      Cash
+                    </p>
+
+                    <span
+                      class="text-lg font-bold text-emerald-600 dark:text-emerald-400"
+                    >
+                      $920
+                    </span>
+                  </div>
+
+                  <div
+                    class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700"
+                  >
+                    <div class="h-2 w-2/5 rounded-full bg-emerald-500"></div>
+                  </div>
+                </div>
+
+                <!-- Transfer -->
+
+                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
+                  <div class="flex items-center justify-between">
+                    <p
+                      class="text-sm font-semibold text-slate-700 dark:text-slate-200"
+                    >
+                      Bank Transfer
+                    </p>
+
+                    <span
+                      class="text-lg font-bold text-orange-600 dark:text-orange-400"
+                    >
+                      $500
+                    </span>
+                  </div>
+
+                  <div
+                    class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700"
+                  >
+                    <div class="h-2 w-1/4 rounded-full bg-orange-500"></div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Outstanding Invoices -->
+
+            <article
+              class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+            >
+              <div class="mb-5">
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                  Outstanding Invoices
+                </h2>
+
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                  Customers with pending balances
+                </p>
+              </div>
+
+              <div class="space-y-3">
+                <div
+                  class="flex items-center justify-between rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
+                >
+                  <div>
+                    <p class="font-semibold text-slate-900 dark:text-white">
+                      Robert Miller
+                    </p>
+
+                    <p class="mt-1 text-xs text-slate-400">INV-1018</p>
+                  </div>
+
+                  <span class="font-bold text-orange-600 dark:text-orange-400">
+                    $480
+                  </span>
+                </div>
+
+                <div
+                  class="flex items-center justify-between rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
+                >
+                  <div>
+                    <p class="font-semibold text-slate-900 dark:text-white">
+                      Michael Brown
+                    </p>
+
+                    <p class="mt-1 text-xs text-slate-400">INV-1022</p>
+                  </div>
+
+                  <span class="font-bold text-orange-600 dark:text-orange-400">
+                    $420
+                  </span>
+                </div>
+
+                <div
+                  class="flex items-center justify-between rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
+                >
+                  <div>
+                    <p class="font-semibold text-slate-900 dark:text-white">
+                      James Anderson
+                    </p>
+
+                    <p class="mt-1 text-xs text-slate-400">INV-1015</p>
+                  </div>
+
+                  <span class="font-bold text-orange-600 dark:text-orange-400">
+                    $360
+                  </span>
+                </div>
+
+                <div
+                  class="flex items-center justify-between rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
+                >
+                  <div>
+                    <p class="font-semibold text-slate-900 dark:text-white">
+                      Emily Davis
+                    </p>
+
+                    <p class="mt-1 text-xs text-slate-400">INV-1012</p>
+                  </div>
+
+                  <span class="font-bold text-orange-600 dark:text-orange-400">
+                    $280
+                  </span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- =================================================== -->
+          <!-- QUICK ACTIONS -->
+          <!-- =================================================== -->
+
+          <div>
+            <h2 class="mb-5 text-xl font-bold text-slate-900 dark:text-white">
+              Quick Actions
+            </h2>
+
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              <!-- Record Payment -->
+
+              <button
+                id="quick-record-payment"
+                type="button"
+                class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
+              >
+                <div
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400"
+                >
+                  $
+                </div>
+
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
+                    Record Payment
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    Add a customer payment
+                  </p>
+                </div>
+              </button>
+
+              <!-- Outstanding -->
+
+              <button
+                id="quick-outstanding-payments"
+                type="button"
+                class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
+              >
+                <div
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-red-100 text-red-600 dark:bg-red-500/10 dark:text-red-400"
+                >
+                  !
+                </div>
+
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
+                    Outstanding
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    Review unpaid balances
+                  </p>
+                </div>
+              </button>
+
+              <!-- Invoices -->
+
+              <a
+                href="../Invoices-page/invoices.html"
+                class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
+              >
+                <div
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
+                >
+                  #
+                </div>
+
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
+                    Invoices
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    View customer invoices
+                  </p>
+                </div>
+              </a>
+
+              <!-- Customers -->
+
+              <a
+                href="../Customers-page/customers.html"
+                class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
+              >
+                <div
+                  class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
+                >
+                  👤
+                </div>
+
+                <div>
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
+                    Customers
+                  </h3>
+
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    Find customer information
+                  </p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- OVERLAY / MODALS -->
+        <!-- ===================================================== -->
+
+        <div
+          id="overlay"
+          class="overlay fixed inset-0 z-40 hidden bg-black/20"
+        ></div>
+
+        <div id="modal-container"></div>
+
+        <div id="result-modal-container"></div>
       </main>
     </div>
+
+    <!-- ========================================================= -->
+    <!-- SHARED JS -->
+    <!-- ========================================================= -->
+
+    <script type="module" src="../../scripts/shared.js"></script>
   </body>
 </html>
