@@ -5,6 +5,7 @@ import {
 } from "../components/result-modal.js";
 import { loadComponent } from "../components/component-Loader.js";
 import { hideLoader, showLoader } from "./loader.js";
+import { getMe } from "./auth.js";
 
 await loadComponent("result-modal-container", "/Components/result-modal.html");
 
@@ -701,67 +702,143 @@ const getAndShowAllConversations = async () => {
 
 const getOneConversation = async (conversationId) => {
   const res = await fetch(`${base_URL}/conversations/${conversationId}`, {
-     
-      credentials: "include",   
-  })
-  const result = await res.json()
+    credentials: "include",
+  });
+  const result = await res.json();
   console.log(result.data);
-  
-  return result.data
-  
-}
+
+  return result.data;
+};
 
 const getConversationMessages = async (conversationId) => {
-  const res = await fetch(`${base_URL}/conversations/${conversationId}/messages`, {
-   credentials: "include",
-  })
-  const result = await res.json()
-  console.log(result.data);
-  const messagesContainerElem = document.querySelector("#message-container")
-  const messages = result.data
-  
+  const res = await fetch(
+    `${base_URL}/conversations/${conversationId}/messages`,
+    {
+      credentials: "include",
+    }
+  );
+
+  const result = await res.json();
+
+  const messages = result.data;
+
+  const receiverMessageContainer = document.querySelector(
+    "#receiver-message-container"
+  );
+
+  const senderMessageContainer = document.querySelector(
+    "#sender-message-container"
+  );
+
+  // Clear previous conversation messages
+  receiverMessageContainer.innerHTML = "";
+  senderMessageContainer.innerHTML = "";
+
+  // Get current logged-in receptionist
+  const currentUserResult = await getMe();
+  const currentUser = currentUserResult.data;
+
   messages.forEach((message) => {
-    messagesContainerElem.innerHTML = ""
-    messagesContainerElem.insertAdjacentHTML("beforeend", `
-      <div id="message-container" class="flex items-end gap-3">
-                      <img src="/images/default-profile.png" alt="John Carter" class="h-8 w-8 shrink-0 rounded-full object-cover">
+    const senderId = String(message.sender._id);
+    const currentUserId = String(currentUser._id);
 
-                      <div class="max-w-[80%]">
-                        <div class="rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm dark:bg-[#151B23]">
-                          <p class="text-sm leading-6 text-slate-700 dark:text-slate-300">
-                            ${message.message}
-                          </p>
-                        </div>
+    const messageTime = new Date(message.createdAt).toLocaleTimeString(
+      "en-US",
+      {
+        hour: "numeric",
+        minute: "2-digit",
+      }
+    );
 
-                        <p class="mt-1 px-1 text-[10px] text-slate-400">
-                          10:31 AM
-                        </p>
-                      </div>
-                    </div>
-      ` )
-  })
-  
-}
+    const isMine = senderId === currentUserId;
 
+    if (isMine) {
+      senderMessageContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+          <div class="flex justify-end">
+            <div class="max-w-[80%]">
+              <div
+                class="rounded-2xl rounded-br-md bg-emerald-700 px-4 py-3 shadow-sm"
+              >
+                <p class="text-sm leading-6 text-white">
+                  ${message.message}
+                </p>
+              </div>
 
+              <p class="mt-1 px-1 text-right text-[10px] text-slate-400">
+                ${messageTime}
+              </p>
+            </div>
+          </div>
+        `
+      );
+    } else {
+      receiverMessageContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+          <div class="flex items-end gap-3">
+            <img
+              src="/images/default-profile.png"
+              alt="Customer"
+              class="h-8 w-8 shrink-0 rounded-full object-cover"
+            >
 
-const initConversationSelection =  () => {
+            <div class="max-w-[80%]">
+              <div
+                class="rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm dark:bg-[#151B23]"
+              >
+                <p class="text-sm leading-6 text-slate-700 dark:text-slate-300">
+                  ${message.message}
+                </p>
+              </div>
+
+              <p class="mt-1 px-1 text-[10px] text-slate-400">
+                ${messageTime}
+              </p>
+            </div>
+          </div>
+        `
+      );
+    }
+  });
+
+  // Scroll to the newest message
+  const messageThread = document.querySelector("#message-thread");
+
+  messageThread.scrollTop = messageThread.scrollHeight;
+};
+
+//  <div class="max-w-[80%]">
+//                         <div
+//                           class="rounded-2xl rounded-br-md bg-indigo-600 px-4 py-3 shadow-sm"
+//                         >
+//                           <p class="text-sm leading-6 text-white">
+//                             Hello John. Let me check the service status for you.
+//                             I will get back to you shortly.
+//                           </p>
+//                         </div>
+
+//                         <p
+//                           class="mt-1 px-1 text-right text-[10px] text-slate-400"
+//                         >
+//                           10:34 AM
+//                         </p>
+//                       </div>
+
+const initConversationSelection = () => {
   const conversations = document.querySelectorAll("#conversations");
   conversations.forEach((conversation) => {
-   
     conversation.addEventListener("click", async (event) => {
-      event.stopPropagation()
-       const conversationId =
-        conversation.dataset.conversationId;
-      showLoader("Loading messages", "please wait")
-      await getOneConversation(conversationId)
-      await getConversationMessages(conversationId)
-      hideLoader()
-      
+      event.stopPropagation();
+      const conversationId = conversation.dataset.conversationId;
+      showLoader("Loading messages", "please wait");
+      await getOneConversation(conversationId);
+      await getConversationMessages(conversationId);
+      hideLoader();
     });
   });
 };
-
 
 export {
   getAndShowAllUsers,
@@ -781,5 +858,5 @@ export {
   sendConversationMessage,
   closeNewConversationModal,
   getAndShowAllConversations,
-  initConversationSelection
+  initConversationSelection,
 };
