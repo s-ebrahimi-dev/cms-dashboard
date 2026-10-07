@@ -32,8 +32,17 @@ if (newConversationModal) {
   );
 }
 await getAndShowAllEmployees();
+await loadComponent(
+  "conversation-loader-container",
+  "/Components/loader.html"
+);
+
 await getAndShowAllConversations();
- initConversationSelection()
+await loadComponent(
+  "thread-loader-container",
+  "/Components/loader.html"
+);
+initConversationSelection();
 
 
 const newMessageBtn = document.querySelector("#new-message-button");
@@ -145,15 +154,28 @@ sendNewConversationBtn.addEventListener("click", async (event) => {
   showLoader("Sending message", "please wait...");
 
   // 1. Create conversation
-  const conversationResult = await createNewConversation(selectedEmployeeId);
+const conversationResult =
+  await createNewConversation(selectedEmployeeId);
 
-  const conversation = conversationResult.data;
+console.log("CREATE CONVERSATION RESULT:", conversationResult);
 
-  // 2. Send the first message
-  const messageResult = await sendConversationMessage(
-    conversation._id,
-    message,
+if (!conversationResult?.data?._id) {
+  hideLoader();
+
+  showResultModal(
+    "error",
+    conversationResult?.message || "Failed to create conversation",
   );
+
+  return;
+}
+
+const conversation = conversationResult.data;
+
+const messageResult = await sendConversationMessage(
+  conversation._id,
+  message,
+);
 
   if (messageResult.data) {
     await getAndShowAllConversations();

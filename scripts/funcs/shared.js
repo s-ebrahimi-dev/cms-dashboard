@@ -568,19 +568,40 @@ const openNewConversationModal = () => {
   newConversationModal.classList.add("flex");
 };
 
-const createNewConversation = async (employeeId) => {
-  const res = await fetch(`${base_URL}/conversations`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify({
-      employee: employeeId,
-    }),
-  });
-  const result = await res.json();
-  return result;
+const createNewConversation = async (participant) => {
+  try {
+    console.log("BASE URL:", base_URL);
+    console.log(
+      "CREATE CONVERSATION URL:",
+      `${base_URL}/conversations/`,
+    );
+    console.log("PARTICIPANT:", participant);
+
+    const res = await fetch(`${base_URL}/conversations/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        participant,
+      }),
+    });
+
+    console.log("STATUS:", res.status);
+
+    const result = await res.json();
+
+    console.log("CREATE CONVERSATION RESULT:", result);
+
+    return result;
+  } catch (error) {
+    console.error("CREATE CONVERSATION ERROR:", error);
+
+    return {
+      message: "Failed to create conversation",
+    };
+  }
 };
 
 const sendConversationMessage = async (conversationId, message) => {
@@ -651,53 +672,122 @@ function formatConversationDate(dateValue) {
     day: "numeric",
   });
 }
-
 const getAndShowAllConversations = async () => {
-  const res = await fetch(`${base_URL}/conversations/`, {
-    credentials: "include",
-  });
+  showLoader(
+    "Loading conversations...",
+    "Please wait...",
+    "conversation-loader-container",
+  );
 
-  const result = await res.json();
+  try {
+    const res = await fetch(`${base_URL}/conversations/`, {
+      credentials: "include",
+    });
 
-  if (!res.ok) {
-    throw new Error(result.message || "Failed to retrieve conversations");
-  }
-  const conversationsListElem = document.querySelector("#conversation-list");
-  const conversations = result.data;
-  conversationsListElem.innerHTML = "";
-  conversations.forEach((conversation) => {
-    const dateTime = formatConversationDate(conversation.lastMessageAt);
-    conversationsListElem.insertAdjacentHTML(
-      "beforeend",
-      `
-          <button id="conversations" type="button" data-conversation-id="${conversation._id}" class="w-full border-b border-[#D9D9D3] bg-indigo-50 px-4 py-4 text-left cursor-default md:cursor-pointer transition hover:bg-indigo-100 dark:border-[#2A3540] dark:bg-indigo-500/10 dark:hover:bg-indigo-500/15">
-                        <div class="flex gap-3">
-                          <div class="relative shrink-0">
-                            <img src="/images/default-profile.png" alt="Service Advisor" class="h-11 w-11 rounded-full object-cover">
-                            <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#FCFBF8] bg-green-500 dark:border-[#151B23]"></span>
-  
-                          </div>
-                          <div class="min-w-0 flex-1">
-                            <div class="flex items-center justify-between gap-2">
-                              <h3 class="truncate text-sm font-bold text-slate-900 dark:text-white">
-                                ${conversation.employee.role}
-                              </h3>
-                              <span class="shrink-0 text-[10px] text-slate-400">
-                                ${dateTime}
-                              </span>
-                            </div>
-                            <p class="mt-1 truncate text-xs font-medium text-slate-700 dark:text-slate-300">
-                              ${conversation.lastMessage}
-                            </p>
-                            <p class="mt-1 truncate text-xs text-slate-400">
-                              The service has been completed...
-                            </p>
-                          </div>
-                        </div>
-                      </button>
+    const result = await res.json();
+
+    if (!res.ok) {
+      throw new Error(result.message || "Failed to retrieve conversations");
+    }
+
+    const conversationsListElem =
+      document.querySelector("#conversation-list");
+
+    const conversations = result.data;
+
+    conversationsListElem.innerHTML = "";
+
+    if (conversations.length > 0) {
+      const currentUserResult = await getMe();
+      const currentUser = currentUserResult?.data;
+
+      conversations.forEach((conversation) => {
+        const dateTime = formatConversationDate(
+          conversation.lastMessageAt,
+        );
+
+        // Find the other participant in this conversation
+        const otherParticipant = conversation.participants.find(
+          (participant) =>
+            participant._id.toString() !== currentUser._id.toString(),
+        );
+
+        if (!otherParticipant) return;
+
+        const fullName = [
+          otherParticipant.firstname,
+          otherParticipant.lastname,
+        ]
+          .filter(Boolean)
+          .join(" ");
+
+        const roleLabel =
+          roleLabels[otherParticipant.role] ||
+          otherParticipant.role;
+
+        conversationsListElem.insertAdjacentHTML(
+          "beforeend",
+          `
+            <button
+              type="button"
+              data-conversation-id="${conversation._id}"
+              class="w-full border-b border-[#D9D9D3] bg-indigo-50 px-4 py-4 text-left cursor-default md:cursor-pointer transition hover:bg-indigo-100 dark:border-[#2A3540] dark:bg-indigo-500/10 dark:hover:bg-indigo-500/15"
+            >
+              <div class="flex gap-3">
+                <div class="relative shrink-0">
+                  <img
+                    src="/images/default-profile.png"
+                    alt="${fullName || roleLabel}"
+                    class="h-11 w-11 rounded-full object-cover"
+                  >
+
+                  <span
+                    class="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#FCFBF8] bg-green-500 dark:border-[#151B23]"
+                  ></span>
+                </div>
+
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center justify-between gap-2">
+                    <h3
+                      class="truncate text-sm font-bold text-slate-900 dark:text-white"
+                    >
+                      ${fullName || roleLabel}
+                    </h3>
+
+                    <span
+                      class="shrink-0 text-[10px] text-slate-400"
+                    >
+                      ${dateTime}
+                    </span>
+                  </div>
+
+                  <p
+                    class="mt-1 truncate text-xs font-medium text-slate-700 dark:text-slate-300"
+                  >
+                    ${roleLabel}
+                  </p>
+
+                  <p class="mt-1 truncate text-xs text-slate-400">
+                    ${conversation.lastMessage || "No messages yet."}
+                  </p>
+                </div>
+              </div>
+            </button>
           `,
-    );
-  });
+        );
+      });
+    } else {
+      conversationsListElem.innerHTML = `
+        <div class="flex min-h-40 items-center justify-center px-6 text-center">
+          <p class="text-sm text-slate-400">
+            No conversations found.
+          </p>
+        </div>
+      `;
+    }
+  } finally {
+    hideLoader("conversation-loader-container");
+  }
 };
 
 const getOneConversation = async (conversationId) => {
@@ -715,7 +805,7 @@ const getConversationMessages = async (conversationId) => {
     `${base_URL}/conversations/${conversationId}/messages`,
     {
       credentials: "include",
-    }
+    },
   );
 
   const result = await res.json();
@@ -723,11 +813,11 @@ const getConversationMessages = async (conversationId) => {
   const messages = result.data;
 
   const receiverMessageContainer = document.querySelector(
-    "#receiver-message-container"
+    "#receiver-message-container",
   );
 
   const senderMessageContainer = document.querySelector(
-    "#sender-message-container"
+    "#sender-message-container",
   );
 
   // Clear previous conversation messages
@@ -747,7 +837,7 @@ const getConversationMessages = async (conversationId) => {
       {
         hour: "numeric",
         minute: "2-digit",
-      }
+      },
     );
 
     const isMine = senderId === currentUserId;
@@ -771,7 +861,7 @@ const getConversationMessages = async (conversationId) => {
               </p>
             </div>
           </div>
-        `
+        `,
       );
     } else {
       receiverMessageContainer.insertAdjacentHTML(
@@ -798,7 +888,7 @@ const getConversationMessages = async (conversationId) => {
               </p>
             </div>
           </div>
-        `
+        `,
       );
     }
   });
@@ -809,37 +899,31 @@ const getConversationMessages = async (conversationId) => {
   messageThread.scrollTop = messageThread.scrollHeight;
 };
 
-//  <div class="max-w-[80%]">
-//                         <div
-//                           class="rounded-2xl rounded-br-md bg-indigo-600 px-4 py-3 shadow-sm"
-//                         >
-//                           <p class="text-sm leading-6 text-white">
-//                             Hello John. Let me check the service status for you.
-//                             I will get back to you shortly.
-//                           </p>
-//                         </div>
-
-//                         <p
-//                           class="mt-1 px-1 text-right text-[10px] text-slate-400"
-//                         >
-//                           10:34 AM
-//                         </p>
-//                       </div>
-
 const initConversationSelection = () => {
-  const conversations = document.querySelectorAll("#conversations");
-  conversations.forEach((conversation) => {
-    conversation.addEventListener("click", async (event) => {
-      event.stopPropagation();
-      const conversationId = conversation.dataset.conversationId;
-      showLoader("Loading messages", "please wait");
-      await getOneConversation(conversationId);
-      await getConversationMessages(conversationId);
-      hideLoader();
-    });
-  });
-};
+  const conversations = document.querySelectorAll(
+    "#conversation-list [data-conversation-id]",
+  );
+  if (conversations) {
+    conversations.forEach((conversation) => {
+      conversation.addEventListener("click", async () => {
+        const conversationId = conversation.dataset.conversationId;
 
+        showLoader(
+          "Loading messages...",
+          "Please wait...",
+          "thread-loader-container",
+        );
+
+        try {
+          await getOneConversation(conversationId);
+          await getConversationMessages(conversationId);
+        } finally {
+          hideLoader("thread-loader-container");
+        }
+      });
+    });
+  }
+};
 export {
   getAndShowAllUsers,
   getAndShowAllEmployees,
