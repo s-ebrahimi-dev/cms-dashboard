@@ -157,17 +157,71 @@ const closeChatUserModal = () => {
 const initChatUserModal = () => {
   const cancelChatUser = document.querySelector("#cancelChatUser");
   const confirmChatUser = document.querySelector("#confirmChatUser");
+
   cancelChatUser.addEventListener("click", () => {
     closeChatUserModal();
   });
+
   confirmChatUser.addEventListener("click", async (event) => {
     event.preventDefault();
+
     if (!currentChatUser) return;
+
     const userId = currentChatUser._id;
+
+    const messageTextElem = document.querySelector("#chatMessage");
+    const message = messageTextElem.value.trim();
+
+    if (!message) {
+      showResultModal("error", "Please enter a message.");
+      return;
+    }
+
     closeChatUserModal();
-    showLoader();
-    await Conversation(userId);
-    hideLoader();
+
+    showLoader("Sending message...", "Please wait...");
+
+    try {
+      // 1. Find existing conversation or create a new one
+      const conversationResult = await createNewConversation(userId);
+
+      if (!conversationResult?.data?._id) {
+        showResultModal(
+          "error",
+          conversationResult?.message || "Failed to create conversation.",
+        );
+        return;
+      }
+
+      const conversationId = conversationResult.data._id;
+
+      // 2. Send message through the conversation
+      const messageResult = await sendConversationMessage(
+        conversationId,
+        message,
+      );
+
+      if (!messageResult?.data) {
+        showResultModal(
+          "error",
+          messageResult?.message || "Failed to send message.",
+        );
+        return;
+      }
+
+      messageTextElem.value = "";
+
+      showResultModal("success", "Message sent successfully.");
+    } catch (error) {
+      console.error("ADMIN SEND MESSAGE ERROR:", error);
+
+      showResultModal(
+        "error",
+        "Something went wrong while sending the message.",
+      );
+    } finally {
+      hideLoader();
+    }
   });
 };
 //---- Get And Show All Users------------
@@ -501,33 +555,6 @@ const updateOwnProfile = async () => {
   return null;
 };
 
-const Conversation = async (userId) => {
-  const receiver = userId;
-  const messageTextElem = document.querySelector("#chatMessage");
-  const message = messageTextElem.value.trim();
-  const userMessage = {
-    receiver,
-    message,
-  };
-  console.log("BEFORE FETCH");
-  const res = await fetch(`${base_URL}/users/message`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-    body: JSON.stringify(userMessage),
-  });
-  console.log("AFTER FETCH");
-  const result = await res.json();
-  console.log("AFTER JSON");
-  if (res.ok) {
-    showResultModal("success", "message sent successfully");
-  } else {
-    showResultModal("error", result.message);
-  }
-};
-
 const getAndShowAllMessages = async () => {
   const res = await fetch(`${base_URL}/notifications`, {
     credentials: "include",
@@ -537,6 +564,7 @@ const getAndShowAllMessages = async () => {
 
   return result;
 };
+
 const markNotificationAsRead = async (notificationId) => {
   try {
     const response = await fetch(
@@ -559,6 +587,79 @@ const markNotificationAsRead = async (notificationId) => {
   }
 };
 
+const markConversationAsRead = async (conversationId) => {
+  try {
+    const res = await fetch(
+      `${base_URL}/conversations/${conversationId}/read`,
+      {
+        method: "PATCH",
+        credentials: "include",
+      },
+    );
+
+    const result = await res.json();
+ console.log("MARK AS READ RESULT:", result);
+    if (!res.ok) {
+      console.error(
+        "MARK CONVERSATION AS READ ERROR:",
+        result.message,
+      );
+
+      return null;
+    }
+
+    return result;
+  } catch (error) {
+    console.error(
+      "MARK CONVERSATION AS READ ERROR:",
+      error,
+    );
+
+    return null;
+  }
+};
+
+const updateUnreadMessageCount = async () => {
+  try {
+    const res = await fetch(`${base_URL}/notifications`, {
+      credentials: "include",
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+      console.error("GET NOTIFICATIONS ERROR:", result.message);
+      return;
+    }
+
+    const notifications = result.notifications || [];
+
+    const unreadMessageCount = notifications.filter(
+      (notification) => notification.type === "MESSAGE" && !notification.isRead,
+    ).length;
+
+    const headerCounter = document.querySelector("#unread-message-count");
+
+    const notificationCounter = document.querySelector(
+      "#notification-unread-count",
+    );
+
+    if (headerCounter) {
+      headerCounter.textContent = unreadMessageCount;
+
+      headerCounter.classList.toggle("hidden", unreadMessageCount === 0);
+    }
+
+    if (notificationCounter) {
+      notificationCounter.textContent = unreadMessageCount;
+
+      notificationCounter.classList.toggle("hidden", unreadMessageCount === 0);
+    }
+  } catch (error) {
+    console.error("UPDATE UNREAD MESSAGE COUNT ERROR:", error);
+  }
+};
+
 const openNewConversationModal = () => {
   const newConversationModal = document.querySelector(
     "#new-conversation-modal",
@@ -571,10 +672,7 @@ const openNewConversationModal = () => {
 const createNewConversation = async (participant) => {
   try {
     console.log("BASE URL:", base_URL);
-    console.log(
-      "CREATE CONVERSATION URL:",
-      `${base_URL}/conversations/`,
-    );
+    console.log("CREATE CONVERSATION URL:", `${base_URL}/conversations/`);
     console.log("PARTICIPANT:", participant);
 
     const res = await fetch(`${base_URL}/conversations/`, {
@@ -690,8 +788,7 @@ const getAndShowAllConversations = async () => {
       throw new Error(result.message || "Failed to retrieve conversations");
     }
 
-    const conversationsListElem =
-      document.querySelector("#conversation-list");
+    const conversationsListElem = document.querySelector("#conversation-list");
 
     const conversations = result.data;
 
@@ -702,9 +799,7 @@ const getAndShowAllConversations = async () => {
       const currentUser = currentUserResult?.data;
 
       conversations.forEach((conversation) => {
-        const dateTime = formatConversationDate(
-          conversation.lastMessageAt,
-        );
+        const dateTime = formatConversationDate(conversation.lastMessageAt);
 
         // Find the other participant in this conversation
         const otherParticipant = conversation.participants.find(
@@ -714,16 +809,12 @@ const getAndShowAllConversations = async () => {
 
         if (!otherParticipant) return;
 
-        const fullName = [
-          otherParticipant.firstname,
-          otherParticipant.lastname,
-        ]
+        const fullName = [otherParticipant.firstname, otherParticipant.lastname]
           .filter(Boolean)
           .join(" ");
 
         const roleLabel =
-          roleLabels[otherParticipant.role] ||
-          otherParticipant.role;
+          roleLabels[otherParticipant.role] || otherParticipant.role;
 
         conversationsListElem.insertAdjacentHTML(
           "beforeend",
@@ -800,6 +891,72 @@ const getOneConversation = async (conversationId) => {
   return result.data;
 };
 
+const renderSenderMessage = (message) => {
+  const messageList = document.querySelector("#message-list");
+
+  const messageTime = new Date(message.createdAt).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+
+  messageList.insertAdjacentHTML(
+    "beforeend",
+    `
+      <div class="flex justify-end">
+        <div class="max-w-[80%]">
+          <div
+            class="rounded-2xl rounded-br-md bg-emerald-700 px-4 py-3 shadow-sm"
+          >
+            <p class="text-sm leading-6 text-white">
+              ${message.message}
+            </p>
+          </div>
+
+          <p class="mt-1 px-1 text-right text-[10px] text-slate-400">
+            ${messageTime}
+          </p>
+        </div>
+      </div>
+    `,
+  );
+};
+
+const renderReceiverMessage = (message) => {
+  const messageList = document.querySelector("#message-list");
+
+  const messageTime = new Date(message.createdAt).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+
+  messageList.insertAdjacentHTML(
+    "beforeend",
+    `
+      <div class="flex items-end gap-3">
+        <img
+          src="/images/default-profile.png"
+          alt="Customer"
+          class="h-8 w-8 shrink-0 rounded-full object-cover"
+        >
+
+        <div class="max-w-[80%]">
+          <div
+            class="rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm dark:bg-[#a5bddd]"
+          >
+            <p class="text-sm leading-6 text-slate-700 dark:text-slate-700">
+              ${message.message}
+            </p>
+          </div>
+
+          <p class="mt-1 px-1 text-[10px] text-slate-400">
+            ${messageTime}
+          </p>
+        </div>
+      </div>
+    `,
+  );
+};
+
 const getConversationMessages = async (conversationId) => {
   const res = await fetch(
     `${base_URL}/conversations/${conversationId}/messages`,
@@ -812,19 +969,10 @@ const getConversationMessages = async (conversationId) => {
 
   const messages = result.data;
 
-  const receiverMessageContainer = document.querySelector(
-    "#receiver-message-container",
-  );
+  const messageList = document.querySelector("#message-list");
 
-  const senderMessageContainer = document.querySelector(
-    "#sender-message-container",
-  );
+  messageList.innerHTML = "";
 
-  // Clear previous conversation messages
-  receiverMessageContainer.innerHTML = "";
-  senderMessageContainer.innerHTML = "";
-
-  // Get current logged-in receptionist
   const currentUserResult = await getMe();
   const currentUser = currentUserResult.data;
 
@@ -832,98 +980,54 @@ const getConversationMessages = async (conversationId) => {
     const senderId = String(message.sender._id);
     const currentUserId = String(currentUser._id);
 
-    const messageTime = new Date(message.createdAt).toLocaleTimeString(
-      "en-US",
-      {
-        hour: "numeric",
-        minute: "2-digit",
-      },
-    );
-
     const isMine = senderId === currentUserId;
 
     if (isMine) {
-      senderMessageContainer.insertAdjacentHTML(
-        "beforeend",
-        `
-          <div class="flex justify-end">
-            <div class="max-w-[80%]">
-              <div
-                class="rounded-2xl rounded-br-md bg-emerald-700 px-4 py-3 shadow-sm"
-              >
-                <p class="text-sm leading-6 text-white">
-                  ${message.message}
-                </p>
-              </div>
-
-              <p class="mt-1 px-1 text-right text-[10px] text-slate-400">
-                ${messageTime}
-              </p>
-            </div>
-          </div>
-        `,
-      );
+      renderSenderMessage(message);
     } else {
-      receiverMessageContainer.insertAdjacentHTML(
-        "beforeend",
-        `
-          <div class="flex items-end gap-3">
-            <img
-              src="/images/default-profile.png"
-              alt="Customer"
-              class="h-8 w-8 shrink-0 rounded-full object-cover"
-            >
-
-            <div class="max-w-[80%]">
-              <div
-                class="rounded-2xl rounded-bl-md bg-white px-4 py-3 shadow-sm dark:bg-[#151B23]"
-              >
-                <p class="text-sm leading-6 text-slate-700 dark:text-slate-300">
-                  ${message.message}
-                </p>
-              </div>
-
-              <p class="mt-1 px-1 text-[10px] text-slate-400">
-                ${messageTime}
-              </p>
-            </div>
-          </div>
-        `,
-      );
+      renderReceiverMessage(message);
     }
   });
 
-  // Scroll to the newest message
   const messageThread = document.querySelector("#message-thread");
 
   messageThread.scrollTop = messageThread.scrollHeight;
 };
 
-const initConversationSelection = () => {
+const initConversationSelection = (onConversationSelected) => {
   const conversations = document.querySelectorAll(
     "#conversation-list [data-conversation-id]",
   );
-  if (conversations) {
-    conversations.forEach((conversation) => {
-      conversation.addEventListener("click", async () => {
-        const conversationId = conversation.dataset.conversationId;
 
-        showLoader(
-          "Loading messages...",
-          "Please wait...",
-          "thread-loader-container",
-        );
+  conversations.forEach((conversation) => {
+    conversation.addEventListener("click", async () => {
+      const conversationId = conversation.dataset.conversationId;
 
-        try {
-          await getOneConversation(conversationId);
-          await getConversationMessages(conversationId);
-        } finally {
-          hideLoader("thread-loader-container");
-        }
-      });
+      if (onConversationSelected) {
+        onConversationSelected(conversationId);
+      }
+
+      showLoader(
+        "Loading messages...",
+        "Please wait...",
+        "thread-loader-container",
+      );
+
+      try {
+        await markConversationAsRead(conversationId);
+
+        await updateUnreadMessageCount();
+
+        await getOneConversation(conversationId);
+
+        await getConversationMessages(conversationId);
+      } finally {
+        hideLoader("thread-loader-container");
+      }
     });
-  }
+  });
 };
+
 export {
   getAndShowAllUsers,
   getAndShowAllEmployees,
@@ -937,10 +1041,14 @@ export {
   initChatUserModal,
   getAndShowAllMessages,
   markNotificationAsRead,
+  updateUnreadMessageCount,
   openNewConversationModal,
   createNewConversation,
   sendConversationMessage,
   closeNewConversationModal,
   getAndShowAllConversations,
   initConversationSelection,
+  renderSenderMessage,
+  renderReceiverMessage,
+  getConversationMessages,
 };

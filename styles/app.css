@@ -429,6 +429,9 @@
   .z-\[1000\] {
     z-index: 1000;
   }
+  .z-\[9999\] {
+    z-index: 9999;
+  }
   .col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -627,6 +630,9 @@
   }
   .h-12 {
     height: calc(var(--spacing) * 12);
+  }
+  .h-13 {
+    height: calc(var(--spacing) * 13);
   }
   .h-14 {
     height: calc(var(--spacing) * 14);
@@ -2762,8 +2768,17 @@
   .dark\:bg-\[\#151B23\]:where(.dark, .dark *) {
     background-color: #151B23;
   }
+  .dark\:bg-\[\#869fc0\]:where(.dark, .dark *) {
+    background-color: #869fc0;
+  }
+  .dark\:bg-\[\#8796aa\]:where(.dark, .dark *) {
+    background-color: #8796aa;
+  }
   .dark\:bg-\[\#FCFBF8\]:where(.dark, .dark *) {
     background-color: #FCFBF8;
+  }
+  .dark\:bg-\[\#a5bddd\]:where(.dark, .dark *) {
+    background-color: #a5bddd;
   }
   .dark\:bg-blue-500\/10:where(.dark, .dark *) {
     background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 10%, transparent);
@@ -2890,6 +2905,9 @@
   }
   .dark\:text-slate-500:where(.dark, .dark *) {
     color: var(--color-slate-500);
+  }
+  .dark\:text-slate-700:where(.dark, .dark *) {
+    color: var(--color-slate-700);
   }
   .dark\:text-white:where(.dark, .dark *) {
     color: var(--color-white);

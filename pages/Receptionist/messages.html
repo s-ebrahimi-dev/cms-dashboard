@@ -965,16 +965,12 @@
 
                   <div
                     id="message-thread"
-                    class="relative flex-1 space-y-5 overflow-y-auto bg-slate-50/60 px-5 py-6 dark:bg-[#1D2630]/40"
+                    class="relative flex-1  bg-slate-50/60 px-5 py-6 dark:bg-[#1D2630]/40"
                   >
-                    <!-- Thread loader -->
-
                     <div
                       id="thread-loader-container"
                       class="pointer-events-none absolute inset-0 z-20"
                     ></div>
-
-                    <!-- Date -->
 
                     <div class="flex justify-center">
                       <span
@@ -984,19 +980,9 @@
                       </span>
                     </div>
 
-                    <!-- Customer message -->
-
-                    <div
-                      id="receiver-message-container"
-                      class="flex flex-col h-100 overflow-y-auto items-start gap-3"
-                    ></div>
-
-                    <!-- Receptionist message -->
-
-                    <div
-                      id="sender-message-container"
-                      class="flex flex-col justify-end"
-                    ></div>
+                    <div id="message-list" class="flex flex-col gap-3 h-130 overflow-y-auto">
+                      <!-- Messages Loaded By JS -->
+                    </div>
                   </div>
 
                   <!-- ================================================= -->
@@ -1011,7 +997,7 @@
                         <textarea
                           id="message-input"
                           rows="2"
-                          placeholder="Write a message to the customer..."
+                          placeholder="Write a message to the participant..."
                           class="block w-full resize-none rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200 dark:placeholder:text-slate-500"
                         ></textarea>
                       </div>
@@ -1039,7 +1025,7 @@
                     </form>
 
                     <p class="mt-2 px-1 text-[10px] text-slate-400">
-                      Customer messages and replies are recorded in this
+                      all messages and replies are recorded in this
                       conversation.
                     </p>
                   </div>
@@ -1078,7 +1064,7 @@
                 </h3>
 
                 <p class="mt-1 text-xs text-slate-400">
-                  Start a conversation with a customer.
+                  Start a conversation...
                 </p>
               </div>
 

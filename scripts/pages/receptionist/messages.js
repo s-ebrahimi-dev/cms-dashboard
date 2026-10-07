@@ -5,22 +5,16 @@ import {
   closeNewConversationModal,
   getAndShowAllConversations,
   getAndShowAllEmployees,
-  initConversationSelection
+  initConversationSelection,
+  renderSenderMessage
 } from "../../funcs/shared.js";
 import { showResultModal } from "../../components/result-modal.js";
 import { loadComponent } from "../../components/component-Loader.js";
 import { hideLoader, showLoader } from "../../funcs/loader.js";
 
-const roleLabels = {
-  ADMIN: "Administrator",
-  CUSTOMER: "Customer",
-  RECEPTIONIST: "Receptionist",
-  MECHANIC: "Mechanic",
-  OIL_TECHNICIAN: "Oil Technician",
-  BODY_REPAIR: "Body Repair",
-  DETAILING_TECHNICIAN: "Detailing Technician",
-  WASH_TECHNICIAN: "Wash Technician",
-};
+let selectedConversationId = null;
+
+
 // Show New Conversation Modal
 const newConversationModal = document.querySelector(
   "#new-conversation-container",
@@ -37,13 +31,72 @@ await loadComponent(
   "/Components/loader.html"
 );
 
-await getAndShowAllConversations();
 await loadComponent(
   "thread-loader-container",
   "/Components/loader.html"
 );
-initConversationSelection();
 
+await getAndShowAllConversations();
+
+initConversationSelection((conversationId) => {
+  selectedConversationId = conversationId;
+
+  console.log("Selected conversation:", selectedConversationId);
+});
+// Render-Sent-Messages 
+
+
+// Send messages
+const messageForm = document.querySelector("#message-form");
+const messageInput = document.querySelector("#message-input");
+const sendMessageButton = document.querySelector("#send-message-button");
+
+messageForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const message = messageInput.value.trim();
+
+  if (!message) {
+    return;
+  }
+
+  if (!selectedConversationId) {
+    showResultModal("error", "Please select a conversation first.");
+    return;
+  }
+
+  sendMessageButton.disabled = true;
+
+  try {
+    const result = await sendConversationMessage(
+      selectedConversationId,
+      message,
+    );
+
+    console.log("SEND MESSAGE RESULT:", result);
+
+    if (!result?.data) {
+      showResultModal(
+        "error",
+        result?.message || "Failed to send message.",
+      );
+      return;
+    }
+
+    messageInput.value = "";
+
+   renderSenderMessage(result.data);
+  } catch (error) {
+    console.error("SEND MESSAGE ERROR:", error);
+
+    showResultModal(
+      "error",
+      "Something went wrong while sending the message.",
+    );
+  } finally {
+    sendMessageButton.disabled = false;
+  }
+});
 
 const newMessageBtn = document.querySelector("#new-message-button");
 newMessageBtn.addEventListener("click", (event) => {
