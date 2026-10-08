@@ -6,7 +6,7 @@ import {
 import { loadComponent } from "../components/component-Loader.js";
 import { hideLoader, showLoader } from "./loader.js";
 import { getMe } from "./auth.js";
-
+import { getCurrentUser } from "./state.js";
 await loadComponent("result-modal-container", "/Components/result-modal.html");
 
 initResultModal();
@@ -976,13 +976,13 @@ const getConversationMessages = async (conversationId) => {
   const result = await res.json();
 
   const messages = result.data;
-
+  console.log(messages);
+  
   const messageList = document.querySelector("#message-list");
 
   messageList.innerHTML = "";
 
-  const currentUserResult = await getMe();
-  const currentUser = currentUserResult.data;
+const currentUser = getCurrentUser();
 
   messages.forEach((message) => {
     const senderId = String(message.sender._id);

@@ -15,6 +15,12 @@ import {
   initEditUserModal,
   initChatUserModal,
 } from "./funcs/shared.js";
+import {
+  setCurrentUser,
+  getCurrentUser,
+  clearCurrentUser
+
+} from "./funcs/state.js";
 
 const roleLabels = {
       ADMIN: "Administrator",
@@ -33,9 +39,9 @@ const loadUserImage = async () => {
   if (!userImages.length) return;
 
   try {
-    const user = await getMe();
-
-    if (!user?.data?.hasProfileImage) return;
+    const user = getCurrentUser()
+  
+    if (!user?.hasProfileImage) return;
 
     userImages.forEach((userImage) => {
       userImage.src = `${base_URL}/users/profile-image`;
@@ -47,11 +53,11 @@ const loadUserImage = async () => {
 
 const loadUserInfos = async () => {
   try {
-    const user = await getMe();
+    const user = getCurrentUser()
+ 
+    if (!user) return;
 
-    if (!user?.data) return;
-
-    const { firstname, lastname, role, email } = user.data;
+    const { firstname, lastname, role, email } = user;
 
     const fullName =
       [firstname, lastname].filter(Boolean).join(" ") || "User";
@@ -156,10 +162,13 @@ const initShared = async () => {
   );
   
 
- const user = await getMe();
+const user = await getMe();
 
 if (user?.data) {
+  setCurrentUser(user.data);
+
   initSidebar(user.data);
+}
 
     document
       .querySelector("#sidebar-container")
@@ -168,7 +177,7 @@ if (user?.data) {
     document
     .querySelector("#mobile-sidebar-container")
     ?.classList.remove("invisible");
-}
+
 
   loadUserImage();
   loadUserInfos();
