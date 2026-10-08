@@ -205,7 +205,7 @@
 
   @media (min-width: 1024px) {
     .notification-modal.expanded {
-      @apply w-[640px] h-[640px];
+      @apply w-160 h-160;
     }
   }
 

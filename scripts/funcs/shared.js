@@ -13,7 +13,7 @@ initResultModal();
 let currentDeleteUser = null;
 let currentEditUser = null;
 let currentChatUser = null;
-let current;
+
 
 const roleLabels = {
   ADMIN: "Administrator",
@@ -607,7 +607,15 @@ const markConversationAsRead = async (conversationId) => {
 
       return null;
     }
-
+    if (result.success && result.data.notificationsUpdated > 0) {
+  window.dispatchEvent(
+    new CustomEvent("conversationRead", {
+      detail: {
+        conversationId,
+      },
+    }),
+  );
+}
     return result;
   } catch (error) {
     console.error(

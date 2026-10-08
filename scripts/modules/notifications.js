@@ -15,7 +15,7 @@ const roleLabels = {
   DETAILING_TECHNICIAN: "Detailing Technician",
   WASH_TECHNICIAN: "Wash Technician",
 };
-const userProfile = document.querySelector("#user-infos");
+
 const userProfileBtn = document.querySelector("#user-profile");
 const userMenu = document.querySelector(".user-menu");
 
@@ -119,9 +119,9 @@ const getNotificationStatusIcon = (isRead) => {
           />
 
           <path
-            fill="url(#SVGU4sKxbEp)"
-            d="M4 3a2 2 0 0 0-2 2v.84l5.763 3.103a.5.5 0 0 0 .474 0L14 5.84V5a2 2 0 0 0-2-2z"
-          />
+  fill="#5EB3EB"
+  d="M4 3a2 2 0 0 0-2 2v.84l5.763 3.103a.5.5 0 0 0 .474 0L14 5.84V5a2 2 0 0 0-2-2z"
+></path>
 
           <defs>
             <linearGradient
@@ -191,9 +191,34 @@ const getNotificationStatusIcon = (isRead) => {
   `;
 };
 
+const initConversationReadNotificationHandler = () => {
+  window.addEventListener("conversationRead", (event) => {
+    const conversationId = event.detail?.conversationId;
+
+    if (!conversationId) return;
+
+    const notificationItems = document.querySelectorAll(
+      `#messageNotificationList [data-conversation-id="${conversationId}"],
+       #all-notifications-list [data-conversation-id="${conversationId}"]`,
+    );
+
+    notificationItems.forEach((notification) => {
+      notification.classList.remove("bg-indigo-50", "dark:bg-indigo-500/10");
+
+      const statusIcon = notification.querySelector(
+        ".notification-status-icon",
+      );
+
+      if (statusIcon) {
+        statusIcon.outerHTML = getNotificationStatusIcon(true);
+      }
+    });
+  });
+};
+
 const createNotificationHTML = (notif, clickable = false) => {
   const senderImage =
-    notif.type === "SYSTEM" || !notif.sender
+    notif.type === "SYSTEM" || !notif.sender || !notif.sender.hasProfileImage
       ? "/images/default-profile.png"
       : `${base_URL}/users/profile-image/${notif.sender._id}`;
 
@@ -208,6 +233,8 @@ const createNotificationHTML = (notif, clickable = false) => {
     <${clickable ? "a" : "div"}
       ${clickable ? 'href="#"' : ""}
       data-notification-id="${notif._id}"
+      data-notification-id="${notif._id}"
+      data-conversation-id="${notif.conversation || ""}"
       class="notification-item flex items-start gap-3 border-b border-slate-100 px-4 py-4
         dark:border-white/5
         ${clickable ? "transition hover:bg-slate-50 dark:hover:bg-white/5" : ""}
@@ -379,11 +406,11 @@ const initNotificationModal = () => {
 
     showCompactView();
     userMenu?.classList.add("hidden");
-    
+
     userProfileBtn?.classList.remove("open");
 
     const isOpen = messageNotificationModal.classList.contains("visible");
-    
+
     if (isOpen) {
       closeNotificationModal();
     } else {
@@ -460,5 +487,6 @@ export const initNotifications = async () => {
   if (!messageNotificationModal) return;
 
   initNotificationModal();
+  initConversationReadNotificationHandler();
   await loadNotifications();
 };
