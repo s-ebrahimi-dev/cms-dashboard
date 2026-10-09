@@ -60,6 +60,10 @@
   @apply fixed sm:sticky top-0 bottom-0 h-screen
     min-w-0 overflow-hidden;
 }
+.aside-lg-btn {
+  
+  @apply left-0 top-1/2 -translate-y-1/2
+}
 
   .theme-btn {
     @apply absolute block w-5 h-5 ml-auto left-0 right-15 sm:right-0 sm:mx-auto top-1.5 text-zinc-800 dark:text-[#B7C1C9];
