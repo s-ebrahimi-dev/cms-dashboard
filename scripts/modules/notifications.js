@@ -346,6 +346,7 @@ const showCompactView = () => {
 const showExpandedView = () => {
   compactView.classList.add("hidden");
   expandedView.classList.remove("hidden");
+  expandedView.classList.add("flex");
 };
 
 const expandNotificationModal = () => {
@@ -458,6 +459,7 @@ const initNotificationModal = () => {
 const loadNotifications = async () => {
   const result = await getAndShowAllMessages();
   const notifications = result?.notifications;
+console.log(notifications);
 
   if (!notifications) return;
 

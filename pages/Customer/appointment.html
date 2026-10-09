@@ -315,7 +315,7 @@
 
               <div
                 id="user-infos"
-                class="hidden min-w-0 cursor-default items-center justify-between md:flex md:cursor-pointer"
+                class="flex min-w-0 cursor-default items-center justify-between md:cursor-pointer"
               >
 
                 <div
@@ -364,30 +364,22 @@
           <!-- NOTIFICATION MODAL -->
           <!-- ================================================= -->
 
-          <div
+         <div
             id="messageNotificationModal"
-            class="notification-modal compact absolute right-0 top-17 z-50 invisible overflow-hidden overflow-y-auto rounded-2xl border border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
+            class="notification-modal compact absolute right-0 top-17 z-50 invisible overflow-hidden rounded-2xl border border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
           >
-
             <!-- Compact -->
 
             <div id="notification-compact-view">
-
               <div
                 class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-700"
               >
                 <div class="min-w-0">
-
-                  <h3
-                    class="text-sm font-bold text-slate-800 dark:text-white"
-                  >
+                  <h3 class="text-sm font-bold text-slate-800 dark:text-white">
                     Messages
                   </h3>
 
-                  <p class="mt-0.5 text-xs text-slate-400">
-                    Recent messages
-                  </p>
-
+                  <p class="mt-0.5 text-xs text-slate-400">Recent messages</p>
                 </div>
 
                 <span
@@ -396,9 +388,7 @@
                 >
                   0
                 </span>
-
               </div>
-
 
               <div
                 id="messageNotificationList"
@@ -409,10 +399,7 @@
                 </div>
               </div>
 
-
-              <div
-                class="border-t border-slate-200 p-3 dark:border-slate-700"
-              >
+              <div class="border-t border-slate-200 p-3 dark:border-slate-700">
                 <button
                   id="view-all-notifications"
                   type="button"
@@ -421,20 +408,17 @@
                   View all notifications
                 </button>
               </div>
-
             </div>
-
 
             <!-- Expanded -->
 
-            <div id="notification-expanded-view" class="hidden">
-
+            <div id="notification-expanded-view" class="hidden relative h-[75dvh] flex-col min-h-0">
               <div
-                class="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-slate-700"
+                 class="flex shrink-0 items-center justify-between border-b
+           border-slate-200 bg-white px-4 py-3
+           dark:border-slate-700 dark:bg-slate-800"
               >
-
                 <div class="flex min-w-0 items-center gap-3">
-
                   <button
                     id="back-to-notifications"
                     type="button"
@@ -457,7 +441,6 @@
                   </button>
 
                   <div class="min-w-0">
-
                     <h3
                       class="text-sm font-bold text-slate-800 dark:text-white"
                     >
@@ -467,11 +450,8 @@
                     <p class="mt-0.5 text-xs text-slate-400">
                       All notifications
                     </p>
-
                   </div>
-
                 </div>
-
 
                 <button
                   id="mark-all-notifications-read"
@@ -480,27 +460,18 @@
                 >
                   Mark all as read
                 </button>
-
               </div>
 
-
-              <div
-                id="all-notifications-list"
-                class="max-h-[65vh]"
-              >
+              <div id="all-notifications-list" class="min-h-0 flex-1 overflow-y-auto">
                 <div class="px-4 pb-2 pt-4">
-
                   <p
                     class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
                   >
                     Today
                   </p>
-
                 </div>
               </div>
-
             </div>
-
           </div>
 
         </header>

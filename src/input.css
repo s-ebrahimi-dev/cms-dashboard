@@ -215,9 +215,10 @@
     }
   }
 
-  @media (max-width: 767px) {
-    .notification-modal.expanded {
-      @apply left-4 right-4 w-auto h-[calc(100vw-2rem)];
-    }
+@media (max-width: 767px) {
+  .notification-modal.expanded {
+    @apply left-4 right-4 w-auto h-[75dvh];
   }
+}
+
 }

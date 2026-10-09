@@ -1,7 +1,10 @@
 import { loadComponent } from "./components/component-Loader.js";
 
 import { initSidebar } from "./modules/sidebar.js";
-import { initNotifications,  closeNotificationModal, } from "./modules/notifications.js";
+import {
+  initNotifications,
+  closeNotificationModal,
+} from "./modules/notifications.js";
 
 import { base_URL } from "./config.js";
 
@@ -18,20 +21,19 @@ import {
 import {
   setCurrentUser,
   getCurrentUser,
-  clearCurrentUser
-
+  clearCurrentUser,
 } from "./funcs/state.js";
 
 const roleLabels = {
-      ADMIN: "Administrator",
-      CUSTOMER: "Customer",
-      RECEPTIONIST: "Receptionist",
-      MECHANIC: "Mechanic",
-      OIL_TECHNICIAN: "Oil Technician",
-      BODY_REPAIR: "Body Repair",
-      DETAILING_TECHNICIAN: "Detailing Technician",
-      WASH_TECHNICIAN: "Wash Technician",
-    };
+  ADMIN: "Administrator",
+  CUSTOMER: "Customer",
+  RECEPTIONIST: "Receptionist",
+  MECHANIC: "Mechanic",
+  OIL_TECHNICIAN: "Oil Technician",
+  BODY_REPAIR: "Body Repair",
+  DETAILING_TECHNICIAN: "Detailing Technician",
+  WASH_TECHNICIAN: "Wash Technician",
+};
 
 const loadUserImage = async () => {
   const userImages = document.querySelectorAll(".user-image");
@@ -39,8 +41,8 @@ const loadUserImage = async () => {
   if (!userImages.length) return;
 
   try {
-    const user = getCurrentUser()
-  
+    const user = getCurrentUser();
+
     if (!user?.hasProfileImage) return;
 
     userImages.forEach((userImage) => {
@@ -53,16 +55,13 @@ const loadUserImage = async () => {
 
 const loadUserInfos = async () => {
   try {
-    const user = getCurrentUser()
- 
+    const user = getCurrentUser();
+
     if (!user) return;
 
     const { firstname, lastname, role, email } = user;
 
-    const fullName =
-      [firstname, lastname].filter(Boolean).join(" ") || "User";
-
-    
+    const fullName = [firstname, lastname].filter(Boolean).join(" ") || "User";
 
     document.querySelectorAll(".user-name").forEach((elem) => {
       elem.textContent = fullName;
@@ -89,10 +88,10 @@ const initUserProfile = () => {
 
   userInfosBtn.addEventListener("click", (event) => {
     console.log("clicked");
-    
+
     event.stopPropagation();
     userProfileIcon.classList.toggle("open");
-      closeNotificationModal();
+    closeNotificationModal();
 
     userMenu.classList.toggle("hidden");
   });
@@ -151,59 +150,44 @@ const initDynamicModals = async () => {
 };
 
 const initShared = async () => {
-  await loadComponent(
-    "sidebar-container",
-    "/Components/sidebar.html",
-  );
+  await loadComponent("sidebar-container", "/Components/sidebar.html");
 
   await loadComponent(
     "mobile-sidebar-container",
     "/Components/mobile-sidebar.html",
   );
-  
 
-const user = await getMe();
+  const user = await getMe();
 
-if (user?.data) {
-  setCurrentUser(user.data);
+  if (user?.data) {
+    setCurrentUser(user.data);
 
-  initSidebar(user.data);
-}
+    initSidebar(user.data);
+  }
 
-    document
-      .querySelector("#sidebar-container")
-    ?.classList.remove("invisible");
-  
-    document
+  document.querySelector("#sidebar-container")?.classList.remove("invisible");
+
+  document
     .querySelector("#mobile-sidebar-container")
     ?.classList.remove("invisible");
-
 
   loadUserImage();
   loadUserInfos();
 
   await initDynamicModals();
 
-  const modalContainer =
-    document.getElementById("modal-container");
+  const modalContainer = document.getElementById("modal-container");
 
   if (modalContainer) {
-    await loadComponent(
-      "modal-container",
-      "/Components/logout-modal.html",
-    );
+    await loadComponent("modal-container", "/Components/logout-modal.html");
 
     initLogoutModal();
   }
 
-  const loaderContainer =
-    document.getElementById("loader-container");
+  const loaderContainer = document.getElementById("loader-container");
 
   if (loaderContainer) {
-    await loadComponent(
-      "loader-container",
-      "/Components/loader.html",
-    );
+    await loadComponent("loader-container", "/Components/loader.html");
   }
 
   initUserProfile();
@@ -211,6 +195,5 @@ if (user?.data) {
   await initNotifications();
 };
 
-
 initShared();
-export {loadUserInfos}
+export { loadUserInfos };
