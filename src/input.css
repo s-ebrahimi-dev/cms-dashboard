@@ -42,19 +42,25 @@
   section > * {
     @apply bg-[#FCFBF8] dark:bg-[#151B23] border-[#D9D9D3] dark:border-[#2A3540];
   }
+
+
   .layout {
     @apply relative block
-         sm:grid sm:items-start
-         h-full transition-all duration-500
-         sm:grid-cols-[85px_1fr];
+      sm:grid sm:items-start
+      h-full
+      sm:grid-cols-[85px_1fr];
+
+    transition: grid-template-columns 500ms ease-in-out;
   }
 
   .layout:has(.aside.aside--open) {
     @apply sm:grid-cols-[280px_1fr];
   }
+
   .theme-btn {
     @apply absolute block w-5 h-5 ml-auto left-0 right-15 sm:right-0 sm:mx-auto top-1.5 text-zinc-800 dark:text-[#B7C1C9];
   }
+
   .mobile-aside.aside--open {
     @apply left-0;
   }
@@ -67,12 +73,13 @@
     @apply fixed sm:sticky top-0 bottom-0 h-screen;
   }
   .aside {
-    @apply relative h-full top-0 -bottom-full
-               bg-[#182A3A] dark:bg-zinc-800 text-slate-400
-              hidden sm:flex flex-col
-               px-5 py-6
-               transition-all duration-500;
-  }
+  @apply relative h-full top-0 -bottom-full
+    bg-[#182A3A] dark:bg-zinc-800 text-slate-400
+    hidden sm:flex flex-col
+    px-5 py-6
+    w-full min-w-0
+    transition-all duration-500 ease-in-out;
+}
   .mobile-aside {
     @apply fixed flex flex-col top-0 bottom-0 -left-51  sm:hidden bg-[#182A3A] dark:bg-zinc-800 text-slate-400 px-5 py-6 transition-all duration-500;
   }
@@ -89,7 +96,8 @@
       @apply text-[#9cd7ff];
     }
   }
-  .menu-icon, .mobile-menu-icon {
+  .menu-icon,
+  .mobile-menu-icon {
     @apply shrink-0 text-xl text-white transition-all duration-300;
   }
 
@@ -146,7 +154,10 @@
   }
 
   .main {
-    @apply pl-8 pr-8 pb-6 lg:pl-8 lg:pr-8 lg:pb-8 min-w-0 transition-all duration-500;
+    @apply pl-8 pr-8 pb-6
+    lg:pl-8 lg:pr-8 lg:pb-8
+    min-w-0
+    transition-none;
   }
   .list-item {
     position: relative;
@@ -180,7 +191,7 @@
   .list-item.active .menu-icon {
     @apply text-[#9cd7ff];
   }
-    .list-item.active .mobile-menu-icon {
+  .list-item.active .mobile-menu-icon {
     @apply text-[#9cd7ff];
   }
 
@@ -199,7 +210,7 @@
     @apply w-[600px] h-[600px] right-0;
   }
 
-  #user-profile.open{
+  #user-profile.open {
     @apply rotate-180;
   }
 
@@ -211,21 +222,18 @@
 
   @media (min-width: 1280px) {
     .notification-modal.expanded {
-      @apply w-[680px] h-[680px];
+      @apply w-170 h-170;
     }
   }
-@media (max-width: 1024px) {
-  .notification-modal.expanded {
-    @apply left-4 right-4 w-auto h-[75dvh];
+  @media (max-width: 1024px) {
+    .notification-modal.expanded {
+      @apply left-4 right-4 w-auto h-[75dvh];
+    }
   }
-}
-  
 
-@media (max-width: 1024px) {
-  
-   .notification-modal.compact {
-    @apply left-4 right-4 w-auto h-auto;
+  @media (max-width: 1024px) {
+    .notification-modal.compact {
+      @apply left-4 right-4 w-auto h-auto;
+    }
   }
-}
-
 }

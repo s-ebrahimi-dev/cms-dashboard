@@ -3001,11 +3001,11 @@
     position: relative;
     display: block;
     height: 100%;
-    transition-property: all;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    transition-property: none;
     --tw-duration: 500ms;
     transition-duration: 500ms;
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
     @media (width >= 40rem) {
       display: grid;
     }
@@ -3069,11 +3069,13 @@
     padding-inline: calc(var(--spacing) * 5);
     padding-block: calc(var(--spacing) * 6);
     color: var(--color-slate-400);
-    transition-property: all;
+    transition-property: width;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
     --tw-duration: 500ms;
     transition-duration: 500ms;
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
     @media (width >= 40rem) {
       display: flex;
     }
@@ -3224,11 +3226,7 @@
     padding-right: calc(var(--spacing) * 8);
     padding-bottom: calc(var(--spacing) * 6);
     padding-left: calc(var(--spacing) * 8);
-    transition-property: all;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 500ms;
-    transition-duration: 500ms;
+    transition-property: none;
     @media (width >= 64rem) {
       padding-right: calc(var(--spacing) * 8);
     }
@@ -3294,8 +3292,8 @@
   }
   @media (min-width: 1280px) {
     .notification-modal.expanded {
-      height: 680px;
-      width: 680px;
+      height: calc(var(--spacing) * 170);
+      width: calc(var(--spacing) * 170);
     }
   }
   @media (max-width: 1024px) {
