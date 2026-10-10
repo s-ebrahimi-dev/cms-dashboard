@@ -349,6 +349,7 @@ const showExpandedView = () => {
   expandedView.classList.add("flex");
 };
 
+
 const expandNotificationModal = () => {
   messageNotificationModal.classList.replace("compact", "expanded");
 

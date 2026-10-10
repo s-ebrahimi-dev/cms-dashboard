@@ -2039,6 +2039,11 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .transition-\[width\,height\] {
+    transition-property: width,height;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-all {
     transition-property: all;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -3300,38 +3305,41 @@
     font-weight: var(--font-weight-semibold);
     color: #9cd7ff;
   }
-  .notification-modal.expanded {
-    right: 0px;
-    height: 600px;
-    width: 600px;
-  }
   #user-profile.open {
     rotate: 180deg;
   }
-  @media (min-width: 768px) {
-    .notification-modal.expanded {
-      height: calc(var(--spacing) * 160);
-      width: calc(var(--spacing) * 160);
-    }
+  .notification-modal.compact {
+    right: 0px;
+    height: auto;
+    width: calc(var(--spacing) * 80);
   }
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
     .notification-modal.expanded {
       height: calc(var(--spacing) * 170);
       width: calc(var(--spacing) * 170);
+    }
+    .notification-modal {
+      transition-property: width;
+      transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+      transition-duration: var(--tw-duration, var(--default-transition-duration));
+      --tw-duration: 500ms;
+      transition-duration: 500ms;
+      --tw-ease: var(--ease-in-out);
+      transition-timing-function: var(--ease-in-out);
     }
   }
   @media (max-width: 1024px) {
     .notification-modal.expanded {
       right: calc(var(--spacing) * 4);
-      left: calc(var(--spacing) * 4);
-      height: 75dvh;
-      width: auto;
+      left: auto;
+      height: auto;
+      width: calc(100vw - 8rem);
     }
     .notification-modal.compact {
       right: calc(var(--spacing) * 4);
-      left: calc(var(--spacing) * 4);
+      left: auto;
       height: auto;
-      width: auto;
+      width: min(20rem, calc(100vw - 2rem));
     }
   }
 }

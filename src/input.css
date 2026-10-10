@@ -199,39 +199,33 @@
   .list-item.active .mobile-menu-text {
     @apply text-[#9cd7ff] font-semibold;
   }
-  /* notification-modals */
-  /* .notification-modal.compact {
-    @apply w-80 h-auto right-0;
-  } */
 
-  .notification-modal.expanded {
-    @apply w-[600px] h-[600px] right-0;
-  }
-
-  #user-profile.open {
+    #user-profile.open {
     @apply rotate-180;
+  }
+  /* notification-modals */
+  .notification-modal.compact {
+    @apply w-80 h-auto right-0;
   }
 
   @media (min-width: 768px) {
     .notification-modal.expanded {
-      @apply w-160 h-160;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .notification-modal.expanded {
       @apply w-170 h-170;
     }
+    .notification-modal {
+    @apply transition-[width] duration-500 ease-in-out;
   }
-  @media (max-width: 1024px) {
-    .notification-modal.expanded {
-      @apply left-4 right-4 w-auto h-[75dvh];
-    }
+}
+
+ 
+@media (max-width: 1024px) {
+  .notification-modal.expanded {
+    @apply right-4 left-auto w-[calc(100vw-8rem)] h-auto;
   }
 
-  @media (max-width: 1024px) {
-    .notification-modal.compact {
-      @apply left-4 right-4 w-auto h-auto;
-    }
+  .notification-modal.compact {
+    @apply right-4 left-auto w-[min(20rem,calc(100vw-2rem))] h-auto;
   }
+}
+
 }
