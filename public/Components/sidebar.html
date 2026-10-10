@@ -7,7 +7,7 @@
     </div>
 
     <div class="logo-text text-center">
-      <h1 class="text-xl font-bold text-[#4E5B65] dark:text-[#B7C1C9]">
+      <h1 class="sidebar-text-title relative text-xl font-bold text-[#B7C1C9] transition-[left] duration-1000 ease-[cubic-bezier(0.56,-0.5,0,1.9)]">
         AutoCare Pro
       </h1>
     </div>
@@ -19,8 +19,28 @@
     <!-- Aside-Right-Button -->
    
 
-    <ul class="menu-list">
+    <ul class="menu-list relative mt-20">
       <!--List-Items  -->
+        
+      <li class=" absolute -right-7 -top-20">
+        <a
+          class=" cursor-default sm:cursor-pointer flex items-center justify-start"
+          href="#"
+        >
+        <button
+            href="#"
+            class="aside-lg-btn hidden sm:flex items-center justify-center w-10 h-17 bg-[#8dc6ff]  text-slate-100 rounded-lg cursor-pointer transition-all duration-300"
+          >
+            <svg class="open-icon w-6 h-6">
+              <use href="#arrow-right"></use>
+            </svg>
+            <svg class="close-icon w-6 h-6 hidden">
+              <use href="#arrow-left"></use>
+            </svg>
+          </button>
+
+        </a>
+      </li>
       <li class="list-item" data-menu="dashboard">
         <a
           class="menu-item cursor-default sm:cursor-pointer flex items-center justify-start"

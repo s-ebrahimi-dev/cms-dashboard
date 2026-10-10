@@ -37,33 +37,28 @@
     @apply bg-white dark:bg-white dark:border border-white/30 dark:text-zinc-500;
   }
   section {
-    @apply bg-[#FCFBF8] dark:bg-[#5f6774] border-[#D9D9D3] dark:border-[#2A3540];
+    @apply bg-[#FCFBF8] dark:bg-[#1f0a19] border-[#D9D9D3] dark:border-[#2A3540];
   }
   section > * {
     @apply bg-[#FCFBF8] dark:bg-[#151B23] border-[#D9D9D3] dark:border-[#2A3540];
   }
 
-
- .layout {
-  @apply relative block
+  .layout {
+    @apply relative block
     sm:grid sm:items-start
     h-full
     sm:grid-cols-[85px_1fr]
     transition-all duration-500 ease-in-out;
-}
+  }
 
-.layout:has(.aside.aside--open) {
-  @apply sm:grid-cols-[280px_1fr];
-}
+  .layout:has(.aside.aside--open) {
+    @apply sm:grid-cols-[280px_1fr];
+  }
 
-.sidebar-container {
-  @apply fixed sm:sticky top-0 bottom-0 h-screen
+  .sidebar-container {
+    @apply fixed sm:sticky top-0 bottom-0 h-screen
     min-w-0 overflow-hidden;
-}
-.aside-lg-btn {
-  
-  @apply top-1/2 -translate-y-1/2
-}
+  }
 
   .theme-btn {
     @apply absolute block w-5 h-5 ml-auto left-0 right-15 sm:right-0 sm:mx-auto top-1.5 text-zinc-800 dark:text-[#B7C1C9];
@@ -78,15 +73,15 @@
   }
 
   .aside {
-  @apply relative h-full top-0 -bottom-full
+    @apply relative h-full top-0 -bottom-full
     bg-[#182A3A] dark:bg-zinc-800 text-slate-400
     hidden sm:flex flex-col
     px-5 py-6
     w-full min-w-0
-    transition-none;
-}
+    transition-all duration-500;
+  }
   .mobile-aside {
-    @apply fixed flex flex-col top-0 bottom-0 -left-51  sm:hidden bg-[#182A3A] dark:bg-zinc-800 text-slate-400 px-5 py-6 transition-all duration-500;
+    @apply fixed flex w-57 flex-col top-0 bottom-0 -left-57  sm:hidden bg-[#182A3A] dark:bg-zinc-800 text-slate-400 px-5 py-6 transition-all duration-500;
   }
 
   .menu-item {
@@ -122,18 +117,17 @@
     @apply max-w-45 opacity-100;
   }
 
-  .logo-text {
-    @apply max-w-0 opacity-0
+  .sidebar-text-title {
+    @apply -left-55
                overflow-hidden
-               whitespace-nowrap
-               transition-all duration-300;
+               whitespace-nowrap;
   }
 
   .aside.aside--open .logo {
     @apply justify-start;
   }
   .logo-mark {
-    @apply transition-all duration-700;
+    @apply transition-all duration-600;
   }
 
   .aside.aside--open .logo-mark {
@@ -143,11 +137,11 @@
     @apply translate-x-11;
   }
 
-  .aside.aside--open .logo-text {
-    @apply max-w-45 opacity-100;
+  .aside.aside--open .sidebar-text-title {
+    @apply left-0;
   }
-  .mobile-aside.aside--open .logo-text {
-    @apply max-w-45 opacity-100;
+  .mobile-aside.aside--open .sidebar-text-title {
+    @apply left-0;
   }
   .upgrade {
     @apply max-w-0 opacity-0 overflow-hidden
@@ -159,10 +153,10 @@
   }
 
   .main {
-  @apply pl-8 pr-8 pb-6
+    @apply pl-8 pr-8 pb-6
     lg:pl-8 lg:pr-8 lg:pb-8
     min-w-0;
-}
+  }
   .list-item {
     position: relative;
   }

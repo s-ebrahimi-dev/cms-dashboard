@@ -86,10 +86,7 @@
       <!-- SIDEBAR -->
       <!-- ======================================================= -->
 
-      <section
-        id="sidebar-container"
-        class="invisible sidebar-container z-50"
-      >
+      <section id="sidebar-container" class="invisible sidebar-container z-50">
         <!-- Loaded by JS -->
       </section>
 
@@ -97,10 +94,7 @@
       <!-- MOBILE SIDEBAR -->
       <!-- ======================================================= -->
 
-      <section
-        id="mobile-sidebar-container"
-        class="relative invisible"
-      >
+      <section id="mobile-sidebar-container" class="relative invisible">
         <!-- Loaded by JS -->
       </section>
 
@@ -310,9 +304,7 @@
                     class="user-name max-w-full truncate text-[14px] font-semibold"
                   ></p>
 
-                  <p
-                    class="user-role max-w-full truncate text-xs"
-                  ></p>
+                  <p class="user-role max-w-full truncate text-xs"></p>
                 </div>
 
                 <!-- Profile Dropdown Button -->
@@ -344,7 +336,7 @@
           <!-- NOTIFICATION MODAL -->
           <!-- ================================================= -->
 
-         <div
+          <div
             id="messageNotificationModal"
             class="notification-modal compact absolute top-17 z-50 invisible overflow-hidden rounded-2xl border border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
           >
@@ -392,11 +384,12 @@
 
             <!-- Expanded -->
 
-            <div id="notification-expanded-view" class="hidden relative h-[75dvh] flex-col min-h-0">
+            <div
+              id="notification-expanded-view"
+              class="hidden relative h-[75dvh] flex-col min-h-0"
+            >
               <div
-                 class="flex shrink-0 items-center justify-between border-b
-           border-slate-200 bg-white px-4 py-3
-           dark:border-slate-700 dark:bg-slate-800"
+                class="flex shrink-0 items-center justify-between border-b border-slate-200 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-800"
               >
                 <div class="flex min-w-0 items-center gap-3">
                   <button
@@ -442,7 +435,10 @@
                 </button>
               </div>
 
-              <div id="all-notifications-list" class="min-h-0 flex-1 overflow-y-auto">
+              <div
+                id="all-notifications-list"
+                class="min-h-0 flex-1 overflow-y-auto"
+              >
                 <div class="px-4 pb-2 pt-4">
                   <p
                     class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
@@ -543,15 +539,11 @@
             class="flex flex-col gap-5 rounded-2xl bg-emerald-700 px-6 py-7 text-white sm:px-8 lg:flex-row lg:items-center lg:justify-between"
           >
             <div>
-              <h1 class="text-2xl font-bold sm:text-3xl">
-                Appointments
-              </h1>
+              <h1 class="text-2xl font-bold sm:text-3xl">Appointments</h1>
 
-              <p
-                class="mt-2 max-w-2xl text-sm text-emerald-100 sm:text-base"
-              >
-                Manage customer appointments, check-ins, service
-                assignments, and daily reception activities.
+              <p class="mt-2 max-w-2xl text-sm text-emerald-100 sm:text-base">
+                Manage customer appointments, check-ins, service assignments,
+                and daily reception activities.
               </p>
             </div>
 
@@ -596,9 +588,7 @@
             <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
-              <p class="text-sm text-slate-500 dark:text-slate-400">
-                Waiting
-              </p>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Waiting</p>
 
               <h3
                 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
@@ -626,9 +616,7 @@
                 2
               </h3>
 
-              <span
-                class="text-sm text-emerald-600 dark:text-emerald-400"
-              >
+              <span class="text-sm text-emerald-600 dark:text-emerald-400">
                 Currently at reception
               </span>
             </article>
@@ -740,9 +728,7 @@
                   >
                     <option value="">All Services</option>
                     <option value="Oil Change">Oil Change</option>
-                    <option value="Brake Inspection">
-                      Brake Inspection
-                    </option>
+                    <option value="Brake Inspection">Brake Inspection</option>
                     <option value="Full Service">Full Service</option>
                     <option value="Inspection">Inspection</option>
                     <option value="Tire Service">Tire Service</option>
@@ -764,7 +750,7 @@
           <!-- APPOINTMENTS TABLE -->
           <!-- =================================================== -->
 
-          <section>
+          <section class="rounded-2xl">
             <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
@@ -774,15 +760,11 @@
                 class="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div>
-                  <h2
-                    class="text-lg font-bold text-slate-900 dark:text-white"
-                  >
+                  <h2 class="text-lg font-bold text-slate-900 dark:text-white">
                     Appointment Schedule
                   </h2>
 
-                  <p
-                    class="mt-1 text-sm text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                     Manage today's and upcoming customer appointments.
                   </p>
                 </div>
@@ -802,42 +784,26 @@
                     <tr
                       class="border-b border-[#D9D9D3] text-slate-500 dark:border-[#2A3540] dark:text-slate-400"
                     >
-                      <th class="p-3 text-left font-medium">
-                        Time
-                      </th>
+                      <th class="p-3 text-left font-medium">Time</th>
 
-                      <th class="p-3 text-left font-medium">
-                        Customer
-                      </th>
+                      <th class="p-3 text-left font-medium">Customer</th>
 
-                      <th class="p-3 text-left font-medium">
-                        Vehicle
-                      </th>
+                      <th class="p-3 text-left font-medium">Vehicle</th>
 
-                      <th class="p-3 text-left font-medium">
-                        Service
-                      </th>
+                      <th class="p-3 text-left font-medium">Service</th>
 
-                      <th class="p-3 text-left font-medium">
-                        Employee
-                      </th>
+                      <th class="p-3 text-left font-medium">Employee</th>
 
-                      <th class="p-3 text-left font-medium">
-                        Status
-                      </th>
+                      <th class="p-3 text-left font-medium">Status</th>
 
-                      <th class="p-3 text-right font-medium">
-                        Action
-                      </th>
+                      <th class="p-3 text-right font-medium">Action</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <!-- Appointment 1 -->
 
-                    <tr
-                      class="border-b border-[#D9D9D3] dark:border-[#2A3540]"
-                    >
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
                       <td
                         class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
                       >
@@ -873,18 +839,12 @@
                           Toyota Camry
                         </p>
 
-                        <p class="text-xs text-slate-400">
-                          ABC-123
-                        </p>
+                        <p class="text-xs text-slate-400">ABC-123</p>
                       </td>
 
-                      <td class="p-3">
-                        Oil Change &amp; Inspection
-                      </td>
+                      <td class="p-3">Oil Change &amp; Inspection</td>
 
-                      <td class="p-3">
-                        David Wilson
-                      </td>
+                      <td class="p-3">David Wilson</td>
 
                       <td class="p-3">
                         <span
@@ -907,9 +867,7 @@
 
                     <!-- Appointment 2 -->
 
-                    <tr
-                      class="border-b border-[#D9D9D3] dark:border-[#2A3540]"
-                    >
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
                       <td
                         class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
                       >
@@ -945,18 +903,12 @@
                           BMW X5
                         </p>
 
-                        <p class="text-xs text-slate-400">
-                          XYZ-456
-                        </p>
+                        <p class="text-xs text-slate-400">XYZ-456</p>
                       </td>
 
-                      <td class="p-3">
-                        Brake Inspection
-                      </td>
+                      <td class="p-3">Brake Inspection</td>
 
-                      <td class="p-3">
-                        Robert Miller
-                      </td>
+                      <td class="p-3">Robert Miller</td>
 
                       <td class="p-3">
                         <span
@@ -979,9 +931,7 @@
 
                     <!-- Appointment 3 -->
 
-                    <tr
-                      class="border-b border-[#D9D9D3] dark:border-[#2A3540]"
-                    >
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
                       <td
                         class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
                       >
@@ -1017,18 +967,12 @@
                           Honda Accord
                         </p>
 
-                        <p class="text-xs text-slate-400">
-                          DEF-789
-                        </p>
+                        <p class="text-xs text-slate-400">DEF-789</p>
                       </td>
 
-                      <td class="p-3">
-                        Full Service
-                      </td>
+                      <td class="p-3">Full Service</td>
 
-                      <td class="p-3">
-                        James Anderson
-                      </td>
+                      <td class="p-3">James Anderson</td>
 
                       <td class="p-3">
                         <span
@@ -1051,9 +995,7 @@
 
                     <!-- Appointment 4 -->
 
-                    <tr
-                      class="border-b border-[#D9D9D3] dark:border-[#2A3540]"
-                    >
+                    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
                       <td
                         class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
                       >
@@ -1089,18 +1031,12 @@
                           Ford Explorer
                         </p>
 
-                        <p class="text-xs text-slate-400">
-                          GHI-321
-                        </p>
+                        <p class="text-xs text-slate-400">GHI-321</p>
                       </td>
 
-                      <td class="p-3">
-                        Tire Service
-                      </td>
+                      <td class="p-3">Tire Service</td>
 
-                      <td class="p-3">
-                        Daniel Thomas
-                      </td>
+                      <td class="p-3">Daniel Thomas</td>
 
                       <td class="p-3">
                         <span
@@ -1159,18 +1095,12 @@
                           Mercedes C-Class
                         </p>
 
-                        <p class="text-xs text-slate-400">
-                          JKL-654
-                        </p>
+                        <p class="text-xs text-slate-400">JKL-654</p>
                       </td>
 
-                      <td class="p-3">
-                        General Inspection
-                      </td>
+                      <td class="p-3">General Inspection</td>
 
-                      <td class="p-3">
-                        —
-                      </td>
+                      <td class="p-3">—</td>
 
                       <td class="p-3">
                         <span
@@ -1200,32 +1130,24 @@
           <!-- APPOINTMENT STATUS -->
           <!-- =================================================== -->
 
-          <section>
+          <section class="">
             <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
               <div class="mb-5">
-                <h2
-                  class="text-lg font-bold text-slate-900 dark:text-white"
-                >
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">
                   Appointment Status
                 </h2>
 
-                <p
-                  class="mt-1 text-sm text-slate-500 dark:text-slate-400"
-                >
+                <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
                   Today's appointment progress
                 </p>
               </div>
 
-              <div
-                class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
-              >
+              <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 <!-- Confirmed -->
 
-                <div
-                  class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
-                >
+                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
                   <div class="flex items-center justify-between">
                     <p
                       class="text-sm font-semibold text-slate-700 dark:text-slate-200"
@@ -1243,17 +1165,13 @@
                   <div
                     class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700"
                   >
-                    <div
-                      class="h-2 w-1/2 rounded-full bg-blue-500"
-                    ></div>
+                    <div class="h-2 w-1/2 rounded-full bg-blue-500"></div>
                   </div>
                 </div>
 
                 <!-- Waiting -->
 
-                <div
-                  class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
-                >
+                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
                   <div class="flex items-center justify-between">
                     <p
                       class="text-sm font-semibold text-slate-700 dark:text-slate-200"
@@ -1271,17 +1189,13 @@
                   <div
                     class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700"
                   >
-                    <div
-                      class="h-2 w-1/3 rounded-full bg-orange-500"
-                    ></div>
+                    <div class="h-2 w-1/3 rounded-full bg-orange-500"></div>
                   </div>
                 </div>
 
                 <!-- In Service -->
 
-                <div
-                  class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
-                >
+                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
                   <div class="flex items-center justify-between">
                     <p
                       class="text-sm font-semibold text-slate-700 dark:text-slate-200"
@@ -1299,17 +1213,13 @@
                   <div
                     class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700"
                   >
-                    <div
-                      class="h-2 w-1/3 rounded-full bg-indigo-500"
-                    ></div>
+                    <div class="h-2 w-1/3 rounded-full bg-indigo-500"></div>
                   </div>
                 </div>
 
                 <!-- Completed -->
 
-                <div
-                  class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]"
-                >
+                <div class="rounded-xl bg-slate-50 p-4 dark:bg-[#1D2630]">
                   <div class="flex items-center justify-between">
                     <p
                       class="text-sm font-semibold text-slate-700 dark:text-slate-200"
@@ -1327,9 +1237,7 @@
                   <div
                     class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700"
                   >
-                    <div
-                      class="h-2 w-5/6 rounded-full bg-green-500"
-                    ></div>
+                    <div class="h-2 w-5/6 rounded-full bg-green-500"></div>
                   </div>
                 </div>
               </div>
@@ -1341,13 +1249,11 @@
           <!-- =================================================== -->
 
           <div>
-            <h2
-              class="mb-5 text-xl font-bold text-slate-900 dark:text-white"
-            >
+            <h2 class="mb-5 text-xl font-bold text-slate-900 dark:text-white">
               Quick Actions
             </h2>
 
-            <div
+            <section
               class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
             >
               <!-- New Appointment -->
@@ -1364,15 +1270,11 @@
                 </div>
 
                 <div>
-                  <h3
-                    class="font-semibold text-slate-900 dark:text-white"
-                  >
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
                     New Appointment
                   </h3>
 
-                  <p
-                    class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     Schedule a customer
                   </p>
                 </div>
@@ -1392,15 +1294,11 @@
                 </div>
 
                 <div>
-                  <h3
-                    class="font-semibold text-slate-900 dark:text-white"
-                  >
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
                     Check In
                   </h3>
 
-                  <p
-                    class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     Check in a customer
                   </p>
                 </div>
@@ -1419,15 +1317,11 @@
                 </div>
 
                 <div>
-                  <h3
-                    class="font-semibold text-slate-900 dark:text-white"
-                  >
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
                     Customers
                   </h3>
 
-                  <p
-                    class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     Find customer information
                   </p>
                 </div>
@@ -1446,20 +1340,16 @@
                 </div>
 
                 <div>
-                  <h3
-                    class="font-semibold text-slate-900 dark:text-white"
-                  >
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
                     Payments
                   </h3>
 
-                  <p
-                    class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
                     Process customer payments
                   </p>
                 </div>
               </a>
-            </div>
+            </section>
           </div>
         </div>
 
@@ -1482,9 +1372,6 @@
     <!-- SHARED JS -->
     <!-- ========================================================= -->
 
-    <script
-      type="module"
-      src="../../scripts/shared.js"
-    ></script>
+    <script type="module" src="../../scripts/shared.js"></script>
   </body>
 </html>
