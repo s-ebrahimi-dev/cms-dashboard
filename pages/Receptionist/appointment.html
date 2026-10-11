@@ -1130,7 +1130,7 @@
           <!-- APPOINTMENT STATUS -->
           <!-- =================================================== -->
 
-          <section class="">
+          <section class="rounded-2xl">
             <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
@@ -1258,9 +1258,9 @@
             >
               <!-- New Appointment -->
 
-              <button
+              <a
                 id="quick-new-appointment"
-                type="button"
+                href="#"
                 class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
               >
                 <div
@@ -1278,13 +1278,13 @@
                     Schedule a customer
                   </p>
                 </div>
-              </button>
+              </a>
 
               <!-- Check In -->
 
-              <button
+              <a
                 id="quick-check-in"
-                type="button"
+                href="#"
                 class="flex items-center gap-4 rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 text-left shadow-sm transition hover:-translate-y-0.5 hover:shadow-md dark:border-[#2A3540] dark:bg-[#151B23]"
               >
                 <div
@@ -1302,7 +1302,7 @@
                     Check in a customer
                   </p>
                 </div>
-              </button>
+              </a>
 
               <!-- Customers -->
 
@@ -1363,7 +1363,7 @@
         ></div>
 
         <div id="modal-container"></div>
-
+        <div id="appointment-modal"></div>
         <div id="result-modal-container"></div>
       </main>
     </div>
@@ -1373,5 +1373,6 @@
     <!-- ========================================================= -->
 
     <script type="module" src="../../scripts/shared.js"></script>
+    <script type="module" src="../../scripts/pages/receptionist/appointment.js"></script>
   </body>
 </html>

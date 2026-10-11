@@ -1036,6 +1036,24 @@ const initConversationSelection = (onConversationSelected) => {
   });
 };
 
+// receptionist create appointment
+const openCreateAppointmentModal = () => {
+  const modal = document.querySelector("#create-appointment-modal");
+
+  if (!modal) {
+    console.error("Create appointment modal not found.");
+    return;
+  }
+
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+
+  requestAnimationFrame(() => {
+    modal.classList.remove("opacity-0");
+    modal.classList.add("opacity-100");
+  });
+};
+
 export {
   getAndShowAllUsers,
   getAndShowAllEmployees,
@@ -1059,4 +1077,5 @@ export {
   renderSenderMessage,
   renderReceiverMessage,
   getConversationMessages,
+  openCreateAppointmentModal
 };

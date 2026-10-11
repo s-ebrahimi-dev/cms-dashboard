@@ -1,10 +1,12 @@
-import { loadComponent } from "../components/components.js";
-import { initSidebar } from "../modules/sidebar.js";
-
-loadComponent(
-    "sidebar-container",
-    "/pages/Components/sidebar.html"
+import { loadComponent } from "../../components/component-Loader.js";
+import { openCreateAppointmentModal } from "../../funcs/shared.js";
+await loadComponent(
+    "appointment-modal",
+    "/Components/receptionist/create-appointment-modal.html"
 )
-.then(() => {
-    initSidebar();
-});
+const newAppointmentButton = document.querySelector("#new-appointment-button")
+const quickNewAppointmentButton = document.querySelector("#quick-new-appointment")
+
+
+newAppointmentButton.addEventListener("click", openCreateAppointmentModal)
+quickNewAppointmentButton.addEventListener("click", openCreateAppointmentModal)
