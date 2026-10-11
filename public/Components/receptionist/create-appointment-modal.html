@@ -1,257 +1,605 @@
+<!-- Create Appointment Modal -->
 <div
   id="create-appointment-modal"
-  class="fixed inset-0 z-100 hidden items-center justify-center bg-black/50 p-4 opacity-0 transition-opacity duration-300"
+  class="fixed inset-0 z-[1000] hidden items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="create-appointment-title"
 >
-  <section
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="create-appointment-title"
-    class="relative max-h-[90dvh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-6 shadow-2xl dark:border-[#2A3540] dark:bg-[#151B23] sm:p-8"
+  <div
+    class="flex max-h-[96dvh] w-full max-w-375 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl dark:border-zinc-700 dark:bg-zinc-900"
   >
     <!-- Header -->
     <div
-      class="mb-7 flex items-start justify-between gap-4"
+      class="flex shrink-0 items-center justify-between border-b border-gray-200 px-7 py-5 dark:border-zinc-700"
     >
       <div>
         <h2
           id="create-appointment-title"
-          class="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl"
+          class="text-xl font-bold text-gray-900 dark:text-white"
         >
-          Create Appointment
+          Register Appointment
         </h2>
-
-        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">
-          Register a customer for a workshop service.
+        <p class="mt-1 text-sm text-gray-500 dark:text-zinc-400">
+          Find or register a customer and schedule their service.
         </p>
       </div>
 
       <button
-        id="close-create-appointment"
+        id="close-create-appointment-modal"
         type="button"
-        aria-label="Close create appointment modal"
-        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-[#1D2630] dark:hover:text-white"
+        class="flex size-10 items-center justify-center rounded-xl text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white"
+        aria-label="Close appointment form"
       >
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          class="size-5"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="1.8"
-          class="h-5 w-5"
+          stroke-width="2"
+          aria-hidden="true"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 6l12 12M18 6L6 18"
-          />
+          <path d="m18 6-12 12M6 6l12 12" />
         </svg>
       </button>
     </div>
 
-    <form id="create-appointment-form" class="space-y-6">
-      <!-- Customer -->
-      <div>
-        <label
-          for="appointment-customer"
-          class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200"
+    <form id="create-appointment-form" class="flex min-h-0 flex-1 flex-col">
+      <div class="min-h-0 flex-1 space-y-7 overflow-y-auto px-7 py-6">
+        <!-- Customer -->
+        <section
+          class="space-y-5 rounded-2xl border border-gray-200 p-5 sm:p-6 dark:border-zinc-700"
         >
-          Customer <span class="text-red-500">*</span>
-        </label>
-
-        <select
-          id="appointment-customer"
-          name="customer"
-          required
-          class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
-        >
-          <option value="">Select a customer</option>
-        </select>
-
-        <p
-          id="appointment-customer-hint"
-          class="mt-2 text-xs text-slate-400"
-        >
-          Select an existing customer account.
-        </p>
-      </div>
-
-      <!-- Vehicle -->
-      <div>
-        <label
-          for="appointment-vehicle"
-          class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200"
-        >
-          Customer Vehicle <span class="text-red-500">*</span>
-        </label>
-
-        <select
-          id="appointment-vehicle"
-          name="vehicle"
-          required
-          disabled
-          class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
-        >
-          <option value="">Select a customer first</option>
-        </select>
-
-        <div
-          id="appointment-vehicle-details"
-          class="mt-3 hidden rounded-xl border border-[#D9D9D3] bg-white p-4 dark:border-[#2A3540] dark:bg-[#1D2630]"
-        >
-          <p
-            id="appointment-vehicle-name"
-            class="font-semibold text-slate-800 dark:text-white"
-          ></p>
-
-          <p
-            id="appointment-vehicle-info"
-            class="mt-1 text-xs text-slate-500 dark:text-slate-400"
-          ></p>
-        </div>
-      </div>
-
-      <!-- Service -->
-      <div>
-        <label
-          for="appointment-service"
-          class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200"
-        >
-          Service <span class="text-red-500">*</span>
-        </label>
-
-        <select
-          id="appointment-service"
-          name="service"
-          required
-          class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
-        >
-          <option value="">Select a service</option>
-        </select>
-
-        <div
-          id="appointment-service-details"
-          class="mt-3 hidden rounded-xl border border-[#D9D9D3] bg-white p-4 dark:border-[#2A3540] dark:bg-[#1D2630]"
-        >
-          <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center justify-between gap-4">
             <div>
-              <p class="text-xs text-slate-500 dark:text-slate-400">
-                Estimated duration
+              <h3 class="text-base font-bold text-gray-900 dark:text-white">
+                Customer
+              </h3>
+              <p class="mt-1 text-sm text-gray-500 dark:text-zinc-400">
+                Search your customers or register a new customer.
+              </p>
+            </div>
+
+            <div
+              class="relative inline-grid grid-cols-2 rounded-xl bg-gray-100 p-1 dark:bg-zinc-800"
+              role="group"
+              aria-label="Customer mode"
+            >
+              <!-- Sliding active background -->
+              <span
+                id="customer-mode-indicator"
+                aria-hidden="true"
+                class="pointer-events-none absolute bottom-1 left-1 top-1 w-[calc(50%-4px)] rounded-lg bg-white shadow-sm transition-transform duration-300 ease-in-out dark:bg-zinc-700"
+              ></span>
+
+              <button
+                id="existing-customer-mode"
+                type="button"
+                aria-pressed="true"
+                class="relative z-10 rounded-lg px-4 py-2 text-sm font-semibold cursor-default sm:cursor-pointer text-gray-900 transition-colors duration-300 dark:text-white"
+              >
+                Existing Customer
+              </button>
+
+              <button
+                id="new-customer-mode"
+                type="button"
+                aria-pressed="false"
+                class="relative z-10 rounded-lg px-4 py-2 text-sm font-medium sm:cursor-pointer text-gray-600 transition-colors duration-300 dark:text-zinc-400"
+              >
+                New Customer
+              </button>
+            </div>
+          </div>
+
+          <!-- Existing Customer Search -->
+          <div id="existing-customer-panel" class="space-y-3">
+            <label
+              for="appointment-customer-search"
+              class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+            >
+              Search by name, username, phone, or email
+              <span class="text-red-500">*</span>
+            </label>
+
+            <div class="relative">
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400"
+              >
+                <svg
+                  class="size-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  aria-hidden="true"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m16 16 4 4" />
+                </svg>
+              </div>
+
+              <input
+                id="appointment-customer-search"
+                type="search"
+                autocomplete="off"
+                placeholder="Start typing a customer's name, phone, or email..."
+                aria-label="Search existing customers"
+                aria-controls="appointment-customer-results"
+                aria-expanded="false"
+                class="w-full rounded-xl border border-gray-300 bg-white py-3.5 pl-12 pr-4 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500"
+              />
+
+              <!-- Search Results: populate with matching customers -->
+              <div
+                id="appointment-customer-results"
+                class="absolute inset-x-0 top-full z-30 mt-2 hidden max-h-64 overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-xl dark:border-zinc-700 dark:bg-zinc-800"
+                role="listbox"
+                aria-label="Matching customers"
+              ></div>
+            </div>
+
+            <!-- Selected Customer -->
+            <div
+              id="appointment-selected-customer"
+              class="hidden rounded-xl border border-indigo-200 bg-indigo-50/70 p-4 dark:border-indigo-900 dark:bg-indigo-950/30"
+            >
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex min-w-0 items-center gap-3">
+                  <div
+                    class="flex size-11 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200"
+                  >
+                    <svg
+                      class="size-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="8" r="4" />
+                      <path d="M4 21a8 8 0 0 1 16 0" />
+                    </svg>
+                  </div>
+
+                  <div class="min-w-0">
+                    <p
+                      id="appointment-selected-customer-name"
+                      class="truncate text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      Customer name
+                    </p>
+                    <p
+                      id="appointment-selected-customer-contact"
+                      class="mt-1 truncate text-xs text-gray-500 dark:text-zinc-400"
+                    >
+                      Customer contact information
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  id="appointment-change-customer"
+                  type="button"
+                  class="shrink-0 rounded-lg px-3 py-2 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100 dark:text-indigo-300 dark:hover:bg-indigo-900/50"
+                >
+                  Change
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- New Customer Form -->
+          <div
+            id="new-customer-panel"
+            class="hidden space-y-5 rounded-xl border border-gray-200 bg-gray-50/70 p-5 dark:border-zinc-700 dark:bg-zinc-800/30"
+          >
+            <div>
+              <h4 class="font-semibold text-gray-900 dark:text-white">
+                New Customer Details
+              </h4>
+              <p class="mt-1 text-sm text-gray-500 dark:text-zinc-400">
+                Enter the customer's information to create their account.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              <div class="space-y-2">
+                <label
+                  for="new-customer-firstname"
+                  class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+                >
+                  First Name <span class="text-red-500">*</span>
+                </label>
+                <input
+                  id="new-customer-firstname"
+                  name="firstname"
+                  type="text"
+                  minlength="2"
+                  maxlength="30"
+                  autocomplete="given-name"
+                  placeholder="First name"
+                  required
+                  disabled
+                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label
+                  for="new-customer-lastname"
+                  class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+                >
+                  Last Name <span class="text-red-500">*</span>
+                </label>
+                <input
+                  id="new-customer-lastname"
+                  name="lastname"
+                  type="text"
+                  minlength="2"
+                  maxlength="30"
+                  autocomplete="family-name"
+                  placeholder="Last name"
+                  required
+                  disabled
+                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label
+                  for="new-customer-phone"
+                  class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+                >
+                  Phone <span class="text-red-500">*</span>
+                </label>
+                <input
+                  id="new-customer-phone"
+                  name="phone"
+                  type="tel"
+                  inputmode="numeric"
+                  autocomplete="tel"
+                  pattern="[0-9]{11}"
+                  maxlength="11"
+                  placeholder="11-digit phone number"
+                  required
+                  disabled
+                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label
+                  for="new-customer-email"
+                  class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+                >
+                  Email <span class="text-red-500">*</span>
+                </label>
+                <input
+                  id="new-customer-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="customer@example.com"
+                  required
+                  disabled
+                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label
+                  for="new-customer-username"
+                  class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+                >
+                  Username <span class="text-red-500">*</span>
+                </label>
+                <input
+                  id="new-customer-username"
+                  name="username"
+                  type="text"
+                  minlength="3"
+                  maxlength="30"
+                  pattern="[A-Za-z0-9_]+"
+                  autocomplete="off"
+                  placeholder="Choose username"
+                  required
+                  disabled
+                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label
+                  for="new-customer-password"
+                  class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+                >
+                  Initial Password <span class="text-red-500">*</span>
+                </label>
+                <input
+                  id="new-customer-password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  placeholder="Create initial password"
+                  required
+                  disabled
+                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="border-t border-gray-200 dark:border-zinc-700"></div>
+
+        <!-- Vehicle -->
+        <section
+          class="space-y-4 rounded-2xl border border-gray-200 p-5 sm:p-6 dark:border-zinc-700"
+        >
+          <div>
+            <h3 class="text-base font-bold text-gray-900 dark:text-white">
+              Vehicle
+            </h3>
+            <p class="mt-1 text-sm text-gray-500 dark:text-zinc-400">
+              Select the vehicle that needs service.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div class="space-y-2">
+              <label
+                for="appointment-vehicle"
+                class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+              >
+                Customer Vehicle <span class="text-red-500">*</span>
+              </label>
+              <select
+                id="appointment-vehicle"
+                name="vehicle"
+                required
+                disabled
+                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+              >
+                <option value="">Select a customer first</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            id="appointment-vehicle-details"
+            class="hidden rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-zinc-700 dark:bg-zinc-800/50"
+          >
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+              <div>
+                <p class="text-xs text-gray-500 dark:text-zinc-400">Vehicle</p>
+                <p
+                  id="appointment-vehicle-name"
+                  class="mt-1 text-sm font-semibold text-gray-900 dark:text-white"
+                >
+                  —
+                </p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 dark:text-zinc-400">
+                  License Plate
+                </p>
+                <p
+                  id="appointment-vehicle-plate"
+                  class="mt-1 text-sm font-semibold text-gray-900 dark:text-white"
+                >
+                  —
+                </p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 dark:text-zinc-400">Mileage</p>
+                <p
+                  id="appointment-vehicle-mileage"
+                  class="mt-1 text-sm font-semibold text-gray-900 dark:text-white"
+                >
+                  —
+                </p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 dark:text-zinc-400">Color</p>
+                <p
+                  id="appointment-vehicle-color"
+                  class="mt-1 text-sm font-semibold text-gray-900 dark:text-white"
+                >
+                  —
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="border-t border-gray-200 dark:border-zinc-700"></div>
+
+        <!-- Service -->
+        <section
+          class="space-y-4 rounded-2xl border border-gray-200 p-5 sm:p-6 dark:border-zinc-700"
+        >
+          <div>
+            <h3 class="text-base font-bold text-gray-900 dark:text-white">
+              Service
+            </h3>
+            <p class="mt-1 text-sm text-gray-500 dark:text-zinc-400">
+              Choose the service requested by the customer.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div class="space-y-2">
+              <label
+                for="appointment-service"
+                class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+              >
+                Service <span class="text-red-500">*</span>
+              </label>
+              <select
+                id="appointment-service"
+                name="service"
+                required
+                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+              >
+                <option value="">Select a service</option>
+              </select>
+            </div>
+          </div>
+
+          <div
+            id="appointment-service-details"
+            class="hidden grid-cols-2 gap-4 rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-zinc-700 dark:bg-zinc-800/50"
+          >
+            <div>
+              <p class="text-xs text-gray-500 dark:text-zinc-400">
+                Estimated Duration
               </p>
               <p
                 id="appointment-service-duration"
-                class="mt-1 font-semibold text-slate-800 dark:text-white"
-              ></p>
+                class="mt-1 text-sm font-semibold text-gray-900 dark:text-white"
+              >
+                —
+              </p>
             </div>
-
             <div>
-              <p class="text-xs text-slate-500 dark:text-slate-400">
-                Service price
+              <p class="text-xs text-gray-500 dark:text-zinc-400">
+                Service Price
               </p>
               <p
                 id="appointment-service-price"
-                class="mt-1 font-semibold text-indigo-600 dark:text-indigo-400"
-              ></p>
+                class="mt-1 text-sm font-semibold text-gray-900 dark:text-white"
+              >
+                —
+              </p>
             </div>
           </div>
+        </section>
+
+        <div class="border-t border-gray-200 dark:border-zinc-700"></div>
+
+        <!-- Schedule -->
+        <section
+          class="space-y-4 rounded-2xl border border-gray-200 p-5 sm:p-6 dark:border-zinc-700"
+        >
+          <div>
+            <h3 class="text-base font-bold text-gray-900 dark:text-white">
+              Appointment Schedule
+            </h3>
+            <p class="mt-1 text-sm text-gray-500 dark:text-zinc-400">
+              Choose a date and an available time slot.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div class="space-y-2">
+              <label
+                for="appointment-scheduled-date"
+                class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+              >
+                Date <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="appointment-scheduled-date"
+                name="date"
+                type="date"
+                required
+                disabled
+                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+              />
+            </div>
+
+            <div class="space-y-2">
+              <label
+                for="appointment-time-slot"
+                class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+              >
+                Available Time <span class="text-red-500">*</span>
+              </label>
+              <select
+                id="appointment-time-slot"
+                name="scheduledAt"
+                required
+                disabled
+                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+              >
+                <option value="">Select a service and date first</option>
+              </select>
+            </div>
+          </div>
+
+          <p
+            id="appointment-slot-message"
+            class="text-sm text-gray-500 dark:text-zinc-400"
+            aria-live="polite"
+          >
+            Select a service and date to view available times.
+          </p>
+
+          <div class="space-y-2 pt-2">
+            <label
+              for="appointment-notes"
+              class="block text-sm font-medium text-gray-700 dark:text-zinc-300"
+            >
+              Appointment Notes
+              <span class="font-normal text-gray-400">(Optional)</span>
+            </label>
+            <textarea
+              id="appointment-notes"
+              name="notes"
+              rows="3"
+              maxlength="2000"
+              placeholder="Describe the customer's request or relevant details..."
+              class="w-full resize-y rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white text-zinc-600"
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- Error -->
+        <div
+          id="create-appointment-error"
+          class="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/30 dark:text-red-300"
+          role="alert"
+        ></div>
+      </div>
+
+      <!-- Footer -->
+      <div
+        class="flex shrink-0 flex-col-reverse gap-3 border-t border-gray-200 bg-gray-50 px-7 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-700 dark:bg-zinc-900"
+      >
+        <p class="text-xs text-gray-500 dark:text-zinc-400">
+          <span class="text-red-500">*</span> Required fields
+        </p>
+
+        <div class="flex flex-col-reverse gap-3 sm:flex-row">
+          <button
+            id="cancel-create-appointment"
+            type="button"
+            class="rounded-xl border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
+          >
+            Cancel
+          </button>
+
+          <button
+            id="create-appointment-submit"
+            type="submit"
+            disabled
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <svg
+              class="size-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+            Register Appointment
+          </button>
         </div>
       </div>
-
-      <!-- Date -->
-      <div>
-        <label
-          for="appointment-scheduled-date"
-          class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200"
-        >
-          Appointment Date <span class="text-red-500">*</span>
-        </label>
-
-        <input
-          id="appointment-scheduled-date"
-          name="date"
-          type="date"
-          required
-          disabled
-          class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
-        />
-
-        <p class="mt-2 text-xs text-slate-400">
-          Available times follow the workshop's opening hours.
-        </p>
-      </div>
-
-      <!-- Available time slots -->
-      <div>
-        <label
-          for="appointment-time-slot"
-          class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200"
-        >
-          Available Time <span class="text-red-500">*</span>
-        </label>
-
-        <select
-          id="appointment-time-slot"
-          name="scheduledAt"
-          required
-          disabled
-          class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-50 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
-        >
-          <option value="">Select a date first</option>
-        </select>
-
-        <p
-          id="appointment-slot-message"
-          class="mt-2 text-xs text-slate-400"
-          aria-live="polite"
-        ></p>
-      </div>
-
-      <!-- Notes -->
-      <div>
-        <label
-          for="appointment-notes"
-          class="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200"
-        >
-          Notes <span class="font-normal text-slate-400">(optional)</span>
-        </label>
-
-        <textarea
-          id="appointment-notes"
-          name="notes"
-          rows="3"
-          maxlength="2000"
-          placeholder="Describe the customer's concerns or additional requests..."
-          class="w-full resize-y rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-[#2A3540] dark:bg-[#1D2630] dark:text-slate-200"
-        ></textarea>
-      </div>
-
-      <!-- Feedback -->
-      <div
-        id="create-appointment-error"
-        class="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-500/20 dark:bg-red-500/10 dark:text-red-300"
-        role="alert"
-      ></div>
-
-      <!-- Actions -->
-      <div
-        class="flex flex-col-reverse gap-3 border-t border-[#D9D9D3] pt-5 dark:border-[#2A3540] sm:flex-row sm:justify-end"
-      >
-        <button
-          id="cancel-create-appointment"
-          type="button"
-          class="rounded-xl border border-[#D9D9D3] px-5 py-3 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
-        >
-          Cancel
-        </button>
-
-        <button
-          id="submit-create-appointment"
-          type="submit"
-          disabled
-          class="rounded-xl bg-emerald-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          Create Appointment
-        </button>
-      </div>
     </form>
-  </section>
+  </div>
 </div>

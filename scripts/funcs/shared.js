@@ -1054,6 +1054,22 @@ const openCreateAppointmentModal = () => {
   });
 };
 
+const closeCreateAppointmentModal = () => {
+  const modal = document.querySelector("#create-appointment-modal");
+  if (!modal) {
+    console.error("Create appointment modal not found.");
+    return;
+  }
+
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+
+  requestAnimationFrame(() => {
+    modal.classList.add("opacity-0");
+    modal.classList.remove("opacity-100");
+  });
+}
+
 export {
   getAndShowAllUsers,
   getAndShowAllEmployees,
@@ -1077,5 +1093,6 @@ export {
   renderSenderMessage,
   renderReceiverMessage,
   getConversationMessages,
-  openCreateAppointmentModal
+  openCreateAppointmentModal,
+  closeCreateAppointmentModal
 };
