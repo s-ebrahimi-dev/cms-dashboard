@@ -14,7 +14,6 @@ let currentDeleteUser = null;
 let currentEditUser = null;
 let currentChatUser = null;
 
-
 const roleLabels = {
   ADMIN: "Administrator",
   CUSTOMER: "Customer",
@@ -226,15 +225,15 @@ const initChatUserModal = () => {
 };
 //---- Get And Show All Users------------
 const getAllUser = async () => {
- const res = await fetch(`${base_URL}/users`, {
+  const res = await fetch(`${base_URL}/users`, {
     headers: { "Content-Type": "application/json" },
     credentials: "include",
   });
   const result = await res.json();
 
-  const users = result.data; 
-  return users
-}
+  const users = result.data;
+  return users;
+};
 const getAndShowAllUsers = async () => {
   const usersTable = document.querySelector("#usersTableBody");
   const roleConfig = {
@@ -607,30 +606,24 @@ const markConversationAsRead = async (conversationId) => {
     );
 
     const result = await res.json();
- console.log("MARK AS READ RESULT:", result);
+    console.log("MARK AS READ RESULT:", result);
     if (!res.ok) {
-      console.error(
-        "MARK CONVERSATION AS READ ERROR:",
-        result.message,
-      );
+      console.error("MARK CONVERSATION AS READ ERROR:", result.message);
 
       return null;
     }
     if (result.success && result.data.notificationsUpdated > 0) {
-  window.dispatchEvent(
-    new CustomEvent("conversationRead", {
-      detail: {
-        conversationId,
-      },
-    }),
-  );
-}
+      window.dispatchEvent(
+        new CustomEvent("conversationRead", {
+          detail: {
+            conversationId,
+          },
+        }),
+      );
+    }
     return result;
   } catch (error) {
-    console.error(
-      "MARK CONVERSATION AS READ ERROR:",
-      error,
-    );
+    console.error("MARK CONVERSATION AS READ ERROR:", error);
 
     return null;
   }
@@ -986,12 +979,12 @@ const getConversationMessages = async (conversationId) => {
 
   const messages = result.data;
   console.log(messages);
-  
+
   const messageList = document.querySelector("#message-list");
 
   messageList.innerHTML = "";
 
-const currentUser = getCurrentUser();
+  const currentUser = getCurrentUser();
 
   messages.forEach((message) => {
     const senderId = String(message.sender._id);
@@ -1046,7 +1039,32 @@ const initConversationSelection = (onConversationSelected) => {
 };
 
 // receptionist create appointment
-const openCreateAppointmentModal = () => {
+
+let vehicleCataloguePromise = null;
+
+const loadVehicleCatalogue = () => {
+  if (!vehicleCataloguePromise) {
+    vehicleCataloguePromise = fetch(
+      "https://cdn.jsdelivr.net/gh/vehiclesdb/vehiclesdb@latest/dist/vehicles.json",
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to load vehicle catalogue");
+        }
+
+        return response.json();
+      })
+      .catch((error) => {
+        // Allow a retry if loading fails.
+        vehicleCataloguePromise = null;
+        throw error;
+      });
+  }
+
+  return vehicleCataloguePromise;
+};
+
+const openCreateAppointmentModal = async () => {
   const modal = document.querySelector("#create-appointment-modal");
 
   if (!modal) {
@@ -1061,6 +1079,36 @@ const openCreateAppointmentModal = () => {
     modal.classList.remove("opacity-0");
     modal.classList.add("opacity-100");
   });
+
+  try {
+    const catalogue = await loadVehicleCatalogue();
+
+    console.log("Vehicle catalogue:", catalogue);
+    console.log("Available makes:", catalogue.makes);
+
+    console.log("Available vehicle types:", catalogue.kinds);
+
+    // Inspect the first make
+    console.log("First make:", catalogue.makes[0]);
+
+    // Find a make that includes cars
+    const firstCarMake = catalogue.makes.find((make) =>
+      make.kinds?.includes("car"),
+    );
+
+    console.log("First car make:", firstCarMake);
+
+    console.log("First model object:", firstCarMake?.models?.[0]);
+
+    console.log(
+      "First 5 models:",
+      JSON.stringify(firstCarMake?.models?.slice(0, 5), null, 2),
+    );
+
+    console.log("Its models:", firstCarMake?.models);
+  } catch (error) {
+    console.error("Unable to load vehicle catalogue:", error);
+  }
 };
 
 const closeCreateAppointmentModal = () => {
@@ -1077,7 +1125,26 @@ const closeCreateAppointmentModal = () => {
     modal.classList.add("opacity-0");
     modal.classList.remove("opacity-100");
   });
-}
+};
+
+const createNewAppointment = async () => {
+  const foundCustomerFirstnameElem = document.querySelector(
+    "#new-customer-firstname",
+  );
+  const foundCustomerLastnameElem = document.querySelector(
+    "#new-customer-lastname",
+  );
+  const foundCustomerUsernameElem = document.querySelector(
+    "#new-customer-username",
+  );
+  const foundCustomerPhoneElem = document.querySelector("#new-customer-phone");
+  const foundCustomerEmailElem = document.querySelector("#new-customer-email");
+  const foundCustomerpPasswordElem = document.querySelector(
+    "#new-customer-password",
+  );
+};
+
+
 
 export {
   getAllUser,
@@ -1104,5 +1171,5 @@ export {
   renderReceiverMessage,
   getConversationMessages,
   openCreateAppointmentModal,
-  closeCreateAppointmentModal
+  closeCreateAppointmentModal,
 };
