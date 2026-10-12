@@ -5,6 +5,8 @@ import {
   openCreateAppointmentModal,
   closeCreateAppointmentModal,
 } from "../../funcs/shared.js";
+import { showResultModal } from "../../components/result-modal.js";
+import { showLoader, hideLoader } from "../../funcs/loader.js";
 await loadComponent(
   "appointment-modal",
   "/Components/receptionist/create-appointment-modal.html",
@@ -118,6 +120,7 @@ serachExistingCustomerInputElem.addEventListener("input", (event) => {
     const customerResult = document.createElement("button");
 
     customerResult.type = "button";
+    customerResult.id = `${customer._id}`;
     customerResult.className =
       "customer group flex w-full items-center gap-3 border-b border-gray-100 " +
       "px-4 py-3 text-left cursor-default sm:cursor-pointer transition-colors duration-200 " +
@@ -196,36 +199,121 @@ resultSearchBox.addEventListener("click", async (event) => {
   if (!customerBtn || !resultSearchBox.contains(customerBtn)) {
     return;
   }
+  serachExistingCustomerInputElem.value = "";
 
-  console.log("Customer clicked:", customerBtn);
+  showLoader("Loading customer", "Please wait...");
 
-  await loadComponent(
-    "customer-detail-infos",
-    "/Components/receptionist/customer-detail-information.html",
-  );
+  try {
+    const res = await fetch(`${base_URL}/users/${customerBtn.id}`, {
+      credentials: "include",
+    });
 
-  const customerDetailModal = document.querySelector("#customer-details-modal");
+    if (!res.ok) {
+      showResultModal("error", "Customer Not Found");
+      return;
+    }
 
-  if (!customerDetailModal) {
-    console.error("Customer details modal was not loaded.");
-    return;
+    const customer = await res.json();
+
+    await loadComponent(
+      "customer-detail-infos",
+      "/Components/receptionist/customer-detail-information.html",
+    );
+
+    const customerDetailModal = document.querySelector(
+      "#customer-details-modal",
+    );
+
+    if (!customerDetailModal) {
+      throw new Error("Customer details modal was not loaded.");
+    }
+
+    const closeCustomerDetailModalBtn = document.querySelector(
+      "#close-customer-details",
+    );
+
+    const cancelCustomerDetailModalBtn = document.querySelector(
+      "#cancel-customer-details",
+    );
+
+    const closeModal = () => {
+      customerDetailModal.classList.add("hidden");
+      customerDetailModal.classList.remove("flex");
+    };
+
+    closeCustomerDetailModalBtn.addEventListener("click", closeModal);
+
+    cancelCustomerDetailModalBtn.addEventListener("click", closeModal);
+
+    // TODO: Populate the modal using the fetched customer data.
+    console.log("Fetched customer:", customer);
+
+    customerDetailModal.classList.remove("hidden");
+    customerDetailModal.classList.add("flex");
+    if (customer) {
+      const user = customer.data
+      const customerPersonalInfosElem = document.querySelector("#personal-infos")
+      const customerDetailNameElem = document.querySelector("#details-customer-name")
+      const customerDetailUsernameElem = document.querySelector("#details-customer-username")
+      const customerDetailImgElem = document.querySelector("#details-customer-image")
+      console.log(customerDetailImgElem);
+      
+      customerDetailNameElem.innerHTML = `${user.firstname} ${user.lastname}`
+      customerDetailUsernameElem.innerHTML = `${user.username}`
+      customerDetailImgElem.src = user.profileImage ? `${base_URL}/users/profile-image/${user._id}` : "/images/default-profile.png"
+      customerPersonalInfosElem.innerHTML = "";
+      customerPersonalInfosElem.insertAdjacentHTML("beforeend", `
+         <div>
+            <p class="text-sm text-gray-500 dark:text-zinc-400">
+              ${user.firstname}
+            </p>
+            <p
+              id="details-customer-firstname"
+              class="mt-1 wrap-break-word text-sm font-medium text-gray-900 dark:text-white"
+            >—</p>
+          </div>
+
+          <div>
+            <p class="text-sm text-gray-500 dark:text-zinc-400">
+              ${user.lastname}
+            </p>
+            <p
+              id="details-customer-lastname"
+              class="mt-1 wrap-break-word text-sm font-medium text-gray-900 dark:text-white"
+            >—</p>
+          </div>
+
+          <div>
+            <p class="text-sm text-gray-500 dark:text-zinc-400">
+              ${user.phone}
+            </p>
+            <p
+              id="details-customer-phone"
+              class="mt-1 wrap-break-word text-sm font-medium text-gray-900 dark:text-white"
+            >—</p>
+          </div>
+
+          <div>
+            <p class="text-sm text-gray-500 dark:text-zinc-400">
+              ${user.email}
+            </p>
+            <p
+              id="details-customer-email"
+              class="mt-1 break-all text-sm font-medium text-gray-900 dark:text-white"
+            >—</p>
+          </div>
+        `)
+      
+      
+    }
+
+  } catch (error) {
+    console.error("Failed to load customer details:", error);
+
+    showResultModal("error", "Failed to load customer details.");
+  } finally {
+    hideLoader();
   }
 
-  customerDetailModal.classList.remove("hidden");
-  customerDetailModal.classList.add("flex");
-  const closeCustomerDetailModalBtn = document.querySelector(
-    "#close-customer-details",
-  );
-  const cancelCustomerDetailModalBtn = document.querySelector(
-    "#cancel-customer-details",
-  );
-
-  closeCustomerDetailModalBtn.addEventListener("click", () => {
-    customerDetailModal.classList.add("hidden");
-    customerDetailModal.classList.remove("flex");
-  });
-  cancelCustomerDetailModalBtn.addEventListener("click", () => {
-    customerDetailModal.classList.add("hidden");
-    customerDetailModal.classList.remove("flex");
-  });
+  
 });
