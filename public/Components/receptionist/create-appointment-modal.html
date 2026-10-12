@@ -93,6 +93,7 @@
           </div>
 
           <!-- Existing Customer Search -->
+
           <div id="existing-customer-panel" class="space-y-3">
             <label
               for="appointment-customer-search"
@@ -129,64 +130,16 @@
                 aria-expanded="false"
                 class="w-full rounded-xl border border-gray-300 bg-white py-3.5 pl-12 pr-4 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white dark:placeholder:text-zinc-500"
               />
-
-              <!-- Search Results: populate with matching customers -->
-              <div
-                id="appointment-customer-results"
-                class="absolute inset-x-0 top-full z-30 mt-2 hidden max-h-64 overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-xl dark:border-zinc-700 dark:bg-zinc-800"
-                role="listbox"
-                aria-label="Matching customers"
-              ></div>
             </div>
 
-            <!-- Selected Customer -->
+            <!-- Customer Search Results Box -->
+
             <div
-              id="appointment-selected-customer"
-              class="hidden rounded-xl border border-indigo-200 bg-indigo-50/70 p-4 dark:border-indigo-900 dark:bg-indigo-950/30"
-            >
-              <div class="flex items-center justify-between gap-3">
-                <div class="flex min-w-0 items-center gap-3">
-                  <div
-                    class="flex size-11 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-200"
-                  >
-                    <svg
-                      class="size-5"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.8"
-                      aria-hidden="true"
-                    >
-                      <circle cx="12" cy="8" r="4" />
-                      <path d="M4 21a8 8 0 0 1 16 0" />
-                    </svg>
-                  </div>
-
-                  <div class="min-w-0">
-                    <p
-                      id="appointment-selected-customer-name"
-                      class="truncate text-sm font-semibold text-gray-900 dark:text-white"
-                    >
-                      Customer name
-                    </p>
-                    <p
-                      id="appointment-selected-customer-contact"
-                      class="mt-1 truncate text-xs text-gray-500 dark:text-zinc-400"
-                    >
-                      Customer contact information
-                    </p>
-                  </div>
-                </div>
-
-                <button
-                  id="appointment-change-customer"
-                  type="button"
-                  class="shrink-0 rounded-lg px-3 py-2 text-sm font-semibold text-indigo-700 transition hover:bg-indigo-100 dark:text-indigo-300 dark:hover:bg-indigo-900/50"
-                >
-                  Change
-                </button>
-              </div>
-            </div>
+              id="appointment-customer-results"
+              class="hidden max-h-72 flex-col overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-lg shadow-gray-900/5 dark:border-zinc-700 dark:bg-zinc-800"
+              role="listbox"
+              aria-label="Matching customers"
+            ></div>
           </div>
 
           <!-- New Customer Form -->

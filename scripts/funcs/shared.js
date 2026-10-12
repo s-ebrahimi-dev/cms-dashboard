@@ -225,7 +225,16 @@ const initChatUserModal = () => {
   });
 };
 //---- Get And Show All Users------------
+const getAllUser = async () => {
+ const res = await fetch(`${base_URL}/users`, {
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+  });
+  const result = await res.json();
 
+  const users = result.data; 
+  return users
+}
 const getAndShowAllUsers = async () => {
   const usersTable = document.querySelector("#usersTableBody");
   const roleConfig = {
@@ -1071,6 +1080,7 @@ const closeCreateAppointmentModal = () => {
 }
 
 export {
+  getAllUser,
   getAndShowAllUsers,
   getAndShowAllEmployees,
   openDeleteUserModal,

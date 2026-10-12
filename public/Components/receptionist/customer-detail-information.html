@@ -1,0 +1,204 @@
+
+<!-- Customer Details Modal -->
+<div
+  id="customer-details-modal"
+  class="fixed inset-0 z-1100 hidden items-center justify-center
+         bg-black/50 p-4 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="customer-details-title"
+>
+  <div
+    class="flex max-h-[90dvh] w-full max-w-2xl flex-col
+           overflow-hidden rounded-2xl border border-gray-200
+           bg-white shadow-2xl dark:border-zinc-700 dark:bg-zinc-900"
+  >
+    <!-- Header -->
+    <header
+      class="flex shrink-0 items-center justify-between gap-4
+             border-b border-gray-200 px-6 py-5
+             dark:border-zinc-700"
+    >
+      <div>
+        <h2
+          id="customer-details-title"
+          class="text-xl font-bold text-gray-900 dark:text-white"
+        >
+          Customer Details
+        </h2>
+        <p class="mt-1 text-sm text-gray-500 dark:text-zinc-400">
+          Review customer information before continuing.
+        </p>
+      </div>
+
+      <button
+        id="close-customer-details"
+        type="button"
+        aria-label="Close customer details"
+        class="flex size-10 shrink-0 items-center justify-center
+               rounded-xl text-gray-500 transition
+               hover:bg-gray-100 dark:hover:bg-zinc-800"
+      >
+        <svg
+          class="size-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="m18 6-12 12M6 6l12 12" />
+        </svg>
+      </button>
+    </header>
+
+    <!-- Scrollable content -->
+    <div class="min-h-0 flex-1 space-y-6 overflow-y-auto p-6">
+      <!-- Customer identity -->
+      <section
+        class="flex items-center gap-4 rounded-xl border
+               border-gray-200 bg-gray-50 p-4
+               dark:border-zinc-700 dark:bg-zinc-800/50"
+      >
+        <img
+          id="details-customer-image"
+          src="/images/default-profile.png"
+          alt=""
+          class="size-16 shrink-0 rounded-full bg-indigo-100 object-cover"
+        />
+
+        <div class="min-w-0 flex-1">
+          <h3
+            id="details-customer-name"
+            class="truncate text-lg font-bold text-gray-900 dark:text-white"
+          >
+            Customer name
+          </h3>
+          <p
+            id="details-customer-username"
+            class="mt-1 text-sm text-gray-500 dark:text-zinc-400"
+          >
+            @username
+          </p>
+          <span
+            class="mt-2 inline-flex rounded-full bg-indigo-100 px-2.5
+                   py-1 text-xs font-semibold text-indigo-700
+                   dark:bg-indigo-500/10 dark:text-indigo-300"
+          >
+            Existing customer
+          </span>
+        </div>
+      </section>
+
+      <!-- Personal information -->
+      <section class="space-y-4">
+        <h3 class="font-bold text-gray-900 dark:text-white">
+          Personal Information
+        </h3>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div>
+            <p class="text-xs text-gray-500 dark:text-zinc-400">
+              First name
+            </p>
+            <p
+              id="details-customer-firstname"
+              class="mt-1 break-words text-sm font-medium text-gray-900 dark:text-white"
+            >—</p>
+          </div>
+
+          <div>
+            <p class="text-xs text-gray-500 dark:text-zinc-400">
+              Last name
+            </p>
+            <p
+              id="details-customer-lastname"
+              class="mt-1 break-words text-sm font-medium text-gray-900 dark:text-white"
+            >—</p>
+          </div>
+
+          <div>
+            <p class="text-xs text-gray-500 dark:text-zinc-400">
+              Phone number
+            </p>
+            <p
+              id="details-customer-phone"
+              class="mt-1 break-words text-sm font-medium text-gray-900 dark:text-white"
+            >—</p>
+          </div>
+
+          <div>
+            <p class="text-xs text-gray-500 dark:text-zinc-400">
+              Email address
+            </p>
+            <p
+              id="details-customer-email"
+              class="mt-1 break-all text-sm font-medium text-gray-900 dark:text-white"
+            >—</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Registered vehicles -->
+      <section class="space-y-3">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-bold text-gray-900 dark:text-white">
+            Registered Vehicles
+          </h3>
+          <span
+            id="details-vehicle-count"
+            class="text-xs text-gray-500 dark:text-zinc-400"
+          >Vehicles</span>
+        </div>
+
+        <div
+          id="details-customer-vehicles"
+          class="space-y-3"
+          aria-live="polite"
+        >
+          <p class="text-sm text-gray-500 dark:text-zinc-400">
+            Vehicle information will appear here.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="flex shrink-0 flex-col-reverse gap-3 border-t
+             border-gray-200 bg-gray-50 p-5 sm:flex-row
+             sm:justify-end dark:border-zinc-700 dark:bg-zinc-900"
+    >
+      <button
+        id="cancel-customer-details"
+        type="button"
+        class="rounded-xl border border-gray-300 bg-white px-5 py-2.5
+               text-sm font-semibold text-gray-700 transition
+               hover:bg-gray-100 dark:border-zinc-700 dark:bg-zinc-800
+               dark:text-zinc-200 dark:hover:bg-zinc-700"
+      >
+        Close
+      </button>
+
+      <button
+        id="select-customer-from-details"
+        type="button"
+        class="inline-flex items-center justify-center gap-2 rounded-xl
+               bg-indigo-600 px-5 py-2.5 text-sm font-semibold
+               text-white transition hover:bg-indigo-700"
+      >
+        Select Customer
+        <svg
+          class="size-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="m9 18 6-6-6-6" />
+        </svg>
+      </button>
+    </footer>
+  </div>
+</div>
