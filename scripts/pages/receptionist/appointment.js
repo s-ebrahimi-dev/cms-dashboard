@@ -11,11 +11,16 @@ import { initializeVehicleColorDropdown } from "./appointment/vehicle-color-drop
 import {
   initializeServiceSelection,
 } from "./appointment/service-selection.js";
+import { initializeAvailability } from "./appointment/availability.js";
+
+
 
 await loadComponent(
   "appointment-modal",
   "/Components/receptionist/create-appointment-modal.html",
 );
+initializeServiceSelection();
+initializeAvailability();
  initializeServiceSelection();
 // Modal controls
 const newAppointmentButton = document.querySelector("#new-appointment-button");

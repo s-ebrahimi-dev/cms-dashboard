@@ -88,11 +88,11 @@ const handleServiceChange = () => {
   showServiceDetails(service);
 };
 
-export const initializeServiceSelection = () => {
-  serviceSelect = document.querySelector("#appointment-service");
-  serviceDetails = document.querySelector("#appointment-service-details");
-  serviceDuration = document.querySelector("#appointment-service-duration");
-  servicePrice = document.querySelector("#appointment-service-price");
+async function initializeServiceSelection() {
+  const serviceSelect = document.querySelector("#appointment-service");
+  const serviceDetails = document.querySelector("#appointment-service-details");
+  const serviceDuration = document.querySelector("#appointment-service-duration");
+  const servicePrice = document.querySelector("#appointment-service-price");
 
   if (
     !serviceSelect ||
@@ -104,21 +104,60 @@ export const initializeServiceSelection = () => {
     return;
   }
 
-  serviceSelect.replaceChildren(
-    new Option("Select a service", ""),
-  );
+  try {
+    const response = await fetch(`${base_URL}/services/`, {
+      method: "GET",
+      credentials: "include",
+    });
 
-  servicesById.clear();
+    const result = await response.json();
 
-  testServices.forEach((service) => {
-    servicesById.set(service._id, service);
+    if (!response.ok) {
+      throw new Error(result.message || "Failed to fetch services.");
+    }
 
-    serviceSelect.add(
-      new Option(service.name, service._id),
+    // Adjust this line to match your controller's response structure.
+    const services = result.data;
+
+    if (!Array.isArray(services)) {
+      throw new Error("The services response is not an array.");
+    }
+
+    serviceSelect.replaceChildren(
+      new Option("Select a service", ""),
     );
-  });
 
-  serviceSelect.addEventListener("change", handleServiceChange);
+    const servicesById = new Map();
 
-  hideServiceDetails();
-};
+    services.forEach((service) => {
+      servicesById.set(service._id, service);
+
+      serviceSelect.add(
+        new Option(service.name, service._id),
+      );
+    });
+
+    serviceSelect.addEventListener("change", () => {
+      const selectedService = servicesById.get(serviceSelect.value);
+
+      if (!selectedService) {
+        serviceDetails.classList.add("hidden");
+        serviceDuration.textContent = "";
+        servicePrice.textContent = "";
+        return;
+      }
+
+      serviceDuration.textContent =
+        `${selectedService.estimatedDurationMinutes} minutes`;
+
+      servicePrice.textContent =
+        `$${selectedService.basePrice}`;
+
+      serviceDetails.classList.remove("hidden");
+    });
+
+  } catch (error) {
+    console.error("Error initializing service selection:", error);
+  }
+}
+
