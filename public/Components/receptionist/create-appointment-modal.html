@@ -134,6 +134,102 @@
 
             <!-- Customer Search Results Box -->
 
+            <!-- Selected Customer Row -->
+            <div
+              id="selected-appointment-customer"
+              class="hidden overflow-hidden rounded-xl border border-indigo-200 bg-indigo-50/50 dark:border-indigo-500/30 dark:bg-indigo-500/5"
+            >
+              <div class="flex items-center gap-3 p-4">
+                <!-- Customer Avatar -->
+                <div
+                  class="shrink-0 overflow-hidden size-12 min-w-12 min-h-12 rounded-full border border-gray-200 bg-white dark:border-zinc-700"
+               
+                >
+                  <img
+                    id="selected-appointment-customer-image"
+                    src=""
+                    alt="Customer profile"
+                   class="block w-full h-full max-w-full object-cover"
+                  />
+                </div>
+
+                <!-- Customer Information -->
+                <div class="min-w-0 flex-1">
+                  <div class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <h4
+                      id="selected-appointment-customer-name"
+                      class="truncate text-sm font-bold text-gray-900 dark:text-white"
+                    >
+                      Customer Name
+                    </h4>
+
+                    <span
+                      class="inline-flex shrink-0 items-center rounded-full bg-indigo-100 px-2 py-0.5 text-[10px] font-semibold text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300"
+                    >
+                      Selected
+                    </span>
+                  </div>
+
+                  <p
+                    id="selected-appointment-customer-username"
+                    class="mt-1 truncate text-xs text-gray-500 dark:text-zinc-400"
+                  >
+                    @username
+                  </p>
+
+                  <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                    <span
+                      class="inline-flex items-center gap-1.5 text-xs text-gray-600 dark:text-zinc-300"
+                    >
+                      <svg
+                        class="size-3.5 shrink-0 text-gray-400"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.06 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.58 2.8.7A2 2 0 0 1 22 16.92Z"
+                        />
+                      </svg>
+                      <span id="selected-appointment-customer-phone">—</span>
+                    </span>
+
+                    <span
+                      class="inline-flex min-w-0 items-center gap-1.5 text-xs text-gray-600 dark:text-zinc-300"
+                    >
+                      <svg
+                        class="size-3.5 shrink-0 text-gray-400"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        aria-hidden="true"
+                      >
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <path d="m22 7-10 6L2 7" />
+                      </svg>
+                      <span
+                        id="selected-appointment-customer-email"
+                        class="truncate"
+                        >—</span
+                      >
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Change Customer -->
+                <button
+                  id="remove-selected-appointment-customer"
+                  type="button"
+                  class="shrink-0 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-semibold text-gray-700 transition hover:border-indigo-300 hover:text-indigo-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:text-indigo-400"
+                >
+                  Change
+                </button>
+              </div>
+            </div>
+
             <div
               id="appointment-customer-results"
               class="hidden max-h-72 flex-col overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-lg shadow-gray-900/5 dark:border-zinc-700 dark:bg-zinc-800"
@@ -470,7 +566,7 @@
                   id="new-vehicle-make"
                   name="make"
                   required
-                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 text-zinc-700 dark:text-white"
                 >
                   <option value="">Loading manufacturers...</option>
                 </select>
@@ -488,7 +584,7 @@
                   id="new-vehicle-model"
                   name="model"
                   required
-                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white"
+                  class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 disabled:cursor-not-allowed disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 text-zinc-700 dark:text-white"
                 >
                   <option value="">Select a manufacturer first</option>
                 </select>
@@ -677,7 +773,7 @@
                 id="appointment-service"
                 name="service"
                 required
-                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+                class="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800 text-zinc-700 dark:text-white"
               >
                 <option value="">Select a service</option>
               </select>

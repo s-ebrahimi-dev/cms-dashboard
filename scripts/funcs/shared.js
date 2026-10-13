@@ -1064,6 +1064,69 @@ const loadVehicleCatalogue = () => {
   return vehicleCataloguePromise;
 };
 
+
+const populateVehicleMakes = (catalogue) => {
+  const makeSelect = document.querySelector("#new-vehicle-make");
+  const modelSelect = document.querySelector("#new-vehicle-model");
+
+  if (!makeSelect || !modelSelect) {
+    console.error("Vehicle make/model dropdowns not found.");
+    return;
+  }
+
+  makeSelect.replaceChildren(
+    new Option("Select manufacturer", ""),
+  );
+
+  modelSelect.replaceChildren(
+    new Option("Select model", ""),
+  );
+
+  modelSelect.disabled = true;
+
+  const carMakes = catalogue.makes
+    .filter((make) => make.kinds?.includes("car"))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  carMakes.forEach((make) => {
+    makeSelect.add(new Option(make.name, make.slug));
+  });
+
+  // Register the listener only once.
+  if (makeSelect.dataset.modelListenerAttached === "true") {
+    return;
+  }
+
+  makeSelect.addEventListener("change", () => {
+    const selectedMake = carMakes.find(
+      (make) => make.slug === makeSelect.value,
+    );
+
+    modelSelect.replaceChildren(
+      new Option("Select model", ""),
+    );
+
+    if (!selectedMake) {
+      modelSelect.disabled = true;
+      return;
+    }
+
+    const carModels = selectedMake.models
+      .filter((model) => model.kind === "car")
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    carModels.forEach((model) => {
+      modelSelect.add(
+        new Option(model.name, model.slug),
+      );
+    });
+
+    modelSelect.disabled = carModels.length === 0;
+  });
+
+  makeSelect.dataset.modelListenerAttached = "true";
+};
+
 const openCreateAppointmentModal = async () => {
   const modal = document.querySelector("#create-appointment-modal");
 
@@ -1082,34 +1145,14 @@ const openCreateAppointmentModal = async () => {
 
   try {
     const catalogue = await loadVehicleCatalogue();
-
-    console.log("Vehicle catalogue:", catalogue);
-    console.log("Available makes:", catalogue.makes);
-
-    console.log("Available vehicle types:", catalogue.kinds);
-
-    // Inspect the first make
-    console.log("First make:", catalogue.makes[0]);
-
-    // Find a make that includes cars
-    const firstCarMake = catalogue.makes.find((make) =>
-      make.kinds?.includes("car"),
-    );
-
-    console.log("First car make:", firstCarMake);
-
-    console.log("First model object:", firstCarMake?.models?.[0]);
-
-    console.log(
-      "First 5 models:",
-      JSON.stringify(firstCarMake?.models?.slice(0, 5), null, 2),
-    );
-
-    console.log("Its models:", firstCarMake?.models);
+    console.log(catalogue);
+    
+    populateVehicleMakes(catalogue);
   } catch (error) {
     console.error("Unable to load vehicle catalogue:", error);
   }
 };
+
 
 const closeCreateAppointmentModal = () => {
   const modal = document.querySelector("#create-appointment-modal");
