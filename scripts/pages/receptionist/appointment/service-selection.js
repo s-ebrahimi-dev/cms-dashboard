@@ -1,4 +1,5 @@
 
+import { base_URL } from "../../../config.js";
 const testServices = [
   {
     _id: "test-oil-change",
@@ -88,7 +89,7 @@ const handleServiceChange = () => {
   showServiceDetails(service);
 };
 
-async function initializeServiceSelection() {
+export async function initializeServiceSelection() {
   const serviceSelect = document.querySelector("#appointment-service");
   const serviceDetails = document.querySelector("#appointment-service-details");
   const serviceDuration = document.querySelector("#appointment-service-duration");
