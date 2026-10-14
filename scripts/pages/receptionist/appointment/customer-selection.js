@@ -5,6 +5,7 @@ import { getAllUser } from "../../../funcs/shared.js";
 import { showResultModal } from "../../../components/result-modal.js";
 import { showLoader, hideLoader } from "../../../funcs/loader.js";
 
+let selectedCustomer = null;
 let selectedCustomerBox;
 let resultSearchBox;
 let searchInput;
@@ -175,6 +176,7 @@ function showCustomerDetails(user) {
 
   // Replace the previous handler when a different customer is opened.
   selectButton.onclick = () => {
+    selectedCustomer = user;
     const selectedName = document.querySelector("#selected-appointment-customer-name");
     const selectedUsername = document.querySelector("#selected-appointment-customer-username");
     const selectedPhone = document.querySelector("#selected-appointment-customer-phone");
@@ -208,6 +210,7 @@ function showCustomerDetails(user) {
     resultSearchBox?.classList.remove("flex");
 
     closeModal();
+    notifyCustomerSelectionChanged();
   };
 
   modal.classList.remove("hidden");
@@ -215,6 +218,8 @@ function showCustomerDetails(user) {
 }
 
 export function resetCustomerSelection() {
+    selectedCustomer = null;
+
   // Hide the row; do not destroy its child elements.
   selectedCustomerBox?.classList.add("hidden");
 
@@ -225,6 +230,10 @@ export function resetCustomerSelection() {
   if (searchInput) {
     searchInput.value = "";
   }
+  notifyCustomerSelectionChanged();
+}
+export function getSelectedCustomer() {
+  return selectedCustomer;
 }
 
 export async function initializeCustomerSelection() {
@@ -319,4 +328,37 @@ searchInput = document.querySelector("#appointment-customer-search");
       hideLoader();
     }
   });
+}
+
+export function isCustomerReady() {
+  const newCustomerButton = document.querySelector("#new-customer-mode");
+  const newCustomerPanel = document.querySelector("#new-customer-panel");
+
+  const isNewCustomerMode =
+    newCustomerButton?.getAttribute("aria-pressed") === "true";
+
+  if (!isNewCustomerMode) {
+    return Boolean(selectedCustomer);
+  }
+
+  if (!newCustomerPanel) {
+    return false;
+  }
+
+  const requiredFields = [
+    ...newCustomerPanel.querySelectorAll(
+      "input[required], select[required], textarea[required]"
+    ),
+  ];
+
+  return (
+    requiredFields.length > 0 &&
+    requiredFields.every((field) => field.checkValidity())
+  );
+}
+
+function notifyCustomerSelectionChanged() {
+  document.dispatchEvent(
+    new CustomEvent("appointment:customer-changed")
+  );
 }

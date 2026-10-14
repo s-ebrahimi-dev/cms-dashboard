@@ -28,6 +28,14 @@ export function initializeVehicleSelection() {
     return;
   }
 
+
+
+function notifyVehicleSelectionChanged() {
+  document.dispatchEvent(
+    new CustomEvent("appointment:vehicle-changed")
+  );
+}
+
   function setVehicleMode(mode) {
     const isExisting = mode === "existing";
 
@@ -63,6 +71,7 @@ export function initializeVehicleSelection() {
     if (!isExisting) {
       vehicleDetails.classList.add("hidden");
     }
+    notifyVehicleSelectionChanged();
   }
 
   existingVehicleMode.addEventListener("click", () => {
@@ -77,10 +86,39 @@ export function initializeVehicleSelection() {
     setVehicleMode("new");
   });
 
-  vehicleSelect.addEventListener("change", () => {
-    vehicleDetails.classList.toggle("hidden", !vehicleSelect.value);
-  });
+vehicleSelect.addEventListener("change", () => {
+  vehicleDetails.classList.toggle("hidden", !vehicleSelect.value);
+  notifyVehicleSelectionChanged();
+});
 
   // Initial state
   setVehicleMode("existing");
+}
+
+ export  function isVehicleReady() {
+  const existingMode = document.querySelector("#existing-vehicle-mode");
+  const newPanel = document.querySelector("#new-vehicle-panel");
+  const vehicleSelect = document.querySelector("#appointment-vehicle");
+
+  if (!existingMode || !newPanel || !vehicleSelect) {
+    return false;
+  }
+
+  const isExistingMode =
+    existingMode.getAttribute("aria-pressed") === "true";
+
+  if (isExistingMode) {
+    return Boolean(vehicleSelect.value);
+  }
+
+  const requiredFields = [
+    ...newPanel.querySelectorAll(
+      "input[required], select[required], textarea[required]"
+    ),
+  ];
+
+  return (
+    requiredFields.length > 0 &&
+    requiredFields.every((field) => field.checkValidity())
+  );
 }
