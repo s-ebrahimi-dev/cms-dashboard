@@ -38,15 +38,20 @@ const loadAvailableSlots = async () => {
     const query = new URLSearchParams({ serviceId, date });
     console.log("Selected service:", serviceSelect.value);
 console.log("Query string:", query.toString());
-    const response = await fetch(
-      `${base_URL}/appointments/availability?${query}`,
-      {
-        method: "GET",
-        credentials: "include",
-      },
-    );
+   
+const response = await fetch(
+  `${base_URL}/appointments/availability?${query}`,
+  {
+    method: "GET",
+    credentials: "include",
+  },
+);
 
-    const result = await response.json();
+console.log("Availability HTTP status:", response.status);
+
+const result = await response.json();
+
+console.log("Availability API response:", result);
 
     if (!response.ok) {
       throw new Error(
