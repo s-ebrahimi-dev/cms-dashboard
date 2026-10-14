@@ -21,10 +21,17 @@ const setCustomerMode = (mode) => {
     return;
   }
 
-  const isExisting = mode === "existing";
+  
+const isExisting = mode === "existing";
 
-  existingPanel.classList.toggle("hidden", !isExisting);
-  newPanel.classList.toggle("hidden", isExisting);
+existingPanel.classList.toggle("hidden", !isExisting);
+newPanel.classList.toggle("hidden", isExisting);
+
+// Only validate fields belonging to the active customer mode.
+newPanel.querySelectorAll("input, select, textarea").forEach((field) => {
+  field.disabled = isExisting;
+});
+
   indicator.classList.toggle("translate-x-full", !isExisting);
 
   existingButton.setAttribute("aria-pressed", String(isExisting));
@@ -43,6 +50,9 @@ const setCustomerMode = (mode) => {
   newButton.classList.toggle("text-gray-600", isExisting);
   newButton.classList.toggle("dark:text-white", !isExisting);
   newButton.classList.toggle("dark:text-zinc-400", isExisting);
+
+    notifyCustomerSelectionChanged();
+
 };
 
 function renderCustomerResult(customer) {
@@ -328,6 +338,7 @@ searchInput = document.querySelector("#appointment-customer-search");
       hideLoader();
     }
   });
+  setCustomerMode("existing");
 }
 
 export function isCustomerReady() {
