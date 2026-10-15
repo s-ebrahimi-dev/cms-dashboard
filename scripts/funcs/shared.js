@@ -284,24 +284,16 @@ const getAndShowAllUsers = async () => {
   const result = await res.json();
 
   const users = result.data;
+  console.log(users);
 
   usersTable.innerHTML = "";
   users.forEach((user) => {
     const role = roleConfig[user.role];
     let profileImageSrc = "/images/default-profile.png";
 
-    if (user.profileImage?.data?.data?.length) {
-      const bytes = new Uint8Array(user.profileImage.data.data);
-      let binary = "";
-
-      bytes.forEach((byte) => {
-        binary += String.fromCharCode(byte);
-      });
-
-      const base64 = btoa(binary);
-      profileImageSrc = `data:${user.profileImage.contentType};base64,${base64}`;
+    if (user.hasProfileImage) {
+      profileImageSrc = `${base_URL}/users/profile-image/${user._id}`;
     }
-
     usersTable.insertAdjacentHTML(
       "beforeend",
       `
@@ -1064,7 +1056,6 @@ const loadVehicleCatalogue = () => {
   return vehicleCataloguePromise;
 };
 
-
 const populateVehicleMakes = (catalogue) => {
   const makeSelect = document.querySelector("#new-vehicle-make");
   const modelSelect = document.querySelector("#new-vehicle-model");
@@ -1074,13 +1065,9 @@ const populateVehicleMakes = (catalogue) => {
     return;
   }
 
-  makeSelect.replaceChildren(
-    new Option("Select manufacturer", ""),
-  );
+  makeSelect.replaceChildren(new Option("Select manufacturer", ""));
 
-  modelSelect.replaceChildren(
-    new Option("Select model", ""),
-  );
+  modelSelect.replaceChildren(new Option("Select model", ""));
 
   modelSelect.disabled = true;
 
@@ -1102,9 +1089,7 @@ const populateVehicleMakes = (catalogue) => {
       (make) => make.slug === makeSelect.value,
     );
 
-    modelSelect.replaceChildren(
-      new Option("Select model", ""),
-    );
+    modelSelect.replaceChildren(new Option("Select model", ""));
 
     if (!selectedMake) {
       modelSelect.disabled = true;
@@ -1116,9 +1101,7 @@ const populateVehicleMakes = (catalogue) => {
       .sort((a, b) => a.name.localeCompare(b.name));
 
     carModels.forEach((model) => {
-      modelSelect.add(
-        new Option(model.name, model.slug),
-      );
+      modelSelect.add(new Option(model.name, model.slug));
     });
 
     modelSelect.disabled = carModels.length === 0;
@@ -1146,13 +1129,12 @@ const openCreateAppointmentModal = async () => {
   try {
     const catalogue = await loadVehicleCatalogue();
     console.log(catalogue);
-    
+
     populateVehicleMakes(catalogue);
   } catch (error) {
     console.error("Unable to load vehicle catalogue:", error);
   }
 };
-
 
 const closeCreateAppointmentModal = () => {
   const modal = document.querySelector("#create-appointment-modal");
@@ -1170,30 +1152,13 @@ const closeCreateAppointmentModal = () => {
   });
 };
 
-const createNewAppointment = async () => {
-  const foundCustomerFirstnameElem = document.querySelector(
-    "#new-customer-firstname",
-  );
-  const foundCustomerLastnameElem = document.querySelector(
-    "#new-customer-lastname",
-  );
-  const foundCustomerUsernameElem = document.querySelector(
-    "#new-customer-username",
-  );
-  const foundCustomerPhoneElem = document.querySelector("#new-customer-phone");
-  const foundCustomerEmailElem = document.querySelector("#new-customer-email");
-  const foundCustomerpPasswordElem = document.querySelector(
-    "#new-customer-password",
-  );
-};
-
 const getAppointment = async () => {
   const res = await fetch(`${base_URL}/appointments`, {
-    credentials: "include"
-  })
-  const result = await res.json()
-  return result.data
-}
+    credentials: "include",
+  });
+  const result = await res.json();
+  return result.data;
+};
 
 export {
   getAllUser,
@@ -1221,5 +1186,5 @@ export {
   getConversationMessages,
   openCreateAppointmentModal,
   closeCreateAppointmentModal,
-  getAppointment
+  getAppointment,
 };

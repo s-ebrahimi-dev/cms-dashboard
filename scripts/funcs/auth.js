@@ -1,4 +1,6 @@
+import { showResultModal } from "../components/result-modal.js";
 import { base_URL } from "../config.js";
+import { hideLoader, showLoader } from "./loader.js";
 const register = async () => {
   try {
     const firstNameInput = document.querySelector("#firstname");
@@ -163,7 +165,7 @@ const createUser = async () => {
 
       newUser.maxConcurrentVehicles = capacity;
     }
-
+    showLoader("Creating User", "please wait...")
     const res = await fetch(`${base_URL}/users`, {
       method: "POST",
       headers: {
@@ -174,14 +176,17 @@ const createUser = async () => {
     });
 
     const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(data.message || "Failed to create user.");
-    }
+    if (res.ok) {
+      showResultModal("success", "User created successfully")
+    } else {
+       showResultModal("error", data.message)
+}
 
     console.log("USER CREATED:", data);
   } catch (error) {
     console.error("CREATE USER ERROR:", error);
+  } finally {
+    hideLoader()
   }
 };
 
