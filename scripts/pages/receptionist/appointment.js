@@ -366,6 +366,11 @@ console.log(appointmentTableBody);
 
 appointmentTableBody.innerHTML = "";
 appointments.forEach((appointment) => {
+   let profileImageSrc = "/images/default-profile.png";
+
+    if (appointment.customer.hasProfileImage) {
+      profileImageSrc = `${base_URL}/users/profile-image/${appointment.customer._id}`;
+    }
   const date = new Date(appointment.scheduledAt);
 
   const time = date.toLocaleTimeString("en-GB", {
@@ -393,7 +398,7 @@ appointments.forEach((appointment) => {
                       <td class="p-3">
                         <div class="flex items-center gap-3">
                           <img
-                            src="/images/default-profile.png"
+                            src="${profileImageSrc}"
                             alt=""
                             class="h-9 w-9 shrink-0 rounded-full object-cover"
                           />
