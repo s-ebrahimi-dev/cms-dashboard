@@ -460,7 +460,6 @@ const initNotificationModal = () => {
 const loadNotifications = async () => {
   const result = await getAndShowAllMessages();
   const notifications = result?.notifications;
-console.log(notifications);
 
   if (!notifications) return;
 

@@ -3,6 +3,7 @@ import { base_URL } from "../../config.js";
 import {
   openCreateAppointmentModal,
   closeCreateAppointmentModal,
+  getAppointment,
 } from "../../funcs/shared.js";
 import { showResultModal } from "../../components/result-modal.js";
 import {
@@ -27,22 +28,13 @@ await loadComponent(
 );
 
 // Modal elements
-const appointmentForm = document.querySelector(
-  "#create-appointment-form"
-);
+const appointmentForm = document.querySelector("#create-appointment-form");
 
-const submitButton = document.querySelector(
-  "#create-appointment-submit"
-);
+const submitButton = document.querySelector("#create-appointment-submit");
 
-const serviceSelect = document.querySelector(
-  "#appointment-service"
-);
+const serviceSelect = document.querySelector("#appointment-service");
 
-const timeSlotSelect = document.querySelector(
-  "#appointment-time-slot"
-);
-
+const timeSlotSelect = document.querySelector("#appointment-time-slot");
 
 // Create Appointment Vehicle
 
@@ -56,9 +48,7 @@ async function createAppointmentVehicle(customerId) {
       .querySelector("#new-vehicle-license-plate")
       .value.trim(),
     vin: document.querySelector("#new-vehicle-vin").value.trim(),
-    mileage: Number(
-      document.querySelector("#new-vehicle-mileage").value
-    ),
+    mileage: Number(document.querySelector("#new-vehicle-mileage").value),
     color: document.querySelector("#new-vehicle-color").value,
   };
 
@@ -79,7 +69,6 @@ async function createAppointmentVehicle(customerId) {
 
   return result.data._id;
 }
-
 
 const appointmentError = document.querySelector("#create-appointment-error");
 
@@ -135,10 +124,7 @@ async function createAppointmentCustomer() {
     body: JSON.stringify(customerData),
   });
 
-  const result = await readResponse(
-    response,
-    "Failed to create the customer.",
-  );
+  const result = await readResponse(response, "Failed to create the customer.");
 
   if (!result.data?._id) {
     throw new Error("Customer was created, but the server returned no ID.");
@@ -164,12 +150,14 @@ async function submitAppointment(event) {
 
   // 3. Determine the selected customer and vehicle modes.
   const isNewCustomer =
-    document.querySelector("#new-customer-mode")?.getAttribute("aria-pressed") ===
-    "true";
+    document
+      .querySelector("#new-customer-mode")
+      ?.getAttribute("aria-pressed") === "true";
 
   const isNewVehicle =
-    document.querySelector("#new-vehicle-mode")?.getAttribute("aria-pressed") ===
-    "true";
+    document
+      .querySelector("#new-vehicle-mode")
+      ?.getAttribute("aria-pressed") === "true";
 
   const selectedCustomer = getSelectedCustomer();
 
@@ -231,8 +219,7 @@ async function submitAppointment(event) {
       vehicle: vehicleId,
       service: serviceSelect.value,
       scheduledAt: timeSlotSelect.value,
-      notes:
-        document.querySelector("#appointment-notes")?.value.trim() || "",
+      notes: document.querySelector("#appointment-notes")?.value.trim() || "",
     };
 
     // 10. Show the loader and send the appointment request.
@@ -275,7 +262,6 @@ async function submitAppointment(event) {
     // 13. Notify dependent modules that the form state has changed.
     document.dispatchEvent(new Event("appointment:vehicle-changed"));
     document.dispatchEvent(new Event("appointment:customer-changed"));
-
   } catch (error) {
     // 14. Handle errors from customer, vehicle, or appointment creation.
     console.error("CREATE APPOINTMENT ERROR:", error);
@@ -284,7 +270,6 @@ async function submitAppointment(event) {
       "error",
       error.message || "Failed to create the appointment.",
     );
-
   } finally {
     // 15. Restore the button regardless of success or failure.
     submitButton.textContent = originalButtonText;
@@ -294,7 +279,6 @@ async function submitAppointment(event) {
 
 appointmentForm?.addEventListener("submit", submitAppointment);
 
-
 // Update the submit button according to the current form state.
 function updateAppointmentSubmitState() {
   if (!submitButton) return;
@@ -302,9 +286,7 @@ function updateAppointmentSubmitState() {
   const customerReady = isCustomerReady();
   const vehicleReady = isVehicleReady();
   const serviceReady = Boolean(serviceSelect?.value);
-  const slotReady =
-    Boolean(timeSlotSelect?.value) &&
-    !timeSlotSelect?.disabled;
+  const slotReady = Boolean(timeSlotSelect?.value) && !timeSlotSelect?.disabled;
 
   submitButton.disabled = !(
     customerReady &&
@@ -317,24 +299,18 @@ function updateAppointmentSubmitState() {
 // Listen for customer and vehicle selection changes.
 document.addEventListener(
   "appointment:customer-changed",
-  updateAppointmentSubmitState
+  updateAppointmentSubmitState,
 );
 
 document.addEventListener(
   "appointment:vehicle-changed",
-  updateAppointmentSubmitState
+  updateAppointmentSubmitState,
 );
 
 // Listen for changes and typing in the appointment form.
-appointmentForm?.addEventListener(
-  "change",
-  updateAppointmentSubmitState
-);
+appointmentForm?.addEventListener("change", updateAppointmentSubmitState);
 
-appointmentForm?.addEventListener(
-  "input",
-  updateAppointmentSubmitState
-);
+appointmentForm?.addEventListener("input", updateAppointmentSubmitState);
 
 // Initialize the appointment features once.
 initializeServiceSelection();
@@ -345,30 +321,25 @@ initializeVehicleSelection();
 initializeVehicleColorDropdown();
 
 // Modal controls
-const newAppointmentButton = document.querySelector(
-  "#new-appointment-button"
-);
+const newAppointmentButton = document.querySelector("#new-appointment-button");
 
 const quickNewAppointmentButton = document.querySelector(
-  "#quick-new-appointment"
+  "#quick-new-appointment",
 );
 
 const closeCreateAppointmentModalBtn = document.querySelector(
-  "#close-create-appointment-modal"
+  "#close-create-appointment-modal",
 );
 
 const cancelCreateAppointmentModalBtn = document.querySelector(
-  "#cancel-create-appointment"
+  "#cancel-create-appointment",
 );
 
-newAppointmentButton?.addEventListener(
-  "click",
-  openCreateAppointmentModal
-);
+newAppointmentButton?.addEventListener("click", openCreateAppointmentModal);
 
 quickNewAppointmentButton?.addEventListener(
   "click",
-  openCreateAppointmentModal
+  openCreateAppointmentModal,
 );
 
 const closeAppointment = () => {
@@ -379,15 +350,101 @@ const closeAppointment = () => {
   updateAppointmentSubmitState();
 };
 
-closeCreateAppointmentModalBtn?.addEventListener(
-  "click",
-  closeAppointment
-);
+closeCreateAppointmentModalBtn?.addEventListener("click", closeAppointment);
 
-cancelCreateAppointmentModalBtn?.addEventListener(
-  "click",
-  closeAppointment
-);
+cancelCreateAppointmentModalBtn?.addEventListener("click", closeAppointment);
 
 // Set the correct initial state.
 updateAppointmentSubmitState();
+
+// Show All Appointment in Table
+
+const appointmentTableBody = document.querySelector("#appointment-table");
+const appointments = await getAppointment();
+console.log(appointments);
+console.log(appointmentTableBody);
+
+appointmentTableBody.innerHTML = "";
+appointments.forEach((appointment) => {
+  const date = new Date(appointment.scheduledAt);
+
+  const time = date.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  function capitalizeWords(str) {
+    return str
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+  appointmentTableBody.insertAdjacentHTML(
+    "beforeend",
+    `
+
+    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                      <td
+                        class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
+                      >
+                        ${time}
+                      </td>
+
+                      <td class="p-3">
+                        <div class="flex items-center gap-3">
+                          <img
+                            src="/images/default-profile.png"
+                            alt=""
+                            class="h-9 w-9 shrink-0 rounded-full object-cover"
+                          />
+
+                          <div>
+                            <p
+                              class="font-semibold text-slate-900 dark:text-white"
+                            >
+                              ${capitalizeWords(appointment.customer.firstname)} ${capitalizeWords(appointment.customer.lastname)}
+                            </p>
+
+                            <p class="text-xs text-slate-400">
+                              ${appointment.customer.email}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+
+                      <td class="p-3">
+                        <p
+                          class="font-medium text-slate-800 dark:text-slate-200"
+                        >
+                          ${capitalizeWords(appointment.vehicle.make)}
+                          ${capitalizeWords(appointment.vehicle.model)}
+                        </p>
+
+                        <p class="text-xs text-slate-400">ABC-123</p>
+                      </td>
+
+                      <td class="p-3">${appointment.service.name}</td>
+
+                      <td class="p-3">David Wilson</td>
+
+                      <td class="p-3">
+                        <span
+                          class="rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-700 dark:bg-blue-500/10 dark:text-blue-400"
+                        >
+                          Confirmed
+                        </span>
+                      </td>
+
+                      <td class="p-3 text-right">
+                        <button
+                          type="button"
+                          class="appointment-view-button rounded-lg bg-indigo-100 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400"
+                          data-appointment-id="1"
+                        >
+                          View
+                        </button>
+                      </td>
+                    </tr>
+    `,
+  );
+});

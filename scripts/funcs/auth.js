@@ -110,6 +110,7 @@ const logout = async () => {
   }
 };
 
+
 const createUser = async () => {
   try {
     const createRoleElem = document.querySelector("#createRole");
@@ -120,14 +121,21 @@ const createUser = async () => {
     const emailInput = document.querySelector("#email");
     const passwordInput = document.querySelector("#password");
     const confirmPasswordInput = document.querySelector("#confirmPassword");
-    console.log(createRoleElem.value);
-    
+    const capacityInput = document.querySelector("#maxConcurrentVehicles");
+
     const role = createRoleElem.value;
 
     if (!role) {
-      console.error("Role must be selected");
-      return;
+      throw new Error("Role must be selected.");
     }
+
+    const technicianRoles = [
+      "MECHANIC",
+      "OIL_TECHNICIAN",
+      "BODY_REPAIR",
+      "DETAILING_TECHNICIAN",
+      "WASH_TECHNICIAN",
+    ];
 
     const newUser = {
       firstname: firstNameInput.value.trim(),
@@ -137,8 +145,24 @@ const createUser = async () => {
       email: emailInput.value.trim(),
       password: passwordInput.value.trim(),
       confirmPassword: confirmPasswordInput.value.trim(),
-      role: role,
+      role,
     };
+
+    if (technicianRoles.includes(role)) {
+      const capacity = Number(capacityInput.value);
+
+      if (
+        capacityInput.value.trim() === "" ||
+        !Number.isInteger(capacity) ||
+        capacity < 1
+      ) {
+        throw new Error(
+          "Maximum concurrent vehicles must be a positive integer.",
+        );
+      }
+
+      newUser.maxConcurrentVehicles = capacity;
+    }
 
     const res = await fetch(`${base_URL}/users`, {
       method: "POST",
@@ -148,10 +172,11 @@ const createUser = async () => {
       credentials: "include",
       body: JSON.stringify(newUser),
     });
+
     const data = await res.json();
 
     if (!res.ok) {
-      throw new Error(data.message || "Failed to create user");
+      throw new Error(data.message || "Failed to create user.");
     }
 
     console.log("USER CREATED:", data);
@@ -159,5 +184,6 @@ const createUser = async () => {
     console.error("CREATE USER ERROR:", error);
   }
 };
+
 
 export { register, login, getMe, logout, createUser };

@@ -872,6 +872,32 @@
               </select>
             </div>
 
+            <!-- TECHNICIAN CAPACITY -->
+            <div id="technician-capacity-field" class="hidden">
+              <label
+                for="maxConcurrentVehicles"
+                class="mb-2 block text-sm font-medium text-slate-700"
+              >
+                Maximum Concurrent Vehicles
+              </label>
+
+              <input
+                id="maxConcurrentVehicles"
+                name="maxConcurrentVehicles"
+                type="number"
+                min="1"
+                step="1"
+                value="1"
+                required
+                class="h-11 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-800 outline-none transition focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20"
+              />
+
+              <p class="mt-1 text-xs text-slate-500">
+                Maximum number of vehicles this technician can handle at the
+                same time.
+              </p>
+            </div>
+
             <!-- FOOTER -->
 
             <div

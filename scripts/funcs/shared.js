@@ -1187,7 +1187,13 @@ const createNewAppointment = async () => {
   );
 };
 
-
+const getAppointment = async () => {
+  const res = await fetch(`${base_URL}/appointments`, {
+    credentials: "include"
+  })
+  const result = await res.json()
+  return result.data
+}
 
 export {
   getAllUser,
@@ -1215,4 +1221,5 @@ export {
   getConversationMessages,
   openCreateAppointmentModal,
   closeCreateAppointmentModal,
+  getAppointment
 };
