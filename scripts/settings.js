@@ -5,7 +5,9 @@ import {
   uploadProfileImage,
   loadProfileImage,
 } from "../scripts/funcs/profileImage.js";
-import { base_URL } from "./config.js";
+import {
+  initThemeSettings,
+} from "./funcs/theme.js";
 import { openEditUserModal, updateOwnProfile, closeEditUserModal  } from "./funcs/shared.js";
 import {
   showLoader,
@@ -96,31 +98,6 @@ cancelEditUserBtn.addEventListener("click",  (event) => {
   event.preventDefault()
   closeEditUserModal()
 })
-// Theme Handler
-const themeOptions = document.querySelectorAll(
-  'input[name="theme"]'
-);
 
-const currentTheme = localStorage.getItem("theme") || "light";
 
-// Apply current theme
-document.documentElement.classList.toggle(
-  "dark",
-  currentTheme === "dark"
-);
-
-// Select current option
-themeOptions.forEach((option) => {
-  option.checked = option.value === currentTheme;
-
-  option.addEventListener("change", () => {
-    const selectedTheme = option.value;
-
-    document.documentElement.classList.toggle(
-      "dark",
-      selectedTheme === "dark"
-    );
-
-    localStorage.setItem("theme", selectedTheme);
-  });
-});
+initThemeSettings();

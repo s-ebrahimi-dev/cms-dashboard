@@ -23,6 +23,11 @@ import {
   getCurrentUser,
   clearCurrentUser,
 } from "./funcs/state.js";
+import {
+  initThemeToggle,
+} from "./funcs/theme.js";
+
+initThemeToggle();
 
 const roleLabels = {
   ADMIN: "Administrator",

@@ -205,6 +205,118 @@
     #user-profile.open {
     @apply rotate-180;
   }
+
+
+
+/* Theme toggle button */
+.theme-toggle .orbit-traveler {
+  offset-anchor: center;
+  offset-rotate: 0deg;
+}
+
+
+
+/* Circular arcs */
+/* Larger circular arcs */
+.theme-toggle .moon-orbit .orbit-traveler {
+  offset-path: path("M -40 0 A 40 40 0 0 1 0 -40");
+}
+
+.theme-toggle .sun-orbit .orbit-traveler {
+  offset-path: path("M 40 0 A 40 40 0 0 0 0 -40");
+}
+
+/* Light theme */
+.theme-toggle:not(.is-dark) .moon-traveler {
+  offset-distance: 100%;
+  opacity: 1;
+}
+
+.theme-toggle:not(.is-dark) .sun-traveler {
+  offset-distance: 100%;
+  opacity: 0;
+}
+
+/* Dark theme */
+.theme-toggle.is-dark .sun-traveler {
+  offset-distance: 100%;
+  opacity: 1;
+}
+
+.theme-toggle.is-dark .moon-traveler {
+  offset-distance: 100%;
+  opacity: 0;
+}
+
+/* Animate the travelers */
+.theme-toggle.is-dark .sun-traveler {
+  animation: sun-enter 550ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.theme-toggle.is-dark .moon-traveler {
+  animation: moon-exit 550ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.theme-toggle:not(.is-dark) .moon-traveler {
+  animation: moon-enter 550ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.theme-toggle:not(.is-dark) .sun-traveler {
+  animation: sun-exit 550ms cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes moon-enter {
+  from {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  to {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes moon-exit {
+  from {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  to {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes sun-enter {
+  from {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  to {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes sun-exit {
+  from {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  to {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle .orbit-traveler {
+    animation: none !important;
+  }
+}
+
+
+
   /* notification-modals */
   .notification-modal.compact {
     @apply w-80 h-auto right-0;
