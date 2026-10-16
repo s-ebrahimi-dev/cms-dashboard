@@ -199,7 +199,9 @@
   .list-item.active .mobile-menu-text {
     @apply text-[#9cd7ff] font-semibold;
   }
-
+#appointment-table {
+  transition: opacity 200ms ease;
+}
     #user-profile.open {
     @apply rotate-180;
   }

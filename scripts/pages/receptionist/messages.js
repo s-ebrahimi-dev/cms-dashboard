@@ -6,14 +6,13 @@ import {
   getAndShowAllConversations,
   getAndShowAllEmployees,
   initConversationSelection,
-  renderSenderMessage
+  renderSenderMessage,
 } from "../../funcs/shared.js";
 import { showResultModal } from "../../components/result-modal.js";
 import { loadComponent } from "../../components/component-Loader.js";
 import { hideLoader, showLoader } from "../../funcs/loader.js";
 
 let selectedConversationId = null;
-
 
 // Show New Conversation Modal
 const newConversationModal = document.querySelector(
@@ -26,15 +25,28 @@ if (newConversationModal) {
   );
 }
 await getAndShowAllEmployees();
-await loadComponent(
-  "conversation-loader-container",
-  "/Components/loader.html"
-);
+
+// Configure the two inner loaders----------------------------------------
+const configureInnerLoader = (containerId) => {
+  const container = document.getElementById(containerId);
+  const loader = container?.querySelector(".loading-overlay");
+
+  if (!loader) return;
+
+  loader.classList.replace("fixed", "absolute");
+  loader.classList.replace("z-9999", "z-50");
+};
 
 await loadComponent(
-  "thread-loader-container",
-  "/Components/loader.html"
+  "conversation-loader-container",
+  "/Components/loader.html",
 );
+configureInnerLoader("conversation-loader-container");
+
+await loadComponent("thread-loader-container", "/Components/loader.html");
+configureInnerLoader("thread-loader-container");
+
+// ---------------------------------------------------------
 
 await getAndShowAllConversations();
 
@@ -43,8 +55,7 @@ initConversationSelection((conversationId) => {
 
   console.log("Selected conversation:", selectedConversationId);
 });
-// Render-Sent-Messages 
-
+// Render-Sent-Messages
 
 // Send messages
 const messageForm = document.querySelector("#message-form");
@@ -76,23 +87,17 @@ messageForm.addEventListener("submit", async (event) => {
     console.log("SEND MESSAGE RESULT:", result);
 
     if (!result?.data) {
-      showResultModal(
-        "error",
-        result?.message || "Failed to send message.",
-      );
+      showResultModal("error", result?.message || "Failed to send message.");
       return;
     }
 
     messageInput.value = "";
 
-   renderSenderMessage(result.data);
+    renderSenderMessage(result.data);
   } catch (error) {
     console.error("SEND MESSAGE ERROR:", error);
 
-    showResultModal(
-      "error",
-      "Something went wrong while sending the message.",
-    );
+    showResultModal("error", "Something went wrong while sending the message.");
   } finally {
     sendMessageButton.disabled = false;
   }
@@ -207,32 +212,31 @@ sendNewConversationBtn.addEventListener("click", async (event) => {
   showLoader("Sending message", "please wait...");
 
   // 1. Create conversation
-const conversationResult =
-  await createNewConversation(selectedEmployeeId);
+  const conversationResult = await createNewConversation(selectedEmployeeId);
 
-console.log("CREATE CONVERSATION RESULT:", conversationResult);
+  console.log("CREATE CONVERSATION RESULT:", conversationResult);
 
-if (!conversationResult?.data?._id) {
-  hideLoader();
+  if (!conversationResult?.data?._id) {
+    hideLoader();
 
-  showResultModal(
-    "error",
-    conversationResult?.message || "Failed to create conversation",
+    showResultModal(
+      "error",
+      conversationResult?.message || "Failed to create conversation",
+    );
+
+    return;
+  }
+
+  const conversation = conversationResult.data;
+
+  const messageResult = await sendConversationMessage(
+    conversation._id,
+    message,
   );
-
-  return;
-}
-
-const conversation = conversationResult.data;
-
-const messageResult = await sendConversationMessage(
-  conversation._id,
-  message,
-);
 
   if (messageResult.data) {
     await getAndShowAllConversations();
-    initConversationSelection()
+    initConversationSelection();
     hideLoader();
 
     showResultModal("success", "Message sent successfully.");

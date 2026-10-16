@@ -1,4 +1,3 @@
-
 import { base_URL } from "../../../config.js";
 import { loadComponent } from "../../../components/component-Loader.js";
 import { getAllUser } from "../../../funcs/shared.js";
@@ -17,20 +16,25 @@ const setCustomerMode = (mode) => {
   const newPanel = document.querySelector("#new-customer-panel");
   const indicator = document.querySelector("#customer-mode-indicator");
 
-  if (!existingButton || !newButton || !existingPanel || !newPanel || !indicator) {
+  if (
+    !existingButton ||
+    !newButton ||
+    !existingPanel ||
+    !newPanel ||
+    !indicator
+  ) {
     return;
   }
 
-  
-const isExisting = mode === "existing";
+  const isExisting = mode === "existing";
 
-existingPanel.classList.toggle("hidden", !isExisting);
-newPanel.classList.toggle("hidden", isExisting);
+  existingPanel.classList.toggle("hidden", !isExisting);
+  newPanel.classList.toggle("hidden", isExisting);
 
-// Only validate fields belonging to the active customer mode.
-newPanel.querySelectorAll("input, select, textarea").forEach((field) => {
-  field.disabled = isExisting;
-});
+  // Only validate fields belonging to the active customer mode.
+  newPanel.querySelectorAll("input, select, textarea").forEach((field) => {
+    field.disabled = isExisting;
+  });
 
   indicator.classList.toggle("translate-x-full", !isExisting);
 
@@ -51,8 +55,7 @@ newPanel.querySelectorAll("input, select, textarea").forEach((field) => {
   newButton.classList.toggle("dark:text-white", !isExisting);
   newButton.classList.toggle("dark:text-zinc-400", isExisting);
 
-    notifyCustomerSelectionChanged();
-
+  notifyCustomerSelectionChanged();
 };
 
 function renderCustomerResult(customer) {
@@ -104,8 +107,7 @@ function renderCustomerResult(customer) {
   username.textContent = `@${customer.username ?? ""}`;
 
   const contact = document.createElement("p");
-  contact.className =
-    "mt-1 truncate text-xs text-gray-500 dark:text-zinc-400";
+  contact.className = "mt-1 truncate text-xs text-gray-500 dark:text-zinc-400";
   contact.textContent =
     customer.email || customer.phone || "No contact information";
 
@@ -150,8 +152,14 @@ function showCustomerDetails(user) {
   };
 
   // Assign handlers instead of adding new listeners every time.
-  closeButton.onclick = closeModal;
-  cancelButton.onclick = closeModal;
+  closeButton.onclick = () => {
+    closeModal();
+    resultSearchBox.innerHTML = "";
+  };
+  cancelButton.onclick = () => {
+    closeModal();
+    resultSearchBox.innerHTML = "";
+  };
 
   name.textContent = `${user.firstname ?? ""} ${user.lastname ?? ""}`.trim();
   username.textContent = user.username ?? "";
@@ -187,11 +195,21 @@ function showCustomerDetails(user) {
   // Replace the previous handler when a different customer is opened.
   selectButton.onclick = () => {
     selectedCustomer = user;
-    const selectedName = document.querySelector("#selected-appointment-customer-name");
-    const selectedUsername = document.querySelector("#selected-appointment-customer-username");
-    const selectedPhone = document.querySelector("#selected-appointment-customer-phone");
-    const selectedEmail = document.querySelector("#selected-appointment-customer-email");
-    const selectedImage = document.querySelector("#selected-appointment-customer-image");
+    const selectedName = document.querySelector(
+      "#selected-appointment-customer-name",
+    );
+    const selectedUsername = document.querySelector(
+      "#selected-appointment-customer-username",
+    );
+    const selectedPhone = document.querySelector(
+      "#selected-appointment-customer-phone",
+    );
+    const selectedEmail = document.querySelector(
+      "#selected-appointment-customer-email",
+    );
+    const selectedImage = document.querySelector(
+      "#selected-appointment-customer-image",
+    );
 
     if (
       !selectedCustomerBox ||
@@ -221,6 +239,19 @@ function showCustomerDetails(user) {
 
     closeModal();
     notifyCustomerSelectionChanged();
+    const removeSlecetedCustomerBtn = document.querySelector(
+      "#remove-selected-appointment-customer",
+    );
+    if (removeSlecetedCustomerBtn) {
+      removeSlecetedCustomerBtn.onclick = () => {
+        selectedCustomerBox.classList.add("hidden");
+        selectedName.textContent = "";
+        selectedUsername.textContent = "";
+        selectedPhone.textContent = "";
+        selectedEmail.textContent = "";
+        selectedImage.src = "";
+      };
+    }
   };
 
   modal.classList.remove("hidden");
@@ -228,7 +259,7 @@ function showCustomerDetails(user) {
 }
 
 export function resetCustomerSelection() {
-    selectedCustomer = null;
+  selectedCustomer = null;
 
   // Hide the row; do not destroy its child elements.
   selectedCustomerBox?.classList.add("hidden");
@@ -247,13 +278,11 @@ export function getSelectedCustomer() {
 }
 
 export async function initializeCustomerSelection() {
-    selectedCustomerBox = document.querySelector(
-  "#selected-appointment-customer",
-);
-resultSearchBox = document.querySelector(
-  "#appointment-customer-results",
-);
-searchInput = document.querySelector("#appointment-customer-search");
+  selectedCustomerBox = document.querySelector(
+    "#selected-appointment-customer",
+  );
+  resultSearchBox = document.querySelector("#appointment-customer-results");
+  searchInput = document.querySelector("#appointment-customer-search");
   const existingButton = document.querySelector("#existing-customer-mode");
   const newButton = document.querySelector("#new-customer-mode");
 
@@ -358,7 +387,7 @@ export function isCustomerReady() {
 
   const requiredFields = [
     ...newCustomerPanel.querySelectorAll(
-      "input[required], select[required], textarea[required]"
+      "input[required], select[required], textarea[required]",
     ),
   ];
 
@@ -369,7 +398,5 @@ export function isCustomerReady() {
 }
 
 function notifyCustomerSelectionChanged() {
-  document.dispatchEvent(
-    new CustomEvent("appointment:customer-changed")
-  );
+  document.dispatchEvent(new CustomEvent("appointment:customer-changed"));
 }

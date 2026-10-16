@@ -800,11 +800,50 @@
                     </tr>
                   </thead>
 
-                  <tbody id="appointment-table">                   
-               <!-- Data Loaded By JS -->
-                    
+                  <tbody id="appointment-table">
+                    <!-- Data Loaded By JS -->
                   </tbody>
                 </table>
+              </div>
+
+              <!-- Pagination controls -->
+              <div
+                id="appointment-pagination"
+                class="mt-5 flex flex-col gap-4 border-t border-[#D9D9D3] pt-4 sm:flex-row sm:items-center sm:justify-between dark:border-[#2A3540]"
+              >
+                <p
+                  id="appointment-pagination-info"
+                  class="text-sm text-slate-500 dark:text-slate-400"
+                >
+                  Showing 0–0 of 0 appointments
+                </p>
+
+                <div class="flex items-center gap-2">
+                  <button
+                    id="appointment-prev-page"
+                    type="button"
+                    disabled
+                    class="rounded-lg border border-[#D9D9D3] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
+                  >
+                    Previous
+                  </button>
+
+                  <span
+                    id="appointment-page-indicator"
+                    class="min-w-16 text-center text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >
+                    Page 1 of 1
+                  </span>
+
+                  <button
+                    id="appointment-next-page"
+                    type="button"
+                    disabled
+                    class="rounded-lg border border-[#D9D9D3] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             </article>
           </section>

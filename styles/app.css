@@ -988,6 +988,9 @@
   .min-w-12 {
     min-width: calc(var(--spacing) * 12);
   }
+  .min-w-16 {
+    min-width: calc(var(--spacing) * 16);
+  }
   .min-w-44 {
     min-width: calc(var(--spacing) * 44);
   }
@@ -2581,6 +2584,9 @@
   .disabled\:cursor-not-allowed:disabled {
     cursor: not-allowed;
   }
+  .disabled\:opacity-40:disabled {
+    opacity: 40%;
+  }
   .disabled\:opacity-50:disabled {
     opacity: 50%;
   }
@@ -3682,6 +3688,9 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
     color: #9cd7ff;
+  }
+  #appointment-table {
+    transition: opacity 200ms ease;
   }
   #user-profile.open {
     rotate: 180deg;

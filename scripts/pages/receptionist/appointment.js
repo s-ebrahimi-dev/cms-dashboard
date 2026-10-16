@@ -357,99 +357,257 @@ cancelCreateAppointmentModalBtn?.addEventListener("click", closeAppointment);
 // Set the correct initial state.
 updateAppointmentSubmitState();
 
-// Show All Appointment in Table
 
+/* ================================
+   Appointment Table & Pagination
+================================ */
+
+const APPOINTMENTS_PER_PAGE = 5;
+
+let appointments = [];
+let currentAppointmentPage = 1;
+
+// Table elements
 const appointmentTableBody = document.querySelector("#appointment-table");
-const appointments = await getAppointment();
-console.log(appointments);
-console.log(appointmentTableBody);
 
-appointmentTableBody.innerHTML = "";
-appointments.forEach((appointment) => {
-   let profileImageSrc = "/images/default-profile.png";
+const prevPageButton = document.querySelector("#appointment-prev-page");
+const nextPageButton = document.querySelector("#appointment-next-page");
 
-    if (appointment.customer.hasProfileImage) {
-      profileImageSrc = `${base_URL}/users/profile-image/${appointment.customer._id}`;
-    }
-  const date = new Date(appointment.scheduledAt);
+const paginationInfo = document.querySelector(
+  "#appointment-pagination-info",
+);
 
-  const time = date.toLocaleTimeString("en-GB", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-  function capitalizeWords(str) {
-    return str
-      .toLowerCase()
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  }
-  appointmentTableBody.insertAdjacentHTML(
-    "beforeend",
-    `
+const pageIndicator = document.querySelector(
+  "#appointment-page-indicator",
+);
 
-    <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
-                      <td
-                        class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white"
-                      >
-                        ${time}
-                      </td>
+// Format names for display.
+function capitalizeWords(str = "") {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
-                      <td class="p-3">
-                        <div class="flex items-center gap-3">
-                          <img
-                            src="${profileImageSrc}"
-                            alt=""
-                            class="h-9 w-9 shrink-0 rounded-full object-cover"
-                          />
+// Render the current page.
+function renderAppointmentsTable() {
+  if (!appointmentTableBody) return;
 
-                          <div>
-                            <p
-                              class="font-semibold text-slate-900 dark:text-white"
-                            >
-                              ${capitalizeWords(appointment.customer.firstname)} ${capitalizeWords(appointment.customer.lastname)}
-                            </p>
+  // Calculate pagination boundaries.
+  const totalAppointments = appointments.length;
 
-                            <p class="text-xs text-slate-400">
-                              ${appointment.customer.email}
-                            </p>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td class="p-3">
-                        <p
-                          class="font-medium text-slate-800 dark:text-slate-200"
-                        >
-                          ${capitalizeWords(appointment.vehicle.make)}
-                          ${capitalizeWords(appointment.vehicle.model)}
-                        </p>
-
-                        <p class="text-xs text-slate-400">ABC-123</p>
-                      </td>
-
-                      <td class="p-3">${appointment.service.name}</td>
-
-                      <td class="p-3">David Wilson</td>
-
-                      <td class="p-3">
-                        <span
-                          class="rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-700 dark:bg-blue-500/10 dark:text-blue-400"
-                        >
-                          Confirmed
-                        </span>
-                      </td>
-
-                      <td class="p-3 text-right">
-                        <button
-                          type="button"
-                          class="appointment-view-button rounded-lg bg-indigo-100 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400"
-                          data-appointment-id="1"
-                        >
-                          View
-                        </button>
-                      </td>
-                    </tr>
-    `,
+  const totalPages = Math.max(
+    1,
+    Math.ceil(totalAppointments / APPOINTMENTS_PER_PAGE),
   );
+
+  // Keep the current page within valid boundaries.
+  currentAppointmentPage = Math.min(
+    Math.max(currentAppointmentPage, 1),
+    totalPages,
+  );
+
+  const startIndex =
+    (currentAppointmentPage - 1) * APPOINTMENTS_PER_PAGE;
+
+  const endIndex = Math.min(
+    startIndex + APPOINTMENTS_PER_PAGE,
+    totalAppointments,
+  );
+
+  // Select only the appointments for this page.
+  const appointmentsToShow = appointments.slice(startIndex, endIndex);
+
+  // Clear the previous page's rows.
+  appointmentTableBody.innerHTML = "";
+
+  // Display an empty state when there are no appointments.
+  if (appointmentsToShow.length === 0) {
+    appointmentTableBody.innerHTML = `
+      <tr>
+        <td colspan="7" class="p-6 text-center text-slate-500">
+          No appointments found.
+        </td>
+      </tr>
+    `;
+  }
+
+  // Render the selected appointments.
+  appointmentsToShow.forEach((appointment) => {
+    let profileImageSrc = "/images/default-profile.png";
+
+    if (appointment.customer?.hasProfileImage) {
+      profileImageSrc =
+        `${base_URL}/users/profile-image/${appointment.customer._id}`;
+    }
+
+    const date = new Date(appointment.scheduledAt);
+
+    const time = date.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    const customerName =
+      `${capitalizeWords(appointment.customer?.firstname)} ` +
+      `${capitalizeWords(appointment.customer?.lastname)}`;
+
+    const vehicleName =
+      `${capitalizeWords(appointment.vehicle?.make)} ` +
+      `${capitalizeWords(appointment.vehicle?.model)}`;
+
+    const technicianName = appointment.assignedTechnician
+      ? `${capitalizeWords(appointment.assignedTechnician.firstname)} ` +
+        `${capitalizeWords(appointment.assignedTechnician.lastname)}`
+      : "Not assigned";
+
+    appointmentTableBody.insertAdjacentHTML(
+      "beforeend",
+      `
+        <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+          <td class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white">
+            ${time}
+          </td>
+
+          <td class="p-3">
+            <div class="flex items-center gap-3">
+              <img
+                src="${profileImageSrc}"
+                alt=""
+                class="h-9 w-9 shrink-0 rounded-full object-cover"
+              />
+
+              <div>
+                <p class="font-semibold text-slate-900 dark:text-white">
+                  ${customerName}
+                </p>
+                <p class="text-xs text-slate-400">
+                  ${appointment.customer?.email || ""}
+                </p>
+              </div>
+            </div>
+          </td>
+
+          <td class="p-3">
+            <p class="font-medium text-slate-800 dark:text-slate-200">
+              ${vehicleName}
+            </p>
+            <p class="text-xs text-slate-400">
+              ${appointment.vehicle?.licensePlate || ""}
+            </p>
+          </td>
+
+          <td class="p-3">
+            ${appointment.service?.name || "Unknown service"}
+          </td>
+
+          <td class="p-3">
+            ${technicianName}
+          </td>
+
+          <td class="p-3">
+            <span class="rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">
+              ${appointment.status || "Unknown"}
+            </span>
+          </td>
+
+          <td class="p-3 text-right">
+            <button
+              type="button"
+              class="appointment-view-button rounded-lg bg-indigo-100 px-3 py-2 text-xs font-semibold text-indigo-700 transition hover:bg-indigo-200 dark:bg-indigo-500/10 dark:text-indigo-400"
+              data-appointment-id="${appointment._id}"
+            >
+              View
+            </button>
+          </td>
+        </tr>
+      `,
+    );
+  });
+
+  // Update the pagination information.
+  if (paginationInfo) {
+    const firstAppointment =
+      totalAppointments === 0 ? 0 : startIndex + 1;
+
+    paginationInfo.textContent =
+      `Showing ${firstAppointment}–${endIndex} of ${totalAppointments} appointments`;
+  }
+
+  if (pageIndicator) {
+    pageIndicator.textContent =
+      `Page ${currentAppointmentPage} of ${totalPages}`;
+  }
+
+  // Enable or disable navigation buttons.
+  if (prevPageButton) {
+    prevPageButton.disabled = currentAppointmentPage === 1;
+  }
+
+  if (nextPageButton) {
+    nextPageButton.disabled = currentAppointmentPage === totalPages;
+  }
+}
+
+// Load appointments from the backend.
+async function loadAppointments() {
+  try {
+    const result = await getAppointment();
+
+    if (!Array.isArray(result)) {
+      throw new Error("The appointments response is not an array.");
+    }
+
+    appointments = result;
+    currentAppointmentPage = 1;
+
+    renderAppointmentsTable();
+
+    console.log("Appointments loaded:", appointments);
+  } catch (error) {
+    console.error("LOAD APPOINTMENTS ERROR:", error);
+
+    if (appointmentTableBody) {
+      appointmentTableBody.innerHTML = `
+        <tr>
+          <td colspan="7" class="p-6 text-center text-red-500">
+            Failed to load appointments.
+          </td>
+        </tr>
+      `;
+    }
+  }
+}
+
+// Navigate to the previous page.
+prevPageButton?.addEventListener("click", () => {
+  if (currentAppointmentPage > 1) {
+    appointmentTableBody.style.opacity = "0";
+
+    setTimeout(() => {
+      currentAppointmentPage--;
+      renderAppointmentsTable();
+      appointmentTableBody.style.opacity = "1";
+    }, 200);
+  }
 });
+
+nextPageButton?.addEventListener("click", () => {
+  const totalPages = Math.ceil(
+    appointments.length / APPOINTMENTS_PER_PAGE,
+  );
+
+  if (currentAppointmentPage < totalPages) {
+    appointmentTableBody.style.opacity = "0";
+
+    setTimeout(() => {
+      currentAppointmentPage++;
+      renderAppointmentsTable();
+      appointmentTableBody.style.opacity = "1";
+    }, 200);
+  }
+});
+
+// Initial load.
+await loadAppointments();
