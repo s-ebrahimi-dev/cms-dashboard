@@ -24,19 +24,33 @@ if (newConversationModal) {
     "/Components/new-conversation-modal.html",
   );
 }
+
 await getAndShowAllEmployees();
+
+// Configure the two inner loaders----------------------------------------
+const configureInnerLoader = (containerId) => {
+  const container = document.getElementById(containerId);
+  const loader = container?.querySelector(".loading-overlay");
+
+  if (!loader) return;
+
+  loader.classList.replace("fixed", "absolute");
+  loader.classList.replace("z-9999", "z-50");
+};
 
 await loadComponent(
   "conversation-loader-container",
-  "/Components/loader.html"
+  "/Components/loader.html",
 );
+configureInnerLoader("conversation-loader-container");
 
-await loadComponent(
-  "thread-loader-container",
-  "/Components/loader.html"
-);
+await loadComponent("thread-loader-container", "/Components/loader.html");
+configureInnerLoader("thread-loader-container");
+
+// ---------------------------------------------------------
 
 await getAndShowAllConversations();
+
 
 initConversationSelection((conversationId) => {
   selectedConversationId = conversationId;

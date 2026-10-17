@@ -393,7 +393,7 @@ const getAndShowAllUsers = async () => {
 };
 
 const getAndShowAllEmployees = async () => {
-  const res = await fetch(`${base_URL}/users`, {
+  const res = await fetch(`${base_URL}/users/contactable-employees`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -793,7 +793,7 @@ const getAndShowAllConversations = async () => {
     const conversationsListElem = document.querySelector("#conversation-list");
 
     const conversations = result.data;
-
+    
     conversationsListElem.innerHTML = "";
 
     if (conversations.length > 0) {

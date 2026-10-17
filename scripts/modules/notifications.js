@@ -315,11 +315,14 @@ const showNotificationDetail = (notif) => {
       timeStyle: "short",
     },
   );
+  const sender = notif.sender;
 
-  notificationDetailImage.src =
-    notif.type === "SYSTEM" || !notif.sender
-      ? "/images/default-profile.png"
-      : `${base_URL}/users/profile-image/${notif.sender._id}`;
+const imageUrl =
+  notif.type === "SYSTEM" || !sender?.hasProfileImage
+    ? "/images/default-profile.png"
+    : `${base_URL}/users/profile-image/${sender._id}`;
+
+notificationDetailImage.src = imageUrl;
 
   openNotificationDetail();
 };
