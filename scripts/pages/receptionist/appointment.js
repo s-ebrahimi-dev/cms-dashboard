@@ -66,7 +66,9 @@ async function createAppointmentVehicle(customerId) {
   if (!response.ok) {
     throw new Error(result.message || "Failed to create vehicle.");
   }
-
+  if (!result.data?._id) {
+    throw new Error("Vehicle was created, but the server returned no ID.");
+  }
   return result.data._id;
 }
 
@@ -357,7 +359,6 @@ cancelCreateAppointmentModalBtn?.addEventListener("click", closeAppointment);
 // Set the correct initial state.
 updateAppointmentSubmitState();
 
-
 /* ================================
    Appointment Table & Pagination
 ================================ */
@@ -373,13 +374,9 @@ const appointmentTableBody = document.querySelector("#appointment-table");
 const prevPageButton = document.querySelector("#appointment-prev-page");
 const nextPageButton = document.querySelector("#appointment-next-page");
 
-const paginationInfo = document.querySelector(
-  "#appointment-pagination-info",
-);
+const paginationInfo = document.querySelector("#appointment-pagination-info");
 
-const pageIndicator = document.querySelector(
-  "#appointment-page-indicator",
-);
+const pageIndicator = document.querySelector("#appointment-page-indicator");
 
 // Format names for display.
 function capitalizeWords(str = "") {
@@ -408,8 +405,7 @@ function renderAppointmentsTable() {
     totalPages,
   );
 
-  const startIndex =
-    (currentAppointmentPage - 1) * APPOINTMENTS_PER_PAGE;
+  const startIndex = (currentAppointmentPage - 1) * APPOINTMENTS_PER_PAGE;
 
   const endIndex = Math.min(
     startIndex + APPOINTMENTS_PER_PAGE,
@@ -438,8 +434,7 @@ function renderAppointmentsTable() {
     let profileImageSrc = "/images/default-profile.png";
 
     if (appointment.customer?.hasProfileImage) {
-      profileImageSrc =
-        `${base_URL}/users/profile-image/${appointment.customer._id}`;
+      profileImageSrc = `${base_URL}/users/profile-image/${appointment.customer._id}`;
     }
 
     const date = new Date(appointment.scheduledAt);
@@ -528,16 +523,13 @@ function renderAppointmentsTable() {
 
   // Update the pagination information.
   if (paginationInfo) {
-    const firstAppointment =
-      totalAppointments === 0 ? 0 : startIndex + 1;
+    const firstAppointment = totalAppointments === 0 ? 0 : startIndex + 1;
 
-    paginationInfo.textContent =
-      `Showing ${firstAppointment}–${endIndex} of ${totalAppointments} appointments`;
+    paginationInfo.textContent = `Showing ${firstAppointment}–${endIndex} of ${totalAppointments} appointments`;
   }
 
   if (pageIndicator) {
-    pageIndicator.textContent =
-      `Page ${currentAppointmentPage} of ${totalPages}`;
+    pageIndicator.textContent = `Page ${currentAppointmentPage} of ${totalPages}`;
   }
 
   // Enable or disable navigation buttons.
@@ -594,9 +586,7 @@ prevPageButton?.addEventListener("click", () => {
 });
 
 nextPageButton?.addEventListener("click", () => {
-  const totalPages = Math.ceil(
-    appointments.length / APPOINTMENTS_PER_PAGE,
-  );
+  const totalPages = Math.ceil(appointments.length / APPOINTMENTS_PER_PAGE);
 
   if (currentAppointmentPage < totalPages) {
     appointmentTableBody.style.opacity = "0";

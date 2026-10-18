@@ -1,10 +1,14 @@
-
+import { base_URL } from "../../../config.js";
 export function initializeVehicleSelection() {
   const existingVehicleMode = document.querySelector("#existing-vehicle-mode");
   const newVehicleMode = document.querySelector("#new-vehicle-mode");
-  const vehicleModeIndicator = document.querySelector("#vehicle-mode-indicator");
+  const vehicleModeIndicator = document.querySelector(
+    "#vehicle-mode-indicator",
+  );
 
-  const existingVehiclePanel = document.querySelector("#existing-vehicle-panel");
+  const existingVehiclePanel = document.querySelector(
+    "#existing-vehicle-panel",
+  );
   const newVehiclePanel = document.querySelector("#new-vehicle-panel");
 
   const vehicleSelect = document.querySelector("#appointment-vehicle");
@@ -28,13 +32,105 @@ export function initializeVehicleSelection() {
     return;
   }
 
+  let latestVehicleRequest = 0;
+
+  function clearVehicleSelection(message = "Select a vehicle") {
+    vehicleSelect.replaceChildren();
+
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = message;
+
+    vehicleSelect.append(placeholder);
+    vehicleSelect.value = "";
+
+    vehicleDetails.classList.add("hidden");
+    notifyVehicleSelectionChanged();
+  }
 
 
-function notifyVehicleSelectionChanged() {
-  document.dispatchEvent(
-    new CustomEvent("appointment:vehicle-changed")
+async function loadCustomerVehicles() {
+  const requestId = ++latestVehicleRequest;
+
+  const customerId = document.querySelector(
+    "#selected-appointment-customer",
+  )?.dataset.customerId;
+
+  const isExistingMode =
+    existingVehicleMode.getAttribute("aria-pressed") === "true";
+
+  clearVehicleSelection(
+    !isExistingMode
+      ? "Switch to Existing Vehicle to select a vehicle"
+      : customerId
+        ? "Loading vehicles..."
+        : "Select a customer first",
   );
+
+  // Do not fetch vehicles in New Vehicle mode or without a customer.
+  if (!isExistingMode || !customerId) return;
+
+  try {
+    const response = await fetch(
+      `${base_URL}/vehicles?customerId=${encodeURIComponent(customerId)}`,
+      { credentials: "include" },
+    );
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || "Failed to load vehicles.");
+    }
+
+    // Ignore an outdated request.
+    if (requestId !== latestVehicleRequest) return;
+
+    const vehicles = result.data;
+
+    if (!Array.isArray(vehicles)) {
+      throw new Error("Invalid vehicles response from the server.");
+    }
+
+    vehicleSelect.replaceChildren();
+
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = vehicles.length
+      ? "Select a vehicle"
+      : "No vehicles registered";
+
+    vehicleSelect.append(placeholder);
+
+    for (const vehicle of vehicles) {
+      const option = document.createElement("option");
+
+      option.value = vehicle._id;
+      option.textContent =
+        `${vehicle.make} ${vehicle.model} (${vehicle.year}) — ` +
+        `${vehicle.licensePlate}`;
+
+      vehicleSelect.append(option);
+    }
+
+    vehicleDetails.classList.add("hidden");
+    notifyVehicleSelectionChanged();
+  } catch (error) {
+    if (requestId !== latestVehicleRequest) return;
+
+    console.error("Failed to load customer vehicles:", error);
+    clearVehicleSelection("Failed to load vehicles");
+  }
 }
+
+
+  document.addEventListener(
+    "appointment:customer-changed",
+    loadCustomerVehicles,
+  );
+
+  function notifyVehicleSelectionChanged() {
+    document.dispatchEvent(new CustomEvent("appointment:vehicle-changed"));
+  }
 
   function setVehicleMode(mode) {
     const isExisting = mode === "existing";
@@ -70,6 +166,8 @@ function notifyVehicleSelectionChanged() {
 
     if (!isExisting) {
       vehicleDetails.classList.add("hidden");
+      latestVehicleRequest++;
+      clearVehicleSelection("Select a vehicle");
     }
     notifyVehicleSelectionChanged();
   }
@@ -86,16 +184,16 @@ function notifyVehicleSelectionChanged() {
     setVehicleMode("new");
   });
 
-vehicleSelect.addEventListener("change", () => {
-  vehicleDetails.classList.toggle("hidden", !vehicleSelect.value);
-  notifyVehicleSelectionChanged();
-});
+  vehicleSelect.addEventListener("change", () => {
+    vehicleDetails.classList.toggle("hidden", !vehicleSelect.value);
+    notifyVehicleSelectionChanged();
+  });
 
   // Initial state
   setVehicleMode("existing");
 }
 
- export  function isVehicleReady() {
+export function isVehicleReady() {
   const existingMode = document.querySelector("#existing-vehicle-mode");
   const newPanel = document.querySelector("#new-vehicle-panel");
   const vehicleSelect = document.querySelector("#appointment-vehicle");
@@ -104,8 +202,7 @@ vehicleSelect.addEventListener("change", () => {
     return false;
   }
 
-  const isExistingMode =
-    existingMode.getAttribute("aria-pressed") === "true";
+  const isExistingMode = existingMode.getAttribute("aria-pressed") === "true";
 
   if (isExistingMode) {
     return Boolean(vehicleSelect.value);
@@ -113,7 +210,7 @@ vehicleSelect.addEventListener("change", () => {
 
   const requiredFields = [
     ...newPanel.querySelectorAll(
-      "input[required], select[required], textarea[required]"
+      "input[required], select[required], textarea[required]",
     ),
   ];
 

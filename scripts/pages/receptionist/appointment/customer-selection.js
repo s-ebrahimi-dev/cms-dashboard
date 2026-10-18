@@ -222,7 +222,7 @@ function showCustomerDetails(user) {
       console.error("Selected-customer elements are missing.");
       return;
     }
-
+    selectedCustomerBox.dataset.customerId = user._id;
     selectedName.textContent =
       `${user.firstname ?? ""} ${user.lastname ?? ""}`.trim();
     selectedUsername.textContent = user.username ?? "";
@@ -238,18 +238,21 @@ function showCustomerDetails(user) {
     resultSearchBox?.classList.remove("flex");
 
     closeModal();
-    notifyCustomerSelectionChanged();
+
     const removeSlecetedCustomerBtn = document.querySelector(
       "#remove-selected-appointment-customer",
     );
     if (removeSlecetedCustomerBtn) {
       removeSlecetedCustomerBtn.onclick = () => {
+        selectedCustomer = null;
+        delete selectedCustomerBox.dataset.customerId;
         selectedCustomerBox.classList.add("hidden");
         selectedName.textContent = "";
         selectedUsername.textContent = "";
         selectedPhone.textContent = "";
         selectedEmail.textContent = "";
         selectedImage.src = "";
+        notifyCustomerSelectionChanged();
       };
     }
   };
@@ -271,6 +274,7 @@ export function resetCustomerSelection() {
   if (searchInput) {
     searchInput.value = "";
   }
+  delete selectedCustomerBox.dataset.customerId;
   notifyCustomerSelectionChanged();
 }
 export function getSelectedCustomer() {
