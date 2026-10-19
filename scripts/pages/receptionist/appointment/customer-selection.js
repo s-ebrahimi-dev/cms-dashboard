@@ -123,7 +123,7 @@ function renderCustomerResult(customer) {
   return button;
 }
 
-function showCustomerDetails(user) {
+async function showCustomerDetails(user) {
   const modal = document.querySelector("#customer-details-modal");
   const name = document.querySelector("#details-customer-name");
   const username = document.querySelector("#details-customer-username");
@@ -193,7 +193,7 @@ function showCustomerDetails(user) {
   values[3].textContent = user.email ?? "—";
 
   // Replace the previous handler when a different customer is opened.
-  selectButton.onclick = () => {
+  selectButton.onclick = async () => {
     selectedCustomer = user;
     const selectedName = document.querySelector(
       "#selected-appointment-customer-name",
@@ -239,6 +239,26 @@ function showCustomerDetails(user) {
 
     closeModal();
 
+    try {
+      const params = new URLSearchParams({
+        customerId: user._id,
+      });
+
+      const response = await fetch(`${base_URL}/vehicles/?${params}`, {
+        credentials: "include",
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Failed to fetch customer vehicles.");
+      }
+
+      populateVehicleSelect(result.data);
+    } catch (error) {
+      console.error("Could not load vehicles:", error.message);
+    }
+
     const removeSlecetedCustomerBtn = document.querySelector(
       "#remove-selected-appointment-customer",
     );
@@ -260,6 +280,70 @@ function showCustomerDetails(user) {
   modal.classList.remove("hidden");
   modal.classList.add("flex");
 }
+
+const populateVehicleSelect = (vehicles) => {
+  const vehicleSelect = document.querySelector("#appointment-vehicle");
+  const noVehiclesMessage = document.querySelector("#appointment-no-vehicles");
+  const vehicleDetails = document.querySelector("#appointment-vehicle-details");
+
+  // Reset the UI whenever a different customer is selected.
+  vehicleSelect.replaceChildren();
+  vehicleDetails.classList.add("hidden");
+
+  const hasVehicles = vehicles.length > 0;
+
+  noVehiclesMessage.classList.toggle("hidden", hasVehicles);
+  vehicleSelect.disabled = !hasVehicles;
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = hasVehicles
+    ? "Select a vehicle"
+    : "No registered vehicles";
+
+  vehicleSelect.append(placeholder);
+
+  for (const vehicle of vehicles) {
+    const option = document.createElement("option");
+
+    option.value = vehicle._id;
+    option.textContent = `${vehicle.make} ${vehicle.model} (${vehicle.year}) — ${vehicle.licensePlate}`;
+
+    vehicleSelect.append(option);
+  }
+
+  // Replace the previous handler instead of accumulating listeners.
+  vehicleSelect.onchange = () => {
+    const selectedVehicle = vehicles.find(
+      (vehicle) => vehicle._id === vehicleSelect.value,
+    );
+
+    if (!selectedVehicle) {
+      vehicleDetails.classList.add("hidden");
+      return;
+    }
+
+    showSelectedVehicleDetails(selectedVehicle);
+  };
+};
+
+const showSelectedVehicleDetails = (vehicle) => {
+  document.querySelector("#appointment-vehicle-name").textContent =
+    `${vehicle.make} ${vehicle.model} (${vehicle.year})`;
+
+  document.querySelector("#appointment-vehicle-plate").textContent =
+    vehicle.licensePlate || "—";
+
+  document.querySelector("#appointment-vehicle-mileage").textContent =
+    vehicle.mileage ?? "—";
+
+  document.querySelector("#appointment-vehicle-color").textContent =
+    vehicle.color || "—";
+
+  document
+    .querySelector("#appointment-vehicle-details")
+    .classList.remove("hidden");
+};
 
 export function resetCustomerSelection() {
   selectedCustomer = null;
