@@ -711,14 +711,16 @@
 
       <div
         id="createUserModal"
-        class="fixed inset-0 z-50 hidden flex items-center justify-center bg-slate-950/60 px-4 backdrop-blur-sm"
+        class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto bg-slate-950/60 px-3 py-4 backdrop-blur-sm sm:px-4"
       >
         <div
-          class="w-full bg-white max-w-lg overflow-hidden rounded-2xl shadow-2xl"
+          class="my-auto flex max-h-[calc(100dvh-2rem)] w-full max-w-lg flex-col overflow-hidden rounded-2xl bg-white shadow-2xl"
         >
           <!-- HEADER -->
 
-          <div class="flex items-start justify-between border-b px-6 py-5">
+          <div
+            class="flex shrink-0 items-start justify-between border-b px-4 py-4 sm:px-6 sm:py-5"
+          >
             <div>
               <h2 class="text-xl font-bold text-slate-900">Create New User</h2>
 
@@ -751,7 +753,10 @@
 
           <!-- FORM -->
 
-          <form id="createUserForm" class="space-y-5 p-6">
+          <form
+            id="createUserForm"
+            class="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain p-4 sm:space-y-5 sm:p-6"
+          >
             <!-- FIRST / LAST NAME -->
 
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -971,10 +976,6 @@
           </form>
         </div>
       </div>
-
-      <!-- =====================================================
-         EDIT USER MODAL
-    ====================================================== -->
 
       <div id="delete-user-modal-container"></div>
       <div id="edit-user-modal-container"></div>
