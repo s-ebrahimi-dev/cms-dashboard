@@ -256,7 +256,7 @@ async function submitAppointment(event) {
       "success",
       result.message || "Appointment created successfully!",
     );
-
+    await loadAppointments()
     // 12. Reset the form once, after successful creation.
     appointmentForm.reset();
     resetCustomerSelection();
