@@ -249,19 +249,19 @@
 }
 
 /* Animate the travelers */
-.theme-toggle.is-dark .sun-traveler {
+.theme-toggle:not(.is-dark) .sun-traveler {
   animation: sun-enter 1000ms cubic-bezier(.56, .5, .36, 0.8) both;
 }
 
-.theme-toggle.is-dark .moon-traveler {
+.theme-toggle:not(.is-dark) .moon-traveler {
   animation: moon-exit 1000ms cubic-bezier(.56, .5, .36, 0.8) both;
 }
 
-.theme-toggle:not(.is-dark) .moon-traveler {
+.theme-toggle.is-dark .moon-traveler {
   animation: moon-enter 1000ms cubic-bezier(.56, .5, .36, 0.8) both;
 }
 
-.theme-toggle:not(.is-dark) .sun-traveler {
+.theme-toggle.is-dark .sun-traveler {
   animation: sun-exit 1000ms cubic-bezier(.56, .5, .36, 0.8) both;
 }
 
