@@ -430,13 +430,14 @@ function renderAppointmentsTable() {
   }
 
   // Render the selected appointments.
-  appointmentsToShow.forEach((appointment) => {
+  appointmentsToShow.forEach((appointment, index) => {
     let profileImageSrc = "/images/default-profile.png";
 
     if (appointment.customer?.hasProfileImage) {
       profileImageSrc = `${base_URL}/users/profile-image/${appointment.customer._id}`;
     }
-
+    const appointmentNumber =
+      (currentAppointmentPage - 1) * APPOINTMENTS_PER_PAGE + index + 1;
     const date = new Date(appointment.scheduledAt);
 
     const time = date.toLocaleTimeString("en-GB", {
@@ -461,6 +462,10 @@ function renderAppointmentsTable() {
       "beforeend",
       `
         <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+        
+          <td class="p-3 text-lg">
+            ${appointmentNumber}
+          </td>
           <td class="whitespace-nowrap p-3 font-semibold text-slate-900 dark:text-white">
             ${time}
           </td>

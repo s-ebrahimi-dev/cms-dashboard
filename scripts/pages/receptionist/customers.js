@@ -33,13 +33,19 @@ const getCustomers = async () => {
 
 const renderCustomers = (customers) => {
   customerTableBody.innerHTML = "";
-  customers.forEach((customer) => {
+  customers.forEach((customer, index) => {
+    
     const imageUrl = customer.hasProfileImage
       ? `${base_URL}/users/profile-image/${customer._id}`
       : `/images/default-profile.png`;
+    
+      const customerNumber =
+      (currentCustomerPage - 1) * CUSTOMERS_PER_PAGE + index + 1;
+    
 const vehicle = customer.vehicles[0];
 
-const vehicleHTML = vehicle
+    const vehicleHTML = vehicle
+  
   ? `
       <p class="font-medium text-slate-800 dark:text-slate-200">
         ${vehicle.make} ${vehicle.model}
@@ -57,6 +63,11 @@ const vehicleHTML = vehicle
       "beforeend",
       `
                       <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
+                      <td
+                      class=" p-3 text-lg"
+                    >
+                      ${customerNumber}
+                    </td>
                     <td class="p-3">
                       <div class="flex items-center gap-3">
                         <img
