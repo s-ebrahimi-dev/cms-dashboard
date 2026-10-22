@@ -200,7 +200,10 @@
     @apply text-[#9cd7ff] font-semibold;
   }
 #appointment-table {
-  transition: opacity 200ms ease;
+  @apply transition-opacity duration-200 ease-in-out;
+}
+#customers-table {
+  @apply transition-opacity duration-200 ease-in-out;
 }
     #user-profile.open {
     @apply rotate-180;

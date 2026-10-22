@@ -802,6 +802,9 @@
   .min-h-40 {
     min-height: calc(var(--spacing) * 40);
   }
+  .min-h-100 {
+    min-height: calc(var(--spacing) * 100);
+  }
   .min-h-150 {
     min-height: calc(var(--spacing) * 150);
   }
@@ -1095,9 +1098,6 @@
   }
   .items-start {
     align-items: flex-start;
-  }
-  .items-stretch {
-    align-items: stretch;
   }
   .justify-between {
     justify-content: space-between;
@@ -3759,7 +3759,22 @@
     color: #9cd7ff;
   }
   #appointment-table {
-    transition: opacity 200ms ease;
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
+  }
+  #customers-table {
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
   }
   #user-profile.open {
     rotate: 180deg;

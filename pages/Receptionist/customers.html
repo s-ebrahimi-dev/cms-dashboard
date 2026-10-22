@@ -380,7 +380,7 @@
           <!-- NOTIFICATION MODAL -->
           <!-- ================================================= -->
 
-         <div
+          <div
             id="messageNotificationModal"
             class="notification-modal compact absolute top-17 right-0 z-50 invisible overflow-hidden rounded-2xl border border-slate-200 bg-white opacity-0 shadow-xl transition-all duration-500 ease-in-out dark:border-slate-700 dark:bg-[#151B23]"
           >
@@ -428,11 +428,12 @@
 
             <!-- Expanded -->
 
-            <div id="notification-expanded-view" class="hidden relative h-[75dvh] flex-col min-h-0">
+            <div
+              id="notification-expanded-view"
+              class="hidden relative h-[75dvh] flex-col min-h-0"
+            >
               <div
-                 class="flex shrink-0 items-center justify-between border-b
-           border-slate-200 bg-white px-4 py-3
-           dark:border-slate-700 dark:bg-slate-800"
+                class="flex shrink-0 items-center justify-between border-b border-slate-200 bg-white px-4 py-3 dark:border-slate-700 dark:bg-slate-800"
               >
                 <div class="flex min-w-0 items-center gap-3">
                   <button
@@ -478,7 +479,10 @@
                 </button>
               </div>
 
-              <div id="all-notifications-list" class="min-h-0 flex-1 overflow-y-auto">
+              <div
+                id="all-notifications-list"
+                class="min-h-0 flex-1 overflow-y-auto"
+              >
                 <div class="px-4 pb-2 pt-4">
                   <p
                     class="text-[10px] font-bold uppercase tracking-wider text-slate-400"
@@ -617,6 +621,7 @@
               </p>
 
               <h3
+                id="total-customer"
                 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
               >
                 248
@@ -763,8 +768,12 @@
                 All Customers
               </span>
             </div>
-
-            <div class="overflow-x-auto">
+            
+            <div class="overflow-x-auto relative min-h-100">
+              <div
+              id="customer-table-container"
+               class="pointer-events-none absolute inset-0 z-50"
+            ></div>
               <table class="w-full text-sm">
                 <thead>
                   <tr
@@ -787,57 +796,28 @@
                 </thead>
 
                 <tbody id="customers-table">
-                 <!-- Customers Loaded By Js -->
+                  <!-- Customers Loaded By Js -->
                 </tbody>
               </table>
             </div>
 
             <!-- Pagination -->
 
-            <div
-              class="mt-5 flex flex-col gap-3 border-t border-[#D9D9D3] pt-5 dark:border-[#2A3540] sm:flex-row sm:items-center sm:justify-between"
-            >
-              <p class="text-xs text-slate-500 dark:text-slate-400">
-                Showing 1–5 of 248 customers
-              </p>
+           <div id="customers-pagination" class="mt-5 flex flex-col gap-4 border-t border-[#D9D9D3] pt-4 sm:flex-row sm:items-center sm:justify-between dark:border-[#2A3540]">
+                <p id="customers-pagination-info" class="text-sm text-slate-500 dark:text-slate-400">Showing 1–5 of 11 appointments</p>
 
-              <div class="flex items-center gap-2">
-                <button
-                  type="button"
-                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D9D3] text-slate-500 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-400 dark:hover:bg-[#1D2630]"
-                >
-                  ‹
-                </button>
+                <div class="flex items-center gap-2">
+                  <button id="customers-prev-page" type="button" disabled="" class="rounded-lg border border-[#D9D9D3] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]">
+                    Previous
+                  </button>
 
-                <button
-                  type="button"
-                  class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-xs font-semibold text-white"
-                >
-                  1
-                </button>
+                  <span id="customers-page-indicator" class="min-w-16 text-center text-sm font-medium text-slate-700 dark:text-slate-200">Page 1 of 3</span>
 
-                <button
-                  type="button"
-                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D9D3] text-xs text-slate-600 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
-                >
-                  2
-                </button>
-
-                <button
-                  type="button"
-                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D9D3] text-xs text-slate-600 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
-                >
-                  3
-                </button>
-
-                <button
-                  type="button"
-                  class="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D9D3] text-slate-500 transition hover:bg-slate-50 dark:border-[#2A3540] dark:text-slate-400 dark:hover:bg-[#1D2630]"
-                >
-                  ›
-                </button>
+                  <button id="customers-next-page" type="button" class="rounded-lg border border-[#D9D9D3] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]">
+                    Next
+                  </button>
+                </div>
               </div>
-            </div>
           </section>
 
           <!-- =================================================== -->
@@ -1185,7 +1165,7 @@
         ></div>
 
         <div id="modal-container"></div>
-
+        <div id="loader-container"></div>
         <div id="result-modal-container"></div>
       </main>
     </div>
@@ -1195,6 +1175,9 @@
     <!-- ========================================================= -->
 
     <script type="module" src="../../scripts/shared.js"></script>
-    <script type="module" src="../../scripts/pages/receptionist/customers.js"></script>
+    <script
+      type="module"
+      src="../../scripts/pages/receptionist/customers.js"
+    ></script>
   </body>
 </html>

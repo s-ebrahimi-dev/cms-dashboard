@@ -10,7 +10,7 @@ import {
 } from "../../funcs/shared.js";
 import { showResultModal } from "../../components/result-modal.js";
 import { loadComponent } from "../../components/component-Loader.js";
-import { hideLoader, showLoader } from "../../funcs/loader.js";
+import { hideLoader, showLoader , configureInnerLoader } from "../../funcs/loader.js";
 
 let selectedConversationId = null;
 
@@ -27,15 +27,6 @@ if (newConversationModal) {
 await getAndShowAllEmployees();
 
 // Configure the two inner loaders----------------------------------------
-const configureInnerLoader = (containerId) => {
-  const container = document.getElementById(containerId);
-  const loader = container?.querySelector(".loading-overlay");
-
-  if (!loader) return;
-
-  loader.classList.replace("fixed", "absolute");
-  loader.classList.replace("z-9999", "z-50");
-};
 
 await loadComponent(
   "conversation-loader-container",

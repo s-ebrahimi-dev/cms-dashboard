@@ -1,7 +1,15 @@
 import { getAllUser } from "../../funcs/shared.js";
 import { base_URL } from "../../config.js";
+import { showLoader, hideLoader, configureInnerLoader } from "../../funcs/loader.js";
+import { loadComponent } from "../../components/component-Loader.js";
 import { getCustomerVehicles } from "./appointment/vehicle-selection.js";
-const customersTableBody = document.querySelector("#customers-table");
+const customerTableBody = document.querySelector("#customers-table");
+
+await loadComponent(
+  "customer-table-container",
+  "/Components/loader.html",
+);
+ configureInnerLoader("customer-table-container")
 const getCustomers = async () => {
   const users = await getAllUser();
 
@@ -24,7 +32,7 @@ const getCustomers = async () => {
 };
 
 const renderCustomers = (customers) => {
-  customersTableBody.innerHTML = "";
+  customerTableBody.innerHTML = "";
   customers.forEach((customer) => {
     const imageUrl = customer.hasProfileImage
       ? `${base_URL}/users/profile-image/${customer._id}`
@@ -45,7 +53,7 @@ const vehicleHTML = vehicle
         No vehicle registered
       </p>
     `;
-    customersTableBody.insertAdjacentHTML(
+    customerTableBody.insertAdjacentHTML(
       "beforeend",
       `
                       <tr class="border-b border-[#D9D9D3] dark:border-[#2A3540]">
@@ -128,14 +136,137 @@ const vehicleHTML = vehicle
   });
 };
 
-const showAllCustomer = async () => {
-  try {
-    const customers = await getCustomers();
-    console.log(customers);
 
-    renderCustomers(customers);
+const CUSTOMERS_PER_PAGE = 5;
+
+let customers = [];
+let currentCustomerPage = 1;
+
+// Pagination elements
+const prevPageButton = document.querySelector("#customers-prev-page");
+const nextPageButton = document.querySelector("#customers-next-page");
+const paginationInfo = document.querySelector(
+  "#customers-pagination-info",
+);
+const pageIndicator = document.querySelector(
+  "#customers-page-indicator",
+);
+
+function renderCustomersTable() {
+  if (!customerTableBody) return;
+
+  const totalCustomers = customers.length;
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(totalCustomers / CUSTOMERS_PER_PAGE),
+  );
+
+  // Keep the current page within valid boundaries.
+  currentCustomerPage = Math.min(
+    Math.max(currentCustomerPage, 1),
+    totalPages,
+  );
+
+  const startIndex =
+    (currentCustomerPage - 1) * CUSTOMERS_PER_PAGE;
+
+  const endIndex = Math.min(
+    startIndex + CUSTOMERS_PER_PAGE,
+    totalCustomers,
+  );
+
+  const customersToShow = customers.slice(
+    startIndex,
+    endIndex,
+  );
+
+  // Render only the customers on the current page.
+  if (customersToShow.length === 0) {
+    customerTableBody.innerHTML = `
+      <tr>
+        <td colspan="7" class="p-6 text-center text-slate-500">
+          No customers found.
+        </td>
+      </tr>
+    `;
+  } else {
+    renderCustomers(customersToShow);
+  }
+
+  // Update pagination information.
+  if (paginationInfo) {
+    const firstCustomer =
+      totalCustomers === 0 ? 0 : startIndex + 1;
+
+    paginationInfo.textContent =
+      `Showing ${firstCustomer}–${endIndex} of ${totalCustomers} customers`;
+  }
+
+  if (pageIndicator) {
+    pageIndicator.textContent =
+      `Page ${currentCustomerPage} of ${totalPages}`;
+  }
+
+  // Update navigation buttons.
+  if (prevPageButton) {
+    prevPageButton.disabled = currentCustomerPage === 1;
+  }
+
+  if (nextPageButton) {
+    nextPageButton.disabled =
+      currentCustomerPage === totalPages;
+  }
+}
+
+// Navigate to the previous page.
+prevPageButton?.addEventListener("click", () => {
+  if (currentCustomerPage > 1) {
+    customerTableBody.style.opacity = "0"; // Optional: Add a visual cue for loading
+    setTimeout(() => {
+      currentCustomerPage--;
+      renderCustomersTable();
+      customerTableBody.style.opacity = "1"; // Reset opacity after rendering
+    }, 200); // Adjust the timeout duration as needed
+  }
+});
+
+// Navigate to the next page.
+nextPageButton?.addEventListener("click", () => {
+  const totalPages = Math.ceil(
+    customers.length / CUSTOMERS_PER_PAGE,
+  );
+
+  if (currentCustomerPage < totalPages) {
+    customerTableBody.style.opacity = "0"; // Optional: Add a visual cue for loading
+    setTimeout(() => {
+      currentCustomerPage++;
+      renderCustomersTable();
+      customerTableBody.style.opacity = "1"; // Reset opacity after rendering
+    }, 200); // Adjust the timeout duration as needed
+  }
+});
+
+// Load customers once.
+const showAllCustomer = async () => {
+  showLoader(
+    "Loading customers",
+    "Please wait",
+    "customer-table-container",
+  );
+
+  try {
+    customers = await getCustomers();
+
+    // Start from the first page after loading.
+    currentCustomerPage = 1;
+
+    renderCustomersTable();
   } catch (error) {
     console.error("Loading customers failed:", error);
+  } finally {
+    hideLoader("customer-table-container");
   }
 };
+
 await showAllCustomer();

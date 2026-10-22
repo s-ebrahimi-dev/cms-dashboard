@@ -38,3 +38,13 @@ export const hideLoader = (containerId = "loader-container") => {
   loader.classList.add("hidden");
   loader.classList.remove("flex");
 };
+
+export const configureInnerLoader = (containerId) => {
+  const container = document.getElementById(containerId);
+  const loader = container?.querySelector(".loading-overlay");
+
+  if (!loader) return;
+
+  loader.classList.replace("fixed", "absolute");
+  loader.classList.replace("z-9999", "z-50");
+};
