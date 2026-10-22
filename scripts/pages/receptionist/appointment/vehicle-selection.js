@@ -219,3 +219,19 @@ export function isVehicleReady() {
     requiredFields.every((field) => field.checkValidity())
   );
 }
+export const getCustomerVehicles = async (customerId) => {
+  const response = await fetch(
+    `/api/vehicles?customerId=${customerId}`,
+    {
+      credentials: "include",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch customer vehicles.");
+  }
+
+  const result = await response.json();
+
+  return result.data;
+};

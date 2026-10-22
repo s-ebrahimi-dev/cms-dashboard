@@ -1,5 +1,6 @@
 import { getAllUser } from "../../funcs/shared.js";
 import { base_URL } from "../../config.js";
+import { getCustomerVehicles } from "./appointment/vehicle-selection.js";
 const customersTableBody = document.querySelector("#customers-table");
 const getCustomers = async () => {
   const users = await getAllUser();
@@ -8,17 +9,42 @@ const getCustomers = async () => {
     throw new Error("Invalid users data");
   }
 
-  return users.filter((user) => user.role === "CUSTOMER");
+  const customers = users.filter((user) => user.role === "CUSTOMER");
+  const customersWithVehicles = await Promise.all(
+    customers.map(async (customer) => {
+      const vehicles = await getCustomerVehicles(customer._id);
+
+      return {
+        ...customer,
+        vehicles,
+      };
+    }),
+  );
+  return customersWithVehicles;
 };
 
 const renderCustomers = (customers) => {
   customersTableBody.innerHTML = "";
-  customers.forEach(async(customer) => {
+  customers.forEach((customer) => {
     const imageUrl = customer.hasProfileImage
-      ? await fetch(`${base_URL}/users/profile-image/${customer._id}`)
-          : `/images/default-profile.png`;
-      console.log(imageUrl);
-      
+      ? `${base_URL}/users/profile-image/${customer._id}`
+      : `/images/default-profile.png`;
+const vehicle = customer.vehicles[0];
+
+const vehicleHTML = vehicle
+  ? `
+      <p class="font-medium text-slate-800 dark:text-slate-200">
+        ${vehicle.make} ${vehicle.model}
+      </p>
+      <p class="mt-1 text-xs text-slate-400">
+        ${vehicle.year} • ${vehicle.licensePlate}
+      </p>
+    `
+  : `
+      <p class="text-sm text-slate-400">
+        No vehicle registered
+      </p>
+    `;
     customersTableBody.insertAdjacentHTML(
       "beforeend",
       `
@@ -27,7 +53,7 @@ const renderCustomers = (customers) => {
                       <div class="flex items-center gap-3">
                         <img
                           src= ${imageUrl}
-                          alt="John Smith"
+                          alt="${customer.firstname} ${customer.lastname}"
                           class="h-10 w-10 shrink-0 rounded-full object-cover"
                         />
 
@@ -48,11 +74,11 @@ const renderCustomers = (customers) => {
                     <td class="p-3">
                       <div>
                         <p class="text-slate-700 dark:text-slate-300">
-                          +1 555 234 8890
+                          ${customer.phone}
                         </p>
 
                         <p class="mt-1 text-xs text-slate-400">
-                          john@example.com
+                          ${customer.email}
                         </p>
                       </div>
                     </td>
@@ -62,17 +88,14 @@ const renderCustomers = (customers) => {
                         <p
                           class="font-medium text-slate-800 dark:text-slate-200"
                         >
-                          Toyota Camry
+                          ${vehicleHTML}
                         </p>
 
-                        <p class="mt-1 text-xs text-slate-400">
-                          2021 • ABC-123
-                        </p>
                       </div>
                     </td>
 
                     <td
-                      class="p-3 font-semibold text-slate-800 dark:text-slate-200"
+                      class="flex justify-center items-center p-3 font-semibold text-slate-800 dark:text-slate-200"
                     >
                       12
                     </td>
@@ -87,7 +110,7 @@ const renderCustomers = (customers) => {
                       <span
                         class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
                       >
-                        Active
+                       ${customer.username}
                       </span>
                     </td>
 
