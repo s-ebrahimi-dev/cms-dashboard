@@ -143,13 +143,12 @@
                 <!-- Customer Avatar -->
                 <div
                   class="shrink-0 overflow-hidden size-12 min-w-12 min-h-12 rounded-full border border-gray-200 bg-white dark:border-zinc-700"
-               
                 >
                   <img
                     id="selected-appointment-customer-image"
                     src=""
                     alt="Customer profile"
-                   class="block w-full h-full max-w-full object-cover"
+                    class="block w-full h-full max-w-full object-cover"
                   />
                 </div>
 
@@ -551,6 +550,26 @@
                 Select the vehicle's make and model, then enter its registration
                 details.
               </p>
+            </div>
+            <div
+              id="vehicle-catalogue-error"
+              class="hidden rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+              role="alert"
+            >
+              <p class="font-medium">Unable to Load Vehicle Manufacturers</p>
+
+              <p class="mt-1">
+                We couldn't load the vehicle manufacturers. Please check your
+                internet connection and try again.
+              </p>
+
+              <button
+                id="retry-vehicle-catalogue"
+                type="button"
+                class="mt-2 font-semibold underline underline-offset-2"
+              >
+                Try Again
+              </button>
             </div>
 
             <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">

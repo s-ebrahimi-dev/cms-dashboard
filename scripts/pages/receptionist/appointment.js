@@ -2,6 +2,7 @@ import { loadComponent } from "../../components/component-Loader.js";
 import { base_URL } from "../../config.js";
 import {
   openCreateAppointmentModal,
+  initializeVehicleCatalogue,
   closeCreateAppointmentModal,
   getAppointment,
 } from "../../funcs/shared.js";
@@ -26,6 +27,9 @@ await loadComponent(
   "appointment-modal",
   "/Components/receptionist/create-appointment-modal.html",
 );
+document
+  .querySelector("#retry-vehicle-catalogue")
+  ?.addEventListener("click", initializeVehicleCatalogue);
 
 // Modal elements
 const appointmentForm = document.querySelector("#create-appointment-form");

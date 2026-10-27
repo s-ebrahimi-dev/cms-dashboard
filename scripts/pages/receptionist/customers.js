@@ -135,7 +135,7 @@ const renderCustomers = (customers) => {
 
                     <td class="p-3 text-right">
                       <button
-                        id="view-customer-infos"
+                        data-customer-id="${customer._id}"
                         type="button"
                         class="rounded-lg px-3 py-2 text-xs font-semibold text-indigo-600 transition hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-500/10"
                       >
@@ -259,7 +259,7 @@ const showAllCustomer = async () => {
 const updateCustomerPageContent = (customers) => {
   const totalCustomersElem = document.querySelector("#total-customer");
 
-  totalCustomersElem.textContent = customers.length;
+  totalCustomersElem.textContent = customers?.length;
 };
 await showAllCustomer();
 
@@ -268,27 +268,149 @@ const initCustomerFullModal = async () => {
 }
 
 await initCustomerFullModal()
-const customerFullModal = document.querySelector("#customer-full-modal")
-const viewCustomerFullModalBtns = document.querySelectorAll("#view-customer-infos") 
-const custmoerModalCloseBtn = document.querySelector("#customer-details-done")
-const customerModalCloseXBtn = document.querySelector("#close-customer-details-modal")
-const showCustomerModal = () => {
-  console.log("click");
-  
-  customerFullModal.classList.remove("hidden")
-  customerFullModal.classList.add("flex")
-}
+const customerFullModal = document.querySelector("#customer-full-modal");
+
+
+const customerModalCloseBtn = document.querySelector(
+  "#customer-details-done",
+);
+
+const customerModalCloseXBtn = document.querySelector(
+  "#close-customer-details-modal",
+);
+
+const setCustomerText = (selector, value) => {
+  const element = customerFullModal.querySelector(selector);
+
+  if (element) {
+    element.textContent = value ?? "Not provided";
+  }
+};
+
+const renderCustomerVehicles = (vehicles = []) => {
+  const container = customerFullModal.querySelector(
+    "#details-customer-vehicles",
+  );
+
+  const count = customerFullModal.querySelector(
+    "#details-customer-vehicle-count",
+  );
+
+  if (!container || !count) return;
+
+  count.textContent = String(vehicles.length);
+  container.innerHTML = "";
+
+  if (vehicles.length === 0) {
+    container.innerHTML = `
+      <p class="py-6 text-center text-sm text-slate-500">
+        No vehicles registered.
+      </p>
+    `;
+    return;
+  }
+
+  vehicles.forEach((vehicle) => {
+    const card = document.createElement("div");
+    card.className =
+      "rounded-xl border border-slate-200 p-4 dark:border-[#2A3540]";
+
+    const title = document.createElement("p");
+    title.className = "font-semibold text-slate-800 dark:text-white";
+    title.textContent =
+      [vehicle.make, vehicle.model].filter(Boolean).join(" ") ||
+      "Unnamed vehicle";
+
+    const details = document.createElement("p");
+    details.className = "mt-2 text-sm text-slate-500";
+    details.textContent = [
+      vehicle.year,
+      vehicle.licensePlate,
+    ]
+      .filter((value) => value != null && value !== "")
+      .join(" • ") || "No additional vehicle information";
+
+    card.append(title, details);
+    container.append(card);
+  });
+};
+
+const showCustomerModal = (customer) => {
+  if (!customer) return;
+
+  const fullName =
+    [customer.firstname, customer.lastname]
+      .filter(Boolean)
+      .join(" ") || "Unnamed customer";
+
+  const image = customerFullModal.querySelector(
+    "#details-customer-image",
+  );
+
+  setCustomerText("#details-customer-name", fullName);
+  setCustomerText("#details-customer-username", customer.username);
+  setCustomerText("#details-customer-phone", customer.phone);
+  setCustomerText("#details-customer-email", customer.email);
+  setCustomerText("#details-customer-username-card", customer.username);
+  setCustomerText("#details-customer-id", customer._id);
+
+  if (image) {
+    image.src = customer.hasProfileImage
+      ? `${base_URL}/users/profile-image/${customer._id}`
+      : "/images/default-profile.png";
+
+    image.alt = fullName;
+    image.onerror = () => {
+      image.onerror = null;
+      image.src = "/images/default-profile.png";
+    };
+  }
+
+  renderCustomerVehicles(customer.vehicles);
+
+  customerFullModal.classList.remove("hidden");
+  customerFullModal.classList.add("flex");
+};
 
 const hideCustomerModal = () => {
-   customerFullModal.classList.add("hidden")
-  customerFullModal.classList.remove("flex")
-}
-if (custmoerModalCloseBtn && customerModalCloseXBtn) {
-  custmoerModalCloseBtn.addEventListener("click", hideCustomerModal)
-  customerModalCloseXBtn.addEventListener("click", hideCustomerModal)
-}
-if (viewCustomerFullModalBtns.length > 0) {
-  viewCustomerFullModalBtns.forEach((viewmodalBtn) => {
-    viewmodalBtn.addEventListener("click", showCustomerModal)
-  })
-}
+  customerFullModal.classList.add("hidden");
+  customerFullModal.classList.remove("flex");
+};
+
+// Event delegation supports dynamically rendered rows and pagination.
+customerTableBody?.addEventListener("click", (event) => {
+  const viewButton = event.target.closest("[data-customer-id]");
+
+  if (!viewButton || !customerTableBody.contains(viewButton)) return;
+
+  const customerId = viewButton.dataset.customerId;
+
+  const selectedCustomer = customers.find(
+    (customer) => String(customer._id) === customerId,
+  );
+
+  if (!selectedCustomer) {
+    console.error("Selected customer was not found:", customerId);
+    return;
+  }
+
+  showCustomerModal(selectedCustomer);
+});
+
+customerModalCloseBtn?.addEventListener("click", hideCustomerModal);
+customerModalCloseXBtn?.addEventListener("click", hideCustomerModal);
+
+customerFullModal.addEventListener("click", (event) => {
+  if (event.target === customerFullModal) {
+    hideCustomerModal();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    !customerFullModal.classList.contains("hidden")
+  ) {
+    hideCustomerModal();
+  }
+});

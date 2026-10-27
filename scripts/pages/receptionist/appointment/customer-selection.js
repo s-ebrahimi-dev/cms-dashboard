@@ -395,7 +395,8 @@ export async function initializeCustomerSelection() {
 
   searchInput.addEventListener("input", (event) => {
     const searchValue = event.target.value.trim().toLowerCase();
-
+    console.log("clicked");
+    
     resultSearchBox.replaceChildren();
 
     if (!searchValue) {

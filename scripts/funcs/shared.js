@@ -793,7 +793,7 @@ const getAndShowAllConversations = async () => {
     const conversationsListElem = document.querySelector("#conversation-list");
 
     const conversations = result.data;
-    
+
     conversationsListElem.innerHTML = "";
 
     if (conversations.length > 0) {
@@ -1036,24 +1036,81 @@ let vehicleCataloguePromise = null;
 
 const loadVehicleCatalogue = () => {
   if (!vehicleCataloguePromise) {
-    vehicleCataloguePromise = fetch(
-      "https://cdn.jsdelivr.net/gh/vehiclesdb/vehiclesdb@latest/dist/vehicles.json",
-    )
+    const url =
+      "https://cdn.jsdelivr.net/gh/vehiclesdb/vehiclesdb@latest/dist/vehicles.json";
+
+    vehicleCataloguePromise = fetch(url)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to load vehicle catalogue");
+          throw new Error(
+            `Failed to load vehicle catalogue: ${response.status}`,
+          );
         }
 
         return response.json();
       })
       .catch((error) => {
-        // Allow a retry if loading fails.
+        // Allow another attempt after a failure.
         vehicleCataloguePromise = null;
         throw error;
       });
   }
 
   return vehicleCataloguePromise;
+};
+
+const setVehicleCatalogueLoadingState = (isLoading) => {
+  const makeSelect = document.querySelector("#new-vehicle-make");
+  const modelSelect = document.querySelector("#new-vehicle-model");
+
+  if (makeSelect) makeSelect.disabled = isLoading;
+  if (modelSelect) modelSelect.disabled = true;
+
+  if (isLoading && makeSelect) {
+    makeSelect.replaceChildren(new Option("Loading manufacturers...", ""));
+  }
+
+  if (isLoading && modelSelect) {
+    modelSelect.replaceChildren(new Option("Select a manufacturer first", ""));
+  }
+};
+
+const showVehicleCatalogueError = (show) => {
+  const errorMessage = document.querySelector("#vehicle-catalogue-error");
+
+  if (errorMessage) {
+    errorMessage.classList.toggle("hidden", !show);
+  }
+};
+
+const initializeVehicleCatalogue = async () => {
+  setVehicleCatalogueLoadingState(true);
+  showVehicleCatalogueError(false);
+
+  try {
+    const catalogue = await loadVehicleCatalogue();
+
+    populateVehicleMakes(catalogue);
+    showVehicleCatalogueError(false);
+  } catch (error) {
+    console.error("Unable to load vehicle catalogue:", error);
+
+    setVehicleCatalogueLoadingState(false);
+    showVehicleCatalogueError(true);
+
+    const makeSelect = document.querySelector("#new-vehicle-make");
+    const modelSelect = document.querySelector("#new-vehicle-model");
+
+    if (makeSelect) {
+      makeSelect.replaceChildren(new Option("Manufacturers unavailable", ""));
+    }
+
+    if (modelSelect) {
+      modelSelect.replaceChildren(
+        new Option("Select a manufacturer first", ""),
+      );
+    }
+  }
 };
 
 const populateVehicleMakes = (catalogue) => {
@@ -1078,6 +1135,9 @@ const populateVehicleMakes = (catalogue) => {
   carMakes.forEach((make) => {
     makeSelect.add(new Option(make.name, make.slug));
   });
+
+  // Enable manufacturer selection after successful loading.
+  makeSelect.disabled = false;
 
   // Register the listener only once.
   if (makeSelect.dataset.modelListenerAttached === "true") {
@@ -1126,14 +1186,7 @@ const openCreateAppointmentModal = async () => {
     modal.classList.add("opacity-100");
   });
 
-  try {
-    const catalogue = await loadVehicleCatalogue();
-    console.log(catalogue);
-
-    populateVehicleMakes(catalogue);
-  } catch (error) {
-    console.error("Unable to load vehicle catalogue:", error);
-  }
+  await initializeVehicleCatalogue();
 };
 
 const closeCreateAppointmentModal = () => {
@@ -1185,6 +1238,7 @@ export {
   renderReceiverMessage,
   getConversationMessages,
   openCreateAppointmentModal,
+  initializeVehicleCatalogue,
   closeCreateAppointmentModal,
   getAppointment,
 };

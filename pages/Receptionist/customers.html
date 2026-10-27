@@ -622,9 +622,15 @@
 
               <h3
                 id="total-customer"
-                class="mt-2 text-3xl font-bold text-slate-900 dark:text-white"
+                class="mt-2 flex h-9 items-center text-3xl font-bold text-slate-900 dark:text-white"
+                aria-live="polite"
+                aria-label="Total customers"
               >
-                
+                <span
+                  class="inline-block h-6 w-6 animate-spin rounded-full border-[3px] border-slate-300 border-t-emerald-600 dark:border-slate-600 dark:border-t-emerald-400"
+                  role="status"
+                  aria-label="Loading customer count"
+                ></span>
               </h3>
 
               <span class="text-sm text-blue-600 dark:text-blue-400">
@@ -768,18 +774,18 @@
                 All Customers
               </span>
             </div>
-            
+
             <div class="overflow-x-auto relative min-h-100">
               <div
-              id="customer-table-container"
-               class="pointer-events-none absolute inset-0 z-50"
-            ></div>
+                id="customer-table-container"
+                class="pointer-events-none absolute inset-0 z-50"
+              ></div>
               <table class="w-full text-sm">
                 <thead>
                   <tr
                     class="border-b border-[#D9D9D3] text-slate-500 dark:border-[#2A3540] dark:text-slate-400"
                   >
-                  <th class="p-3 text-left font-medium">#</th>
+                    <th class="p-3 text-left font-medium">#</th>
                     <th class="p-3 text-left font-medium">Customer</th>
 
                     <th class="p-3 text-left font-medium">Contact</th>
@@ -804,21 +810,42 @@
 
             <!-- Pagination -->
 
-           <div id="customers-pagination" class="mt-5 flex flex-col gap-4 border-t border-[#D9D9D3] pt-4 sm:flex-row sm:items-center sm:justify-between dark:border-[#2A3540]">
-                <p id="customers-pagination-info" class="text-sm text-slate-500 dark:text-slate-400">Showing 1–5 of 11 appointments</p>
+            <div
+              id="customers-pagination"
+              class="mt-5 flex flex-col gap-4 border-t border-[#D9D9D3] pt-4 sm:flex-row sm:items-center sm:justify-between dark:border-[#2A3540]"
+            >
+              <p
+                id="customers-pagination-info"
+                class="text-sm text-slate-500 dark:text-slate-400"
+              >
+                Showing 1–5 of 11 appointments
+              </p>
 
-                <div class="flex items-center gap-2">
-                  <button id="customers-prev-page" type="button" disabled="" class="rounded-lg border border-[#D9D9D3] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]">
-                    Previous
-                  </button>
+              <div class="flex items-center gap-2">
+                <button
+                  id="customers-prev-page"
+                  type="button"
+                  disabled=""
+                  class="rounded-lg border border-[#D9D9D3] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
+                >
+                  Previous
+                </button>
 
-                  <span id="customers-page-indicator" class="min-w-16 text-center text-sm font-medium text-slate-700 dark:text-slate-200">Page 1 of 3</span>
+                <span
+                  id="customers-page-indicator"
+                  class="min-w-16 text-center text-sm font-medium text-slate-700 dark:text-slate-200"
+                  >Page 1 of 3</span
+                >
 
-                  <button id="customers-next-page" type="button" class="rounded-lg border border-[#D9D9D3] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]">
-                    Next
-                  </button>
-                </div>
+                <button
+                  id="customers-next-page"
+                  type="button"
+                  class="rounded-lg border border-[#D9D9D3] px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-40 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-[#1D2630]"
+                >
+                  Next
+                </button>
               </div>
+            </div>
           </section>
 
           <!-- =================================================== -->
