@@ -1,10 +1,11 @@
-import { loadComponent } from "../components/components.js";
-import { initSidebar } from "../modules/sidebar.js";
-
-loadComponent(
-    "sidebar-container",
-    "/pages/Components/sidebar.html"
-)
-.then(() => {
-    initSidebar();
-});
+import { getMyVehicles } from "../../funcs/shared.js";
+const vehicleContainer = document.getElementById("vehicle-container");
+const showVehicles = async () => {
+  try {
+    const vehicle = await getMyVehicles();
+    console.log(vehicle);
+  } catch (error) {
+    console.error("Error fetching vehicles:", error);
+  }
+};
+await showVehicles();

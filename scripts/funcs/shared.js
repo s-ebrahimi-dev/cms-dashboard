@@ -1213,6 +1213,31 @@ const getAppointment = async () => {
   return result.data;
 };
 
+const getMyVehicles = async () => {
+  const res = await fetch(`${base_URL}/vehicles/mine`, {
+    credentials: "include",
+  })
+  if (!res.ok) {
+     let message = "Failed to retrieve vehicle data.";
+     try {
+      const errorResult = await res.json();
+      message = errorResult.message || message;
+    } catch {
+      // The response wasn't valid JSON.
+    }
+
+    throw new Error(message);
+  }
+
+  const result = await res.json();
+
+  if (!Array.isArray(result.data)) {
+    throw new Error("Invalid vehicle data received from the server.");
+  }
+
+  return result.data;
+}
+
 export {
   getAllUser,
   getAndShowAllUsers,
@@ -1241,4 +1266,5 @@ export {
   initializeVehicleCatalogue,
   closeCreateAppointmentModal,
   getAppointment,
+  getMyVehicles,
 };
