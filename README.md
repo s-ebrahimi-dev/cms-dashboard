@@ -1,187 +1,118 @@
-# AutoCare CMS Dashboard 🚗
-
-<h1 align="center">
-  AutoCare CMS Dashboard
-  <img src="./icons8-cms-50.png" alt="CMS Logo" width="30" />
-</h1>
+# AutoCare CMS Dashboard
 
 <p align="center">
-  <img src="./public/images/icon-2.png" alt="AutoCare Logo" width="150" />
+  <img src="./public/images/icon-2.png" alt="AutoCare logo" width="120" />
 </p>
 
 <p align="center">
-  A responsive car service management dashboard built with HTML, Tailwind CSS, and JavaScript, powered by a Node.js and Express backend.
+  A responsive dashboard for managing automotive service operations, built with HTML, Tailwind CSS, JavaScript, and a Node.js/Express backend.
 </p>
 
-AutoCare CMS is a web-based management system designed for automotive service businesses. It provides a centralized dashboard for managing customers, vehicles, appointments, services, employees, invoices, payments, and other daily operations.
-
-The project focuses on modular JavaScript, reusable interface components, API integration, role-based access, and responsive user interfaces.
-
----
-
-![Project Status](https://img.shields.io/badge/status-work--in--progress-yellow)
-
-> The project is actively under development, and some features may still be incomplete.
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-
-<p align="left">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" alt="JavaScript" />
-  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+<p align="center">
+  <img src="https://img.shields.io/badge/status-in%20development-yellow" alt="Project status: in development" />
 </p>
 
-### Backend
+AutoCare CMS is a web-based management system designed for automotive service businesses. It brings customer and vehicle records, appointments, services, employees, and other operational workflows into one dashboard.
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js" />
-  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
-  <img src="https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white" alt="Mongoose" />
-</p>
+The project emphasizes modular JavaScript, reusable UI components, API integration, role-based access control, and responsive design. It is under active development, so some modules and workflows may be incomplete or change over time.
 
-### Development Tools
+## Contents
 
-<p align="left">
-  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" />
-  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
-</p>
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Configuration Notes](#configuration-notes)
+- [Project Status](#project-status)
+- [Preview](#preview)
+- [Author](#author)
 
----
+## Features
 
-## 🏢 Dashboard Modules
-
-AutoCare CMS is organized around the main workflows of an automotive service business.
-
-| Module | Purpose |
-|---|---|
-| 📊 Dashboard | Central overview of the management system |
-| 👥 Customers | Customer information and management |
-| 🚗 Vehicles | Vehicle records associated with customers |
-| 📅 Appointments | Appointment creation, scheduling, and availability |
-| 🔧 Services | Management of automotive services |
-| 👨‍🔧 Employees | Employee information and technician assignments |
-| 🧾 Invoices | Invoice management interface |
-| 💳 Payments | Payment management interface |
-| 👤 Users | User administration |
-| 💬 Messages | Conversation and messaging functionality |
-| ⚙️ Settings | Application settings and theme preferences |
-
-The system also includes role-oriented workspaces for receptionists, mechanics, and specialized service staff, including car wash, body repair, detailing, and oil-related services.
-
----
-
-## ✨ Features
-
-### 1. Responsive Dashboard UI
+### Dashboard and User Interface
 
 - Responsive layouts for desktop and mobile screens.
-- Sidebar navigation with collapsible and mobile navigation behavior.
-- Reusable interface components and shared layout elements.
+- Sidebar navigation with desktop and mobile behavior.
 - Light and dark themes.
-- Custom theme toggle with animated moon and sun icons.
-- Styled tables, forms, modals, dropdowns, and notifications.
-- Tailwind CSS-based design system.
+- Reusable UI components, tables, forms, modals, dropdowns, and notifications.
+- Modular JavaScript organized around pages, shared components, and utilities.
 
-### 2. Modular JavaScript Architecture
+### Authentication and Access Control
 
-- JavaScript modules organized by pages, features, shared components, and utilities.
-- Reusable functions for common UI behavior.
-- Dynamic loading of shared components.
-- Separation of interface logic, API requests, and feature-specific responsibilities.
-- Event-driven interactions and form handling.
-
-### 3. Authentication and Role-Based Access
-
-- Authentication UI and login workflow.
-- JWT-based authentication through the backend.
-- HTTP-only authentication cookie.
+- Login and authentication flow integrated with the backend.
+- JWT-based authentication using an HTTP-only cookie.
 - Role-based authorization for supported backend routes.
-- Support for administrator, customer, receptionist, mechanic, and specialized service-staff roles.
+- Role-oriented workspaces for administrators, customers, receptionists, mechanics, and specialized service staff.
 - User profile information and conditional profile-image loading.
 
-### 4. Customer and Vehicle Management
+### Customer and Vehicle Management
 
 - Customer search and selection.
 - Customer information management.
-- Vehicle records stored separately and associated with their customers.
-- Existing vehicle selection during appointment creation.
-- Vehicle information linked to customer records through the backend API.
+- Vehicle records stored separately and associated with customers.
+- Vehicle selection during appointment creation.
 
-### 5. Appointment Management
+### Appointment and Service Management
 
-- Appointment creation integrated with the backend.
-- Customer and vehicle selection.
-- Service selection using backend data.
+- Appointment creation integrated with the backend API.
+- Customer, vehicle, and service selection.
 - Appointment date and available time-slot selection.
 - Availability checks based on scheduling rules and service requirements.
-- Appointment details associated with customers, vehicles, services, receptionists, and assigned technicians.
-- Appointment statuses including `PENDING`, `CONFIRMED`, and `IN_PROGRESS`.
-- Backend scheduling logic that accounts for technician roles and concurrent booking capacity.
+- Appointment records associated with relevant customers, vehicles, services, receptionists, and assigned technicians.
+- Appointment statuses currently include `PENDING`, `CONFIRMED`, and `IN_PROGRESS`.
+- Scheduling logic that accounts for technician roles and booking capacity.
 
-### 6. Services and Employee Assignment
-
-- Service data retrieved from the backend.
-- Service-specific technician role requirements.
-- Technician assignment associated with appointment records.
-- Scheduling support based on service requirements and technician availability.
-
-### 7. Notifications and Messaging
+### Notifications and Messaging
 
 - Notification retrieval and read-status updates through the API.
-- Unread notification indicators.
+- Unread-notification indicators.
 - Conversation creation and message sending.
-- Shared conversation-related frontend functionality.
+- Shared frontend functionality for conversation-related workflows.
 
-### 8. Backend API Integration
+### Additional Dashboard Modules
 
-- Communication with a separate REST API.
-- Asynchronous data fetching and form submission.
-- Request and response handling.
-- Error handling for failed requests.
-- Integration with MongoDB-backed application data.
+The dashboard also includes interfaces for employees, invoices, payments, users, and settings. Some modules may still be under development.
 
----
+## Technology Stack
 
-## 🏗️ Architecture Overview
+| Area | Technologies |
+|---|---|
+| Frontend | HTML, Tailwind CSS, JavaScript, Vite |
+| Backend | Node.js, Express.js |
+| Database and ODM | MongoDB, Mongoose |
+| Development and Version Control | npm, Git, GitHub |
+
+## Architecture
 
 AutoCare CMS separates the frontend interface from backend business logic.
 
 ```text
 AutoCare CMS
-│
 ├── Frontend
 │   ├── HTML pages
 │   ├── Tailwind CSS
 │   ├── JavaScript modules
-│   ├── Shared components
+│   ├── Shared UI components
 │   └── API communication
-│
 └── Backend
-    ├── Node.js
-    ├── Express.js
+    ├── Node.js and Express.js
+    ├── Routes and controllers
     ├── Authentication and authorization
-    ├── API routes and controllers
-    ├── Business logic
-    └── MongoDB / Mongoose
+    ├── Application and business logic
+    └── MongoDB and Mongoose
 ```
 
-The frontend is responsible for rendering the dashboard, handling user interactions, validating input, and communicating with the API. The backend handles authentication, authorization, data persistence, and business rules.
+The frontend renders the dashboard, handles user interactions, performs client-side input validation, and communicates with the API.
 
----
+The backend handles authentication, authorization, business rules, and persistent application data.
 
-## 📂 Project Structure
+## Project Structure
 
-The following is a high-level overview of the frontend organization. Individual modules and filenames may evolve during development.
+The following tree provides a high-level overview of the project organization. Directory names and modules may change as development continues.
 
 ```text
 Frontend/
-│
 ├── pages/
 │   ├── Admin/
 │   │   ├── Dashboard/
@@ -194,14 +125,11 @@ Frontend/
 │   │   ├── Settings-page/
 │   │   ├── Users/
 │   │   └── Vehicles/
-│   │
 │   └── Components/
-│
 ├── public/
 │   ├── Components/
 │   ├── fonts/
 │   └── images/
-│
 ├── scripts/
 │   ├── components/
 │   ├── funcs/
@@ -210,7 +138,6 @@ Frontend/
 │   ├── config.js
 │   ├── index.js
 │   └── register.js
-│
 ├── shared/
 ├── src/
 │   └── input.css
@@ -229,95 +156,51 @@ Backend/
 └── ...
 ```
 
----
+This is an illustrative structure rather than an exhaustive list of every file.
 
-## 📌 Project Status
+## Getting Started
 
-### ✅ Implemented
-
-- Core dashboard layout and navigation.
-- Responsive sidebar and mobile navigation.
-- Light and dark theme switching.
-- Modular JavaScript structure.
-- Shared UI components and dynamic component loading.
-- Authentication and authorization integration.
-- Customer and vehicle API integration.
-- Service data retrieval.
-- Appointment creation and availability checking.
-- Technician-role and scheduling-capacity logic in the backend.
-- Notification API integration.
-- Conversation creation and message-sending functionality.
-- Frontend deployment.
-
-### 🚧 In Progress
-
-- Further development and refinement of dashboard modules.
-- Additional data-table functionality and filtering.
-- Completing and polishing customer-facing workflows.
-- Improving consistency and usability across roles and screen sizes.
-- Expanding appointment and vehicle management workflows.
-
-### 🔮 Future Improvements
-
-- Dashboard analytics and interactive charts.
-- Monthly revenue, expenses, and profit reporting.
-- AI-assisted business insights for administrators.
-- More advanced search, filtering, and reporting.
-- Additional animations and interaction improvements.
-- Further refinement of role-specific permissions.
-- Production deployment and operational improvements.
-
-*Implementation status may change as development continues.*
-
----
-
-## 🖥️ Dashboard Preview
-
-![AutoCare CMS Dashboard](./public/images/screenshots/CMS-Dashboard.png)
-
----
-
-## ⚙️ Installation
+These instructions describe the general local-development workflow. The exact commands and environment variables depend on the current frontend and backend configurations.
 
 ### Prerequisites
 
-- Node.js and npm.
-- Git.
-- MongoDB, either locally or through a hosted instance, for backend development.
+- Node.js and npm
+- Git
+- Access to a MongoDB instance for backend development
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/s-ebrahimi-dev/cms-dashboard
+git clone https://github.com/s-ebrahimi-dev/cms-dashboard.git
 cd cms-dashboard
 ```
 
-Replace the placeholders with your actual repository URL and directory name.
+### 2. Install Frontend Dependencies
 
-### 2. Install frontend dependencies
+Open a terminal in the frontend directory:
 
 ```bash
 cd Frontend
 npm install
 ```
 
-### 3. Start the frontend development via vite localhost
+### 3. Start the Frontend Development Server
 
 ```bash
 npm run dev
 ```
 
-Vite will display the local development URL in the terminal.
+Vite displays the local development URL in the terminal.
 
-### 4. Build for production
+### 4. Build the Frontend
 
 ```bash
 npm run build
 ```
 
-The production build is generated in the `dist/` directory by default.
+Vite normally writes the production build to the `dist/` directory, unless a different output directory is configured.
 
-### 5. Install backend dependencies
+### 5. Install Backend Dependencies
 
 Open a separate terminal and navigate to the backend directory:
 
@@ -325,37 +208,71 @@ Open a separate terminal and navigate to the backend directory:
 cd Backend
 npm install
 ```
-### 6. init the server and run backend
+
+### 6. Configure and Start the Backend
+
+Configure the required environment variables and database connection before starting the server.
+
+If the backend defines a `dev` script in its `package.json`, run:
 
 ```bash
 npm run dev
 ```
-Configure the required environment variables, including the database connection and authentication settings, according to the backend configuration. Then start the backend using the appropriate script defined in its `package.json`.
 
-> **Note:** The exact environment variables and startup command depend on your backend configuration. Never commit secrets, database credentials, or JWT secrets to the repository.
+Use the scripts actually defined in the backend's `package.json` if they differ.
 
----
+## Demo Accounts
 
-## 🔗 Backend API
+You can explore the available dashboards using the demo accounts below.
 
-The frontend communicates with a separate backend built with Node.js, Express.js, MongoDB, and Mongoose.
+| Dashboard | Role | Email | Password |
+|---|---|---|---|
+| Admin Dashboard | `ADMIN` | `s.ebrahimi.dev@gmail.com` | saeed4651&H |
+| Receptionist Dashboard | `RECEPTIONIST` | `sepi@gmail.com` | saeed4651&H |
+you can login as a "CUSTOMER" after registration on register panel.
 
-The backend is responsible for:
+**Notes:**
+- Demo accounts are intended for evaluation and testing only.
+- Do not use real personal information or production credentials.
+- Demo access may be unavailable when the backend is offline or undergoing maintenance.
+## Configuration Notes
 
-- Authentication and role-based authorization.
-- User and customer data.
-- Vehicle records and customer relationships.
-- Service information.
-- Appointment scheduling and availability.
-- Technician assignments and capacity constraints.
-- Notifications and conversations.
-- Persistent application data.
+- Configure the frontend to use the correct backend API origin for the current environment.
+- Ensure that the frontend and backend ports, CORS settings, and authentication-cookie settings are compatible.
+- Provide the database connection string and authentication secrets through environment variables.
+- Never commit `.env` files, credentials, database connection strings, or JWT secrets to the repository.
+- Check the current implementation before assuming that every dashboard module described in this README is complete.
 
-The frontend and backend must be configured to communicate with the correct API origin. Local development and production deployments may use different API URLs.
+## Project Status
 
----
+**Status: In Development**
 
-## 👨‍💻 Author
+Core dashboard layout, responsive navigation, theme switching, modular frontend code, authentication integration, customer and vehicle API integration, service retrieval, appointment creation and availability checks, and notification/messaging workflows have been implemented to varying degrees.
+
+### Current Development Priorities
+
+- Refining dashboard modules and data tables.
+- Improving filtering and customer-facing workflows.
+- Expanding appointment and vehicle management.
+- Improving consistency and usability across roles and screen sizes.
+
+### Potential Future Improvements
+
+- Dashboard analytics and interactive charts.
+- Revenue, expense, and profit reporting.
+- More advanced search and reporting.
+- Further refinement of role-specific permissions.
+- Additional interaction improvements and production-readiness work.
+
+These future improvements are planned possibilities, not claims of completed functionality.
+
+## Preview
+
+![AutoCare CMS Dashboard](./public/images/screenshots/CMS-Dashboard.png)
+
+If the preview does not appear, verify that the screenshot exists at the specified path and that its filename and capitalization match the repository.
+
+## Author
 
 **Saeed Ebrahimi**
 
@@ -365,4 +282,4 @@ GitHub: [@s-ebrahimi-dev](https://github.com/s-ebrahimi-dev)
 
 ---
 
-⭐ If you find this project interesting, feel free to explore the repository and follow its development journey.
+If you find this project interesting, feel free to explore the repository and follow its development.
