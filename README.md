@@ -19,10 +19,6 @@ The project focuses on modular JavaScript, reusable interface components, API in
 
 ---
 
-## 🚀 Live Demo
-
-[**View AutoCare CMS**](https://cms-frontend-yhr-cms-frontend.runflare.cloud/)
-
 ![Project Status](https://img.shields.io/badge/status-work--in--progress-yellow)
 
 > The project is actively under development, and some features may still be incomplete.
