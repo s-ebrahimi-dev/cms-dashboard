@@ -301,7 +301,7 @@ cd Frontend
 npm install
 ```
 
-### 3. Start the frontend development server
+### 3. Start the frontend development via vite localhost
 
 ```bash
 npm run dev
@@ -317,7 +317,7 @@ npm run build
 
 The production build is generated in the `dist/` directory by default.
 
-### 5. Run the backend
+### 5. Install backend dependencies
 
 Open a separate terminal and navigate to the backend directory:
 
@@ -325,7 +325,11 @@ Open a separate terminal and navigate to the backend directory:
 cd Backend
 npm install
 ```
+### 6. init the server and run backend
 
+```bash
+npm run dev
+```
 Configure the required environment variables, including the database connection and authentication settings, according to the backend configuration. Then start the backend using the appropriate script defined in its `package.json`.
 
 > **Note:** The exact environment variables and startup command depend on your backend configuration. Never commit secrets, database credentials, or JWT secrets to the repository.
