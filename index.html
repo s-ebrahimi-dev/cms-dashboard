@@ -41,94 +41,92 @@
           </div>
 
           <!-- FORM -->
-          <form class="space-y-5">
-            <!-- EMAIL -->
-            <div>
-              <label
-                for="email"
-                class="mb-2 block text-sm font-medium text-slate-700"
-              >
-                Email address
-              </label>
 
-              <input
-                id="identifier"
-                name="identifier"
-                type="string"
-                placeholder="john@example.com"
-                class="h-12 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
-              />
-            </div>
-
-            <!-- PASSWORD -->
-            <div>
-              <div class="mb-2 flex items-center justify-between">
+          <form id="login-form" class="space-y-5">
+            <!-- PHONE STEP -->
+            <div id="phone-step" class="space-y-5">
+              <div>
                 <label
-                  for="password"
-                  class="text-sm font-medium text-slate-700"
+                  for="phone"
+                  class="mb-2 block text-sm font-medium text-slate-700"
                 >
-                  Password
+                  Mobile number
                 </label>
 
-                <a
-                  href="#"
-                  class="text-xs font-medium text-indigo-800 transition hover:text-blue-500"
-                >
-                  Forgot password?
-                </a>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  inputmode="tel"
+                  autocomplete="tel"
+                  placeholder="09123456789"
+                  maxlength="13"
+                  required
+                  class="h-12 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                />
               </div>
 
-              <input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="••••••••"
-                class="h-12 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
-              />
-            </div>
-
-            <!-- MOBILE NUMBER -->
-            <div>
-              <label
-                for="phone"
-                class="mb-2 block text-sm font-medium text-slate-700"
+              <button
+                id="send-otp-button"
+                type="submit"
+                class="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Mobile number
-              </label>
-
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                inputmode="tel"
-                autocomplete="tel"
-                placeholder="09123456789"
-                maxlength="13"
-                required
-                class="h-12 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
-              />
+                Send verification code
+              </button>
             </div>
 
-            <!-- REMEMBER -->
-            <div class="flex items-center gap-2 pt-1">
-              <input
-                id="remember"
-                type="checkbox"
-                class="h-4 w-4 rounded border-slate-300 text-orange-500 focus:ring-orange-500"
-              />
+            <!-- OTP STEP -->
+            <div id="otp-step" class="hidden space-y-5">
+              <p class="text-sm text-slate-700">
+                Enter the verification code sent to your mobile number.
+              </p>
 
-              <label for="remember" class="text-sm text-"> Remember me </label>
+              <div>
+                <label
+                  for="otp-code"
+                  class="mb-2 block text-sm font-medium text-slate-700"
+                >
+                  Verification code
+                </label>
+
+                <input
+                  id="otp-code"
+                  name="otp-code"
+                  type="text"
+                  inputmode="numeric"
+                  autocomplete="one-time-code"
+                  pattern="[0-9۰-۹٠-٩]{4,6}"
+                  minlength="4"
+                  maxlength="6"
+                  placeholder="Enter your code"
+                  class="h-12 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20"
+                />
+              </div>
+
+              <button
+                id="verify-otp-button"
+                type="button"
+                class="flex h-12 w-full items-center justify-center rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                Verify and sign in
+              </button>
+
+              <button
+                id="resend-otp-button"
+                type="button"
+                class="w-full text-sm font-medium text-indigo-800 transition hover:text-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                Resend code
+              </button>
+
+              <button
+                id="change-phone-button"
+                type="button"
+                class="w-full text-sm text-slate-600 transition hover:text-slate-900"
+              >
+                Change mobile number
+              </button>
             </div>
-
-            <!-- LOGIN BUTTON -->
-            <a
-              id="loginButton"
-              href="#"
-              type="submit"
-              class="flex items-center justify-center cursor-default md:cursor-pointer mt-2 h-12 w-full rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99]"
-            >
-              Sign in
-            </a>
           </form>
 
           <!-- DIVIDER -->
@@ -159,6 +157,6 @@
       <div id="loader-container"></div>
     </main>
 
-    <script type="module" src="/scripts/login.js"></script>
+    <script type="module" src="/scripts/loginOtp.js"></script>
   </body>
 </html>

@@ -191,4 +191,77 @@ const createUser = async () => {
 };
 
 
-export { register, login, getMe, logout, createUser };
+const requestOtp = async (phone) => {
+  const response = await fetch(`${base_URL}/users/otp/request`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ phone }),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    return {
+      success: false,
+      message: result.message || "Unable to send OTP.",
+    };
+  }
+
+  return {
+    success: true,
+    data: result,
+    message: result.message,
+  };
+};
+
+const retryOtp = async (uuid) => {
+  const response = await fetch(`${base_URL}/users/otp/retry`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ uuid }),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    return {
+      success: false,
+      message: result.message || "Unable to resend OTP.",
+    };
+  }
+
+  return {
+    success: true,
+    data: result,
+    message: result.message,
+  };
+};
+
+const verifyOtp = async (uuid, code) => {
+  const response = await fetch(`${base_URL}/users/otp/verify`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ uuid, code }),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    return {
+      success: false,
+      message: result.message || "OTP verification failed.",
+    };
+  }
+
+  return {
+    success: true,
+    data: result.data,
+    message: result.message,
+  };
+};
+
+
+export { register, login, getMe, logout, createUser,requestOtp, retryOtp, verifyOtp };

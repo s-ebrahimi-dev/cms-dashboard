@@ -2534,6 +2534,9 @@
     .hover\:text-slate-800:hover {
       color: var(--color-slate-800);
     }
+    .hover\:text-slate-900:hover {
+      color: var(--color-slate-900);
+    }
     .hover\:text-white:hover {
       color: var(--color-white);
     }
