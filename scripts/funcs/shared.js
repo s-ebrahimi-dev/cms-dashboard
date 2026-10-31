@@ -554,7 +554,35 @@ const updateOwnProfile = async () => {
 
   return null;
 };
+const updateOwnAddress = async (address) => {
+  try {
+    const res = await fetch(`${base_URL}/users/address`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ address }),
+    });
 
+    const result = await res.json();
+
+    if (!res.ok) {
+      showResultModal("error", result.message || "Failed to update address.");
+      return null;
+    }
+
+    showResultModal("success", "Address updated successfully.");
+
+    return result.data;
+  } catch (error) {
+    console.error("UPDATE OWN ADDRESS ERROR:", error);
+
+    showResultModal("error", "Something went wrong while updating your address.");
+
+    return null;
+  }
+};
 const getAndShowAllMessages = async () => {
   const res = await fetch(`${base_URL}/notifications`, {
     credentials: "include",
@@ -1247,6 +1275,7 @@ export {
   openEditUserModal,
   closeEditUserModal,
   updateOwnProfile,
+  updateOwnAddress,
   initEditUserModal,
   openChatUserModal,
   initChatUserModal,
@@ -1267,4 +1296,5 @@ export {
   closeCreateAppointmentModal,
   getAppointment,
   getMyVehicles,
+  
 };

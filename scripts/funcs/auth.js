@@ -20,7 +20,8 @@ const register = async () => {
       password: passwordInput.value.trim(),
       confirmPassword: confirmPasswordInput.value.trim(),
     };
-    if (passwordInput.value.trim() !== confirmPasswordInput.value.trim()) {
+
+    if (newUser.password !== newUser.confirmPassword) {
       return {
         success: false,
         message: "Passwords do not match.",
@@ -43,9 +44,10 @@ const register = async () => {
       success: res.ok,
       message: result.message,
       data: result.data,
+      email: result.data?.email || newUser.email,
     };
   } catch (error) {
-    console.log("REGISTER ERROR:", error);
+    console.error("REGISTER ERROR:", error);
 
     return {
       success: false,

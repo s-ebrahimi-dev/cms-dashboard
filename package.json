@@ -4,15 +4,18 @@
   "private": true,
   "type": "module",
   "scripts": {
-  "dev": "concurrently \"vite\" \"npm run twd\"",
-  "twd": "tailwindcss -i ./src/input.css -o ./styles/app.css --watch",
-  "build": "vite build",
-  "preview": "vite preview"
-},
+    "dev": "concurrently \"vite\" \"npm run twd\"",
+    "twd": "tailwindcss -i ./src/input.css -o ./styles/app.css --watch",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "concurrently": "^10.0.5",
     "tailwindcss": "^4.3.3",
     "vite": "^8.2.2"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
   }
 }

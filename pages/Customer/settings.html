@@ -99,7 +99,7 @@
         <header
           class="sticky top-0 z-40 relative -mx-8 mb-8 flex items-center justify-between border-b border-slate-200 bg-white/95 px-6 py-1.5 backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-800/95"
         >
-        <button
+          <button
             id="theme-toggle"
             type="button"
             class="theme-toggle relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-300 bg-white text-slate-700 shadow-sm transition-colors hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-indigo-500 dark:border-white/20 dark:bg-zinc-800 dark:text-amber-100 dark:hover:bg-zinc-700"
@@ -655,6 +655,203 @@
                 class="editUserBtn shrink-0 rounded-xl bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
               >
                 Edit Profile
+              </button>
+            </div>
+          </section>
+
+          <!-- =================================================== -->
+          <!-- ADDRESS & LOCATION -->
+          <!-- =================================================== -->
+
+          <section
+            class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
+          >
+            <div class="mb-5">
+              <h2 class="text-lg font-bold text-slate-900 dark:text-white">
+                Address & Location
+              </h2>
+
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                Manage your address and select your location on the map.
+              </p>
+            </div>
+
+            <!-- Address fields -->
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  for="address-country"
+                  class="mb-1.5 block text-sm font-medium"
+                >
+                  Country
+                </label>
+                <input
+                  id="address-country"
+                  type="text"
+                  autocomplete="country-name"
+                  placeholder="Enter country"
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="address-province"
+                  class="mb-1.5 block text-sm font-medium"
+                >
+                  Province / State
+                </label>
+                <input
+                  id="address-province"
+                  type="text"
+                  placeholder="Enter province or state"
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="address-city"
+                  class="mb-1.5 block text-sm font-medium"
+                >
+                  City
+                </label>
+                <input
+                  id="address-city"
+                  type="text"
+                  autocomplete="address-level2"
+                  placeholder="Enter city"
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="address-district"
+                  class="mb-1.5 block text-sm font-medium"
+                >
+                  District
+                </label>
+                <input
+                  id="address-district"
+                  type="text"
+                  placeholder="Enter district"
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="address-street"
+                  class="mb-1.5 block text-sm font-medium"
+                >
+                  Street
+                </label>
+                <input
+                  id="address-street"
+                  type="text"
+                  autocomplete="address-line1"
+                  placeholder="Enter street"
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="address-building"
+                  class="mb-1.5 block text-sm font-medium"
+                >
+                  Building Number
+                </label>
+                <input
+                  id="address-building"
+                  type="text"
+                  placeholder="Building number"
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="address-unit"
+                  class="mb-1.5 block text-sm font-medium"
+                >
+                  Unit / Apartment
+                </label>
+                <input
+                  id="address-unit"
+                  type="text"
+                  placeholder="Unit or apartment"
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="address-postal-code"
+                  class="mb-1.5 block text-sm font-medium"
+                >
+                  Postal Code
+                </label>
+                <input
+                  id="address-postal-code"
+                  type="text"
+                  autocomplete="postal-code"
+                  placeholder="Postal code"
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+            </div>
+
+            <!-- Map -->
+            <div class="mt-6">
+              <h3 class="text-sm font-semibold text-slate-900 dark:text-white">
+                Pin Your Location
+              </h3>
+
+              <p
+                class="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400"
+              >
+                Search for a place or click on the map to select your exact
+                location.
+              </p>
+
+              <div class="mt-4">
+                <input
+                  id="address-search"
+                  type="search"
+                  placeholder="Search for a place or address..."
+                  class="w-full rounded-xl border border-[#D9D9D3] bg-white px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-indigo-500 dark:border-[#2A3540] dark:bg-[#151B23]"
+                />
+              </div>
+
+              <div
+                id="address-search-results"
+                class="relative z-10 mt-1 hidden overflow-hidden rounded-xl border border-[#D9D9D3] bg-white shadow-lg dark:border-[#2A3540] dark:bg-[#1D2630]"
+              ></div>
+
+              <div
+                id="address-map"
+                class="mt-4 h-80 w-full overflow-hidden rounded-xl border border-[#D9D9D3] dark:border-[#2A3540]"
+              ></div>
+
+              <p
+                id="address-map-status"
+                class="mt-2 text-xs text-slate-500 dark:text-slate-400"
+                aria-live="polite"
+              >
+                Select a location on the map to set your coordinates.
+              </p>
+            </div>
+
+            <!-- Save -->
+            <div class="mt-6 flex justify-end">
+              <button
+                id="save-address-btn"
+                type="button"
+                class="rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700"
+              >
+                Save Address
               </button>
             </div>
           </section>
