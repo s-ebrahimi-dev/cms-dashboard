@@ -892,6 +892,9 @@
   .w-64 {
     width: calc(var(--spacing) * 64);
   }
+  .w-70 {
+    width: calc(var(--spacing) * 70);
+  }
   .w-72 {
     width: calc(var(--spacing) * 72);
   }
@@ -1198,6 +1201,9 @@
   }
   .gap-y-2 {
     row-gap: calc(var(--spacing) * 2);
+  }
+  .gap-y-4 {
+    row-gap: calc(var(--spacing) * 4);
   }
   :where(.divide-y > :not(:last-child)) {
     --tw-divide-y-reverse: 0;
@@ -2537,9 +2543,6 @@
     .hover\:text-slate-800:hover {
       color: var(--color-slate-800);
     }
-    .hover\:text-slate-900:hover {
-      color: var(--color-slate-900);
-    }
     .hover\:text-white:hover {
       color: var(--color-white);
     }
@@ -2660,6 +2663,17 @@
   .disabled\:opacity-60:disabled {
     opacity: 60%;
   }
+  @media (width >= 440px) {
+    .min-\[440px\]\:w-70 {
+      width: calc(var(--spacing) * 70);
+    }
+    .min-\[440px\]\:flex-row {
+      flex-direction: row;
+    }
+    .min-\[440px\]\:text-left {
+      text-align: left;
+    }
+  }
   @media (width >= 40rem) {
     .sm\:col-span-1 {
       grid-column: span 1 / span 1;
@@ -2669,6 +2683,9 @@
     }
     .sm\:flex {
       display: flex;
+    }
+    .sm\:h-48 {
+      height: calc(var(--spacing) * 48);
     }
     .sm\:w-80 {
       width: calc(var(--spacing) * 80);
