@@ -1,0 +1,217 @@
+
+<div
+  id="vehicle-details-modal"
+  class="fixed inset-0 z-100 hidden items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="vehicle-modal-title"
+>
+  <div
+    id="vehicle-details-panel"
+    class="relative flex max-h-[90dvh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] shadow-2xl dark:border-[#2A3540] dark:bg-[#151B23]"
+  >
+    <!-- Modal header -->
+    <div
+      class="flex shrink-0 items-center justify-between border-b border-[#D9D9D3] px-5 py-4 dark:border-[#2A3540] sm:px-6"
+    >
+      <div>
+        <h2
+          id="vehicle-modal-title"
+          class="text-lg font-bold text-slate-900 dark:text-white"
+        >
+          Vehicle Details
+        </h2>
+        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
+          View your registered vehicle information
+        </p>
+      </div>
+
+      <button
+        id="close-vehicle-modal"
+        type="button"
+        aria-label="Close vehicle details"
+        class="flex h-9 w-9 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-white"
+      >
+        <svg
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 6l12 12M18 6 6 18"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Scrollable content -->
+    <div class="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
+
+      <!-- Vehicle identity -->
+      <div
+        class="flex flex-col items-center gap-4 rounded-xl bg-slate-100 p-5 dark:bg-[#1D2630] sm:flex-row sm:items-center"
+      >
+        <div
+          class="flex h-32 w-full shrink-0 items-center justify-center sm:w-44"
+        >
+          <img
+            id="vehicle-modal-image"
+            src="/images/toyota.png"
+            alt="Vehicle"
+            class="h-full w-full object-contain"
+          />
+        </div>
+
+        <div class="min-w-0 text-center sm:text-left">
+          <span
+            class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-[10px] font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+            Registered Vehicle
+          </span>
+
+          <h3
+            id="vehicle-modal-name"
+            class="mt-3 text-xl font-bold text-slate-900 dark:text-white"
+          >
+            Toyota Camry
+          </h3>
+
+          <p
+            id="vehicle-modal-subtitle"
+            class="mt-1 text-sm text-slate-500 dark:text-slate-400"
+          >
+            2022 · White
+          </p>
+        </div>
+      </div>
+
+      <!-- Vehicle specifications -->
+      <div class="mt-6">
+        <h3 class="text-sm font-bold text-slate-900 dark:text-white">
+          Vehicle Specifications
+        </h3>
+
+        <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+
+          <!-- Make -->
+          <div class="rounded-xl border border-[#D9D9D3] p-4 dark:border-[#2A3540]">
+            <p class="text-xs text-slate-400 dark:text-slate-500">Make</p>
+            <p
+              id="vehicle-modal-make"
+              class="mt-1.5 text-sm font-semibold text-slate-800 dark:text-slate-200"
+            >Toyota</p>
+          </div>
+
+          <!-- Model -->
+          <div class="rounded-xl border border-[#D9D9D3] p-4 dark:border-[#2A3540]">
+            <p class="text-xs text-slate-400 dark:text-slate-500">Model</p>
+            <p
+              id="vehicle-modal-model"
+              class="mt-1.5 text-sm font-semibold text-slate-800 dark:text-slate-200"
+            >Camry</p>
+          </div>
+
+          <!-- Year -->
+          <div class="rounded-xl border border-[#D9D9D3] p-4 dark:border-[#2A3540]">
+            <p class="text-xs text-slate-400 dark:text-slate-500">Year</p>
+            <p
+              id="vehicle-modal-year"
+              class="mt-1.5 text-sm font-semibold text-slate-800 dark:text-slate-200"
+            >2022</p>
+          </div>
+
+          <!-- Color -->
+          <div class="rounded-xl border border-[#D9D9D3] p-4 dark:border-[#2A3540]">
+            <p class="text-xs text-slate-400 dark:text-slate-500">Color</p>
+            <p
+              id="vehicle-modal-color"
+              class="mt-1.5 text-sm font-semibold text-slate-800 dark:text-slate-200"
+            >White</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration and usage -->
+      <div class="mt-6">
+        <h3 class="text-sm font-bold text-slate-900 dark:text-white">
+          Registration & Usage
+        </h3>
+
+        <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+
+          <!-- License plate -->
+          <div class="rounded-xl border border-[#D9D9D3] p-4 dark:border-[#2A3540]">
+            <p class="text-xs text-slate-400 dark:text-slate-500">
+              License Plate
+            </p>
+            <p
+              id="vehicle-modal-plate"
+              class="mt-1.5 text-sm font-semibold text-slate-800 dark:text-slate-200"
+            >ABC-123</p>
+          </div>
+
+          <!-- Mileage -->
+          <div class="rounded-xl border border-[#D9D9D3] p-4 dark:border-[#2A3540]">
+            <p class="text-xs text-slate-400 dark:text-slate-500">
+              Current Mileage
+            </p>
+            <p
+              id="vehicle-modal-mileage"
+              class="mt-1.5 text-sm font-semibold text-slate-800 dark:text-slate-200"
+            >45,000 km</p>
+          </div>
+
+          <!-- VIN -->
+          <div class="rounded-xl border border-[#D9D9D3] p-4 dark:border-[#2A3540] sm:col-span-2">
+            <p class="text-xs text-slate-400 dark:text-slate-500">
+              Vehicle Identification Number (VIN)
+            </p>
+            <p
+              id="vehicle-modal-vin"
+              class="mt-1.5 break-all text-sm font-semibold text-slate-800 dark:text-slate-200"
+            >Not provided</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div
+      class="flex shrink-0 flex-col-reverse gap-3 border-t border-[#D9D9D3] bg-[#FCFBF8] px-5 py-4 dark:border-[#2A3540] dark:bg-[#151B23] sm:flex-row sm:justify-end sm:px-6"
+    >
+      <button
+        id="close-vehicle-modal-footer"
+        type="button"
+        class="rounded-xl border border-[#D9D9D3] px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-[#2A3540] dark:text-slate-300 dark:hover:bg-white/5"
+      >
+        Close
+      </button>
+
+      <button
+        id="edit-vehicle-from-modal"
+        type="button"
+        class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-800"
+      >
+        <svg
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m16.862 4.487 1.687-1.687a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13l-3.5 1.167 1.167-3.5a4.5 4.5 0 0 1 1.13-1.897l9.38-9.38Z"
+          />
+        </svg>
+        Edit Vehicle
+      </button>
+    </div>
+  </div>
+</div>

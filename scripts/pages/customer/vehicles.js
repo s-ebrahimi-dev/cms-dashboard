@@ -1,5 +1,12 @@
 import { getMyVehicles } from "../../funcs/shared.js";
+import { loadComponent } from "../../components/component-Loader.js";
+
+await loadComponent("vehicle-modal", "/Components/view-vehicleInfoModal.html")
+const vehicleModal = document.querySelector("#vehicle-details-modal")
 const vehicleContainer = document.getElementById("vehicle-container");
+
+let vehicles = [];
+
 function capitalizeWords(str = "") {
   return str
     .toLowerCase()
@@ -7,18 +14,30 @@ function capitalizeWords(str = "") {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
+
+// show-vehicles
 const showVehicles = async () => {
+   vehicleContainer.innerHTML = `
+    <p class="text-center text-slate-500">Loading vehicles...</p>
+  `;
   try {
-    const vehicle = await getMyVehicles();
-    console.log(vehicle);
-    
-    if (vehicle) {
-       vehicleContainer.innerHTML = "";
-      vehicle.forEach((vehicle) => {
-           const vehicleName =
-      `${capitalizeWords(vehicle?.make)} ` +
-      `${capitalizeWords(vehicle?.model)}`;
-        vehicleContainer.insertAdjacentHTML("beforeend", `
+    vehicles = await getMyVehicles();
+    if (!vehicles?.length) {
+      vehicleContainer.innerHTML = `
+    <p class="text-center text-slate-500">
+      You haven't registered any vehicles yet.
+    </p>
+  `;
+      return;
+    }
+    vehicleContainer.innerHTML = "";
+    vehicles.forEach((vehicle) => {
+      const vehicleName =
+        `${capitalizeWords(vehicle?.make)} ` +
+        `${capitalizeWords(vehicle?.model)}`;
+      vehicleContainer.insertAdjacentHTML(
+        "beforeend",
+        `
           <article
               class="rounded-2xl border border-[#D9D9D3] bg-[#FCFBF8] p-5 shadow-sm dark:border-[#2A3540] dark:bg-[#151B23]"
             >
@@ -50,16 +69,17 @@ const showVehicles = async () => {
                     </h2>
 
                     <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                      2021
+                      ${vehicle.year}
                       <span class="mx-1">•</span>
-                      ABC-123
+                      ${vehicle.color}
                     </p>
 
-                    <span
-                      class="mt-3 inline-flex rounded-full bg-emerald-100 px-3 py-1.5 text-[11px] font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
+                    <button
+                    data-vehicle-id="${vehicle._id}"
+                      class="editVehicleBtn mt-3 inline-flex rounded-full bg-emerald-100 px-3 py-1.5 text-[11px] font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"
                     >
-                      Active
-                    </span>
+                      Edit Vehicle
+                    </button>
                   </div>
                 </div>
               </div>
@@ -77,7 +97,7 @@ const showVehicles = async () => {
                   <p
                     class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
                   >
-                    42,350 km
+                    ${(vehicle.mileage ?? 0).toLocaleString()} km
                   </p>
                 </div>
 
@@ -124,7 +144,7 @@ const showVehicles = async () => {
                     <p
                       class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
                     >
-                      Toyota
+                      ${capitalizeWords(vehicle.make)}
                     </p>
                   </div>
 
@@ -136,7 +156,7 @@ const showVehicles = async () => {
                     <p
                       class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
                     >
-                      Camry
+                      ${capitalizeWords(vehicle.model)}
                     </p>
                   </div>
 
@@ -148,7 +168,7 @@ const showVehicles = async () => {
                     <p
                       class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
                     >
-                      2021
+                      ${vehicle.year}
                     </p>
                   </div>
 
@@ -160,17 +180,66 @@ const showVehicles = async () => {
                     <p
                       class="mt-1 text-sm font-semibold text-slate-800 dark:text-slate-200"
                     >
-                      ABC-123
+                      ${vehicle.licensePlate}
                     </p>
                   </div>
                 </div>
               </div>
             </article>
-          `)
-      })
-    }
+          `,
+      );
+    });
   } catch (error) {
     console.error("Error fetching vehicles:", error);
+    vehicleContainer.innerHTML = `
+      <p class="text-center text-red-500">
+        Unable to load vehicles. Please try again.
+      </p>
+    `;
   }
 };
+
+const closeVehicleModal = () => {
+    if (!vehicleModal) {
+    console.error("Vehicle modal was not found in the DOM.");
+    return;
+  }
+  vehicleModal.classList.add("hidden");
+  vehicleModal.classList.remove("flex");
+}
+
+const showVehicleModal = () => {
+  if (!vehicleModal) {
+    console.error("Vehicle modal was not found in the DOM.");
+    return;
+  }
+  vehicleModal.classList.remove("hidden");
+  vehicleModal.classList.add("flex");
+};
+
+const closeVehicleModalBtn = document.querySelector("#close-vehicle-modal")
+const closeVehicleModalFooterBtn = document.querySelector("#close-vehicle-modal-footer")
+closeVehicleModalBtn?.addEventListener("click", closeVehicleModal)
+closeVehicleModalFooterBtn?.addEventListener("click", closeVehicleModal)
+
+// edit-vehicle
+const editVehicle = (vehicleId) => {
+  const selectedVehicle = vehicles.find((vehicle) => vehicle._id === vehicleId);
+  if (!selectedVehicle) return;
+  console.log(selectedVehicle);
+  
+  showVehicleModal()
+  
+};
+
+// vehicle-clickHandler
+vehicleContainer.addEventListener("click", (event) => {
+  const editBtn = event.target.closest(".editVehicleBtn");
+
+  if (!editBtn || !vehicleContainer.contains(editBtn)) return;
+
+  const vehicleId = editBtn.dataset.vehicleId;
+
+  editVehicle(vehicleId);
+});
 await showVehicles();
