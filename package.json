@@ -4,18 +4,19 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \"npm run twd\"",
-    "twd": "tailwindcss -i ./src/input.css -o ./styles/app.css --watch",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.3",
-    "concurrently": "^10.0.5",
-    "tailwindcss": "^4.3.3",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.3.0",
     "vite": "^8.2.2"
   },
   "dependencies": {
-    "leaflet": "^1.9.4"
+    "concurrently": "^10.0.5",
+    "leaflet": "^1.9.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   }
 }

@@ -1,6 +1,10 @@
+
 import { defineConfig } from "vite";
-import { resolve, relative, dirname } from "path";
+import { resolve, relative } from "path";
 import { readdirSync, statSync } from "fs";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+
 
 function getHtmlFiles(dir, files = []) {
   const entries = readdirSync(dir);
@@ -11,9 +15,7 @@ function getHtmlFiles(dir, files = []) {
 
     if (stat.isDirectory()) {
       if (
-        entry !== "node_modules" &&
-        entry !== "dist" &&
-        entry !== "Components"
+        !["node_modules", "dist", "Components"].includes(entry)
       ) {
         getHtmlFiles(fullPath, files);
       }
@@ -26,6 +28,10 @@ function getHtmlFiles(dir, files = []) {
 }
 
 export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
   server: {
     proxy: {
       "/api": {
@@ -34,6 +40,7 @@ export default defineConfig({
       },
     },
   },
+
   build: {
     rollupOptions: {
       input: Object.fromEntries(
@@ -43,7 +50,7 @@ export default defineConfig({
             .replace(".html", "");
 
           return [name, file];
-        }),
+        })
       ),
     },
   },
