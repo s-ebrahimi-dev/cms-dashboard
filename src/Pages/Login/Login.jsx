@@ -1,19 +1,34 @@
-
 import { useState } from "react";
-
+import { login } from "../../../scripts/funcs/auth.js";
 function Login() {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
-
-  function handleSubmit(event) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  async function handleSubmit(event) {
     event.preventDefault();
 
-    console.log({
-      identifier,
-      password,
-      remember,
-    });
+    setLoading(true);
+    setError("");
+
+    try {
+      const result = await login({
+        identifier: identifier.trim(),
+        password,
+      });
+
+      if (!result.success) {
+        setError(result.message);
+        return;
+      }
+
+      console.log("Logged in:", result.data);
+
+      // Navigation will be handled here.
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -26,20 +41,15 @@ function Login() {
 
       {/* CENTER */}
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
-
         {/* LOGIN CARD */}
         <div className="login-card h-155 w-120 max-w-full rounded-2xl px-10 py-4 bg-white/45 shadow-2xl overflow-y-auto">
-
           {/* HEADER */}
           <div className="mb-9 text-center">
-
             <div className="mx-auto mb-5 flex h-16 items-center justify-center">
               <img src="/images/icon-2.png" alt="logo-png" />
             </div>
 
-            <h1 className="text-2xl font-bold text-slate-900">
-              Welcome back
-            </h1>
+            <h1 className="text-2xl font-bold text-slate-900">Welcome back</h1>
 
             <p className="mt-2 text-sm text-zinc-950">
               Sign in to your AutoCare account
@@ -48,7 +58,6 @@ function Login() {
 
           {/* FORM */}
           <form className="space-y-5" onSubmit={handleSubmit}>
-
             {/* EMAIL */}
             <div>
               <label
@@ -120,7 +129,6 @@ function Login() {
             >
               Sign in
             </button>
-
           </form>
 
           {/* DIVIDER */}
@@ -134,7 +142,6 @@ function Login() {
           <div className="text-center">
             <p className="text-sm text-zinc-950">
               Don't have an account?
-
               <a
                 href="/register.html"
                 className="ml-1 font-semibold text-indigo-800 transition hover:text-blue-500"
@@ -143,7 +150,6 @@ function Login() {
               </a>
             </p>
           </div>
-
         </div>
       </div>
     </main>

@@ -56,31 +56,40 @@ const register = async () => {
   }
 };
 
-const login = async () => {
-  const identifierInput = document.querySelector("#identifier");
-  const passwordInput = document.querySelector("#password");
+const login = async (userInfos) => {
+    try {
+    const response = await fetch(`${base_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(userInfos),
+    });
 
-  const userInfos = {
-    identifier: identifierInput.value.trim(),
-    password: passwordInput.value.trim(),
-  };
+    const result = await response.json();
 
-  const checkLoggedUser = await fetch(`${base_URL}/users/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify(userInfos),
-  });
+    if (!response.ok) {
+      return {
+        success: false,
+        message: result.message,
+      };
+    }
 
-  const checkRes = await checkLoggedUser.json();
-  if (!checkLoggedUser.ok) {
-    return { success: false, message: checkRes.message };
+    return {
+      success: true,
+      data: result.data,
+      message: result.message,
+    };
+  } catch (error) {
+    console.error("LOGIN ERROR:", error);
+
+    return {
+      success: false,
+      message: error.message,
+    };
   }
-
-  console.log("LOGIN RESPONSE:", checkRes);
-  return { success: true, data: checkRes.data, message: checkRes.message };
 };
- 
 const getMe = async () => {
   const res = await fetch(`${base_URL}/users/me`, {
     credentials: "include",
