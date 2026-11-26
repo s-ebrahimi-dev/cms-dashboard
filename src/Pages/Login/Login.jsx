@@ -1,11 +1,23 @@
 import { useState } from "react";
 import { login } from "../../../scripts/funcs/auth.js";
+import ResultModal from "../../../public/Components/ResultModal.jsx";
+const dashboardRoutes = {
+  ADMIN: "/pages/Admin/Dashboard/dashboard.html",
+  CUSTOMER: "/pages/Customer/dashboard.html",
+  RECEPTIONIST: "/pages/Receptionist/dashboard.html",
+  MECHANIC: "/pages/Mechanic/dashboard.html",
+  OIL_TECHNICIAN: "/pages/Oil-Technician/dashboard.html",
+  BODY_REPAIR: "/pages/Body-Repair/dashboard.html",
+  DETAILING_TECHNICIAN: "/pages/Detailing-Technician/dashboard.html",
+  WASH_TECHNICIAN: "/pages/Wash-Technician/dashboard.html",
+};
 function Login() {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -17,12 +29,32 @@ function Login() {
         identifier: identifier.trim(),
         password,
       });
-
-      if (!result.success) {
-        setError(result.message);
+      const dashboardRoute = dashboardRoutes[result.data.role];
+      if (!dashboardRoute) {
+        <ResultModal
+          type={"error"}
+          icon={"/images/Gifs/error.gif"}
+          title={"Something went wrong"}
+          message={"Your account does not have a valid dashboard."}
+        />;
         return;
       }
 
+      if (!result.success) {
+        <ResultModal
+          type={"error"}
+          icon={"/images/Gifs/error.gif"}
+          title={"Something went wrong"}
+          message={result.message}
+        />;
+        return;
+      }
+      <ResultModal
+        type={"success"}
+        icon={"/images/Gifs/success.gif"}
+        title={"Success"}
+        message={"You have logged in successfully."}
+      />;
       console.log("Logged in:", result.data);
 
       // Navigation will be handled here.
