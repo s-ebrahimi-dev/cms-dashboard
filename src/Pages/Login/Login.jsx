@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { login } from "../../../scripts/funcs/auth.js";
 import ResultModal from "../../components/ResultModal.jsx";
+import { login } from "../../../scripts/funcs/auth.js";
+import Loader from "../../components/Loader.jsx";
 const dashboardRoutes = {
   ADMIN: "/pages/Admin/Dashboard/dashboard.html",
   CUSTOMER: "/pages/Customer/dashboard.html",
@@ -20,8 +21,11 @@ function Login() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-if (loading) return;
+    if (loading) return;
+    
+
     setLoading(true);
+       
     setModal(null);
 
     try {
@@ -33,7 +37,7 @@ if (loading) return;
       if (!result.success) {
         setModal({
           type: "error",
-           icon: "/images/error.png",
+           icon: "/images/Gifs/error.gif",
           message: result.message,
         });
 
@@ -44,7 +48,7 @@ if (loading) return;
       if (!dashboardRoute) {
         setModal({
           type: "error",
-           icon: "/images/error.png",
+           icon: "/images/Gifs/error.gif",
           message: "Your account does not have a valid dashboard.",
         });
 
@@ -52,7 +56,7 @@ if (loading) return;
       }
       setModal({
         type: "success",
-          icon: "/images/success.png",
+          icon: "/images/Gifs/success.gif",
         message: "You have logged in successfully.",
         redirect: dashboardRoute,
       });
@@ -74,6 +78,7 @@ if (loading) return;
       className="relative min-h-screen bg-cover bg-center"
       style={{ backgroundImage: 'url("/images/cover.png")' }}
     >
+
       {/* DARK OVERLAY */}
       <div className="absolute inset-0 bg-black/25"></div>
 
@@ -169,7 +174,7 @@ if (loading) return;
               {loading ? "Signing in..." : "Sign in"}
             </button>
           </form>
-
+     
           {/* DIVIDER */}
           <div className="my-8 flex items-center gap-4">
             <div className="h-px flex-1 bg-slate-200"></div>
@@ -191,6 +196,15 @@ if (loading) return;
           </div>
         </div>
       </div>
+      
+ {loading && (
+        <Loader
+          message="Signing in..."
+          submessage="Please wait while we verify your credentials."
+        />
+      )}
+
+      {/* RESULT MODAL */}
       {modal && (
         <ResultModal
           type={modal.type}
