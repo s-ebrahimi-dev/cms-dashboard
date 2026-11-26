@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { login } from "../../../scripts/funcs/auth.js";
-import ResultModal from "../../../public/Components/ResultModal.jsx";
+import ResultModal from "../../components/ResultModal.jsx";
 const dashboardRoutes = {
   ADMIN: "/pages/Admin/Dashboard/dashboard.html",
   CUSTOMER: "/pages/Customer/dashboard.html",
@@ -16,48 +16,54 @@ function Login() {
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [modal, setModal] = useState(null);
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+if (loading) return;
     setLoading(true);
-    setError("");
+    setModal(null);
 
     try {
       const result = await login({
         identifier: identifier.trim(),
         password,
       });
-      const dashboardRoute = dashboardRoutes[result.data.role];
-      if (!dashboardRoute) {
-        <ResultModal
-          type={"error"}
-          icon={"/images/Gifs/error.gif"}
-          title={"Something went wrong"}
-          message={"Your account does not have a valid dashboard."}
-        />;
-        return;
-      }
 
       if (!result.success) {
-        <ResultModal
-          type={"error"}
-          icon={"/images/Gifs/error.gif"}
-          title={"Something went wrong"}
-          message={result.message}
-        />;
+        setModal({
+          type: "error",
+           icon: "/images/error.png",
+          message: result.message,
+        });
+
         return;
       }
-      <ResultModal
-        type={"success"}
-        icon={"/images/Gifs/success.gif"}
-        title={"Success"}
-        message={"You have logged in successfully."}
-      />;
-      console.log("Logged in:", result.data);
+      const dashboardRoute = dashboardRoutes[result.data.role];
 
+      if (!dashboardRoute) {
+        setModal({
+          type: "error",
+           icon: "/images/error.png",
+          message: "Your account does not have a valid dashboard.",
+        });
+
+        return;
+      }
+      setModal({
+        type: "success",
+          icon: "/images/success.png",
+        message: "You have logged in successfully.",
+        redirect: dashboardRoute,
+      });
       // Navigation will be handled here.
+    } catch (error) {
+      console.error(error);
+
+      setModal({
+        type: "error",
+        message: "Something went wrong. Please try again.",
+      });
     } finally {
       setLoading(false);
     }
@@ -157,9 +163,10 @@ function Login() {
             {/* LOGIN BUTTON */}
             <button
               type="submit"
-              className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99]"
+              disabled={loading}
+              className="mt-2 flex h-12 w-full items-center justify-center rounded-lg bg-blue-500 text-sm font-semibold text-white transition hover:bg-indigo-600 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Sign in
+              {loading ? "Signing in..." : "Sign in"}
             </button>
           </form>
 
@@ -184,6 +191,20 @@ function Login() {
           </div>
         </div>
       </div>
+      {modal && (
+        <ResultModal
+          type={modal.type}
+          icon={modal.icon}
+          message={modal.message}
+          onClose={() => {
+            if (modal.redirect) {
+              window.location.href = modal.redirect;
+            } else {
+              setModal(null);
+            }
+          }}
+        />
+      )}
     </main>
   );
 }
